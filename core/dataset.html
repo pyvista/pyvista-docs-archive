@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datasets &#8212; PyVista 0.31.dev0 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Point Data" href="points.html" />
+    <link rel="prev" title="Objects" href="objects.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/pyvista_logo_sm.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../api.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community">
+            <span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista-support" rel="noopener" target="_blank" title="Support">
+            <span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/master/CONTRIBUTING.md" rel="noopener" target="_blank" title="Contributing">
+            <span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper">
+            <span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p class="caption">
+ <span class="caption-text">
+  API Reference
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Core API
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="objects.html">
+     Objects
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="points.html">
+     Point Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="point-grids.html">
+     Point-Based Grids
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="grids.html">
+     Gridded Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="composite.html">
+     Composite Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="filters.html">
+     Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="camera.html">
+     Cameras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lights.html">
+     Lights
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="helpers.html">
+     Helpers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../plotting/index.html">
+   Plotting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/plotting.html">
+     Plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/widgets.html">
+     Widget API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/qt_plotting.html">
+     Pyvista and PyQt
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../utilities/index.html">
+   Utilities
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../utilities/geometric.html">
+     Geometric Objects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../utilities/parametric.html">
+     Parametric Objects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../utilities/utilities.html">
+     General Utilities
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-dataset-model">
+   The DataSet Model
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="datasets">
+<span id="ref-dataset"></span><h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h1>
+<p>Datasets are any spatially referenced information and usually consist of
+geometrical representations of a surface or volume in 3D space.
+In VTK, this superclass is represented by the <code class="docutils literal notranslate"><span class="pre">vtk.vtkDataSet</span></code> abstract class.</p>
+<p>In VTK, datasets consist of geometry, topology, and attributes to which PyVista
+provides direct access:</p>
+<ul class="simple">
+<li><p>Geometry is the collection of points and cells in 2D or 3D space.</p></li>
+<li><p>Topology defines the structure of the dataset, or how the points are connected to each other to form a cells making a surface or volume.</p></li>
+<li><p>Attributes are any data values that are associated to either the points or cells of the dataset</p></li>
+</ul>
+<p>All of the following data types are listed subclasses of a dataset and share a
+set of common functionality which we wrap into the base class
+<a class="reference internal" href="#pyvista.DataSet" title="pyvista.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.DataSet</span></code></a>.</p>
+<div class="section" id="the-dataset-model">
+<h2>The DataSet Model<a class="headerlink" href="#the-dataset-model" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#pyvista.DataSet" title="pyvista.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.DataSet</span></code></a> class holds attributes that are <em>common</em> to all
+spatially referenced datasets in PyVista.
+This base class is analogous to VTK’s <code class="docutils literal notranslate"><span class="pre">vtk.vtkDataSet</span></code> class.</p>
+<p class="rubric">Attributes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.active_scalars" title="pyvista.DataSet.active_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_scalars</span></code></a></p></td>
+<td><p>Return the active scalars as an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.active_scalars_info" title="pyvista.DataSet.active_scalars_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_scalars_info</span></code></a></p></td>
+<td><p>[field, name].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.active_scalars_name" title="pyvista.DataSet.active_scalars_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_scalars_name</span></code></a></p></td>
+<td><p>Return the active scalar’s name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.active_tensors" title="pyvista.DataSet.active_tensors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_tensors</span></code></a></p></td>
+<td><p>Return the active tensors array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.active_tensors_info" title="pyvista.DataSet.active_tensors_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_tensors_info</span></code></a></p></td>
+<td><p>[field, name].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.active_tensors_name" title="pyvista.DataSet.active_tensors_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_tensors_name</span></code></a></p></td>
+<td><p>Return the name of the active tensor array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.active_vectors" title="pyvista.DataSet.active_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_vectors</span></code></a></p></td>
+<td><p>Return the active vectors array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.active_vectors_info" title="pyvista.DataSet.active_vectors_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_vectors_info</span></code></a></p></td>
+<td><p>[field, name].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.active_vectors_name" title="pyvista.DataSet.active_vectors_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active_vectors_name</span></code></a></p></td>
+<td><p>Return the name of the active vectors array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.array_names" title="pyvista.DataSet.array_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array_names</span></code></a></p></td>
+<td><p>Return a list of array names for the dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.arrows" title="pyvista.DataSet.arrows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arrows</span></code></a></p></td>
+<td><p>Return a glyph representation of the active vector data as arrows.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.bounds" title="pyvista.DataSet.bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounds</span></code></a></p></td>
+<td><p>Return the bounding box of this dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.cell_arrays" title="pyvista.DataSet.cell_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_arrays</span></code></a></p></td>
+<td><p>Return vtkCellData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.center" title="pyvista.DataSet.center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">center</span></code></a></p></td>
+<td><p>Return the center of the bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.extent" title="pyvista.DataSet.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<td><p>Return the range of the bounding box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.length" title="pyvista.DataSet.length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">length</span></code></a></p></td>
+<td><p>Return the length of the diagonal of the bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.n_arrays" title="pyvista.DataSet.n_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_arrays</span></code></a></p></td>
+<td><p>Return the number of arrays present in the dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.n_cells" title="pyvista.DataSet.n_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_cells</span></code></a></p></td>
+<td><p>Return the number of cells in the entire dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.n_points" title="pyvista.DataSet.n_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_points</span></code></a></p></td>
+<td><p>Return the number of points in the entire dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.number_of_cells" title="pyvista.DataSet.number_of_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_cells</span></code></a></p></td>
+<td><p>Return the number of cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.number_of_points" title="pyvista.DataSet.number_of_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_points</span></code></a></p></td>
+<td><p>Return the number of points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.point_arrays" title="pyvista.DataSet.point_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">point_arrays</span></code></a></p></td>
+<td><p>Return vtkPointData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.points" title="pyvista.DataSet.points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">points</span></code></a></p></td>
+<td><p>Return a pointer to the points as a numpy object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.t_coords" title="pyvista.DataSet.t_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">t_coords</span></code></a></p></td>
+<td><p>Return the active texture coordinates on the points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.textures" title="pyvista.DataSet.textures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">textures</span></code></a></p></td>
+<td><p>Return a dictionary to hold compatible <code class="docutils literal notranslate"><span class="pre">vtk.vtkTexture</span></code> objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.vectors" title="pyvista.DataSet.vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vectors</span></code></a></p></td>
+<td><p>Return active vectors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.volume" title="pyvista.DataSet.volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volume</span></code></a></p></td>
+<td><p>Return the mesh volume.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.cast_to_unstructured_grid" title="pyvista.DataSet.cast_to_unstructured_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cast_to_unstructured_grid</span></code></a>()</p></td>
+<td><p>Get a new representation of this object as an <a class="reference internal" href="point-grids.html#pyvista.UnstructuredGrid" title="pyvista.UnstructuredGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.UnstructuredGrid</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.cell_bounds" title="pyvista.DataSet.cell_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_bounds</span></code></a>(ind)</p></td>
+<td><p>Return the bounding box of a cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.cell_n_points" title="pyvista.DataSet.cell_n_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_n_points</span></code></a>(ind)</p></td>
+<td><p>Return the number of points in a cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.cell_points" title="pyvista.DataSet.cell_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_points</span></code></a>(ind)</p></td>
+<td><p>Return the points in a cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.cell_type" title="pyvista.DataSet.cell_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cell_type</span></code></a>(ind)</p></td>
+<td><p>Return the type of a cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.clear_arrays" title="pyvista.DataSet.clear_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_arrays</span></code></a>()</p></td>
+<td><p>Remove all arrays from point/cell/field data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.clear_cell_arrays" title="pyvista.DataSet.clear_cell_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_cell_arrays</span></code></a>()</p></td>
+<td><p>Remove all cell arrays.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.clear_point_arrays" title="pyvista.DataSet.clear_point_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_point_arrays</span></code></a>()</p></td>
+<td><p>Remove all point arrays.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.clear_textures" title="pyvista.DataSet.clear_textures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_textures</span></code></a>()</p></td>
+<td><p>Clear the textures from this mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.copy_meta_from" title="pyvista.DataSet.copy_meta_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy_meta_from</span></code></a>(ido)</p></td>
+<td><p>Copy pyvista meta data onto this object from another object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.find_closest_cell" title="pyvista.DataSet.find_closest_cell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_closest_cell</span></code></a>(point)</p></td>
+<td><p>Find index of closest cell in this mesh to the given point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.find_closest_point" title="pyvista.DataSet.find_closest_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_closest_point</span></code></a>(point[, n])</p></td>
+<td><p>Find index of closest point in this mesh to the given point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.get_array" title="pyvista.DataSet.get_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_array</span></code></a>(name[, preference, info])</p></td>
+<td><p>Search both point, cell and field data for an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.get_data_range" title="pyvista.DataSet.get_data_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_data_range</span></code></a>([arr_var, preference])</p></td>
+<td><p>Get the non-NaN min and max of a named array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.overwrite" title="pyvista.DataSet.overwrite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overwrite</span></code></a>(mesh)</p></td>
+<td><p>Overwrite this mesh inplace with the new mesh’s geometries and data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.plot" title="pyvista.DataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([off_screen, full_screen, screenshot, …])</p></td>
+<td><p>Plot a vtk or numpy object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.points_to_double" title="pyvista.DataSet.points_to_double"><code class="xref py py-obj docutils literal notranslate"><span class="pre">points_to_double</span></code></a>()</p></td>
+<td><p>Make points double precision.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.rename_array" title="pyvista.DataSet.rename_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_array</span></code></a>(old_name, new_name[, preference])</p></td>
+<td><p>Change array name by searching for the array then renaming it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.rotate_x" title="pyvista.DataSet.rotate_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_x</span></code></a>(angle[, transform_all_input_vectors])</p></td>
+<td><p>Rotate mesh about the x-axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.rotate_y" title="pyvista.DataSet.rotate_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_y</span></code></a>(angle[, transform_all_input_vectors])</p></td>
+<td><p>Rotate mesh about the y-axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.rotate_z" title="pyvista.DataSet.rotate_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_z</span></code></a>(angle[, transform_all_input_vectors])</p></td>
+<td><p>Rotate mesh about the z-axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.set_active_scalars" title="pyvista.DataSet.set_active_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_active_scalars</span></code></a>(name[, preference])</p></td>
+<td><p>Find the scalars by name and appropriately sets it as active.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.set_active_tensors" title="pyvista.DataSet.set_active_tensors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_active_tensors</span></code></a>(name[, preference])</p></td>
+<td><p>Find the tensors by name and appropriately sets it as active.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvista.DataSet.set_active_vectors" title="pyvista.DataSet.set_active_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_active_vectors</span></code></a>(name[, preference])</p></td>
+<td><p>Find the vectors by name and appropriately sets it as active.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvista.DataSet.translate" title="pyvista.DataSet.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a>(xyz)</p></td>
+<td><p>Translate the mesh.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvista.DataSet">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyvista.</span></span><span class="sig-name descname"><span class="pre">DataSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="filters.html#pyvista.DataSetFilters" title="pyvista.core.filters.DataSetFilters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.core.filters.DataSetFilters</span></code></a>, <a class="reference internal" href="objects.html#pyvista.DataObject" title="pyvista.core.dataobject.DataObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.core.dataobject.DataObject</span></code></a></p>
+<p>Methods in common to spatially referenced objects.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_scalars">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_scalars</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[pyvista.core.pyvista_ndarray.pyvista_ndarray]</span></em><a class="headerlink" href="#pyvista.DataSet.active_scalars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the active scalars as an array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_scalars_info">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_scalars_info</span></span><em class="property"><span class="pre">:</span> <span class="pre">pyvista.core.dataset.ActiveArrayInfo</span></em><a class="headerlink" href="#pyvista.DataSet.active_scalars_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>[field, name].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Return the active scalar’s field and name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_scalars_name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_scalars_name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#pyvista.DataSet.active_scalars_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the active scalar’s name.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_tensors">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_tensors</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[numpy.ndarray]</span></em><a class="headerlink" href="#pyvista.DataSet.active_tensors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the active tensors array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_tensors_info">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_tensors_info</span></span><em class="property"><span class="pre">:</span> <span class="pre">pyvista.core.dataset.ActiveArrayInfo</span></em><a class="headerlink" href="#pyvista.DataSet.active_tensors_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>[field, name].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Return the active tensor’s field and name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_tensors_name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_tensors_name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#pyvista.DataSet.active_tensors_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of the active tensor array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_vectors">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_vectors</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[pyvista.core.pyvista_ndarray.pyvista_ndarray]</span></em><a class="headerlink" href="#pyvista.DataSet.active_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the active vectors array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_vectors_info">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_vectors_info</span></span><em class="property"><span class="pre">:</span> <span class="pre">pyvista.core.dataset.ActiveArrayInfo</span></em><a class="headerlink" href="#pyvista.DataSet.active_vectors_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>[field, name].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Return the active scalar’s field and name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.active_vectors_name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">active_vectors_name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#pyvista.DataSet.active_vectors_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of the active vectors array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.array_names">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">array_names</span></span><em class="property"><span class="pre">:</span> <span class="pre">List[str]</span></em><a class="headerlink" href="#pyvista.DataSet.array_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of array names for the dataset.</p>
+<p>This makes sure to put the active scalars’ name first in the list.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.arrows">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arrows</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[pyvista.core.pointset.PolyData]</span></em><a class="headerlink" href="#pyvista.DataSet.arrows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a glyph representation of the active vector data as arrows.</p>
+<p>Arrows will be located at the points of the mesh and
+their size will be dependent on the length of the vector.
+Their direction will be the “direction” of the vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>arrows</strong> – Active scalars represented as arrows.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="points.html#pyvista.PolyData" title="pyvista.PolyData">pyvista.PolyData</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.bounds">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bounds</span></span><em class="property"><span class="pre">:</span> <span class="pre">List[float]</span></em><a class="headerlink" href="#pyvista.DataSet.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bounding box of this dataset.</p>
+<p>The form is: (xmin,xmax, ymin,ymax, zmin,zmax).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.cast_to_unstructured_grid">
+<span class="sig-name descname"><span class="pre">cast_to_unstructured_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="point-grids.html#pyvista.UnstructuredGrid" title="pyvista.core.pointset.UnstructuredGrid"><span class="pre">pyvista.core.pointset.UnstructuredGrid</span></a><a class="headerlink" href="#pyvista.DataSet.cast_to_unstructured_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a new representation of this object as an <a class="reference internal" href="point-grids.html#pyvista.UnstructuredGrid" title="pyvista.UnstructuredGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.UnstructuredGrid</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.cell_arrays">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cell_arrays</span></span><em class="property"><span class="pre">:</span> <span class="pre">pyvista.core.datasetattributes.DataSetAttributes</span></em><a class="headerlink" href="#pyvista.DataSet.cell_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return vtkCellData as DataSetAttributes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.cell_bounds">
+<span class="sig-name descname"><span class="pre">cell_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pyvista.DataSet.cell_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bounding box of a cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ind</strong> (<em>int</em>) – Cell ID.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The limits of the cell in the X, Y and Z directions respectivelly.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(float)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_airplane</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">cell_bounds</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">[896.9940185546875, 907.5390014648438, 48.760101318359375, 55.49020004272461, 80.74520111083984, 83.65809631347656]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.cell_n_points">
+<span class="sig-name descname"><span class="pre">cell_n_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyvista.DataSet.cell_n_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of points in a cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ind</strong> (<em>int</em>) – Cell ID.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of points in the cell.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_airplane</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">cell_n_points</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.cell_points">
+<span class="sig-name descname"><span class="pre">cell_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#pyvista.DataSet.cell_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the points in a cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ind</strong> (<em>int</em>) – Cell ID.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An array of floats with shape (number of points, 3) containing the coordinates of the
+cell corners.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_airplane</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">cell_points</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  
+<span class="go">[[896.99401855  48.76010132  82.26560211]</span>
+<span class="go"> [906.59301758  48.76010132  80.74520111]</span>
+<span class="go"> [907.53900146  55.49020004  83.65809631]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.cell_type">
+<span class="sig-name descname"><span class="pre">cell_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyvista.DataSet.cell_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the type of a cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ind</strong> (<em>int</em>) – Cell ID.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>VTK cell type. See &lt;<a class="reference external" href="https://vtk.org/doc/nightly/html/vtkCellType_8h_source.html">https://vtk.org/doc/nightly/html/vtkCellType_8h_source.html</a>&gt;.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_airplane</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">cell_type</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.center">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">center</span></span><em class="property"><span class="pre">:</span> <span class="pre">Union[List[float],</span> <span class="pre">Tuple[float,</span> <span class="pre">float,</span> <span class="pre">float],</span> <span class="pre">numpy.ndarray]</span></em><a class="headerlink" href="#pyvista.DataSet.center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the center of the bounding box.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.clear_arrays">
+<span class="sig-name descname"><span class="pre">clear_arrays</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.clear_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all arrays from point/cell/field data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.clear_cell_arrays">
+<span class="sig-name descname"><span class="pre">clear_cell_arrays</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.clear_cell_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all cell arrays.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.clear_point_arrays">
+<span class="sig-name descname"><span class="pre">clear_point_arrays</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.clear_point_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all point arrays.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.clear_textures">
+<span class="sig-name descname"><span class="pre">clear_textures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.clear_textures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the textures from this mesh.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.copy_meta_from">
+<span class="sig-name descname"><span class="pre">copy_meta_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ido</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyvista.DataSet" title="pyvista.core.dataset.DataSet"><span class="pre">pyvista.core.dataset.DataSet</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.copy_meta_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy pyvista meta data onto this object from another object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.extent">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">extent</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[list]</span></em><a class="headerlink" href="#pyvista.DataSet.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the range of the bounding box.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.find_closest_cell">
+<span class="sig-name descname"><span class="pre">find_closest_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pyvista.DataSet.find_closest_cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find index of closest cell in this mesh to the given point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> (<em>iterable</em><em>(</em><em>float</em><em>) or </em><em>np.ndarray</em>) – Length 3 coordinate of the point to query or a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array
+of coordinates.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>index</strong> – Index or indices of the cell in this mesh that is closest
+to the given point.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int or np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Find nearest cell to a point on a sphere</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Sphere</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_closest_cell</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span>
+<span class="go">59</span>
+</pre></div>
+</div>
+<p>Find the nearest cells to several random points.  Note that
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> indicates that the locator was not able to find a
+reasonably close cell.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_closest_cell</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">indices</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(1000,)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.find_closest_point">
+<span class="sig-name descname"><span class="pre">find_closest_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyvista.DataSet.find_closest_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find index of closest point in this mesh to the given point.</p>
+<p>If wanting to query many points, use a KDTree with scipy or another
+library as those implementations will be easier to work with.</p>
+<p>See: <a class="reference external" href="https://github.com/pyvista/pyvista-support/issues/107">https://github.com/pyvista/pyvista-support/issues/107</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<em>iterable</em><em>(</em><em>float</em><em>)</em>) – Length 3 coordinate of the point to query.</p></li>
+<li><p><strong>n</strong> (<em>int</em><em>, </em><em>optional</em>) – If greater than <code class="docutils literal notranslate"><span class="pre">1</span></code>, returns the indices of the <code class="docutils literal notranslate"><span class="pre">n</span></code> closest
+points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>int</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>the index of the point in this mesh that is closes to the given point.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.get_array">
+<span class="sig-name descname"><span class="pre">get_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cell'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pyvista.DataSet.get_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search both point, cell and field data for an array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.get_data_range">
+<span class="sig-name descname"><span class="pre">get_data_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr_var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cell'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#pyvista.DataSet.get_data_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the non-NaN min and max of a named array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr_var</strong> (<em>str</em><em>, </em><em>np.ndarray</em><em>, </em><em>optional</em>) – The name of the array to get the range. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the
+active scalars is used.</p></li>
+<li><p><strong>preference</strong> (<em>str</em><em>, </em><em>optional</em>) – When scalars is specified, this is the preferred array type
+to search for in the dataset.  Must be either <code class="docutils literal notranslate"><span class="pre">'point'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'cell'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'field'</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.length">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pyvista.DataSet.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of the diagonal of the bounding box.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.n_arrays">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_arrays</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#pyvista.DataSet.n_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of arrays present in the dataset.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.n_cells">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_cells</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#pyvista.DataSet.n_cells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of cells in the entire dataset.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.n_points">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_points</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#pyvista.DataSet.n_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of points in the entire dataset.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.number_of_cells">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">number_of_cells</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#pyvista.DataSet.number_of_cells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of cells.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.number_of_points">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">number_of_points</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#pyvista.DataSet.number_of_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.overwrite">
+<span class="sig-name descname"><span class="pre">overwrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">vtkmodules.vtkCommonDataModel.vtkDataSet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.overwrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwrite this mesh inplace with the new mesh’s geometries and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mesh</strong> (<em>vtk.vtkDataSet</em>) – The overwriting mesh.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">off_screen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_screen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screenshot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_img</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eye_dome_lighting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel_projection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_ipyvtk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jupyter_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_viewer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jupyter_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a vtk or numpy object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>vtk</em><em> or </em><em>numpy object</em>) – VTK object or <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array to be plotted.</p></li>
+<li><p><strong>off_screen</strong> (<em>bool</em>) – Plots off screen when <code class="docutils literal notranslate"><span class="pre">True</span></code>.  Helpful for saving screenshots
+without a window popping up.</p></li>
+<li><p><strong>full_screen</strong> (<em>bool</em><em>, </em><em>optional</em>) – Opens window in full screen.  When enabled, ignores
+<code class="docutils literal notranslate"><span class="pre">window_size</span></code>.  Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>screenshot</strong> (<em>str</em><em> or </em><em>bool</em><em>, </em><em>optional</em>) – <p>Saves screenshot to file when enabled.  See:
+<code class="docutils literal notranslate"><span class="pre">help(pyvista.Plotter.screenshot)</span></code>.  Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">True</span></code>, takes screenshot and returns <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array of
+image.</p>
+</p></li>
+<li><p><strong>window_size</strong> (<em>list</em><em>, </em><em>optional</em>) – Window size in pixels.  Defaults to <code class="docutils literal notranslate"><span class="pre">[1024,</span> <span class="pre">768]</span></code></p></li>
+<li><p><strong>show_bounds</strong> (<em>bool</em><em>, </em><em>optional</em>) – Shows mesh bounds when <code class="docutils literal notranslate"><span class="pre">True</span></code>.  Default <code class="docutils literal notranslate"><span class="pre">False</span></code>. Alias
+<code class="docutils literal notranslate"><span class="pre">show_grid</span></code> also accepted.</p></li>
+<li><p><strong>notebook</strong> (<em>bool</em><em>, </em><em>optional</em>) – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, the resulting plot is placed inline a jupyter
+notebook.  Assumes a jupyter console is active.</p></li>
+<li><p><strong>show_axes</strong> (<em>bool</em><em>, </em><em>optional</em>) – Shows a vtk axes widget.  If <code class="docutils literal notranslate"><span class="pre">None</span></code>, enabled according to
+<code class="docutils literal notranslate"><span class="pre">pyvista.global_theme.axes.show</span></code>.</p></li>
+<li><p><strong>text</strong> (<em>str</em><em>, </em><em>optional</em>) – Adds text at the bottom of the plot.</p></li>
+<li><p><strong>volume</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use the <code class="docutils literal notranslate"><span class="pre">add_volume</span></code> method for volume rendering.</p></li>
+<li><p><strong>use_ipyvtk</strong> (<em>bool</em><em>, </em><em>optional</em>) – Deprecated.  Instead, set the backend either globally with
+<code class="docutils literal notranslate"><span class="pre">pyvista.set_jupyter_backend('ipyvtklink')</span></code> or with
+<code class="docutils literal notranslate"><span class="pre">backend='ipyvtklink'</span></code>.</p></li>
+<li><p><strong>jupyter_backend</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Jupyter notebook plotting backend to use.  One of the
+following:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'none'</span></code> : Do not display in the notebook.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'static'</span></code> : Display a static figure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'ipygany'</span></code> : Show a <code class="docutils literal notranslate"><span class="pre">ipygany</span></code> widget</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'panel'</span></code> : Show a <code class="docutils literal notranslate"><span class="pre">panel</span></code> widget.</p></li>
+</ul>
+<p>This can also be set globally with
+<code class="docutils literal notranslate"><span class="pre">pyvista.set_jupyter_backend</span></code></p>
+</p></li>
+<li><p><strong>jupyter_kwargs</strong> (<em>dict</em><em>, </em><em>optional</em>) – Keyword arguments for the Jupyter notebook plotting backend.</p></li>
+<li><p><strong>theme</strong> (<a class="reference internal" href="../user-guide/themes.html#pyvista.themes.DefaultTheme" title="pyvista.themes.DefaultTheme"><em>pyvista.themes.DefaultTheme</em></a><em>, </em><em>optional</em>) – Plot-specific theme.</p></li>
+<li><p><strong>**kwargs</strong> (<em>optional keyword arguments</em>) – See <code class="docutils literal notranslate"><span class="pre">help(pyvista.Plotter.add_mesh)</span></code> for additional options.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul>
+<li><p><strong>cpos</strong> (<em>list</em>) – List of camera position, focal point, and view up.</p></li>
+<li><p><strong>img</strong> (<em>numpy.ndarray</em>) – Array containing pixel RGB and optionally alpha values.
+Sized:</p>
+<ul class="simple">
+<li><p>[Window height x Window width x 3] if the theme sets
+<code class="docutils literal notranslate"><span class="pre">transparent_background=False</span></code>.</p></li>
+<li><p>[Window height x Window width x 4] if the theme sets
+<code class="docutils literal notranslate"><span class="pre">transparent_background=True</span></code>.</p></li>
+</ul>
+<p>Returned only when <code class="docutils literal notranslate"><span class="pre">screenshot=True</span></code>.</p>
+</li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Plot a simple sphere while showing its edges.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Sphere</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.point_arrays">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">point_arrays</span></span><em class="property"><span class="pre">:</span> <span class="pre">pyvista.core.datasetattributes.DataSetAttributes</span></em><a class="headerlink" href="#pyvista.DataSet.point_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return vtkPointData as DataSetAttributes.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.points">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">points</span></span><em class="property"><span class="pre">:</span> <span class="pre">pyvista.core.pyvista_ndarray.pyvista_ndarray</span></em><a class="headerlink" href="#pyvista.DataSet.points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pointer to the points as a numpy object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.points_to_double">
+<span class="sig-name descname"><span class="pre">points_to_double</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.points_to_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make points double precision.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.rename_array">
+<span class="sig-name descname"><span class="pre">rename_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cell'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.rename_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change array name by searching for the array then renaming it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.rotate_x">
+<span class="sig-name descname"><span class="pre">rotate_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_all_input_vectors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.rotate_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate mesh about the x-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – Angle in degrees to rotate about the x-axis.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.rotate_y">
+<span class="sig-name descname"><span class="pre">rotate_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_all_input_vectors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.rotate_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate mesh about the y-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – Angle in degrees to rotate about the y-axis.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.rotate_z">
+<span class="sig-name descname"><span class="pre">rotate_z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_all_input_vectors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.rotate_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate mesh about the z-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – Angle in degrees to rotate about the z-axis.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.set_active_scalars">
+<span class="sig-name descname"><span class="pre">set_active_scalars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cell'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.set_active_scalars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the scalars by name and appropriately sets it as active.</p>
+<p>To deactivate any active scalars, pass <code class="docutils literal notranslate"><span class="pre">None</span></code> as the <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.set_active_tensors">
+<span class="sig-name descname"><span class="pre">set_active_tensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'point'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.set_active_tensors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the tensors by name and appropriately sets it as active.</p>
+<p>To deactivate any active tensors, pass <code class="docutils literal notranslate"><span class="pre">None</span></code> as the <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.set_active_vectors">
+<span class="sig-name descname"><span class="pre">set_active_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'point'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.set_active_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the vectors by name and appropriately sets it as active.</p>
+<p>To deactivate any active vectors, pass <code class="docutils literal notranslate"><span class="pre">None</span></code> as the <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.t_coords">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">t_coords</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[pyvista.core.pyvista_ndarray.pyvista_ndarray]</span></em><a class="headerlink" href="#pyvista.DataSet.t_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the active texture coordinates on the points.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.textures">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">textures</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict[str,</span> <span class="pre">vtkmodules.vtkRenderingCore.vtkTexture]</span></em><a class="headerlink" href="#pyvista.DataSet.textures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary to hold compatible <code class="docutils literal notranslate"><span class="pre">vtk.vtkTexture</span></code> objects.</p>
+<p>When casting back to a VTK dataset or filtering this dataset, these textures
+will not be passed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.DataSet.translate">
+<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xyz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span> </span><span class="pre">tuple</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.DataSet.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate the mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>xyz</strong> (<em>list</em><em> or </em><em>tuple</em><em> or </em><em>np.ndarray</em>) – Length 3 list, tuple or array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.vectors">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">vectors</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[pyvista.core.pyvista_ndarray.pyvista_ndarray]</span></em><a class="headerlink" href="#pyvista.DataSet.vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return active vectors.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.DataSet.volume">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">volume</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#pyvista.DataSet.volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mesh volume.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>volume</strong> – Total volume of the mesh.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-140243896-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2017-2021, The PyVista Developers.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
