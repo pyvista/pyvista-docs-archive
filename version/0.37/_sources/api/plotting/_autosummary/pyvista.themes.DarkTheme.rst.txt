@@ -1,0 +1,7 @@
+﻿pyvista.themes.DarkTheme
+========================
+
+.. currentmodule:: pyvista.themes
+
+.. autoclass:: DarkTheme
+   :members:

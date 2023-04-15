@@ -1,0 +1,6 @@
+number\_time\_points
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PVDReader.number_time_points

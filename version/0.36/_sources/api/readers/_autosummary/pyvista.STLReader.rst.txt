@@ -1,0 +1,43 @@
+﻿pyvista.STLReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: STLReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      STLReader.hide_progress
+      
+      
+      STLReader.read
+      
+      
+      STLReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      STLReader.path
+      
+      
+      STLReader.reader
+      
+   
+   

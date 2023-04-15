@@ -1,0 +1,91 @@
+﻿pyvista.XMLMultiBlockDataReader
+===============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLMultiBlockDataReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      XMLMultiBlockDataReader.cell_array_status
+      
+      
+      XMLMultiBlockDataReader.disable_all_cell_arrays
+      
+      
+      XMLMultiBlockDataReader.disable_all_point_arrays
+      
+      
+      XMLMultiBlockDataReader.disable_cell_array
+      
+      
+      XMLMultiBlockDataReader.disable_point_array
+      
+      
+      XMLMultiBlockDataReader.enable_all_cell_arrays
+      
+      
+      XMLMultiBlockDataReader.enable_all_point_arrays
+      
+      
+      XMLMultiBlockDataReader.enable_cell_array
+      
+      
+      XMLMultiBlockDataReader.enable_point_array
+      
+      
+      XMLMultiBlockDataReader.hide_progress
+      
+      
+      XMLMultiBlockDataReader.point_array_status
+      
+      
+      XMLMultiBlockDataReader.read
+      
+      
+      XMLMultiBlockDataReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      XMLMultiBlockDataReader.all_cell_arrays_status
+      
+      
+      XMLMultiBlockDataReader.all_point_arrays_status
+      
+      
+      XMLMultiBlockDataReader.cell_array_names
+      
+      
+      XMLMultiBlockDataReader.number_cell_arrays
+      
+      
+      XMLMultiBlockDataReader.number_point_arrays
+      
+      
+      XMLMultiBlockDataReader.path
+      
+      
+      XMLMultiBlockDataReader.point_array_names
+      
+      
+      XMLMultiBlockDataReader.reader
+      
+   
+   

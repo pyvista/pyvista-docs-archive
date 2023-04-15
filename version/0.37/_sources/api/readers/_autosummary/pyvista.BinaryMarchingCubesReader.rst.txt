@@ -1,0 +1,7 @@
+﻿pyvista.BinaryMarchingCubesReader
+=================================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BinaryMarchingCubesReader
+   :members:

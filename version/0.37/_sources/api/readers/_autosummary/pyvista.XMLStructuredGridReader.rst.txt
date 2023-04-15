@@ -1,0 +1,7 @@
+﻿pyvista.XMLStructuredGridReader
+===============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLStructuredGridReader
+   :members:

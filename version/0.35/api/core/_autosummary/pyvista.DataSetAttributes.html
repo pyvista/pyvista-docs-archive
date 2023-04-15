@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pyvista.DataSetAttributes &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="append" href="pyvista.DataSetAttributes.append.html" />
+    <link rel="prev" title="volume" href="pyvista.DataSet.volume.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../../index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/core/_autosummary/pyvista.DataSetAttributes and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/core/_autosummary/pyvista.DataSetAttributes.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/core/_autosummary/pyvista.DataSetAttributes.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API Reference
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Core API
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../objects.html">
+     DataObject
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../dataset.html">
+     Data Sets
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.DataSet.html">
+       pyvista.DataSet
+      </a>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="current reference internal" href="#">
+       pyvista.DataSetAttributes
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.append.html">
+         append
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.clear.html">
+         clear
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.get.html">
+         get
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.get_array.html">
+         get_array
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.items.html">
+         items
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.keys.html">
+         keys
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.pop.html">
+         pop
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.remove.html">
+         remove
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.set_array.html">
+         set_array
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.set_scalars.html">
+         set_scalars
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.set_vectors.html">
+         set_vectors
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.update.html">
+         update
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.values.html">
+         values
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_normals.html">
+         active_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_normals_name.html">
+         active_normals_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_scalars.html">
+         active_scalars
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_scalars_name.html">
+         active_scalars_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_t_coords.html">
+         active_t_coords
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_t_coords_name.html">
+         active_t_coords_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_texture_name.html">
+         active_texture_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_vectors.html">
+         active_vectors
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.active_vectors_name.html">
+         active_vectors_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.t_coords.html">
+         t_coords
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.DataSetAttributes.valid_array_len.html">
+         valid_array_len
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pointsets.html">
+     Point Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grids.html">
+     Gridded Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composite.html">
+     Composite Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../filters.html">
+     Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../camera.html">
+     Cameras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lights.html">
+     Lights
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../helpers.html">
+     Helpers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../misc.html">
+     Miscellaneous
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plotting/index.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../utilities/index.html">
+   Utilities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../readers/index.html">
+   Readers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../examples/index.html">
+   Examples
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyvista-datasetattributes">
+<h1>pyvista.DataSetAttributes<a class="headerlink" href="#pyvista-datasetattributes" title="Permalink to this headline">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvista.DataSetAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataSetAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vtkobject</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vtkmodules.vtkCommonDataModel.vtkFieldData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vtkmodules.vtkCommonDataModel.vtkDataSet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">association</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyvista.utilities.helpers.FieldAssociation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/core/datasetattributes.html#DataSetAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.DataSetAttributes" title="Permalink to this definition">#</a></dt>
+<dd><p>Python friendly wrapper of <code class="docutils literal notranslate"><span class="pre">vtk.DataSetAttributes</span></code>.</p>
+<p>This class provides the ability to pick one of the present arrays as the
+currently active array for each attribute type by implementing a
+<code class="docutils literal notranslate"><span class="pre">dict</span></code> like interface.</p>
+<p>When adding data arrays but not desiring to set them as active
+scalars or vectors, use <a class="reference internal" href="pyvista.DataSetAttributes.set_array.html#pyvista.DataSetAttributes.set_array" title="pyvista.DataSetAttributes.set_array"><code class="xref py py-func docutils literal notranslate"><span class="pre">DataSetAttributes.set_array()</span></code></a>.</p>
+<p>When adding directional data (such as velocity vectors), use
+<a class="reference internal" href="pyvista.DataSetAttributes.set_vectors.html#pyvista.DataSetAttributes.set_vectors" title="pyvista.DataSetAttributes.set_vectors"><code class="xref py py-func docutils literal notranslate"><span class="pre">DataSetAttributes.set_vectors()</span></code></a>.</p>
+<p>When adding non-directional data (such as temperature values or
+multi-component scalars like RGBA values), use
+<a class="reference internal" href="pyvista.DataSetAttributes.set_scalars.html#pyvista.DataSetAttributes.set_scalars" title="pyvista.DataSetAttributes.set_scalars"><code class="xref py py-func docutils literal notranslate"><span class="pre">DataSetAttributes.set_scalars()</span></code></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.32.0: </span>The <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator no longer allows integers.  Use
+<a class="reference internal" href="pyvista.DataSetAttributes.get_array.html#pyvista.DataSetAttributes.get_array" title="pyvista.DataSetAttributes.get_array"><code class="xref py py-func docutils literal notranslate"><span class="pre">DataSetAttributes.get_array()</span></code></a> to retrieve an array
+using an index.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vtkobject</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vtkFieldData</span></code></span></dt><dd><p>The vtk object to wrap as a DataSetAttribute, usually an
+instance of <code class="docutils literal notranslate"><span class="pre">vtk.vtkCellData</span></code>, <code class="docutils literal notranslate"><span class="pre">vtk.vtkPointData</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">vtk.vtkFieldData</span></code>.</p>
+</dd>
+<dt><strong>dataset</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vtkDataSet</span></code></span></dt><dd><p>The vtkDataSet containing the vtkobject.</p>
+</dd>
+<dt><strong>association</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldAssociation</span></code></span></dt><dd><p>The array association type of the vtkobject.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>When printing out the point arrays, you can see which arrays are
+the active scalars, vectors, normals, and texture coordinates.
+In the arrays list, <code class="docutils literal notranslate"><span class="pre">SCALARS</span></code> denotes that these are the active
+scalars, <code class="docutils literal notranslate"><span class="pre">VECTORS</span></code> denotes that these arrays are tagged as the
+active vectors data (i.e. data with magnitude and direction) and
+so on.</p>
+<p class="rubric">Examples</p>
+<p>Store data with point association in a DataSet.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Cube</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s1">&#39;my_data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_points</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s1">&#39;my_data&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
+<span class="go">pyvista_ndarray([0, 1, 2, 3, 4, 5, 6, 7])</span>
+</pre></div>
+</div>
+<p>Change the data array and show that this is reflected in the DataSet.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s1">&#39;my_data&#39;</span><span class="p">]</span>
+<span class="go">pyvista_ndarray([0, 0, 0, 0, 0, 0, 0, 0])</span>
+</pre></div>
+</div>
+<p>Remove the array.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s1">&#39;my_data&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;my_data&#39;</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Print the available arrays from dataset attributes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plane</span><span class="p">(</span><span class="n">i_resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">j_resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="s1">&#39;my-data&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="s1">&#39;my-other-data&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">set_vectors</span><span class="p">(</span><span class="n">vectors0</span><span class="p">,</span> <span class="s1">&#39;vectors0&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">set_vectors</span><span class="p">(</span><span class="n">vectors1</span><span class="p">,</span> <span class="s1">&#39;vectors1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span>
+<span class="go">pyvista DataSetAttributes</span>
+<span class="go">Association     : POINT</span>
+<span class="go">Active Scalars  : None</span>
+<span class="go">Active Vectors  : vectors1</span>
+<span class="go">Active Texture  : TextureCoordinates</span>
+<span class="go">Active Normals  : Normals</span>
+<span class="go">Contains arrays :</span>
+<span class="go">    Normals                 float32    (4, 3)               NORMALS</span>
+<span class="go">    TextureCoordinates      float32    (4, 2)               TCOORDS</span>
+<span class="go">    my-data                 int64      (4,)</span>
+<span class="go">    my-other-data           int64      (4,)</span>
+<span class="go">    vectors1                float64    (4, 3)               VECTORS</span>
+<span class="go">    vectors0                float64    (4, 3)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.append.html#pyvista.DataSetAttributes.append" title="pyvista.DataSetAttributes.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.append</span></code></a>(narray, name[, ...])</p></td>
+<td><p>Add an array to this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.clear.html#pyvista.DataSetAttributes.clear" title="pyvista.DataSetAttributes.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.clear</span></code></a>()</p></td>
+<td><p>Remove all arrays in this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.get.html#pyvista.DataSetAttributes.get" title="pyvista.DataSetAttributes.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.get</span></code></a>(key[, value])</p></td>
+<td><p>Return the value of the item with the specified key.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.get_array.html#pyvista.DataSetAttributes.get_array" title="pyvista.DataSetAttributes.get_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.get_array</span></code></a>(key)</p></td>
+<td><p>Get an array in this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.items.html#pyvista.DataSetAttributes.items" title="pyvista.DataSetAttributes.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.items</span></code></a>()</p></td>
+<td><p>Return a list of (array name, array value) tuples.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.keys.html#pyvista.DataSetAttributes.keys" title="pyvista.DataSetAttributes.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.keys</span></code></a>()</p></td>
+<td><p>Return the names of the arrays as a list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.pop.html#pyvista.DataSetAttributes.pop" title="pyvista.DataSetAttributes.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.pop</span></code></a>(key[, default])</p></td>
+<td><p>Remove an array and return it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.remove.html#pyvista.DataSetAttributes.remove" title="pyvista.DataSetAttributes.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.remove</span></code></a>(key)</p></td>
+<td><p>Remove an array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.set_array.html#pyvista.DataSetAttributes.set_array" title="pyvista.DataSetAttributes.set_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.set_array</span></code></a>(data, name[, ...])</p></td>
+<td><p>Add an array to this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.set_scalars.html#pyvista.DataSetAttributes.set_scalars" title="pyvista.DataSetAttributes.set_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.set_scalars</span></code></a>(scalars[, ...])</p></td>
+<td><p>Set the active scalars of the dataset with an array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.set_vectors.html#pyvista.DataSetAttributes.set_vectors" title="pyvista.DataSetAttributes.set_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.set_vectors</span></code></a>(vectors, name)</p></td>
+<td><p>Set the active vectors of this data attribute.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.update.html#pyvista.DataSetAttributes.update" title="pyvista.DataSetAttributes.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.update</span></code></a>(array_dict)</p></td>
+<td><p>Update arrays in this object from another dictionary or dataset attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.values.html#pyvista.DataSetAttributes.values" title="pyvista.DataSetAttributes.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.values</span></code></a>()</p></td>
+<td><p>Return the arrays as a list.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_normals.html#pyvista.DataSetAttributes.active_normals" title="pyvista.DataSetAttributes.active_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_normals</span></code></a></p></td>
+<td><p>Return or set the normals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_normals_name.html#pyvista.DataSetAttributes.active_normals_name" title="pyvista.DataSetAttributes.active_normals_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_normals_name</span></code></a></p></td>
+<td><p>Return or set the name of the normals array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_scalars.html#pyvista.DataSetAttributes.active_scalars" title="pyvista.DataSetAttributes.active_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_scalars</span></code></a></p></td>
+<td><p>Return the active scalars.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_scalars_name.html#pyvista.DataSetAttributes.active_scalars_name" title="pyvista.DataSetAttributes.active_scalars_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_scalars_name</span></code></a></p></td>
+<td><p>Name of the active scalars.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_t_coords.html#pyvista.DataSetAttributes.active_t_coords" title="pyvista.DataSetAttributes.active_t_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_t_coords</span></code></a></p></td>
+<td><p>Return or set the active texture coordinates array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_t_coords_name.html#pyvista.DataSetAttributes.active_t_coords_name" title="pyvista.DataSetAttributes.active_t_coords_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_t_coords_name</span></code></a></p></td>
+<td><p>Name of the active texture coordinates array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_texture_name.html#pyvista.DataSetAttributes.active_texture_name" title="pyvista.DataSetAttributes.active_texture_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_texture_name</span></code></a></p></td>
+<td><p>Name of the active texture coordinates array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_vectors.html#pyvista.DataSetAttributes.active_vectors" title="pyvista.DataSetAttributes.active_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_vectors</span></code></a></p></td>
+<td><p>Return the active vectors as a pyvista_ndarray.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.active_vectors_name.html#pyvista.DataSetAttributes.active_vectors_name" title="pyvista.DataSetAttributes.active_vectors_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.active_vectors_name</span></code></a></p></td>
+<td><p>Name of the active vectors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.t_coords.html#pyvista.DataSetAttributes.t_coords" title="pyvista.DataSetAttributes.t_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.t_coords</span></code></a></p></td>
+<td><p>Return the active texture coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.DataSetAttributes.valid_array_len.html#pyvista.DataSetAttributes.valid_array_len" title="pyvista.DataSetAttributes.valid_array_len"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSetAttributes.valid_array_len</span></code></a></p></td>
+<td><p>Return the length data should be when added to the dataset.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

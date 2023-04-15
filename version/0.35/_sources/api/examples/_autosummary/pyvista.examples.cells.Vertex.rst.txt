@@ -1,0 +1,6 @@
+﻿Vertex
+======
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Vertex

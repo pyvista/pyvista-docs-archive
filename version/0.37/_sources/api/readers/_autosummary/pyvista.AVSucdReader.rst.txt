@@ -1,0 +1,7 @@
+﻿pyvista.AVSucdReader
+====================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: AVSucdReader
+   :members:

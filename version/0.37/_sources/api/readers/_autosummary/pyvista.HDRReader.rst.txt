@@ -1,0 +1,7 @@
+﻿pyvista.HDRReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: HDRReader
+   :members:

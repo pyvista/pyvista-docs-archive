@@ -1,0 +1,156 @@
+﻿pyvista.ChartMPL
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: ChartMPL
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      ChartMPL.override
+      
+      
+      ChartMPL.show
+      
+      
+      ChartMPL.toggle
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      ChartMPL.background_color
+      
+      
+      ChartMPL.background_texture
+      
+      
+      ChartMPL.border_color
+      
+      
+      ChartMPL.border_style
+      
+      
+      ChartMPL.border_width
+      
+      
+      ChartMPL.figure
+      
+      
+      ChartMPL.legend_visible
+      
+      
+      ChartMPL.loc
+      
+      
+      ChartMPL.position
+      
+      
+      ChartMPL.size
+      
+      
+      ChartMPL.title
+      
+      
+      ChartMPL.visible
+      
+   
+   

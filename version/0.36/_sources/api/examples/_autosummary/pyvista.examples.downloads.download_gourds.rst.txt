@@ -1,0 +1,6 @@
+download\_gourds
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_gourds

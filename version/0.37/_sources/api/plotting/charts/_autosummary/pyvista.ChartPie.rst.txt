@@ -1,0 +1,7 @@
+﻿pyvista.ChartPie
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: ChartPie
+   :members:

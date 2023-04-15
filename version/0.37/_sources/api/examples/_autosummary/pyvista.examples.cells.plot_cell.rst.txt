@@ -1,0 +1,6 @@
+﻿plot\_cell
+==========
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: plot_cell

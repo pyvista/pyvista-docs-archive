@@ -1,0 +1,6 @@
+﻿Quadrilateral
+=============
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Quadrilateral

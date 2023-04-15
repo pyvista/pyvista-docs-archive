@@ -1,0 +1,6 @@
+download\_puppy
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_puppy

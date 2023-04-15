@@ -1,0 +1,6 @@
+cell\_bounds
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.cell_bounds

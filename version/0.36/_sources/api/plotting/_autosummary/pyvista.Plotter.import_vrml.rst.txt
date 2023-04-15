@@ -1,0 +1,6 @@
+import\_vrml
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: Plotter.import_vrml

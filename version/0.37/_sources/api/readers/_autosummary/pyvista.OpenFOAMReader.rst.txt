@@ -1,0 +1,7 @@
+﻿pyvista.OpenFOAMReader
+======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: OpenFOAMReader
+   :members:

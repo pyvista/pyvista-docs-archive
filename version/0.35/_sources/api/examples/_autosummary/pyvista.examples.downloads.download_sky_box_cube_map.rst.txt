@@ -1,0 +1,6 @@
+download\_sky\_box\_cube\_map
+=============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_sky_box_cube_map

@@ -1,0 +1,43 @@
+﻿pyvista.HDFReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: HDFReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      HDFReader.hide_progress
+      
+      
+      HDFReader.read
+      
+      
+      HDFReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      HDFReader.path
+      
+      
+      HDFReader.reader
+      
+   
+   

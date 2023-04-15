@@ -1,0 +1,721 @@
+﻿pyvista.UnstructuredGrid
+========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: UnstructuredGrid
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      UnstructuredGrid.add_field_array
+      
+      
+      UnstructuredGrid.add_field_data
+      
+      
+      UnstructuredGrid.cast_to_explicit_structured_grid
+      
+      
+      UnstructuredGrid.cast_to_pointset
+      
+      
+      UnstructuredGrid.cast_to_unstructured_grid
+      
+      
+      UnstructuredGrid.cell_bounds
+      
+      
+      UnstructuredGrid.cell_centers
+      
+      
+      UnstructuredGrid.cell_data_to_point_data
+      
+      
+      UnstructuredGrid.cell_n_points
+      
+      
+      UnstructuredGrid.cell_point_ids
+      
+      
+      UnstructuredGrid.cell_points
+      
+      
+      UnstructuredGrid.cell_type
+      
+      
+      UnstructuredGrid.center_of_mass
+      
+      
+      UnstructuredGrid.clear_arrays
+      
+      
+      UnstructuredGrid.clear_cell_arrays
+      
+      
+      UnstructuredGrid.clear_cell_data
+      
+      
+      UnstructuredGrid.clear_data
+      
+      
+      UnstructuredGrid.clear_field_arrays
+      
+      
+      UnstructuredGrid.clear_field_data
+      
+      
+      UnstructuredGrid.clear_point_arrays
+      
+      
+      UnstructuredGrid.clear_point_data
+      
+      
+      UnstructuredGrid.clear_textures
+      
+      
+      UnstructuredGrid.clip
+      
+      
+      UnstructuredGrid.clip_box
+      
+      
+      UnstructuredGrid.clip_scalar
+      
+      
+      UnstructuredGrid.clip_surface
+      
+      
+      UnstructuredGrid.compute_cell_quality
+      
+      
+      UnstructuredGrid.compute_cell_sizes
+      
+      
+      UnstructuredGrid.compute_derivative
+      
+      
+      UnstructuredGrid.compute_implicit_distance
+      
+      
+      UnstructuredGrid.connectivity
+      
+      
+      UnstructuredGrid.contour
+      
+      
+      UnstructuredGrid.copy
+      
+      
+      UnstructuredGrid.copy_attributes
+      
+      
+      UnstructuredGrid.copy_meta_from
+      
+      
+      UnstructuredGrid.copy_structure
+      
+      
+      UnstructuredGrid.ctp
+      
+      
+      UnstructuredGrid.decimate_boundary
+      
+      
+      UnstructuredGrid.deep_copy
+      
+      
+      UnstructuredGrid.delaunay_2d
+      
+      
+      UnstructuredGrid.delaunay_3d
+      
+      
+      UnstructuredGrid.elevation
+      
+      
+      UnstructuredGrid.extract_all_edges
+      
+      
+      UnstructuredGrid.extract_cells
+      
+      
+      UnstructuredGrid.extract_feature_edges
+      
+      
+      UnstructuredGrid.extract_geometry
+      
+      
+      UnstructuredGrid.extract_largest
+      
+      
+      UnstructuredGrid.extract_points
+      
+      
+      UnstructuredGrid.extract_surface
+      
+      
+      UnstructuredGrid.find_cells_along_line
+      
+      
+      UnstructuredGrid.find_cells_within_bounds
+      
+      
+      UnstructuredGrid.find_closest_cell
+      
+      
+      UnstructuredGrid.find_closest_point
+      
+      
+      UnstructuredGrid.find_containing_cell
+      
+      
+      UnstructuredGrid.flip_normal
+      
+      
+      UnstructuredGrid.flip_x
+      
+      
+      UnstructuredGrid.flip_y
+      
+      
+      UnstructuredGrid.flip_z
+      
+      
+      UnstructuredGrid.get_array
+      
+      
+      UnstructuredGrid.get_array_association
+      
+      
+      UnstructuredGrid.get_data_range
+      
+      
+      UnstructuredGrid.glyph
+      
+      
+      UnstructuredGrid.head
+      
+      
+      UnstructuredGrid.integrate_data
+      
+      
+      UnstructuredGrid.interpolate
+      
+      
+      UnstructuredGrid.linear_copy
+      
+      
+      UnstructuredGrid.merge
+      
+      
+      UnstructuredGrid.outline
+      
+      
+      UnstructuredGrid.outline_corners
+      
+      
+      UnstructuredGrid.override
+      
+      
+      UnstructuredGrid.overwrite
+      
+      
+      UnstructuredGrid.plot
+      
+      
+      UnstructuredGrid.plot_curvature
+      
+      
+      UnstructuredGrid.plot_over_circular_arc
+      
+      
+      UnstructuredGrid.plot_over_circular_arc_normal
+      
+      
+      UnstructuredGrid.plot_over_line
+      
+      
+      UnstructuredGrid.point_data_to_cell_data
+      
+      
+      UnstructuredGrid.point_is_inside_cell
+      
+      
+      UnstructuredGrid.points_to_double
+      
+      
+      UnstructuredGrid.probe
+      
+      
+      UnstructuredGrid.ptc
+      
+      
+      UnstructuredGrid.reconstruct_surface
+      
+      
+      UnstructuredGrid.reflect
+      
+      
+      UnstructuredGrid.remove_cells
+      
+      
+      UnstructuredGrid.rename_array
+      
+      
+      UnstructuredGrid.rotate_vector
+      
+      
+      UnstructuredGrid.rotate_x
+      
+      
+      UnstructuredGrid.rotate_y
+      
+      
+      UnstructuredGrid.rotate_z
+      
+      
+      UnstructuredGrid.sample
+      
+      
+      UnstructuredGrid.sample_over_circular_arc
+      
+      
+      UnstructuredGrid.sample_over_circular_arc_normal
+      
+      
+      UnstructuredGrid.sample_over_line
+      
+      
+      UnstructuredGrid.sample_over_multiple_lines
+      
+      
+      UnstructuredGrid.save
+      
+      
+      UnstructuredGrid.scale
+      
+      
+      UnstructuredGrid.select_enclosed_points
+      
+      
+      UnstructuredGrid.set_active_scalars
+      
+      
+      UnstructuredGrid.set_active_tensors
+      
+      
+      UnstructuredGrid.set_active_vectors
+      
+      
+      UnstructuredGrid.shallow_copy
+      
+      
+      UnstructuredGrid.shrink
+      
+      
+      UnstructuredGrid.slice
+      
+      
+      UnstructuredGrid.slice_along_axis
+      
+      
+      UnstructuredGrid.slice_along_line
+      
+      
+      UnstructuredGrid.slice_orthogonal
+      
+      
+      UnstructuredGrid.split_bodies
+      
+      
+      UnstructuredGrid.streamlines
+      
+      
+      UnstructuredGrid.streamlines_evenly_spaced_2D
+      
+      
+      UnstructuredGrid.streamlines_from_source
+      
+      
+      UnstructuredGrid.surface_indices
+      
+      
+      UnstructuredGrid.tessellate
+      
+      
+      UnstructuredGrid.texture_map_to_plane
+      
+      
+      UnstructuredGrid.texture_map_to_sphere
+      
+      
+      UnstructuredGrid.threshold
+      
+      
+      UnstructuredGrid.threshold_percent
+      
+      
+      UnstructuredGrid.transform
+      
+      
+      UnstructuredGrid.translate
+      
+      
+      UnstructuredGrid.triangulate
+      
+      
+      UnstructuredGrid.warp_by_scalar
+      
+      
+      UnstructuredGrid.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      UnstructuredGrid.active_normals
+      
+      
+      UnstructuredGrid.active_scalars
+      
+      
+      UnstructuredGrid.active_scalars_info
+      
+      
+      UnstructuredGrid.active_scalars_name
+      
+      
+      UnstructuredGrid.active_t_coords
+      
+      
+      UnstructuredGrid.active_tensors
+      
+      
+      UnstructuredGrid.active_tensors_info
+      
+      
+      UnstructuredGrid.active_tensors_name
+      
+      
+      UnstructuredGrid.active_vectors
+      
+      
+      UnstructuredGrid.active_vectors_info
+      
+      
+      UnstructuredGrid.active_vectors_name
+      
+      
+      UnstructuredGrid.actual_memory_size
+      
+      
+      UnstructuredGrid.array_names
+      
+      
+      UnstructuredGrid.arrows
+      
+      
+      UnstructuredGrid.bounds
+      
+      
+      UnstructuredGrid.cell_arrays
+      
+      
+      UnstructuredGrid.cell_connectivity
+      
+      
+      UnstructuredGrid.cell_data
+      
+      
+      UnstructuredGrid.cells
+      
+      
+      UnstructuredGrid.cells_dict
+      
+      
+      UnstructuredGrid.celltypes
+      
+      
+      UnstructuredGrid.center
+      
+      
+      UnstructuredGrid.field_arrays
+      
+      
+      UnstructuredGrid.field_data
+      
+      
+      UnstructuredGrid.length
+      
+      
+      UnstructuredGrid.memory_address
+      
+      
+      UnstructuredGrid.n_arrays
+      
+      
+      UnstructuredGrid.n_cells
+      
+      
+      UnstructuredGrid.n_points
+      
+      
+      UnstructuredGrid.number_of_cells
+      
+      
+      UnstructuredGrid.number_of_points
+      
+      
+      UnstructuredGrid.offset
+      
+      
+      UnstructuredGrid.point_arrays
+      
+      
+      UnstructuredGrid.point_data
+      
+      
+      UnstructuredGrid.points
+      
+      
+      UnstructuredGrid.t_coords
+      
+      
+      UnstructuredGrid.textures
+      
+      
+      UnstructuredGrid.vectors
+      
+      
+      UnstructuredGrid.volume
+      
+   
+   

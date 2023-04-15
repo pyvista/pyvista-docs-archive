@@ -1,0 +1,6 @@
+flip\_z
+=======
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.flip_z

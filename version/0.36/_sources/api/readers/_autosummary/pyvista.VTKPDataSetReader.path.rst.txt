@@ -1,0 +1,6 @@
+path
+====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: VTKPDataSetReader.path

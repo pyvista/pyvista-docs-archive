@@ -1,0 +1,6 @@
+border\_style
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.border_style

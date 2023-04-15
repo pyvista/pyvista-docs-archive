@@ -1,0 +1,71 @@
+﻿pyvista.Color
+=============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Color
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Color.convert_color_channel
+      
+      
+      Color.from_dict
+      
+      
+      Color.linear_to_srgb
+      
+      
+      Color.srgb_to_linear
+      
+      
+      Color.strip_hex_prefix
+      
+      
+      Color.to_dict
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Color.float_rgb
+      
+      
+      Color.float_rgba
+      
+      
+      Color.hex_rgb
+      
+      
+      Color.hex_rgba
+      
+      
+      Color.int_rgb
+      
+      
+      Color.int_rgba
+      
+      
+      Color.name
+      
+      
+      Color.vtk_c3ub
+      
+   
+   

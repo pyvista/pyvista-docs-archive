@@ -1,0 +1,7 @@
+﻿pyvista.LookupTable
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: LookupTable
+   :members:

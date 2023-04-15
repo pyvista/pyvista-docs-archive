@@ -1,0 +1,6 @@
+border\_width
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Renderer.border_width

@@ -1,0 +1,6 @@
+extract\_subset
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.extract_subset

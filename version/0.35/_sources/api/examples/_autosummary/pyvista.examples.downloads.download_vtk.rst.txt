@@ -1,0 +1,6 @@
+download\_vtk
+=============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_vtk

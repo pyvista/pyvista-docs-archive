@@ -1,0 +1,6 @@
+orientation
+===========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: BarPlot.orientation

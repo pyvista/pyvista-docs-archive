@@ -1,0 +1,43 @@
+﻿pyvista.JPEGReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: JPEGReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      JPEGReader.hide_progress
+      
+      
+      JPEGReader.read
+      
+      
+      JPEGReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      JPEGReader.path
+      
+      
+      JPEGReader.reader
+      
+   
+   

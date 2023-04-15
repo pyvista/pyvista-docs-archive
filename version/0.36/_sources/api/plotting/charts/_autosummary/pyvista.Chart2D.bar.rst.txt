@@ -1,0 +1,6 @@
+bar
+===
+
+.. currentmodule:: pyvista
+
+.. automethod:: Chart2D.bar

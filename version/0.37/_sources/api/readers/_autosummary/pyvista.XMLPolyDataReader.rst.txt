@@ -1,0 +1,7 @@
+﻿pyvista.XMLPolyDataReader
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLPolyDataReader
+   :members:

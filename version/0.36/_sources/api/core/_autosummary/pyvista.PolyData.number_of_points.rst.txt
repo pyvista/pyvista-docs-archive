@@ -1,0 +1,6 @@
+number\_of\_points
+==================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.number_of_points

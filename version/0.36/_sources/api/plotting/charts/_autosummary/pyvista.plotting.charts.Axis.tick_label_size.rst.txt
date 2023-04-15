@@ -1,0 +1,6 @@
+tick\_label\_size
+=================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.tick_label_size

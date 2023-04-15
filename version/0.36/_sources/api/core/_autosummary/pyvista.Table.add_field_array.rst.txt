@@ -1,0 +1,6 @@
+add\_field\_array
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.add_field_array

@@ -1,0 +1,6 @@
+point\_normals
+==============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.point_normals

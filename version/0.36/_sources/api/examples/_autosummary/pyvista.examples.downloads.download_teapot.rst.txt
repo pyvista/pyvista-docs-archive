@@ -1,0 +1,6 @@
+download\_teapot
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_teapot

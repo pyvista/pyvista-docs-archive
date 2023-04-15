@@ -1,0 +1,6 @@
+download\_emoji
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_emoji

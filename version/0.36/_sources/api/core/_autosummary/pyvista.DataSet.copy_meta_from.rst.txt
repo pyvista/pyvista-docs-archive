@@ -1,0 +1,6 @@
+copy\_meta\_from
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.copy_meta_from

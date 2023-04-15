@@ -1,0 +1,7 @@
+﻿pyvista.XMLRectilinearGridReader
+================================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLRectilinearGridReader
+   :members:

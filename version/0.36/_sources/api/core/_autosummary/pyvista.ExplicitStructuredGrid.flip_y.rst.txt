@@ -1,0 +1,6 @@
+flip\_y
+=======
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.flip_y

@@ -1,0 +1,6 @@
+neighbors
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.neighbors

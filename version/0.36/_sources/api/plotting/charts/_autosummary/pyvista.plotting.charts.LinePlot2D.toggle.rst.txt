@@ -1,0 +1,6 @@
+toggle
+======
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. automethod:: LinePlot2D.toggle

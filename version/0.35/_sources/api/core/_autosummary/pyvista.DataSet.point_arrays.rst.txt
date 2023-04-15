@@ -1,0 +1,6 @@
+point\_arrays
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSet.point_arrays

@@ -1,0 +1,6 @@
+plot
+====
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.plot

@@ -1,0 +1,6 @@
+to\_pandas
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.to_pandas

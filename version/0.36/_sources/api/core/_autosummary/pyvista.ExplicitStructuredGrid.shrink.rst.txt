@@ -1,0 +1,6 @@
+shrink
+======
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.shrink

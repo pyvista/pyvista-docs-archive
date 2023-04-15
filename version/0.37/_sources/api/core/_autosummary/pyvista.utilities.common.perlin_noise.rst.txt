@@ -1,0 +1,6 @@
+﻿perlin\_noise
+=============
+
+.. currentmodule:: pyvista.utilities.common
+
+.. autofunction:: perlin_noise

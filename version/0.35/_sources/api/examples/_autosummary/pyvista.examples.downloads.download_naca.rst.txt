@@ -1,0 +1,6 @@
+download\_naca
+==============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_naca

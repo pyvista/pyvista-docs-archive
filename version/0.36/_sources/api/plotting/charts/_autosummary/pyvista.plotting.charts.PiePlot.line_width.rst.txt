@@ -1,0 +1,6 @@
+line\_width
+===========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: PiePlot.line_width

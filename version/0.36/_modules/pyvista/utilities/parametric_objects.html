@@ -1,0 +1,1643 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.utilities.parametric_objects &#8212; PyVista 0.36.1 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.36  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/utilities/parametric_objects and {'json_url': 'https://<DEFAULT_CNAME>/versions.json', 'version_match': '0.36'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/utilities/parametric_objects.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://<DEFAULT_CNAME>/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/utilities/parametric_objects.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.36.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.36") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.utilities.parametric_objects</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module managing parametric objects.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.errors</span> <span class="kn">import</span> <span class="n">check_valid_vector</span>
+
+<span class="kn">from</span> <span class="nn">.geometric_objects</span> <span class="kn">import</span> <span class="n">translate</span>
+
+
+<div class="viewcode-block" id="Spline"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Spline.html#pyvista.Spline">[docs]</a><span class="k">def</span> <span class="nf">Spline</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a spline from points.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    points : np.ndarray</span>
+<span class="sd">        Array of points to build a spline out of.  Array must be 3D</span>
+<span class="sd">        and directionally ordered.</span>
+
+<span class="sd">    n_points : int, optional</span>
+<span class="sd">        Number of points to interpolate along the points array.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        Line mesh of spline.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Construct a spline.</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)</span>
+<span class="sd">    &gt;&gt;&gt; z = np.linspace(-2, 2, 100)</span>
+<span class="sd">    &gt;&gt;&gt; r = z**2 + 1</span>
+<span class="sd">    &gt;&gt;&gt; x = r * np.sin(theta)</span>
+<span class="sd">    &gt;&gt;&gt; y = r * np.cos(theta)</span>
+<span class="sd">    &gt;&gt;&gt; points = np.column_stack((x, y, z))</span>
+<span class="sd">    &gt;&gt;&gt; spline = pv.Spline(points, 1000)</span>
+<span class="sd">    &gt;&gt;&gt; spline.plot(render_lines_as_tubes=True, line_width=10, show_scalar_bar=False)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spline_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricSpline</span><span class="p">()</span>
+    <span class="n">spline_function</span><span class="o">.</span><span class="n">SetPoints</span><span class="p">(</span><span class="n">pyvista</span><span class="o">.</span><span class="n">vtk_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+
+    <span class="c1"># get interpolation density</span>
+    <span class="n">u_res</span> <span class="o">=</span> <span class="n">n_points</span>
+    <span class="k">if</span> <span class="n">u_res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">u_res</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">u_res</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">spline</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">spline_function</span><span class="p">,</span> <span class="n">u_res</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spline</span><span class="o">.</span><span class="n">compute_arc_length</span><span class="p">()</span></div>
+
+
+<span class="k">def</span> <span class="nf">KochanekSpline</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">tension</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">continuity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a Kochanek spline from points.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    points : sequence</span>
+<span class="sd">        Array of points to build a Kochanek spline out of.  Array must</span>
+<span class="sd">        be 3D and directionally ordered.</span>
+
+<span class="sd">    tension : sequence, optional</span>
+<span class="sd">        Changes the length of the tangent vector.  Defaults to ``[0.0,</span>
+<span class="sd">        0.0, 0.0]``.</span>
+
+<span class="sd">    bias : sequence, optional</span>
+<span class="sd">        Primarily changes the direction of the tangent vector.</span>
+<span class="sd">        Defaults to ``[0.0, 0.0, 0.0]``.</span>
+
+<span class="sd">    continuity : sequence, optional</span>
+<span class="sd">        Changes the sharpness in change between tangents.  Defaults to</span>
+<span class="sd">        ``[0.0, 0.0, 0.0]``.</span>
+
+<span class="sd">    n_points : int, optional</span>
+<span class="sd">        Number of points on the spline.  Defaults to the number of</span>
+<span class="sd">        points in ``points``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        Kochanek spline.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Construct a Kochanek spline.</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)</span>
+<span class="sd">    &gt;&gt;&gt; z = np.linspace(-2, 2, 100)</span>
+<span class="sd">    &gt;&gt;&gt; r = z ** 2 + 1</span>
+<span class="sd">    &gt;&gt;&gt; x = r * np.sin(theta)</span>
+<span class="sd">    &gt;&gt;&gt; y = r * np.cos(theta)</span>
+<span class="sd">    &gt;&gt;&gt; points = np.column_stack((x, y, z))</span>
+<span class="sd">    &gt;&gt;&gt; kochanek_spline = pv.KochanekSpline(points, n_points=6)</span>
+<span class="sd">    &gt;&gt;&gt; kochanek_spline.plot(line_width=4, color=&quot;k&quot;)</span>
+
+<span class="sd">    See :ref:`create_kochanek_spline_example` for an additional example.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">tension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">tension</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">check_valid_vector</span><span class="p">(</span><span class="n">tension</span><span class="p">,</span> <span class="s2">&quot;tension&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tension</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;The absolute value of all values of the tension array elements must be &lt;= 1.0 &quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">bias</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">check_valid_vector</span><span class="p">(</span><span class="n">bias</span><span class="p">,</span> <span class="s2">&quot;bias&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;The absolute value of all values of the bias array elements must be &lt;= 1.0 &quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">continuity</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">continuity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">check_valid_vector</span><span class="p">(</span><span class="n">continuity</span><span class="p">,</span> <span class="s2">&quot;continuity&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">continuity</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;The absolute value of all values continuity array elements must be &lt;= 1.0 &quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">spline_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricSpline</span><span class="p">()</span>
+    <span class="n">spline_function</span><span class="o">.</span><span class="n">SetPoints</span><span class="p">(</span><span class="n">pyvista</span><span class="o">.</span><span class="n">vtk_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+
+    <span class="c1"># set Kochanek spline for each direction</span>
+    <span class="n">xspline</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkKochanekSpline</span><span class="p">()</span>
+    <span class="n">yspline</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkKochanekSpline</span><span class="p">()</span>
+    <span class="n">zspline</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkKochanekSpline</span><span class="p">()</span>
+    <span class="n">xspline</span><span class="o">.</span><span class="n">SetDefaultBias</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">yspline</span><span class="o">.</span><span class="n">SetDefaultBias</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">zspline</span><span class="o">.</span><span class="n">SetDefaultBias</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">xspline</span><span class="o">.</span><span class="n">SetDefaultTension</span><span class="p">(</span><span class="n">tension</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">yspline</span><span class="o">.</span><span class="n">SetDefaultTension</span><span class="p">(</span><span class="n">tension</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">zspline</span><span class="o">.</span><span class="n">SetDefaultTension</span><span class="p">(</span><span class="n">tension</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">xspline</span><span class="o">.</span><span class="n">SetDefaultContinuity</span><span class="p">(</span><span class="n">continuity</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">yspline</span><span class="o">.</span><span class="n">SetDefaultContinuity</span><span class="p">(</span><span class="n">continuity</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">zspline</span><span class="o">.</span><span class="n">SetDefaultContinuity</span><span class="p">(</span><span class="n">continuity</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">spline_function</span><span class="o">.</span><span class="n">SetXSpline</span><span class="p">(</span><span class="n">xspline</span><span class="p">)</span>
+    <span class="n">spline_function</span><span class="o">.</span><span class="n">SetYSpline</span><span class="p">(</span><span class="n">yspline</span><span class="p">)</span>
+    <span class="n">spline_function</span><span class="o">.</span><span class="n">SetZSpline</span><span class="p">(</span><span class="n">zspline</span><span class="p">)</span>
+
+    <span class="c1"># get interpolation density</span>
+    <span class="n">u_res</span> <span class="o">=</span> <span class="n">n_points</span>
+    <span class="k">if</span> <span class="n">u_res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">u_res</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">u_res</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">spline</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">spline_function</span><span class="p">,</span> <span class="n">u_res</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spline</span><span class="o">.</span><span class="n">compute_arc_length</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="ParametricBohemianDome"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricBohemianDome.html#pyvista.ParametricBohemianDome">[docs]</a><span class="k">def</span> <span class="nf">ParametricBohemianDome</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a Bohemian dome surface.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : float, optional</span>
+<span class="sd">        Bohemian dome surface parameter.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricBohemianDome surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricBohemianDome mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricBohemianDome()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricBohemianDome</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetA</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricBour"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricBour.html#pyvista.ParametricBour">[docs]</a><span class="k">def</span> <span class="nf">ParametricBour</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Bour&#39;s minimal surface.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricBour surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricBour mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricBour()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricBour</span><span class="p">()</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricBoy"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricBoy.html#pyvista.ParametricBoy">[docs]</a><span class="k">def</span> <span class="nf">ParametricBoy</span><span class="p">(</span><span class="n">zscale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Boy&#39;s surface.</span>
+
+<span class="sd">    This is a model of the projective plane without singularities.  It</span>
+<span class="sd">    was found by Werner Boy on assignment from David Hilbert.</span>
+
+<span class="sd">    For further information about this surface, please consult the</span>
+<span class="sd">    technical description &quot;Parametric surfaces&quot; in the</span>
+<span class="sd">    &quot;VTK Technical Documents&quot; section in the VTK.org web pages.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    zscale : float, optional</span>
+<span class="sd">        The scale factor for the z-coordinate.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricBoy surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricBoy mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricBoy()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricBoy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">zscale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetZScale</span><span class="p">(</span><span class="n">zscale</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricCatalanMinimal"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricCatalanMinimal.html#pyvista.ParametricCatalanMinimal">[docs]</a><span class="k">def</span> <span class="nf">ParametricCatalanMinimal</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Catalan&#39;s minimal surface.</span>
+
+<span class="sd">    ParametricCatalanMinimal generates Catalan&#39;s minimal surface</span>
+<span class="sd">    parametrically. This minimal surface contains the cycloid as a</span>
+<span class="sd">    geodesic.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricCatalanMinimal surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricCatalanMinimal mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricCatalanMinimal()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricCatalanMinimal</span><span class="p">()</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricConicSpiral"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricConicSpiral.html#pyvista.ParametricConicSpiral">[docs]</a><span class="k">def</span> <span class="nf">ParametricConicSpiral</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate conic spiral surfaces that resemble sea-shells.</span>
+
+<span class="sd">    ParametricConicSpiral generates conic spiral surfaces. These can</span>
+<span class="sd">    resemble sea shells, or may look like a torus &quot;eating&quot; its own</span>
+<span class="sd">    tail.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : float, optional</span>
+<span class="sd">        The scale factor.</span>
+<span class="sd">        Default is 0.2.</span>
+
+<span class="sd">    b : float, optional</span>
+<span class="sd">        The A function coefficient.</span>
+<span class="sd">        See the definition in Parametric surfaces referred to above.</span>
+<span class="sd">        Default is 1.</span>
+
+<span class="sd">    c : float, optional</span>
+<span class="sd">        The B function coefficient.</span>
+<span class="sd">        See the definition in Parametric surfaces referred to above.</span>
+<span class="sd">        Default is 0.1.</span>
+
+<span class="sd">    n : float, optional</span>
+<span class="sd">        The C function coefficient.</span>
+<span class="sd">        See the definition in Parametric surfaces referred to above.</span>
+<span class="sd">        Default is 2.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricConicSpiral surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricConicSpiral mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricConicSpiral()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricConicSpiral</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetA</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetB</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetC</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetN</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricCrossCap"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricCrossCap.html#pyvista.ParametricCrossCap">[docs]</a><span class="k">def</span> <span class="nf">ParametricCrossCap</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a cross-cap.</span>
+
+<span class="sd">    ParametricCrossCap generates a cross-cap which is a non-orientable</span>
+<span class="sd">    self-intersecting single-sided surface.  This is one possible</span>
+<span class="sd">    image of a projective plane in three-space.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricCrossCap surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricCrossCap mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricCrossCap()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricCrossCap</span><span class="p">()</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricDini"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricDini.html#pyvista.ParametricDini">[docs]</a><span class="k">def</span> <span class="nf">ParametricDini</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Dini&#39;s surface.</span>
+
+<span class="sd">    ParametricDini generates Dini&#39;s surface.  Dini&#39;s surface is a</span>
+<span class="sd">    surface that possesses constant negative Gaussian curvature</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : float, optional</span>
+<span class="sd">        The scale factor.  See the definition in Parametric surfaces</span>
+<span class="sd">        referred to above.  Default is 1.</span>
+
+<span class="sd">    b : float, optional</span>
+<span class="sd">        The scale factor.  See the definition in Parametric surfaces</span>
+<span class="sd">        referred to above.  Default is 0.2.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricDini surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricDini mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricDini()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricDini</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetA</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetB</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricEllipsoid"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricEllipsoid.html#pyvista.ParametricEllipsoid">[docs]</a><span class="k">def</span> <span class="nf">ParametricEllipsoid</span><span class="p">(</span><span class="n">xradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate an ellipsoid.</span>
+
+<span class="sd">    ParametricEllipsoid generates an ellipsoid.  If all the radii are</span>
+<span class="sd">    the same, we have a sphere.  An oblate spheroid occurs if RadiusX</span>
+<span class="sd">    = RadiusY &gt; RadiusZ.  Here the Z-axis forms the symmetry axis. To</span>
+<span class="sd">    a first approximation, this is the shape of the earth.  A prolate</span>
+<span class="sd">    spheroid occurs if RadiusX = RadiusY &lt; RadiusZ.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xradius : float, optional</span>
+<span class="sd">        The scaling factor for the x-axis. Default is 1.</span>
+
+<span class="sd">    yradius : float, optional</span>
+<span class="sd">        The scaling factor for the y-axis. Default is 1.</span>
+
+<span class="sd">    zradius : float, optional</span>
+<span class="sd">        The scaling factor for the z-axis. Default is 1.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` and :func:`parametric_keywords`</span>
+<span class="sd">        for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricEllipsoid surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricEllipsoid mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricEllipsoid()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricEllipsoid</span><span class="p">()</span>
+    <span class="n">parametric_keywords</span><span class="p">(</span>
+        <span class="n">parametric_function</span><span class="p">,</span>
+        <span class="n">min_u</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;min_u&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">max_u</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;max_u&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">),</span>
+        <span class="n">min_v</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;min_v&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">max_v</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;max_v&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="p">),</span>
+        <span class="n">join_u</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;join_u&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+        <span class="n">join_v</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;join_v&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+        <span class="n">twist_u</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;twist_u&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+        <span class="n">twist_v</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;twist_v&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+        <span class="n">clockwise</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;clockwise&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">xradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetXRadius</span><span class="p">(</span><span class="n">xradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">yradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetYRadius</span><span class="p">(</span><span class="n">yradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">zradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetZRadius</span><span class="p">(</span><span class="n">zradius</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricEnneper"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricEnneper.html#pyvista.ParametricEnneper">[docs]</a><span class="k">def</span> <span class="nf">ParametricEnneper</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Enneper&#39;s surface.</span>
+
+<span class="sd">    ParametricEnneper generates Enneper&#39;s surface.  Enneper&#39;s surface</span>
+<span class="sd">    is a self-intersecting minimal surface possessing constant</span>
+<span class="sd">    negative Gaussian curvature.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricEnneper surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricEnneper mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricEnneper()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricEnneper</span><span class="p">()</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricFigure8Klein"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricFigure8Klein.html#pyvista.ParametricFigure8Klein">[docs]</a><span class="k">def</span> <span class="nf">ParametricFigure8Klein</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a figure-8 Klein bottle.</span>
+
+<span class="sd">    ParametricFigure8Klein generates a figure-8 Klein bottle.  A Klein</span>
+<span class="sd">    bottle is a closed surface with no interior and only one surface.</span>
+<span class="sd">    It is unrealisable in 3 dimensions without intersecting surfaces.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    radius : float, optional</span>
+<span class="sd">        The radius of the bottle. Default is 1.</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricFigure8Klein surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricFigure8Klein mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricFigure8Klein()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricFigure8Klein</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetRadius</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricHenneberg"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricHenneberg.html#pyvista.ParametricHenneberg">[docs]</a><span class="k">def</span> <span class="nf">ParametricHenneberg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Henneberg&#39;s minimal surface.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricHenneberg surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricHenneberg mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricHenneberg()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricHenneberg</span><span class="p">()</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricKlein"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricKlein.html#pyvista.ParametricKlein">[docs]</a><span class="k">def</span> <span class="nf">ParametricKlein</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a &quot;classical&quot; representation of a Klein bottle.</span>
+
+<span class="sd">    ParametricKlein generates a &quot;classical&quot; representation of a Klein</span>
+<span class="sd">    bottle.  A Klein bottle is a closed surface with no interior and only one</span>
+<span class="sd">    surface.  It is unrealisable in 3 dimensions without intersecting</span>
+<span class="sd">    surfaces.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricKlein surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricKlein mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricKlein()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricKlein</span><span class="p">()</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricKuen"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricKuen.html#pyvista.ParametricKuen">[docs]</a><span class="k">def</span> <span class="nf">ParametricKuen</span><span class="p">(</span><span class="n">deltav0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Kuens&#39; surface.</span>
+
+<span class="sd">    ParametricKuen generates Kuens&#39; surface. This surface has a constant</span>
+<span class="sd">    negative gaussian curvature.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    deltav0 : float, optional</span>
+<span class="sd">        The value to use when ``V == 0``.</span>
+<span class="sd">        Default is 0.05, giving the best appearance with the default settings.</span>
+<span class="sd">        Setting it to a value less than 0.05 extrapolates the surface</span>
+<span class="sd">        towards a pole in the -z direction.</span>
+<span class="sd">        Setting it to 0 retains the pole whose z-value is -inf.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricKuen surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricKuen mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricKuen()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricKuen</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">deltav0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetDeltaV0</span><span class="p">(</span><span class="n">deltav0</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricMobius"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricMobius.html#pyvista.ParametricMobius">[docs]</a><span class="k">def</span> <span class="nf">ParametricMobius</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a Mobius strip.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    radius : float, optional</span>
+<span class="sd">        The radius of the Mobius strip. Default is 1.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricMobius surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricMobius mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricMobius()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricMobius</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetRadius</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricPluckerConoid"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricPluckerConoid.html#pyvista.ParametricPluckerConoid">[docs]</a><span class="k">def</span> <span class="nf">ParametricPluckerConoid</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Plucker&#39;s conoid surface.</span>
+
+<span class="sd">    ParametricPluckerConoid generates Plucker&#39;s conoid surface</span>
+<span class="sd">    parametrically.  Plucker&#39;s conoid is a ruled surface, named after</span>
+<span class="sd">    Julius Plucker. It is possible to set the number of folds in this</span>
+<span class="sd">    class via the parameter &#39;n&#39;.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n : int, optional</span>
+<span class="sd">        This is the number of folds in the conoid.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricPluckerConoid surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricPluckerConoid mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricPluckerConoid()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricPluckerConoid</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetN</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricPseudosphere"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricPseudosphere.html#pyvista.ParametricPseudosphere">[docs]</a><span class="k">def</span> <span class="nf">ParametricPseudosphere</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a pseudosphere.</span>
+
+<span class="sd">    ParametricPseudosphere generates a parametric pseudosphere. The</span>
+<span class="sd">    pseudosphere is generated as a surface of revolution of the</span>
+<span class="sd">    tractrix about it&#39;s asymptote, and is a surface of constant</span>
+<span class="sd">    negative Gaussian curvature.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricPseudosphere surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricPseudosphere mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricPseudosphere()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricPseudosphere</span><span class="p">()</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricRandomHills"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricRandomHills.html#pyvista.ParametricRandomHills">[docs]</a><span class="k">def</span> <span class="nf">ParametricRandomHills</span><span class="p">(</span>
+    <span class="n">numberofhills</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">hillxvariance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">hillyvariance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">hillamplitude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">randomseed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">xvariancescalefactor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">yvariancescalefactor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">amplitudescalefactor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a surface covered with randomly placed hills.</span>
+
+<span class="sd">    ParametricRandomHills generates a surface covered with randomly</span>
+<span class="sd">    placed hills. Hills will vary in shape and height since the</span>
+<span class="sd">    presence of nearby hills will contribute to the shape and height</span>
+<span class="sd">    of a given hill.  An option is provided for placing hills on a</span>
+<span class="sd">    regular grid on the surface.  In this case the hills will all have</span>
+<span class="sd">    the same shape and height.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    numberofhills : int, optional</span>
+<span class="sd">        The number of hills.</span>
+<span class="sd">        Default is 30.</span>
+
+<span class="sd">    hillxvariance : float, optional</span>
+<span class="sd">        The hill variance in the x-direction.</span>
+<span class="sd">        Default is 2.5.</span>
+
+<span class="sd">    hillyvariance : float, optional</span>
+<span class="sd">        The hill variance in the y-direction.</span>
+<span class="sd">        Default is 2.5.</span>
+
+<span class="sd">    hillamplitude : float, optional</span>
+<span class="sd">        The hill amplitude (height).</span>
+<span class="sd">        Default is 2.</span>
+
+<span class="sd">    randomseed : int, optional</span>
+<span class="sd">        The Seed for the random number generator,</span>
+<span class="sd">        a value of 1 will initialize the random number generator,</span>
+<span class="sd">        a negative value will initialize it with the system time.</span>
+<span class="sd">        Default is 1.</span>
+
+<span class="sd">    xvariancescalefactor : float, optional</span>
+<span class="sd">        The scaling factor for the variance in the x-direction.</span>
+<span class="sd">        Default is 13.</span>
+
+<span class="sd">    yvariancescalefactor : float, optional</span>
+<span class="sd">        The scaling factor for the variance in the y-direction.</span>
+<span class="sd">        Default is 13.</span>
+
+<span class="sd">    amplitudescalefactor : float, optional</span>
+<span class="sd">        The scaling factor for the amplitude.</span>
+<span class="sd">        Default is 13.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricRandomHills surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricRandomHills mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricRandomHills()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricRandomHills</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">numberofhills</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetNumberOfHills</span><span class="p">(</span><span class="n">numberofhills</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">hillxvariance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetHillXVariance</span><span class="p">(</span><span class="n">hillxvariance</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">hillyvariance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetHillYVariance</span><span class="p">(</span><span class="n">hillyvariance</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">hillamplitude</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetHillAmplitude</span><span class="p">(</span><span class="n">hillamplitude</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">randomseed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetRandomSeed</span><span class="p">(</span><span class="n">randomseed</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">xvariancescalefactor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetXVarianceScaleFactor</span><span class="p">(</span><span class="n">xvariancescalefactor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">yvariancescalefactor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetYVarianceScaleFactor</span><span class="p">(</span><span class="n">yvariancescalefactor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">amplitudescalefactor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetAmplitudeScaleFactor</span><span class="p">(</span><span class="n">amplitudescalefactor</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricRoman"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricRoman.html#pyvista.ParametricRoman">[docs]</a><span class="k">def</span> <span class="nf">ParametricRoman</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate Steiner&#39;s Roman Surface.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    radius : float, optional</span>
+<span class="sd">        The radius. Default is 1.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricRoman surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricRoman mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricRoman()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricRoman</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetRadius</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricSuperEllipsoid"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricSuperEllipsoid.html#pyvista.ParametricSuperEllipsoid">[docs]</a><span class="k">def</span> <span class="nf">ParametricSuperEllipsoid</span><span class="p">(</span><span class="n">xradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a superellipsoid.</span>
+
+<span class="sd">    ParametricSuperEllipsoid generates a superellipsoid.  A superellipsoid</span>
+<span class="sd">    is a versatile primitive that is controlled by two parameters n1 and</span>
+<span class="sd">    n2. As special cases it can represent a sphere, square box, and closed</span>
+<span class="sd">    cylindrical can.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xradius : float, optional</span>
+<span class="sd">        The scaling factor for the x-axis. Default is 1.</span>
+
+<span class="sd">    yradius : float, optional</span>
+<span class="sd">        The scaling factor for the y-axis. Default is 1.</span>
+
+<span class="sd">    zradius : float, optional</span>
+<span class="sd">        The scaling factor for the z-axis. Default is 1.</span>
+
+<span class="sd">    n1 : float, optional</span>
+<span class="sd">        The &quot;squareness&quot; parameter in the z axis.  Default is 1.</span>
+
+<span class="sd">    n2 : float, optional</span>
+<span class="sd">        The &quot;squareness&quot; parameter in the x-y plane. Default is 1.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricSuperEllipsoid surface.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pyvista.ParametricSuperToroid :</span>
+<span class="sd">        Toroidal equivalent of ParametricSuperEllipsoid.</span>
+<span class="sd">    pyvista.Superquadric :</span>
+<span class="sd">        Geometric object with additional parameters.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricSuperEllipsoid surface that looks like a box</span>
+<span class="sd">    with smooth edges.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricSuperEllipsoid(n1=0.02, n2=0.02)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    Create one that looks like a spinning top.</span>
+
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricSuperEllipsoid(n1=4, n2=0.5)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True, cpos=&#39;xz&#39;)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricSuperEllipsoid</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">xradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetXRadius</span><span class="p">(</span><span class="n">xradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">yradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetYRadius</span><span class="p">(</span><span class="n">yradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">zradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetZRadius</span><span class="p">(</span><span class="n">zradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetN1</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetN2</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricSuperToroid"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricSuperToroid.html#pyvista.ParametricSuperToroid">[docs]</a><span class="k">def</span> <span class="nf">ParametricSuperToroid</span><span class="p">(</span>
+    <span class="n">ringradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">crosssectionradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">xradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">yradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">zradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a supertoroid.</span>
+
+<span class="sd">    ParametricSuperToroid generates a supertoroid.  Essentially a</span>
+<span class="sd">    supertoroid is a torus with the sine and cosine terms raised to a power.</span>
+<span class="sd">    A supertoroid is a versatile primitive that is controlled by four</span>
+<span class="sd">    parameters r0, r1, n1 and n2. r0, r1 determine the type of torus whilst</span>
+<span class="sd">    the value of n1 determines the shape of the torus ring and n2 determines</span>
+<span class="sd">    the shape of the cross section of the ring. It is the different values of</span>
+<span class="sd">    these powers which give rise to a family of 3D shapes that are all</span>
+<span class="sd">    basically toroidal in shape.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ringradius : float, optional</span>
+<span class="sd">        The radius from the center to the middle of the ring of the</span>
+<span class="sd">        supertoroid. Default is 1.</span>
+
+<span class="sd">    crosssectionradius : float, optional</span>
+<span class="sd">        The radius of the cross section of ring of the supertoroid.</span>
+<span class="sd">        Default = 0.5.</span>
+
+<span class="sd">    xradius : float, optional</span>
+<span class="sd">        The scaling factor for the x-axis. Default is 1.</span>
+
+<span class="sd">    yradius : float, optional</span>
+<span class="sd">        The scaling factor for the y-axis. Default is 1.</span>
+
+<span class="sd">    zradius : float, optional</span>
+<span class="sd">        The scaling factor for the z-axis. Default is 1.</span>
+
+<span class="sd">    n1 : float, optional</span>
+<span class="sd">        The shape of the torus ring.  Default is 1.</span>
+
+<span class="sd">    n2 : float, optional</span>
+<span class="sd">        The shape of the cross section of the ring. Default is 1.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricSuperToroid surface.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pyvista.ParametricSuperEllipsoid :</span>
+<span class="sd">        Ellipsoidal equivalent of ParametricSuperToroid.</span>
+<span class="sd">    pyvista.Superquadric :</span>
+<span class="sd">        Geometric object with additional parameters.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricSuperToroid mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricSuperToroid(n1=2, n2=0.3)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricSuperToroid</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ringradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetRingRadius</span><span class="p">(</span><span class="n">ringradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">crosssectionradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetCrossSectionRadius</span><span class="p">(</span><span class="n">crosssectionradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">xradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetXRadius</span><span class="p">(</span><span class="n">xradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">yradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetYRadius</span><span class="p">(</span><span class="n">yradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">zradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetZRadius</span><span class="p">(</span><span class="n">zradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetN1</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetN2</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="ParametricTorus"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.ParametricTorus.html#pyvista.ParametricTorus">[docs]</a><span class="k">def</span> <span class="nf">ParametricTorus</span><span class="p">(</span><span class="n">ringradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crosssectionradius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a torus.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ringradius : float, optional</span>
+<span class="sd">        The radius from the center to the middle of the ring of the</span>
+<span class="sd">        torus. Default is 1.0.</span>
+
+<span class="sd">    crosssectionradius : float, optional</span>
+<span class="sd">        The radius of the cross section of ring of the torus. Default is 0.5.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        See :func:`surface_from_para` for additional keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        ParametricTorus surface.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a ParametricTorus mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.ParametricTorus()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(color=&#39;w&#39;, smooth_shading=True)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricTorus</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ringradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetRingRadius</span><span class="p">(</span><span class="n">ringradius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">crosssectionradius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetCrossSectionRadius</span><span class="p">(</span><span class="n">crosssectionradius</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">translate</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+
+
+<div class="viewcode-block" id="parametric_keywords"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.parametric_keywords.html#pyvista.parametric_keywords">[docs]</a><span class="k">def</span> <span class="nf">parametric_keywords</span><span class="p">(</span>
+    <span class="n">parametric_function</span><span class="p">,</span>
+    <span class="n">min_u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">max_u</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">,</span>
+    <span class="n">min_v</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">max_v</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">,</span>
+    <span class="n">join_u</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">join_v</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">twist_u</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">twist_v</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">clockwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply keyword arguments to a parametric function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    parametric_function : vtk.vtkParametricFunction</span>
+<span class="sd">        Parametric function to generate mesh from.</span>
+
+<span class="sd">    min_u : float, optional</span>
+<span class="sd">        The minimum u-value.</span>
+
+<span class="sd">    max_u : float, optional</span>
+<span class="sd">        The maximum u-value.</span>
+
+<span class="sd">    min_v : float, optional</span>
+<span class="sd">        The minimum v-value.</span>
+
+<span class="sd">    max_v : float, optional</span>
+<span class="sd">        The maximum v-value.</span>
+
+<span class="sd">    join_u : bool, optional</span>
+<span class="sd">        Joins the first triangle strip to the last one with a twist in</span>
+<span class="sd">        the u direction.</span>
+
+<span class="sd">    join_v : bool, optional</span>
+<span class="sd">        Joins the first triangle strip to the last one with a twist in</span>
+<span class="sd">        the v direction.</span>
+
+<span class="sd">    twist_u : bool, optional</span>
+<span class="sd">        Joins the first triangle strip to the last one with a twist in</span>
+<span class="sd">        the u direction.</span>
+
+<span class="sd">    twist_v : bool, optional</span>
+<span class="sd">        Joins the first triangle strip to the last one with a twist in</span>
+<span class="sd">        the v direction.</span>
+
+<span class="sd">    clockwise : bool, optional</span>
+<span class="sd">        Determines the ordering of the vertices forming the triangle</span>
+<span class="sd">        strips.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetMinimumU</span><span class="p">(</span><span class="n">min_u</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetMaximumU</span><span class="p">(</span><span class="n">max_u</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetMinimumV</span><span class="p">(</span><span class="n">min_v</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetMaximumV</span><span class="p">(</span><span class="n">max_v</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetJoinU</span><span class="p">(</span><span class="n">join_u</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetJoinV</span><span class="p">(</span><span class="n">join_v</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetTwistU</span><span class="p">(</span><span class="n">twist_u</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetTwistV</span><span class="p">(</span><span class="n">twist_v</span><span class="p">)</span>
+    <span class="n">parametric_function</span><span class="o">.</span><span class="n">SetClockwiseOrdering</span><span class="p">(</span><span class="n">clockwise</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="surface_from_para"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.surface_from_para.html#pyvista.surface_from_para">[docs]</a><span class="k">def</span> <span class="nf">surface_from_para</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">,</span> <span class="n">u_res</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">v_res</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">w_res</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct a mesh from a parametric function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    parametric_function : vtk.vtkParametricFunction</span>
+<span class="sd">        Parametric function to generate mesh from.</span>
+
+<span class="sd">    u_res : int, optional</span>
+<span class="sd">        Resolution in the u direction.</span>
+
+<span class="sd">    v_res : int, optional</span>
+<span class="sd">        Resolution in the v direction.</span>
+
+<span class="sd">    w_res : int, optional</span>
+<span class="sd">        Resolution in the w direction.</span>
+
+<span class="sd">    clean : bool, optional</span>
+<span class="sd">        Clean and merge duplicate points to avoid &quot;creases&quot; when</span>
+<span class="sd">        plotting with smooth shading.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        Surface from the parametric function.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># convert to a mesh</span>
+    <span class="n">para_source</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkParametricFunctionSource</span><span class="p">()</span>
+    <span class="n">para_source</span><span class="o">.</span><span class="n">SetParametricFunction</span><span class="p">(</span><span class="n">parametric_function</span><span class="p">)</span>
+    <span class="n">para_source</span><span class="o">.</span><span class="n">SetUResolution</span><span class="p">(</span><span class="n">u_res</span><span class="p">)</span>
+    <span class="n">para_source</span><span class="o">.</span><span class="n">SetVResolution</span><span class="p">(</span><span class="n">v_res</span><span class="p">)</span>
+    <span class="n">para_source</span><span class="o">.</span><span class="n">SetWResolution</span><span class="p">(</span><span class="n">w_res</span><span class="p">)</span>
+    <span class="n">para_source</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+    <span class="n">surf</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">para_source</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">clean</span><span class="p">:</span>
+        <span class="n">surf</span> <span class="o">=</span> <span class="n">surf</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span>
+            <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span>  <span class="c1"># determined experimentally</span>
+            <span class="n">absolute</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">lines_to_points</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">polys_to_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">strips_to_polys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">surf</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

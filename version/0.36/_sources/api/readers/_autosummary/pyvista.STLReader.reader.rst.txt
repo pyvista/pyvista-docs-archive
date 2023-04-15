@@ -1,0 +1,6 @@
+reader
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: STLReader.reader

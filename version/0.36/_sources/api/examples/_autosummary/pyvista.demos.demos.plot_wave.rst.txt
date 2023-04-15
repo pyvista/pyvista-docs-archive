@@ -1,0 +1,6 @@
+plot\_wave
+==========
+
+.. currentmodule:: pyvista.demos.demos
+
+.. autofunction:: plot_wave

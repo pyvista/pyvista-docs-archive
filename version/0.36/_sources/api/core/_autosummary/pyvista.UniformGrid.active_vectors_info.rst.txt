@@ -1,0 +1,6 @@
+active\_vectors\_info
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UniformGrid.active_vectors_info

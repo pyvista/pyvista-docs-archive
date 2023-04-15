@@ -1,0 +1,6 @@
+base\_array\_status
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: CGNSReader.base_array_status

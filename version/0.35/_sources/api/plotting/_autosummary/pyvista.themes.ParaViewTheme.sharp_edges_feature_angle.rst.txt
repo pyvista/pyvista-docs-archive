@@ -1,0 +1,6 @@
+sharp\_edges\_feature\_angle
+============================
+
+.. currentmodule:: pyvista.themes
+
+.. autoproperty:: ParaViewTheme.sharp_edges_feature_angle

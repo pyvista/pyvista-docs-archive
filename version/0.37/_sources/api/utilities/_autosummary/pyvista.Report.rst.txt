@@ -1,0 +1,7 @@
+﻿pyvista.Report
+==============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Report
+   :members:

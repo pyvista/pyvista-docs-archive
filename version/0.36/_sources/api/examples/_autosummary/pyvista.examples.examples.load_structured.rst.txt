@@ -1,0 +1,6 @@
+load\_structured
+================
+
+.. currentmodule:: pyvista.examples.examples
+
+.. autofunction:: load_structured

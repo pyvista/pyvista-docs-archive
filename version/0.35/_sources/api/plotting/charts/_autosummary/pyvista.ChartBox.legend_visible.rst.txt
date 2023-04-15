@@ -1,0 +1,6 @@
+legend\_visible
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ChartBox.legend_visible

@@ -1,0 +1,6 @@
+width
+=====
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Pen.width

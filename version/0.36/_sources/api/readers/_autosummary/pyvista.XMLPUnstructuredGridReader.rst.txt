@@ -1,0 +1,91 @@
+﻿pyvista.XMLPUnstructuredGridReader
+==================================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLPUnstructuredGridReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      XMLPUnstructuredGridReader.cell_array_status
+      
+      
+      XMLPUnstructuredGridReader.disable_all_cell_arrays
+      
+      
+      XMLPUnstructuredGridReader.disable_all_point_arrays
+      
+      
+      XMLPUnstructuredGridReader.disable_cell_array
+      
+      
+      XMLPUnstructuredGridReader.disable_point_array
+      
+      
+      XMLPUnstructuredGridReader.enable_all_cell_arrays
+      
+      
+      XMLPUnstructuredGridReader.enable_all_point_arrays
+      
+      
+      XMLPUnstructuredGridReader.enable_cell_array
+      
+      
+      XMLPUnstructuredGridReader.enable_point_array
+      
+      
+      XMLPUnstructuredGridReader.hide_progress
+      
+      
+      XMLPUnstructuredGridReader.point_array_status
+      
+      
+      XMLPUnstructuredGridReader.read
+      
+      
+      XMLPUnstructuredGridReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      XMLPUnstructuredGridReader.all_cell_arrays_status
+      
+      
+      XMLPUnstructuredGridReader.all_point_arrays_status
+      
+      
+      XMLPUnstructuredGridReader.cell_array_names
+      
+      
+      XMLPUnstructuredGridReader.number_cell_arrays
+      
+      
+      XMLPUnstructuredGridReader.number_point_arrays
+      
+      
+      XMLPUnstructuredGridReader.path
+      
+      
+      XMLPUnstructuredGridReader.point_array_names
+      
+      
+      XMLPUnstructuredGridReader.reader
+      
+   
+   

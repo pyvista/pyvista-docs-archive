@@ -1,0 +1,6 @@
+clear\_field\_arrays
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataObject.clear_field_arrays

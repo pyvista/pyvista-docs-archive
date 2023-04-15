@@ -1,0 +1,6 @@
+border\_style
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ChartBox.border_style

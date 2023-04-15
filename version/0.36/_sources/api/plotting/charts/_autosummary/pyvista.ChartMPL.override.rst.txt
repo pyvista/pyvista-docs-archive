@@ -1,0 +1,6 @@
+override
+========
+
+.. currentmodule:: pyvista
+
+.. automethod:: ChartMPL.override

@@ -1,0 +1,6 @@
+disable\_stereo\_render
+=======================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Plotter.disable_stereo_render

@@ -1,0 +1,6 @@
+texture
+=======
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Brush.texture

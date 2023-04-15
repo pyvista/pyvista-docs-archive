@@ -1,0 +1,6 @@
+﻿Hexahedron
+==========
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Hexahedron

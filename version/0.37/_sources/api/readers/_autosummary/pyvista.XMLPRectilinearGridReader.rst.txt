@@ -1,0 +1,7 @@
+﻿pyvista.XMLPRectilinearGridReader
+=================================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLPRectilinearGridReader
+   :members:

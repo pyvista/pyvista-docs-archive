@@ -1,0 +1,6 @@
+time\_values
+============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: TimeReader.time_values

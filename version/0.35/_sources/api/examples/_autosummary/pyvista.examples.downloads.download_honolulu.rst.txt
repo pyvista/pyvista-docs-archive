@@ -1,0 +1,6 @@
+download\_honolulu
+==================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_honolulu

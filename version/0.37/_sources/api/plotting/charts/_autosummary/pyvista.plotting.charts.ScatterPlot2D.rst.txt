@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.ScatterPlot2D
+=====================================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: ScatterPlot2D
+   :members:

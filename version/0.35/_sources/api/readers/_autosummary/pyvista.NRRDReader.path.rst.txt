@@ -1,0 +1,6 @@
+path
+====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: NRRDReader.path

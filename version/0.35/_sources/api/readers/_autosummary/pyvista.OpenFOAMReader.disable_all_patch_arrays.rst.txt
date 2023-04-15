@@ -1,0 +1,6 @@
+disable\_all\_patch\_arrays
+===========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: OpenFOAMReader.disable_all_patch_arrays

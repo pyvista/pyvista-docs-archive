@@ -1,0 +1,6 @@
+array\_names
+============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: StructuredGrid.array_names

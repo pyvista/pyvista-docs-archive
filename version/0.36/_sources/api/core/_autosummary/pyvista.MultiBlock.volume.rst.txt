@@ -1,0 +1,6 @@
+volume
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: MultiBlock.volume

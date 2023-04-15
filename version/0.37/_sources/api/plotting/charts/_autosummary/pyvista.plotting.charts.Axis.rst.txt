@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.Axis
+============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: Axis
+   :members:

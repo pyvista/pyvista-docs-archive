@@ -1,0 +1,6 @@
+flip\_x
+=======
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.flip_x

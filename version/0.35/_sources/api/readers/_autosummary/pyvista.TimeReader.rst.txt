@@ -1,0 +1,46 @@
+﻿pyvista.TimeReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: TimeReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      TimeReader.set_active_time_point
+      
+      
+      TimeReader.set_active_time_value
+      
+      
+      TimeReader.time_point_value
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      TimeReader.active_time_value
+      
+      
+      TimeReader.number_time_points
+      
+      
+      TimeReader.time_values
+      
+   
+   

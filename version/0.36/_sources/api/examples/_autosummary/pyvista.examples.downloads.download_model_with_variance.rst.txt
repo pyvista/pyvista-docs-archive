@@ -1,0 +1,6 @@
+download\_model\_with\_variance
+===============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_model_with_variance

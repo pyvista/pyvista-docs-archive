@@ -1,0 +1,6 @@
+clear\_arrays
+=============
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.clear_arrays

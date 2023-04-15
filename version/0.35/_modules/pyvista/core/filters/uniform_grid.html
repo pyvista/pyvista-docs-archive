@@ -1,0 +1,1086 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.core.filters.uniform_grid &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+    <img src="../../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/core/filters/uniform_grid and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/core/filters/uniform_grid.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/core/filters/uniform_grid.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.core.filters.uniform_grid</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Filters with a class to manage filters/algorithms for uniform grid datasets.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">collections.abc</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span><span class="p">,</span> <span class="n">abstract_class</span>
+<span class="kn">from</span> <span class="nn">pyvista.core.filters</span> <span class="kn">import</span> <span class="n">_get_output</span><span class="p">,</span> <span class="n">_update_alg</span>
+<span class="kn">from</span> <span class="nn">pyvista.core.filters.data_set</span> <span class="kn">import</span> <span class="n">DataSetFilters</span>
+<span class="kn">from</span> <span class="nn">pyvista.errors</span> <span class="kn">import</span> <span class="n">AmbiguousDataError</span><span class="p">,</span> <span class="n">MissingDataError</span>
+
+
+<div class="viewcode-block" id="UniformGridFilters"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.html#pyvista.UniformGridFilters">[docs]</a><span class="nd">@abstract_class</span>
+<span class="k">class</span> <span class="nc">UniformGridFilters</span><span class="p">(</span><span class="n">DataSetFilters</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An internal class to manage filters/algorithms for uniform grid datasets.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UniformGridFilters.gaussian_smooth"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.gaussian_smooth.html#pyvista.UniformGridFilters.gaussian_smooth">[docs]</a>    <span class="k">def</span> <span class="nf">gaussian_smooth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius_factor</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">std_dev</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">scalars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Smooth the data with a Gaussian kernel.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        radius_factor : float or iterable, optional</span>
+<span class="sd">            Unitless factor to limit the extent of the kernel.</span>
+
+<span class="sd">        std_dev : float or iterable, optional</span>
+<span class="sd">            Standard deviation of the kernel in pixel units.</span>
+
+<span class="sd">        scalars : str, optional</span>
+<span class="sd">            Name of scalars to process. Defaults to currently active scalars.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            Uniform grid with smoothed scalars.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This filter only supports point data. Consider converting any cell</span>
+<span class="sd">        data to point data using the :func:`DataSet.cell_data_to_point_data`</span>
+<span class="sd">        filter to convert any cell data to point data.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        First, create sample data to smooth. Here, we use</span>
+<span class="sd">        :func:`pyvista.perlin_noise() &lt;pyvista.core.common_data.perlin_noise&gt;`</span>
+<span class="sd">        to create meaningful data.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; noise = pyvista.perlin_noise(0.1, (2, 5, 8), (0, 0, 0))</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.sample_function(noise, [0, 1, 0, 1, 0, 1], dim=(20, 20, 20))</span>
+<span class="sd">        &gt;&gt;&gt; grid.plot(show_scalar_bar=False)</span>
+
+<span class="sd">        Next, smooth the sample data.</span>
+
+<span class="sd">        &gt;&gt;&gt; smoothed = grid.gaussian_smooth()</span>
+<span class="sd">        &gt;&gt;&gt; smoothed.plot(show_scalar_bar=False)</span>
+
+<span class="sd">        See :ref:`gaussian_smoothing_example` for a full example using this filter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageGaussianSmooth</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">scalars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pyvista</span><span class="o">.</span><span class="n">set_default_active_scalars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">field</span><span class="p">,</span> <span class="n">scalars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_scalars_info</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;If `scalars` not given, active scalars must be point array.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_array_association</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">preference</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Can only process point data, given `scalars` are cell data.&#39;</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputArrayToProcess</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">scalars</span>
+        <span class="p">)</span>  <span class="c1"># args: (idx, port, connection, field, name)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">radius_factor</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">SetRadiusFactors</span><span class="p">(</span><span class="n">radius_factor</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">SetRadiusFactors</span><span class="p">(</span><span class="n">radius_factor</span><span class="p">,</span> <span class="n">radius_factor</span><span class="p">,</span> <span class="n">radius_factor</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">std_dev</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">SetStandardDeviations</span><span class="p">(</span><span class="n">std_dev</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">SetStandardDeviations</span><span class="p">(</span><span class="n">std_dev</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">)</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing Gaussian Smoothing&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.median_smooth"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.median_smooth.html#pyvista.UniformGridFilters.median_smooth">[docs]</a>    <span class="k">def</span> <span class="nf">median_smooth</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">scalars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preference</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Smooth data using a median filter.</span>
+
+<span class="sd">        The Median filter that replaces each pixel with the median value from a</span>
+<span class="sd">        rectangular neighborhood around that pixel. Neighborhoods can be no</span>
+<span class="sd">        more than 3 dimensional. Setting one axis of the neighborhood</span>
+<span class="sd">        kernelSize to 1 changes the filter into a 2D median.</span>
+
+<span class="sd">        See `vtkImageMedian3D</span>
+<span class="sd">        &lt;https://vtk.org/doc/nightly/html/classvtkImageMedian3D.html#details&gt;`_</span>
+<span class="sd">        for more details.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        kernel_size : list(int) or tuple(int), optional</span>
+<span class="sd">            Length 3 list or tuple of ints : ``(x_size, y_size, z_size)``</span>
+<span class="sd">            Size of the kernel in each dimension (units of voxels). Default is</span>
+<span class="sd">            a 3D median filter. If you want to do a 2D median filter, set the</span>
+<span class="sd">            size to 1 in the dimension you don&#39;t want to filter over.</span>
+
+<span class="sd">        scalars : str, optional</span>
+<span class="sd">            Name of scalars to process. Defaults to currently active scalars.</span>
+
+<span class="sd">        preference : str, optional</span>
+<span class="sd">            When scalars is specified, this is the preferred array</span>
+<span class="sd">            type to search for in the dataset.  Must be either</span>
+<span class="sd">            ``&#39;point&#39;`` or ``&#39;cell&#39;``.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            Uniform grid with smoothed scalars.</span>
+
+<span class="sd">        Warnings</span>
+<span class="sd">        --------</span>
+<span class="sd">        Applying this filter to cell data will send the output to a new point</span>
+<span class="sd">        array with the same name, overwriting any existing point data array</span>
+<span class="sd">        with the same name.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        First, create sample data to smooth. Here, we use</span>
+<span class="sd">        :func:`pyvista.perlin_noise() &lt;pyvista.core.common_data.perlin_noise&gt;`</span>
+<span class="sd">        to create meaningful data.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; noise = pyvista.perlin_noise(0.1, (2, 5, 8), (0, 0, 0))</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.sample_function(noise, [0, 1, 0, 1, 0, 1], dim=(20, 20, 20))</span>
+<span class="sd">        &gt;&gt;&gt; grid.plot(show_scalar_bar=False)</span>
+
+<span class="sd">        Next, smooth the sample data.</span>
+
+<span class="sd">        &gt;&gt;&gt; smoothed = grid.median_smooth(kernel_size=(10, 10, 10))</span>
+<span class="sd">        &gt;&gt;&gt; smoothed.plot(show_scalar_bar=False)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageMedian3D</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">scalars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pyvista</span><span class="o">.</span><span class="n">set_default_active_scalars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">field</span><span class="p">,</span> <span class="n">scalars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_scalars_info</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_array_association</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">preference</span><span class="o">=</span><span class="n">preference</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputArrayToProcess</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">scalars</span>
+        <span class="p">)</span>  <span class="c1"># args: (idx, port, connection, field, name)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetKernelSize</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">kernel_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">kernel_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing Median Smoothing&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.extract_subset"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.extract_subset.html#pyvista.UniformGridFilters.extract_subset">[docs]</a>    <span class="k">def</span> <span class="nf">extract_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voi</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">boundary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Select piece (e.g., volume of interest).</span>
+
+<span class="sd">        To use this filter set the VOI ivar which are i-j-k min/max indices</span>
+<span class="sd">        that specify a rectangular region in the data. (Note that these are</span>
+<span class="sd">        0-offset.) You can also specify a sampling rate to subsample the</span>
+<span class="sd">        data.</span>
+
+<span class="sd">        Typical applications of this filter are to extract a slice from a</span>
+<span class="sd">        volume for image processing, subsampling large volumes to reduce data</span>
+<span class="sd">        size, or extracting regions of a volume with interesting data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        voi : tuple(int)</span>
+<span class="sd">            Length 6 iterable of ints: ``(xmin, xmax, ymin, ymax, zmin, zmax)``.</span>
+<span class="sd">            These bounds specify the volume of interest in i-j-k min/max</span>
+<span class="sd">            indices.</span>
+
+<span class="sd">        rate : tuple(int), optional</span>
+<span class="sd">            Length 3 iterable of ints: ``(xrate, yrate, zrate)``.</span>
+<span class="sd">            Default: ``(1, 1, 1)``.</span>
+
+<span class="sd">        boundary : bool, optional</span>
+<span class="sd">            Control whether to enforce that the &quot;boundary&quot; of the grid</span>
+<span class="sd">            is output in the subsampling process. This only has effect</span>
+<span class="sd">            when the rate in any direction is not equal to 1. When</span>
+<span class="sd">            this is enabled, the subsampling will always include the</span>
+<span class="sd">            boundary of the grid even though the sample rate is not an</span>
+<span class="sd">            even multiple of the grid dimensions. By default this is</span>
+<span class="sd">            disabled.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            UniformGrid subset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkExtractVOI</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetVOI</span><span class="p">(</span><span class="n">voi</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetSampleRate</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetIncludeBoundary</span><span class="p">(</span><span class="n">boundary</span><span class="p">)</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Extracting Subset&#39;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span>
+        <span class="c1"># Adjust for the confusing issue with the extents</span>
+        <span class="c1">#   see https://gitlab.kitware.com/vtk/vtk/-/issues/17938</span>
+        <span class="n">fixed</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UniformGrid</span><span class="p">()</span>
+        <span class="n">fixed</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">bounds</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">fixed</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">spacing</span>
+        <span class="n">fixed</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">dimensions</span>
+        <span class="n">fixed</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">point_data</span><span class="p">)</span>
+        <span class="n">fixed</span><span class="o">.</span><span class="n">cell_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">cell_data</span><span class="p">)</span>
+        <span class="n">fixed</span><span class="o">.</span><span class="n">field_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">field_data</span><span class="p">)</span>
+        <span class="n">fixed</span><span class="o">.</span><span class="n">copy_meta_from</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fixed</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.image_dilate_erode"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.image_dilate_erode.html#pyvista.UniformGridFilters.image_dilate_erode">[docs]</a>    <span class="k">def</span> <span class="nf">image_dilate_erode</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dilate_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">erode_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="n">scalars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dilates one value and erodes another.</span>
+
+<span class="sd">        ``image_dilate_erode`` will dilate one value and erode another. It uses</span>
+<span class="sd">        an elliptical footprint, and only erodes/dilates on the boundary of the</span>
+<span class="sd">        two values. The filter is restricted to the X, Y, and Z axes for now.</span>
+<span class="sd">        It can degenerate to a 2 or 1-dimensional filter by setting the kernel</span>
+<span class="sd">        size to 1 for a specific axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dilate_value : int or float, optional</span>
+<span class="sd">            Dilate value in the dataset. Default: ``1``.</span>
+
+<span class="sd">        erode_value : int or float, optional</span>
+<span class="sd">            Erode value in the dataset. Default: ``0``.</span>
+
+<span class="sd">        kernel_size : list(int) or tuple(int), optional</span>
+<span class="sd">            Length 3 iterable of ints: ``(xsize, ysize, zsize)``.</span>
+<span class="sd">            Determines the size (and center) of the kernel.</span>
+<span class="sd">            Default: ``(3, 3, 3)``.</span>
+
+<span class="sd">        scalars : str, optional</span>
+<span class="sd">            Name of scalars to process. Defaults to currently active scalars.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress. Default ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            Dataset that has been dilated/eroded on the boundary of the specified scalars.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This filter only supports point data. Consider converting any cell</span>
+<span class="sd">        data to point data using the :func:`DataSet.cell_data_to_point_data`</span>
+<span class="sd">        filter to convert ny cell data to point data.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Demonstrate image dilate/erode on an example dataset. First, plot</span>
+<span class="sd">        the example dataset with the active scalars.</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">        &gt;&gt;&gt; uni = examples.load_uniform()</span>
+<span class="sd">        &gt;&gt;&gt; uni.plot()</span>
+
+<span class="sd">        Now, plot the image threshold with ``threshold=[400, 600]``. Note how</span>
+<span class="sd">        values within the threshold are 1 and outside are 0.</span>
+
+<span class="sd">        &gt;&gt;&gt; ithresh = uni.image_threshold([400, 600])</span>
+<span class="sd">        &gt;&gt;&gt; ithresh.plot()</span>
+
+<span class="sd">        Note how there is a hole in the thresholded image. Apply a dilation/</span>
+<span class="sd">        erosion filter with a large kernel to fill that hole in.</span>
+
+<span class="sd">        &gt;&gt;&gt; idilate = ithresh.image_dilate_erode(kernel_size=[5, 5, 5])</span>
+<span class="sd">        &gt;&gt;&gt; idilate.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageDilateErode3D</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">scalars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pyvista</span><span class="o">.</span><span class="n">set_default_active_scalars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">field</span><span class="p">,</span> <span class="n">scalars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_scalars_info</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;If `scalars` not given, active scalars must be point array.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_array_association</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">preference</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Can only process point data, given `scalars` are cell data.&#39;</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputArrayToProcess</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">scalars</span>
+        <span class="p">)</span>  <span class="c1"># args: (idx, port, connection, field, name)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetKernelSize</span><span class="p">(</span><span class="o">*</span><span class="n">kernel_size</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetDilateValue</span><span class="p">(</span><span class="n">dilate_value</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetErodeValue</span><span class="p">(</span><span class="n">erode_value</span><span class="p">)</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing Dilation and Erosion&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.image_threshold"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.image_threshold.html#pyvista.UniformGridFilters.image_threshold">[docs]</a>    <span class="k">def</span> <span class="nf">image_threshold</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">threshold</span><span class="p">,</span>
+        <span class="n">in_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">out_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">scalars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">preference</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">,</span>
+        <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a threshold to scalar values in a uniform grid.</span>
+
+<span class="sd">        If a single value is given for threshold, scalar values above or equal</span>
+<span class="sd">        to the threshold are ``&#39;in&#39;`` and scalar values below the threshold are ``&#39;out&#39;``.</span>
+<span class="sd">        If two values are given for threshold (sequence) then values equal to</span>
+<span class="sd">        or between the two values are ``&#39;in&#39;`` and values outside the range are ``&#39;out&#39;``.</span>
+
+<span class="sd">        If ``None`` is given for ``in_value``, scalars that are ``&#39;in&#39;`` will not be replaced.</span>
+<span class="sd">        If ``None`` is given for ``out_value``, scalars that are ``&#39;out&#39;`` will not be replaced.</span>
+
+<span class="sd">        Warning: applying this filter to cell data will send the output to a</span>
+<span class="sd">        new point array with the same name, overwriting any existing point data</span>
+<span class="sd">        array with the same name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        threshold : float or sequence</span>
+<span class="sd">            Single value or (min, max) to be used for the data threshold.  If</span>
+<span class="sd">            a sequence, then length must be 2. Threshold(s) for deciding which</span>
+<span class="sd">            cells/points are ``&#39;in&#39;`` or ``&#39;out&#39;`` based on scalar data.</span>
+
+<span class="sd">        in_value : float or int or None, optional</span>
+<span class="sd">            Scalars that match the threshold criteria for ``&#39;in&#39;`` will be replaced with this.</span>
+<span class="sd">            Default is 1.</span>
+
+<span class="sd">        out_value : float or int or None, optional</span>
+<span class="sd">            Scalars that match the threshold criteria for ``&#39;out&#39;`` will be replaced with this.</span>
+<span class="sd">            Default is 0.</span>
+
+<span class="sd">        scalars : str, optional</span>
+<span class="sd">            Name of scalars to process. Defaults to currently active scalars.</span>
+
+<span class="sd">        preference : str, optional</span>
+<span class="sd">            When scalars is specified, this is the preferred array</span>
+<span class="sd">            type to search for in the dataset.  Must be either</span>
+<span class="sd">            ``&#39;point&#39;`` or ``&#39;cell&#39;``.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress. Default ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            Dataset with the specified scalars thresholded.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Demonstrate image threshold on an example dataset. First, plot</span>
+<span class="sd">        the example dataset with the active scalars.</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">        &gt;&gt;&gt; uni = examples.load_uniform()</span>
+<span class="sd">        &gt;&gt;&gt; uni.plot()</span>
+
+<span class="sd">        Now, plot the image threshold with ``threshold=100``. Note how</span>
+<span class="sd">        values above the threshold are 1 and below are 0.</span>
+
+<span class="sd">        &gt;&gt;&gt; ithresh = uni.image_threshold(100)</span>
+<span class="sd">        &gt;&gt;&gt; ithresh.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageThreshold</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">scalars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pyvista</span><span class="o">.</span><span class="n">set_default_active_scalars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">field</span><span class="p">,</span> <span class="n">scalars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_scalars_info</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_array_association</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">preference</span><span class="o">=</span><span class="n">preference</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputArrayToProcess</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">scalars</span>
+        <span class="p">)</span>  <span class="c1"># args: (idx, port, connection, field, name)</span>
+        <span class="c1"># set the threshold(s) and mode</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;Threshold must be length one for a float value or two for min/max; not (</span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s1">).&#39;</span>
+                <span class="p">)</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">ThresholdBetween</span><span class="p">(</span><span class="n">threshold</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">threshold</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Threshold must either be a single scalar or a sequence.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">ThresholdByUpper</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+        <span class="c1"># set the replacement values / modes</span>
+        <span class="k">if</span> <span class="n">in_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">ReplaceInOn</span><span class="p">()</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">SetInValue</span><span class="p">(</span><span class="n">in_value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">ReplaceInOff</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">out_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">ReplaceOutOn</span><span class="p">()</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">SetOutValue</span><span class="p">(</span><span class="n">out_value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alg</span><span class="o">.</span><span class="n">ReplaceOutOff</span><span class="p">()</span>
+        <span class="c1"># run the algorithm</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing Image Thresholding&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.fft"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.fft.html#pyvista.UniformGridFilters.fft">[docs]</a>    <span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_scalars_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a fast Fourier transform (FFT) to the active scalars.</span>
+
+<span class="sd">        The input can be real or complex data, but the output is always</span>
+<span class="sd">        :attr:`numpy.complex128`. The filter is fastest for images that have</span>
+<span class="sd">        power of two sizes.</span>
+
+<span class="sd">        The filter uses a butterfly diagram for each prime factor of the</span>
+<span class="sd">        dimension. This makes images with prime number dimensions (i.e. 17x17)</span>
+<span class="sd">        much slower to compute. FFTs of multidimensional meshes (i.e volumes)</span>
+<span class="sd">        are decomposed so that each axis executes serially.</span>
+
+<span class="sd">        The frequencies of the output assume standard order: along each axis</span>
+<span class="sd">        first positive frequencies are assumed from 0 to the maximum, then</span>
+<span class="sd">        negative frequencies are listed from the largest absolute value to</span>
+<span class="sd">        smallest. This implies that the corners of the grid correspond to low</span>
+<span class="sd">        frequencies, while the center of the grid corresponds to high</span>
+<span class="sd">        frequencies.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        output_scalars_name : str, optional</span>
+<span class="sd">            The name of the output scalars. By default, this is the same as the</span>
+<span class="sd">            active scalars of the dataset.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            :class:`pyvista.UniformGrid` with applied FFT.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        rfft: The reverse transform.</span>
+<span class="sd">        low_pass: Low-pass filtering of FFT output.</span>
+<span class="sd">        high_pass: High-pass filtering of FFT output.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Apply FFT to an example image.</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">        &gt;&gt;&gt; image = examples.download_moonlanding_image()</span>
+<span class="sd">        &gt;&gt;&gt; fft_image = image.fft()</span>
+<span class="sd">        &gt;&gt;&gt; fft_image.point_data  # doctest:+SKIP</span>
+<span class="sd">        pyvista DataSetAttributes</span>
+<span class="sd">        Association     : POINT</span>
+<span class="sd">        Active Scalars  : PNGImage</span>
+<span class="sd">        Active Vectors  : None</span>
+<span class="sd">        Active Texture  : None</span>
+<span class="sd">        Active Normals  : None</span>
+<span class="sd">        Contains arrays :</span>
+<span class="sd">        PNGImage                complex128 (298620,)          SCALARS</span>
+
+<span class="sd">        See :ref:`image_fft_example` for a full example using this filter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># check for active scalars, otherwise risk of segfault</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pyvista</span><span class="o">.</span><span class="n">set_default_active_scalars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">MissingDataError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MissingDataError</span><span class="p">(</span><span class="s1">&#39;FFT filter requires point scalars.&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+
+            <span class="c1"># possible only cell scalars were made active</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MissingDataError</span><span class="p">(</span><span class="s1">&#39;FFT filter requires point scalars.&#39;</span><span class="p">)</span>
+
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageFFT</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing Fast Fourier Transform&#39;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_change_fft_output_scalars</span><span class="p">(</span>
+            <span class="n">output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars_name</span><span class="p">,</span> <span class="n">output_scalars_name</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.rfft"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.rfft.html#pyvista.UniformGridFilters.rfft">[docs]</a>    <span class="k">def</span> <span class="nf">rfft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_scalars_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a reverse fast Fourier transform (RFFT) to the active scalars.</span>
+
+<span class="sd">        The input can be real or complex data, but the output is always</span>
+<span class="sd">        :attr:`numpy.complex128`. The filter is fastest for images that have power</span>
+<span class="sd">        of two sizes.</span>
+
+<span class="sd">        The filter uses a butterfly diagram for each prime factor of the</span>
+<span class="sd">        dimension. This makes images with prime number dimensions (i.e. 17x17)</span>
+<span class="sd">        much slower to compute. FFTs of multidimensional meshes (i.e volumes)</span>
+<span class="sd">        are decomposed so that each axis executes serially.</span>
+
+<span class="sd">        The frequencies of the input assume standard order: along each axis</span>
+<span class="sd">        first positive frequencies are assumed from 0 to the maximum, then</span>
+<span class="sd">        negative frequencies are listed from the largest absolute value to</span>
+<span class="sd">        smallest. This implies that the corners of the grid correspond to low</span>
+<span class="sd">        frequencies, while the center of the grid corresponds to high</span>
+<span class="sd">        frequencies.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        output_scalars_name : str, optional</span>
+<span class="sd">            The name of the output scalars. By default, this is the same as the</span>
+<span class="sd">            active scalars of the dataset.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            :class:`pyvista.UniformGrid` with the applied reverse FFT.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        fft: The direct transform.</span>
+<span class="sd">        low_pass: Low-pass filtering of FFT output.</span>
+<span class="sd">        high_pass: High-pass filtering of FFT output.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Apply reverse FFT to an example image.</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">        &gt;&gt;&gt; image = examples.download_moonlanding_image()</span>
+<span class="sd">        &gt;&gt;&gt; fft_image = image.fft()</span>
+<span class="sd">        &gt;&gt;&gt; image_again = fft_image.rfft()</span>
+<span class="sd">        &gt;&gt;&gt; image_again.point_data  # doctest:+SKIP</span>
+<span class="sd">        pyvista DataSetAttributes</span>
+<span class="sd">        Association     : POINT</span>
+<span class="sd">        Active Scalars  : PNGImage</span>
+<span class="sd">        Active Vectors  : None</span>
+<span class="sd">        Active Texture  : None</span>
+<span class="sd">        Active Normals  : None</span>
+<span class="sd">        Contains arrays :</span>
+<span class="sd">            PNGImage                complex128 (298620,)            SCALARS</span>
+
+<span class="sd">        See :ref:`image_fft_example` for a full example using this filter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_fft_scalars</span><span class="p">()</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageRFFT</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing Reverse Fast Fourier Transform.&#39;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_change_fft_output_scalars</span><span class="p">(</span>
+            <span class="n">output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars_name</span><span class="p">,</span> <span class="n">output_scalars_name</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.low_pass"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.low_pass.html#pyvista.UniformGridFilters.low_pass">[docs]</a>    <span class="k">def</span> <span class="nf">low_pass</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">x_cutoff</span><span class="p">,</span>
+        <span class="n">y_cutoff</span><span class="p">,</span>
+        <span class="n">z_cutoff</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">output_scalars_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a Butterworth low pass filter in the frequency domain.</span>
+
+<span class="sd">        This filter requires that the :class:`UniformGrid` have a complex point</span>
+<span class="sd">        scalars, usually generated after the :class:`UniformGrid` has been</span>
+<span class="sd">        converted to the frequency domain by a :func:`UniformGridFilters.fft`</span>
+<span class="sd">        filter.</span>
+
+<span class="sd">        A :func:`UniformGridFilters.rfft` filter can be used to convert the</span>
+<span class="sd">        output back into the spatial domain. This filter attenuates high</span>
+<span class="sd">        frequency components.  Input and output are complex arrays with</span>
+<span class="sd">        datatype :attr:`numpy.complex128`.</span>
+
+<span class="sd">        The frequencies of the input assume standard order: along each axis</span>
+<span class="sd">        first positive frequencies are assumed from 0 to the maximum, then</span>
+<span class="sd">        negative frequencies are listed from the largest absolute value to</span>
+<span class="sd">        smallest. This implies that the corners of the grid correspond to low</span>
+<span class="sd">        frequencies, while the center of the grid corresponds to high</span>
+<span class="sd">        frequencies.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x_cutoff : double</span>
+<span class="sd">            The cutoff frequency for the x axis.</span>
+
+<span class="sd">        y_cutoff : double</span>
+<span class="sd">            The cutoff frequency for the y axis.</span>
+
+<span class="sd">        z_cutoff : double</span>
+<span class="sd">            The cutoff frequency for the z axis.</span>
+
+<span class="sd">        order : int, optional</span>
+<span class="sd">            The order of the cutoff curve. Given from the equation</span>
+<span class="sd">            ``1 + (cutoff/freq(i, j))**(2*order)``.</span>
+
+<span class="sd">        output_scalars_name : str, optional</span>
+<span class="sd">            The name of the output scalars. By default, this is the same as the</span>
+<span class="sd">            active scalars of the dataset.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            :class:`pyvista.UniformGrid` with the applied low pass filter.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        fft: Direct fast Fourier transform.</span>
+<span class="sd">        rfft: Reverse fast Fourier transform.</span>
+<span class="sd">        high_pass: High-pass filtering of FFT output.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        See :ref:`image_fft_perlin_example` for a full example using this filter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_fft_scalars</span><span class="p">()</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageButterworthLowPass</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetCutOff</span><span class="p">(</span><span class="n">x_cutoff</span><span class="p">,</span> <span class="n">y_cutoff</span><span class="p">,</span> <span class="n">z_cutoff</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetOrder</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing Low Pass Filter&#39;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_change_fft_output_scalars</span><span class="p">(</span>
+            <span class="n">output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars_name</span><span class="p">,</span> <span class="n">output_scalars_name</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="UniformGridFilters.high_pass"><a class="viewcode-back" href="../../../../api/core/_autosummary/pyvista.UniformGridFilters.high_pass.html#pyvista.UniformGridFilters.high_pass">[docs]</a>    <span class="k">def</span> <span class="nf">high_pass</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">x_cutoff</span><span class="p">,</span>
+        <span class="n">y_cutoff</span><span class="p">,</span>
+        <span class="n">z_cutoff</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">output_scalars_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a Butterworth high pass filter in the frequency domain.</span>
+
+<span class="sd">        This filter requires that the :class:`UniformGrid` have a complex point</span>
+<span class="sd">        scalars, usually generated after the :class:`UniformGrid` has been</span>
+<span class="sd">        converted to the frequency domain by a :func:`UniformGridFilters.fft`</span>
+<span class="sd">        filter.</span>
+
+<span class="sd">        A :func:`UniformGridFilters.rfft` filter can be used to convert the</span>
+<span class="sd">        output back into the spatial domain. This filter attenuates low</span>
+<span class="sd">        frequency components.  Input and output are complex arrays with</span>
+<span class="sd">        datatype :attr:`numpy.complex128`.</span>
+
+<span class="sd">        The frequencies of the input assume standard order: along each axis</span>
+<span class="sd">        first positive frequencies are assumed from 0 to the maximum, then</span>
+<span class="sd">        negative frequencies are listed from the largest absolute value to</span>
+<span class="sd">        smallest. This implies that the corners of the grid correspond to low</span>
+<span class="sd">        frequencies, while the center of the grid corresponds to high</span>
+<span class="sd">        frequencies.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x_cutoff : double</span>
+<span class="sd">            The cutoff frequency for the x axis.</span>
+
+<span class="sd">        y_cutoff : double</span>
+<span class="sd">            The cutoff frequency for the y axis.</span>
+
+<span class="sd">        z_cutoff : double</span>
+<span class="sd">            The cutoff frequency for the z axis.</span>
+
+<span class="sd">        order : int, optional</span>
+<span class="sd">            The order of the cutoff curve. Given from the equation</span>
+<span class="sd">            ``1/(1 + (cutoff/freq(i, j))**(2*order))``.</span>
+
+<span class="sd">        output_scalars_name : str, optional</span>
+<span class="sd">            The name of the output scalars. By default, this is the same as the</span>
+<span class="sd">            active scalars of the dataset.</span>
+
+<span class="sd">        progress_bar : bool, optional</span>
+<span class="sd">            Display a progress bar to indicate progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.UniformGrid</span>
+<span class="sd">            :class:`pyvista.UniformGrid` with the applied high pass filter.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        fft: Direct fast Fourier transform.</span>
+<span class="sd">        rfft: Reverse fast Fourier transform.</span>
+<span class="sd">        low_pass: Low-pass filtering of FFT output.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        See :ref:`image_fft_perlin_example` for a full example using this filter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_fft_scalars</span><span class="p">()</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageButterworthHighPass</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputDataObject</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetCutOff</span><span class="p">(</span><span class="n">x_cutoff</span><span class="p">,</span> <span class="n">y_cutoff</span><span class="p">,</span> <span class="n">z_cutoff</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetOrder</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">_update_alg</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">progress_bar</span><span class="p">,</span> <span class="s1">&#39;Performing High Pass Filter&#39;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_change_fft_output_scalars</span><span class="p">(</span>
+            <span class="n">output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars_name</span><span class="p">,</span> <span class="n">output_scalars_name</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+    <span class="k">def</span> <span class="nf">_change_fft_output_scalars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">orig_name</span><span class="p">,</span> <span class="n">out_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify the name and dtype of the output scalars for an FFT filter.&quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">orig_name</span> <span class="k">if</span> <span class="n">out_name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">out_name</span>
+        <span class="n">pdata</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">point_data</span>
+        <span class="k">if</span> <span class="n">pdata</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="o">!=</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">pdata</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pdata</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">pdata</span><span class="o">.</span><span class="n">active_scalars_name</span><span class="p">)</span>
+
+        <span class="c1"># always view the datatype of the point_data as complex128</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">_association_complex_names</span><span class="p">[</span><span class="s1">&#39;POINT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_fft_scalars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for complex active scalars.</span>
+
+<span class="sd">        This is necessary for rfft, low_pass, and high_pass filters.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># check for complex active point scalars, otherwise the risk of segfault</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">possible_scalars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">possible_scalars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="n">possible_scalars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">preference</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">possible_scalars</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AmbiguousDataError</span><span class="p">(</span>
+                    <span class="s1">&#39;There are multiple point scalars available. Set one to be &#39;</span>
+                    <span class="s1">&#39;active with `point_data.active_scalars_name = `&#39;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MissingDataError</span><span class="p">(</span><span class="s1">&#39;FFT filters require point scalars.&#39;</span><span class="p">)</span>
+
+        <span class="n">scalars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">active_scalars</span>
+
+        <span class="n">meets_req</span> <span class="o">=</span> <span class="n">scalars</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">meets_req</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;Active scalars must be complex data for this filter, represented &#39;</span>
+                <span class="s1">&#39;as an array with `dtype=numpy.complex128`.&#39;</span>
+            <span class="p">)</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

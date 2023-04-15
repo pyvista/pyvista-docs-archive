@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>add_checkbox_button_widget &#8212; PyVista 0.38.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-140243896-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-140243896-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/plotting/_autosummary/pyvista.Plotter.add_checkbox_button_widget';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://<DEFAULT_CNAME>/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.38';
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="add_composite" href="pyvista.Plotter.add_composite.html" />
+    <link rel="prev" title="add_chart" href="pyvista.Plotter.add_chart.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../getting-started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../user-guide/index.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../extras/index.html">
+                        Extras
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.38  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../getting-started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../user-guide/index.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../extras/index.html">
+                        Extras
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.38  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core API</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Plotting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../plotting.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qt_plotting.html">PyVista and PyQt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theme.html">Themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trame.html">Trame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Actor.html">pyvista.Actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.CameraPosition.html">pyvista.CameraPosition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.DataSetMapper.html">pyvista.DataSetMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.LookupTable.html">pyvista.LookupTable</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="pyvista.Plotter.html">pyvista.Plotter</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_actor.html">add_actor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_arrows.html">add_arrows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_axes.html">add_axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_axes_at_origin.html">add_axes_at_origin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_background_image.html">add_background_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_blurring.html">add_blurring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_bounding_box.html">add_bounding_box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_box_widget.html">add_box_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_camera_orientation_widget.html">add_camera_orientation_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_chart.html">add_chart</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">add_checkbox_button_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_composite.html">add_composite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_cursor.html">add_cursor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_floor.html">add_floor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_key_event.html">add_key_event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_legend.html">add_legend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_legend_scale.html">add_legend_scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_light.html">add_light</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_line_widget.html">add_line_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_lines.html">add_lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh.html">add_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh_clip_box.html">add_mesh_clip_box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh_clip_plane.html">add_mesh_clip_plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh_isovalue.html">add_mesh_isovalue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh_slice.html">add_mesh_slice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh_slice_orthogonal.html">add_mesh_slice_orthogonal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh_slice_spline.html">add_mesh_slice_spline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_mesh_threshold.html">add_mesh_threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_on_render_callback.html">add_on_render_callback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_orientation_widget.html">add_orientation_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_plane_widget.html">add_plane_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_point_labels.html">add_point_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_point_scalar_labels.html">add_point_scalar_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_points.html">add_points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_ruler.html">add_ruler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_scalar_bar.html">add_scalar_bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_silhouette.html">add_silhouette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_slider_widget.html">add_slider_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_sphere_widget.html">add_sphere_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_spline_widget.html">add_spline_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_text.html">add_text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_text_slider_widget.html">add_text_slider_widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_title.html">add_title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_volume.html">add_volume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.add_volume_clip_plane.html">add_volume_clip_plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear.html">clear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_actors.html">clear_actors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_box_widgets.html">clear_box_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_button_widgets.html">clear_button_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_camera_widgets.html">clear_camera_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_events_for_key.html">clear_events_for_key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_line_widgets.html">clear_line_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_on_render_callbacks.html">clear_on_render_callbacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_plane_widgets.html">clear_plane_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_slider_widgets.html">clear_slider_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_sphere_widgets.html">clear_sphere_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.clear_spline_widgets.html">clear_spline_widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.close.html">close</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.deep_clean.html">deep_clean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable.html">disable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_3_lights.html">disable_3_lights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_anti_aliasing.html">disable_anti_aliasing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_depth_of_field.html">disable_depth_of_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_depth_peeling.html">disable_depth_peeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_eye_dome_lighting.html">disable_eye_dome_lighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_hidden_line_removal.html">disable_hidden_line_removal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_parallel_projection.html">disable_parallel_projection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_picking.html">disable_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_shadows.html">disable_shadows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_ssao.html">disable_ssao</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.disable_stereo_render.html">disable_stereo_render</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable.html">enable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_3_lights.html">enable_3_lights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_anti_aliasing.html">enable_anti_aliasing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_block_picking.html">enable_block_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_cell_picking.html">enable_cell_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_depth_of_field.html">enable_depth_of_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_depth_peeling.html">enable_depth_peeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_eye_dome_lighting.html">enable_eye_dome_lighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_fly_to_right_click.html">enable_fly_to_right_click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_geodesic_picking.html">enable_geodesic_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_hidden_line_removal.html">enable_hidden_line_removal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_horizon_picking.html">enable_horizon_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_image_style.html">enable_image_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_joystick_actor_style.html">enable_joystick_actor_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_joystick_style.html">enable_joystick_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_lightkit.html">enable_lightkit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_mesh_picking.html">enable_mesh_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_parallel_projection.html">enable_parallel_projection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_path_picking.html">enable_path_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_point_picking.html">enable_point_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_rubber_band_2d_style.html">enable_rubber_band_2d_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_rubber_band_style.html">enable_rubber_band_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_shadows.html">enable_shadows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_ssao.html">enable_ssao</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_stereo_render.html">enable_stereo_render</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_surface_picking.html">enable_surface_picking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_terrain_style.html">enable_terrain_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_trackball_actor_style.html">enable_trackball_actor_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_trackball_style.html">enable_trackball_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.enable_zoom_style.html">enable_zoom_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.export_gltf.html">export_gltf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.export_html.html">export_html</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.export_obj.html">export_obj</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.export_vrml.html">export_vrml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.export_vtkjs.html">export_vtkjs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.fly_to.html">fly_to</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.fly_to_mouse_position.html">fly_to_mouse_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.generate_orbital_path.html">generate_orbital_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.get_default_cam_pos.html">get_default_cam_pos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.get_image_depth.html">get_image_depth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.get_pick_position.html">get_pick_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.hide_axes.html">hide_axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.hide_axes_all.html">hide_axes_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.image_scale_context.html">image_scale_context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.import_gltf.html">import_gltf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.import_vrml.html">import_vrml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.increment_point_size_and_line_width.html">increment_point_size_and_line_width</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.isometric_view.html">isometric_view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.isometric_view_interactive.html">isometric_view_interactive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.key_press_event.html">key_press_event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.left_button_down.html">left_button_down</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.link_views.html">link_views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.open_gif.html">open_gif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.open_movie.html">open_movie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.orbit_on_path.html">orbit_on_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.pick_click_position.html">pick_click_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.pick_mouse_position.html">pick_mouse_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_actor.html">remove_actor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_all_lights.html">remove_all_lights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_background_image.html">remove_background_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_blurring.html">remove_blurring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_bounding_box.html">remove_bounding_box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_bounds_axes.html">remove_bounds_axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_chart.html">remove_chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_environment_texture.html">remove_environment_texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_floors.html">remove_floors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_legend.html">remove_legend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.remove_scalar_bar.html">remove_scalar_bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.render.html">render</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.reset_camera.html">reset_camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.reset_camera_clipping_range.html">reset_camera_clipping_range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.reset_key_events.html">reset_key_events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.save_graphic.html">save_graphic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.screenshot.html">screenshot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_background.html">set_background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_chart_interaction.html">set_chart_interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_color_cycler.html">set_color_cycler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_environment_texture.html">set_environment_texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_focus.html">set_focus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_position.html">set_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_scale.html">set_scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.set_viewup.html">set_viewup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.show.html">show</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.show_axes.html">show_axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.show_axes_all.html">show_axes_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.show_bounds.html">show_bounds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.show_grid.html">show_grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.store_click_position.html">store_click_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.store_mouse_position.html">store_mouse_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.subplot.html">subplot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.to_pythreejs.html">to_pythreejs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.track_click_position.html">track_click_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.track_mouse_position.html">track_mouse_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.unlink_views.html">unlink_views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.untrack_click_position.html">untrack_click_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.untrack_mouse_position.html">untrack_mouse_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.update.html">update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.update_bounds_axes.html">update_bounds_axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.update_coordinates.html">update_coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.update_scalar_bar_range.html">update_scalar_bar_range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.update_scalars.html">update_scalars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_isometric.html">view_isometric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_vector.html">view_vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_xy.html">view_xy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_xz.html">view_xz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_yx.html">view_yx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_yz.html">view_yz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_zx.html">view_zx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.view_zy.html">view_zy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.where_is.html">where_is</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.window_size_context.html">window_size_context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.write_frame.html">write_frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.actors.html">actors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.background_color.html">background_color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.bounds.html">bounds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.camera.html">camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.camera_position.html">camera_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.camera_set.html">camera_set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.center.html">center</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.click_position.html">click_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.image.html">image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.image_depth.html">image_depth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.image_scale.html">image_scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.last_update_time.html">last_update_time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.legend.html">legend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.length.html">length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.mouse_position.html">mouse_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.parallel_projection.html">parallel_projection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.parallel_scale.html">parallel_scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.pickable_actors.html">pickable_actors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.picked_block_index.html">picked_block_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.picked_mesh.html">picked_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.picked_point.html">picked_point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.render_window.html">render_window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.renderer.html">renderer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.scalar_bar.html">scalar_bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.scalar_bars.html">scalar_bars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.scale.html">scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.shape.html">shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.store_image.html">store_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.suppress_rendering.html">suppress_rendering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.theme.html">theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.update_timer_id.html">update_timer_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Plotter.window_size.html">window_size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Property.html">pyvista.Property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Renderer.html">pyvista.Renderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.plotting._BaseMapper.html">pyvista.plotting._BaseMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.plotting.opts.InterpolationType.html">InterpolationType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.plotting.volume.Volume.html">pyvista.plotting.volume.Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.plotting.volume_property.VolumeProperty.html">pyvista.plotting.volume_property.VolumeProperty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.CompositePolyDataMapper.html">pyvista.CompositePolyDataMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.CompositeAttributes.html">pyvista.CompositeAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.BlockAttributes.html">pyvista.BlockAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../charts/index.html">Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conv_func.html">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilities/index.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../readers/index.html">Readers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="add-checkbox-button-widget">
+<h1>add_checkbox_button_widget<a class="headerlink" href="#add-checkbox-button-widget" title="Permalink to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.Plotter.add_checkbox_button_widget">
+<span class="sig-prename descclassname"><span class="pre">Plotter.</span></span><span class="sig-name descname"><span class="pre">add_checkbox_button_widget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10.0,</span> <span class="pre">10.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_off</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grey'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/pyvista/pyvista/blob/release/0.38/pyvista/plotting/widgets.py#L2179-L2288"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.Plotter.add_checkbox_button_widget" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a checkbox button widget to the scene.</p>
+<p>This is useless without a callback function. You can pass a callable
+function that takes a single argument, the state of this button widget
+and performs a task with that value.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>callback</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a></span></dt><dd><p>The method called every time the button is clicked. This should take
+a single parameter: the bool value of the button.</p>
+</dd>
+<dt><strong>value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default state of the button.</p>
+</dd>
+<dt><strong>position</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a>(<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>), <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The absolute coordinates of the bottom left point of the button.</p>
+</dd>
+<dt><strong>size</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The size of the button in number of pixels.</p>
+</dd>
+<dt><strong>border_size</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The size of the borders of the button in pixels.</p>
+</dd>
+<dt><strong>color_on</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.ColorLike.html#pyvista.ColorLike" title="pyvista.ColorLike"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColorLike</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The color used when the button is checked. Default is <code class="docutils literal notranslate"><span class="pre">'blue'</span></code>.</p>
+</dd>
+<dt><strong>color_off</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.ColorLike.html#pyvista.ColorLike" title="pyvista.ColorLike"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColorLike</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The color used when the button is not checked. Default is <code class="docutils literal notranslate"><span class="pre">'grey'</span></code>.</p>
+</dd>
+<dt><strong>background_color</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.ColorLike.html#pyvista.ColorLike" title="pyvista.ColorLike"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColorLike</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The background color of the button. Default is <code class="docutils literal notranslate"><span class="pre">'white'</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">vtk.vtkButtonWidget</span></code></dt><dd><p>The VTK button widget configured as a checkbox button.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>The following example generates a static image of the widget.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Sphere</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">actor</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">toggle_vis</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">actor</span><span class="o">.</span><span class="n">SetVisibility</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">add_checkbox_button_widget</span><span class="p">(</span><span class="n">toggle_vis</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Plotter-add_checkbox_button_widget-1_00_00.png" src="../../../_images/pyvista-Plotter-add_checkbox_button_widget-1_00_00.png" />
+</figure>
+<p>Download the interactive example at <a class="reference internal" href="../../../examples/03-widgets/checkbox-widget.html#checkbox-widget-example"><span class="std std-ref">Checkbox Widget</span></a>.</p>
+</dd></dl>
+
+</section>
+
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyvista.Plotter.add_checkbox_button_widget">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Plotter.add_checkbox_button_widget()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyvista/pyvista/edit/main/doc/api/plotting/_autosummary/pyvista.Plotter.add_checkbox_button_widget.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

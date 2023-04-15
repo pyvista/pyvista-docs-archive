@@ -1,0 +1,6 @@
+actual\_memory\_size
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ExplicitStructuredGrid.actual_memory_size

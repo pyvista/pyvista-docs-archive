@@ -1,0 +1,6 @@
+cell\_data
+==========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSet.cell_data

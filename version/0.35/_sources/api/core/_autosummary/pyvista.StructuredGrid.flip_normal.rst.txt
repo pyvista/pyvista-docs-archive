@@ -1,0 +1,6 @@
+flip\_normal
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.flip_normal

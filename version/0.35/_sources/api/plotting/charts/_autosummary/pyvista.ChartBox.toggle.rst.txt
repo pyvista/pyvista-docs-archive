@@ -1,0 +1,6 @@
+toggle
+======
+
+.. currentmodule:: pyvista
+
+.. automethod:: ChartBox.toggle

@@ -1,0 +1,6 @@
+clear\_point\_arrays
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.clear_point_arrays

@@ -1,0 +1,43 @@
+﻿pyvista.BMPReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BMPReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      BMPReader.hide_progress
+      
+      
+      BMPReader.read
+      
+      
+      BMPReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      BMPReader.path
+      
+      
+      BMPReader.reader
+      
+   
+   

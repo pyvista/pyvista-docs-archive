@@ -1,0 +1,6 @@
+set\_active\_scalars
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.set_active_scalars

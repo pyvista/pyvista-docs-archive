@@ -1,0 +1,6 @@
+add\_q\_files
+=============
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlockPlot3DReader.add_q_files

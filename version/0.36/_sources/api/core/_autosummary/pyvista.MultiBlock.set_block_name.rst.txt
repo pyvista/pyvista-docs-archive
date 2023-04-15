@@ -1,0 +1,6 @@
+set\_block\_name
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlock.set_block_name

@@ -1,0 +1,6 @@
+active\_tensors\_name
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UniformGrid.active_tensors_name

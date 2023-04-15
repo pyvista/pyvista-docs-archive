@@ -1,0 +1,6 @@
+download\_crater\_topo
+======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_crater_topo

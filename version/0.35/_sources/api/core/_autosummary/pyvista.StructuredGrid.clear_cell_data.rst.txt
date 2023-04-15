@@ -1,0 +1,6 @@
+clear\_cell\_data
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.clear_cell_data

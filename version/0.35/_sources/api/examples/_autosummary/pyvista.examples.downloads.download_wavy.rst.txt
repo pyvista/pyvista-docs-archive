@@ -1,0 +1,6 @@
+download\_wavy
+==============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_wavy

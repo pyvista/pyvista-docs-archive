@@ -1,0 +1,6 @@
+download\_cgns\_multi
+=====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_cgns_multi

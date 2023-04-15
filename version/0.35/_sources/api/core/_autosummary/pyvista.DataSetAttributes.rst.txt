@@ -1,0 +1,100 @@
+﻿pyvista.DataSetAttributes
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DataSetAttributes
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      DataSetAttributes.append
+      
+      
+      DataSetAttributes.clear
+      
+      
+      DataSetAttributes.get
+      
+      
+      DataSetAttributes.get_array
+      
+      
+      DataSetAttributes.items
+      
+      
+      DataSetAttributes.keys
+      
+      
+      DataSetAttributes.pop
+      
+      
+      DataSetAttributes.remove
+      
+      
+      DataSetAttributes.set_array
+      
+      
+      DataSetAttributes.set_scalars
+      
+      
+      DataSetAttributes.set_vectors
+      
+      
+      DataSetAttributes.update
+      
+      
+      DataSetAttributes.values
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      DataSetAttributes.active_normals
+      
+      
+      DataSetAttributes.active_normals_name
+      
+      
+      DataSetAttributes.active_scalars
+      
+      
+      DataSetAttributes.active_scalars_name
+      
+      
+      DataSetAttributes.active_t_coords
+      
+      
+      DataSetAttributes.active_t_coords_name
+      
+      
+      DataSetAttributes.active_texture_name
+      
+      
+      DataSetAttributes.active_vectors
+      
+      
+      DataSetAttributes.active_vectors_name
+      
+      
+      DataSetAttributes.t_coords
+      
+      
+      DataSetAttributes.valid_array_len
+      
+   
+   

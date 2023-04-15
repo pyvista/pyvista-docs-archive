@@ -1,0 +1,6 @@
+loc
+===
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ChartPie.loc

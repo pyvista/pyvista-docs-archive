@@ -1,0 +1,6 @@
+save
+====
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.save

@@ -1,0 +1,6 @@
+﻿Polygon
+=======
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Polygon

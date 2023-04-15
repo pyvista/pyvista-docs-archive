@@ -1,0 +1,708 @@
+﻿pyvista.ExplicitStructuredGrid
+==============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: ExplicitStructuredGrid
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      ExplicitStructuredGrid.add_field_array
+      
+      
+      ExplicitStructuredGrid.add_field_data
+      
+      
+      ExplicitStructuredGrid.cast_to_pointset
+      
+      
+      ExplicitStructuredGrid.cast_to_unstructured_grid
+      
+      
+      ExplicitStructuredGrid.cell_bounds
+      
+      
+      ExplicitStructuredGrid.cell_centers
+      
+      
+      ExplicitStructuredGrid.cell_coords
+      
+      
+      ExplicitStructuredGrid.cell_data_to_point_data
+      
+      
+      ExplicitStructuredGrid.cell_id
+      
+      
+      ExplicitStructuredGrid.cell_n_points
+      
+      
+      ExplicitStructuredGrid.cell_point_ids
+      
+      
+      ExplicitStructuredGrid.cell_points
+      
+      
+      ExplicitStructuredGrid.cell_type
+      
+      
+      ExplicitStructuredGrid.center_of_mass
+      
+      
+      ExplicitStructuredGrid.clear_arrays
+      
+      
+      ExplicitStructuredGrid.clear_cell_arrays
+      
+      
+      ExplicitStructuredGrid.clear_cell_data
+      
+      
+      ExplicitStructuredGrid.clear_data
+      
+      
+      ExplicitStructuredGrid.clear_field_arrays
+      
+      
+      ExplicitStructuredGrid.clear_field_data
+      
+      
+      ExplicitStructuredGrid.clear_point_arrays
+      
+      
+      ExplicitStructuredGrid.clear_point_data
+      
+      
+      ExplicitStructuredGrid.clear_textures
+      
+      
+      ExplicitStructuredGrid.clip
+      
+      
+      ExplicitStructuredGrid.clip_box
+      
+      
+      ExplicitStructuredGrid.clip_scalar
+      
+      
+      ExplicitStructuredGrid.clip_surface
+      
+      
+      ExplicitStructuredGrid.compute_cell_quality
+      
+      
+      ExplicitStructuredGrid.compute_cell_sizes
+      
+      
+      ExplicitStructuredGrid.compute_connections
+      
+      
+      ExplicitStructuredGrid.compute_connectivity
+      
+      
+      ExplicitStructuredGrid.compute_derivative
+      
+      
+      ExplicitStructuredGrid.compute_implicit_distance
+      
+      
+      ExplicitStructuredGrid.connectivity
+      
+      
+      ExplicitStructuredGrid.contour
+      
+      
+      ExplicitStructuredGrid.copy
+      
+      
+      ExplicitStructuredGrid.copy_attributes
+      
+      
+      ExplicitStructuredGrid.copy_meta_from
+      
+      
+      ExplicitStructuredGrid.copy_structure
+      
+      
+      ExplicitStructuredGrid.ctp
+      
+      
+      ExplicitStructuredGrid.decimate_boundary
+      
+      
+      ExplicitStructuredGrid.deep_copy
+      
+      
+      ExplicitStructuredGrid.delaunay_3d
+      
+      
+      ExplicitStructuredGrid.elevation
+      
+      
+      ExplicitStructuredGrid.extract_all_edges
+      
+      
+      ExplicitStructuredGrid.extract_cells
+      
+      
+      ExplicitStructuredGrid.extract_feature_edges
+      
+      
+      ExplicitStructuredGrid.extract_geometry
+      
+      
+      ExplicitStructuredGrid.extract_largest
+      
+      
+      ExplicitStructuredGrid.extract_points
+      
+      
+      ExplicitStructuredGrid.extract_surface
+      
+      
+      ExplicitStructuredGrid.find_cells_along_line
+      
+      
+      ExplicitStructuredGrid.find_cells_within_bounds
+      
+      
+      ExplicitStructuredGrid.find_closest_cell
+      
+      
+      ExplicitStructuredGrid.find_closest_point
+      
+      
+      ExplicitStructuredGrid.find_containing_cell
+      
+      
+      ExplicitStructuredGrid.flip_normal
+      
+      
+      ExplicitStructuredGrid.flip_x
+      
+      
+      ExplicitStructuredGrid.flip_y
+      
+      
+      ExplicitStructuredGrid.flip_z
+      
+      
+      ExplicitStructuredGrid.get_array
+      
+      
+      ExplicitStructuredGrid.get_array_association
+      
+      
+      ExplicitStructuredGrid.get_data_range
+      
+      
+      ExplicitStructuredGrid.glyph
+      
+      
+      ExplicitStructuredGrid.head
+      
+      
+      ExplicitStructuredGrid.hide_cells
+      
+      
+      ExplicitStructuredGrid.integrate_data
+      
+      
+      ExplicitStructuredGrid.interpolate
+      
+      
+      ExplicitStructuredGrid.merge
+      
+      
+      ExplicitStructuredGrid.neighbors
+      
+      
+      ExplicitStructuredGrid.outline
+      
+      
+      ExplicitStructuredGrid.outline_corners
+      
+      
+      ExplicitStructuredGrid.override
+      
+      
+      ExplicitStructuredGrid.overwrite
+      
+      
+      ExplicitStructuredGrid.plot
+      
+      
+      ExplicitStructuredGrid.plot_curvature
+      
+      
+      ExplicitStructuredGrid.plot_over_circular_arc
+      
+      
+      ExplicitStructuredGrid.plot_over_circular_arc_normal
+      
+      
+      ExplicitStructuredGrid.plot_over_line
+      
+      
+      ExplicitStructuredGrid.point_data_to_cell_data
+      
+      
+      ExplicitStructuredGrid.point_is_inside_cell
+      
+      
+      ExplicitStructuredGrid.points_to_double
+      
+      
+      ExplicitStructuredGrid.probe
+      
+      
+      ExplicitStructuredGrid.ptc
+      
+      
+      ExplicitStructuredGrid.reflect
+      
+      
+      ExplicitStructuredGrid.remove_cells
+      
+      
+      ExplicitStructuredGrid.rename_array
+      
+      
+      ExplicitStructuredGrid.rotate_vector
+      
+      
+      ExplicitStructuredGrid.rotate_x
+      
+      
+      ExplicitStructuredGrid.rotate_y
+      
+      
+      ExplicitStructuredGrid.rotate_z
+      
+      
+      ExplicitStructuredGrid.sample
+      
+      
+      ExplicitStructuredGrid.sample_over_circular_arc
+      
+      
+      ExplicitStructuredGrid.sample_over_circular_arc_normal
+      
+      
+      ExplicitStructuredGrid.sample_over_line
+      
+      
+      ExplicitStructuredGrid.sample_over_multiple_lines
+      
+      
+      ExplicitStructuredGrid.save
+      
+      
+      ExplicitStructuredGrid.scale
+      
+      
+      ExplicitStructuredGrid.select_enclosed_points
+      
+      
+      ExplicitStructuredGrid.set_active_scalars
+      
+      
+      ExplicitStructuredGrid.set_active_tensors
+      
+      
+      ExplicitStructuredGrid.set_active_vectors
+      
+      
+      ExplicitStructuredGrid.shallow_copy
+      
+      
+      ExplicitStructuredGrid.show_cells
+      
+      
+      ExplicitStructuredGrid.shrink
+      
+      
+      ExplicitStructuredGrid.slice
+      
+      
+      ExplicitStructuredGrid.slice_along_axis
+      
+      
+      ExplicitStructuredGrid.slice_along_line
+      
+      
+      ExplicitStructuredGrid.slice_orthogonal
+      
+      
+      ExplicitStructuredGrid.split_bodies
+      
+      
+      ExplicitStructuredGrid.streamlines
+      
+      
+      ExplicitStructuredGrid.streamlines_evenly_spaced_2D
+      
+      
+      ExplicitStructuredGrid.streamlines_from_source
+      
+      
+      ExplicitStructuredGrid.surface_indices
+      
+      
+      ExplicitStructuredGrid.tessellate
+      
+      
+      ExplicitStructuredGrid.texture_map_to_plane
+      
+      
+      ExplicitStructuredGrid.texture_map_to_sphere
+      
+      
+      ExplicitStructuredGrid.threshold
+      
+      
+      ExplicitStructuredGrid.threshold_percent
+      
+      
+      ExplicitStructuredGrid.transform
+      
+      
+      ExplicitStructuredGrid.translate
+      
+      
+      ExplicitStructuredGrid.triangulate
+      
+      
+      ExplicitStructuredGrid.warp_by_scalar
+      
+      
+      ExplicitStructuredGrid.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      ExplicitStructuredGrid.active_normals
+      
+      
+      ExplicitStructuredGrid.active_scalars
+      
+      
+      ExplicitStructuredGrid.active_scalars_info
+      
+      
+      ExplicitStructuredGrid.active_scalars_name
+      
+      
+      ExplicitStructuredGrid.active_t_coords
+      
+      
+      ExplicitStructuredGrid.active_tensors
+      
+      
+      ExplicitStructuredGrid.active_tensors_info
+      
+      
+      ExplicitStructuredGrid.active_tensors_name
+      
+      
+      ExplicitStructuredGrid.active_vectors
+      
+      
+      ExplicitStructuredGrid.active_vectors_info
+      
+      
+      ExplicitStructuredGrid.active_vectors_name
+      
+      
+      ExplicitStructuredGrid.actual_memory_size
+      
+      
+      ExplicitStructuredGrid.array_names
+      
+      
+      ExplicitStructuredGrid.arrows
+      
+      
+      ExplicitStructuredGrid.bounds
+      
+      
+      ExplicitStructuredGrid.cell_arrays
+      
+      
+      ExplicitStructuredGrid.cell_data
+      
+      
+      ExplicitStructuredGrid.center
+      
+      
+      ExplicitStructuredGrid.dimensions
+      
+      
+      ExplicitStructuredGrid.field_arrays
+      
+      
+      ExplicitStructuredGrid.field_data
+      
+      
+      ExplicitStructuredGrid.length
+      
+      
+      ExplicitStructuredGrid.memory_address
+      
+      
+      ExplicitStructuredGrid.n_arrays
+      
+      
+      ExplicitStructuredGrid.n_cells
+      
+      
+      ExplicitStructuredGrid.n_points
+      
+      
+      ExplicitStructuredGrid.number_of_cells
+      
+      
+      ExplicitStructuredGrid.number_of_points
+      
+      
+      ExplicitStructuredGrid.point_arrays
+      
+      
+      ExplicitStructuredGrid.point_data
+      
+      
+      ExplicitStructuredGrid.points
+      
+      
+      ExplicitStructuredGrid.t_coords
+      
+      
+      ExplicitStructuredGrid.textures
+      
+      
+      ExplicitStructuredGrid.vectors
+      
+      
+      ExplicitStructuredGrid.visible_bounds
+      
+      
+      ExplicitStructuredGrid.volume
+      
+   
+   

@@ -1,0 +1,6 @@
+y1
+==
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: AreaPlot.y1

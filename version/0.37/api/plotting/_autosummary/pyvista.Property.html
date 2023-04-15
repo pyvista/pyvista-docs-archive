@@ -1,0 +1,1803 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pyvista.Property &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/plotting/_autosummary/pyvista.Property';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="pyvista.Actor" href="pyvista.Actor.html" />
+    <link rel="prev" title="pyvista.Renderer" href="pyvista.Renderer.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core API</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Plotting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../plotting.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qt_plotting.html">PyVista and PyQt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theme.html">Themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Plotter.html">pyvista.Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Renderer.html">pyvista.Renderer</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">pyvista.Property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Actor.html">pyvista.Actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.DataSetMapper.html">pyvista.DataSetMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.LookupTable.html">pyvista.LookupTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.CompositePolyDataMapper.html">pyvista.CompositePolyDataMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.CompositeAttributes.html">pyvista.CompositeAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.BlockAttributes.html">pyvista.BlockAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../charts/index.html">Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conv_func.html">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilities/index.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../readers/index.html">Readers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="pyvista-property">
+<h1>pyvista.Property<a class="headerlink" href="#pyvista-property" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvista.Property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metallic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ambient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffuse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specular_power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">render_points_as_spheres</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">render_lines_as_tubes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lighting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">culling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/plotting/_property.html#Property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.Property" title="Permalink to this definition">#</a></dt>
+<dd><p>Wrap vtkProperty and expose it pythonically.</p>
+<p>This class is used to set the property of actors.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>theme</strong><span class="classifier"><a class="reference internal" href="pyvista.themes.DefaultTheme.html#pyvista.themes.DefaultTheme" title="pyvista.themes.DefaultTheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyvista.themes.DefaultTheme</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Plot-specific theme.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Set the method of shading. One of the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'Physically</span> <span class="pre">based</span> <span class="pre">rendering'</span></code> - Physically based rendering.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'pbr'</span></code> - Alias for Physically based rendering.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Phong'</span></code> - Phong shading.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Gouraud'</span></code> - Gouraud shading.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Flat'</span></code> - Flat Shading.</p></li>
+</ul>
+<p>This parameter is case insensitive.</p>
+</dd>
+<dt><strong>color</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.color_like.html#pyvista.color_like" title="pyvista.color_like"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_like</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Used to make the entire mesh have a single solid color.
+Either a string, RGB list, or hex color string.  For example:
+<code class="docutils literal notranslate"><span class="pre">color='white'</span></code>, <code class="docutils literal notranslate"><span class="pre">color='w'</span></code>, <code class="docutils literal notranslate"><span class="pre">color=[1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0]</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">color='#FFFFFF'</span></code>. Color will be overridden if scalars are
+specified.</p>
+</dd>
+<dt><strong>style</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Visualization style of the mesh.  One of the following:
+<code class="docutils literal notranslate"><span class="pre">style='surface'</span></code>, <code class="docutils literal notranslate"><span class="pre">style='wireframe'</span></code>, <code class="docutils literal notranslate"><span class="pre">style='points'</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">'surface'</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">'wireframe'</span></code> only shows a
+wireframe of the outer geometry.</p>
+</dd>
+<dt><strong>metallic</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Usually this value is either 0 or 1 for a real material
+but any value in between is valid. This parameter is only
+used by PBR interpolation.</p>
+</dd>
+<dt><strong>roughness</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>This value has to be between 0 (glossy) and 1 (rough). A
+glossy material has reflections and a high specular
+part. This parameter is only used by PBR
+interpolation.</p>
+</dd>
+<dt><strong>point_size</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Size of the points represented by this property.</p>
+</dd>
+<dt><strong>opacity</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Opacity of the mesh. A single float value that will be applied globally
+opacity of the mesh and uniformly applied everywhere - should be
+between 0 and 1.</p>
+</dd>
+<dt><strong>ambient</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>When lighting is enabled, this is the amount of light in
+the range of 0 to 1 (default 0.0) that reaches the actor
+when not directed at the light source emitted from the
+viewer.</p>
+</dd>
+<dt><strong>diffuse</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The diffuse lighting coefficient. Default 1.0.</p>
+</dd>
+<dt><strong>specular</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The specular lighting coefficient. Default 0.0.</p>
+</dd>
+<dt><strong>specular_power</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The specular power. Between 0.0 and 128.0.</p>
+</dd>
+<dt><strong>show_edges</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Shows the edges.  Does not apply to a wireframe
+representation.</p>
+</dd>
+<dt><strong>edge_color</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.color_like.html#pyvista.color_like" title="pyvista.color_like"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_like</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The solid color to give the edges when <code class="docutils literal notranslate"><span class="pre">show_edges=True</span></code>.
+Either a string, RGB list, or hex color string.</p>
+</dd>
+<dt><strong>render_points_as_spheres</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Render points as spheres rather than dots.</p>
+</dd>
+<dt><strong>render_lines_as_tubes</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Show lines as thick tubes rather than flat lines.  Control
+the width with <code class="docutils literal notranslate"><span class="pre">line_width</span></code>.</p>
+</dd>
+<dt><strong>lighting</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Enable or disable view direction lighting.</p>
+</dd>
+<dt><strong>line_width</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Thickness of lines.  Only valid for wireframe and surface
+representations.</p>
+</dd>
+<dt><strong>culling</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Does not render faces that are culled. This can be helpful for
+dense surface meshes, especially when edges are visible, but can
+cause flat meshes to be partially displayed. Defaults to
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code>. One of the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code> - Enable backface culling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> - Enable frontface culling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'none'</span></code> - Disable both backface and frontface culling</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Create a <a class="reference internal" href="pyvista.Actor.html#pyvista.Actor" title="pyvista.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.Actor</span></code></a> and assign properties to it.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">actor</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Actor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">actor</span><span class="o">.</span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;Physically based rendering&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">metallic</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">roughness</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Visualize how the property would look when applied to a mesh.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">actor</span><span class="o">.</span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-1_00_00.png" src="../../../_images/pyvista-Property-1_00_00.png" />
+</figure>
+<p>Set custom properties not directly available in
+<code class="xref py py-func docutils literal notranslate"><span class="pre">pyvista.Plotter.add_mesh()</span></code>. Here, we set diffuse, ambient, and
+specular power and colors.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">actor</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">Sphere</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">prop</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse_color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient_color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-1_01_00.png" src="../../../_images/pyvista-Property-1_01_00.png" />
+</figure>
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.ambient">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ambient</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.ambient" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set ambient.</p>
+<p>When lighting is enabled, this is the amount of light in
+the range of 0 to 1 (default 0.0) that reaches the actor
+when not directed at the light source emitted from the
+viewer.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient</span>
+<span class="go">0.2</span>
+</pre></div>
+</div>
+<p>Visualize default ambient light.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-2_00_00.png" src="../../../_images/pyvista-Property-2_00_00.png" />
+</figure>
+<p>Visualize ambient at <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-2_01_00.png" src="../../../_images/pyvista-Property-2_01_00.png" />
+</figure>
+<p>Visualize ambient at <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-2_02_00.png" src="../../../_images/pyvista-Property-2_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.ambient_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ambient_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a></em><a class="headerlink" href="#pyvista.Property.ambient_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the ambient color of this property.</p>
+<p>Either a string, RGB list, or hex color string.  For example:
+<code class="docutils literal notranslate"><span class="pre">color='white'</span></code>, <code class="docutils literal notranslate"><span class="pre">color='w'</span></code>, <code class="docutils literal notranslate"><span class="pre">color=[1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0]</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">color='#FFFFFF'</span></code>. Color will be overridden if scalars are
+specified.</p>
+<p class="rubric">Examples</p>
+<p>Set the ambient color to blue.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient_color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient_color</span>
+<span class="go">Color(name=&#39;blue&#39;, hex=&#39;#0000ffff&#39;)</span>
+</pre></div>
+</div>
+<p>Visualize setting the ambient color to blue with <code class="docutils literal notranslate"><span class="pre">ambient</span> <span class="pre">=</span> <span class="pre">0.1</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">ambient_color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-3_00_00.png" src="../../../_images/pyvista-Property-3_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.anisotropy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">anisotropy</span></span><a class="headerlink" href="#pyvista.Property.anisotropy" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the anisotropy coefficient.</p>
+<p>This value controls the anisotropy of the material (0.0 means
+isotropic). This requires physically based rendering.</p>
+<p>For further details see <a class="reference external" href="https://www.kitware.com/pbr-journey-part-2-anisotropy-model-with-vtk/">PBR Journey Part 2 : Anisotropy model with VTK</a></p>
+<p class="rubric">Notes</p>
+<p>This attribute requires VTK v9.1.0 or newer.</p>
+<p class="rubric">Examples</p>
+<p>Set anisotropy to 0.1</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;pbr&#39;</span>  <span class="c1"># requires physically based rendering</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">anisotropy</span>
+<span class="go">0.1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a></em><a class="headerlink" href="#pyvista.Property.color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the color of this property.</p>
+<p>Either a string, RGB list, or hex color string.  For example:
+<code class="docutils literal notranslate"><span class="pre">color='white'</span></code>, <code class="docutils literal notranslate"><span class="pre">color='w'</span></code>, <code class="docutils literal notranslate"><span class="pre">color=[1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0]</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">color='#FFFFFF'</span></code>. Color will be overridden if scalars are
+specified.</p>
+<p class="rubric">Examples</p>
+<p>Set the color to blue.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">color</span>
+<span class="go">Color(name=&#39;blue&#39;, hex=&#39;#0000ffff&#39;)</span>
+</pre></div>
+</div>
+<p>Visualize setting the property to blue.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-5_00_00.png" src="../../../_images/pyvista-Property-5_00_00.png" />
+</figure>
+<p>Visualize setting the color using an RGB value.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-5_01_00.png" src="../../../_images/pyvista-Property-5_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.Property.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyvista.Property" title="pyvista.plotting._property.Property"><span class="pre">Property</span></a></span></span><a class="reference internal" href="../../../_modules/pyvista/plotting/_property.html#Property.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.Property.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a deep copy of this property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#pyvista.Property" title="pyvista.Property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyvista.Property</span></code></a></dt><dd><p>Deep copy of this property.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop_copy</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.culling">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">culling</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></em><a class="headerlink" href="#pyvista.Property.culling" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set face culling.</p>
+<p>Does not render faces that are culled. This can be helpful for dense
+surface meshes, especially when edges are visible, but can cause flat
+meshes to be partially displayed. Defaults to <code class="docutils literal notranslate"><span class="pre">'none'</span></code>. One of the
+following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code> - Enable backface culling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> - Enable frontface culling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'none'</span></code> - Disable both backface and frontface culling</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<p>Enable back face culling</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">culling</span> <span class="o">=</span> <span class="s1">&#39;back&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">culling</span>
+<span class="go">&#39;back&#39;</span>
+</pre></div>
+</div>
+<p>Plot default culling.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">culling</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-7_00_00.png" src="../../../_images/pyvista-Property-7_00_00.png" />
+</figure>
+<p>Plot backface culling. This looks the same as the default culling
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> because the forward facing faces are already obscuring the
+back faces.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">culling</span> <span class="o">=</span> <span class="s1">&#39;back&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-7_01_00.png" src="../../../_images/pyvista-Property-7_01_00.png" />
+</figure>
+<p>Plot frontface culling. Here, the forward facing faces are hidden
+entirely.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">culling</span> <span class="o">=</span> <span class="s1">&#39;front&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-7_02_00.png" src="../../../_images/pyvista-Property-7_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.diffuse">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">diffuse</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.diffuse" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the diffuse lighting coefficient.</p>
+<p>Default 1.0.</p>
+<p>This is the scattering of light by reflection or transmission. Diffuse
+reflection results when light strikes an irregular surface such as a
+frosted window or the surface of a frosted or coated light bulb.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse</span>
+<span class="go">0.2</span>
+</pre></div>
+</div>
+<p>Visualize default diffuse light.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-8_00_00.png" src="../../../_images/pyvista-Property-8_00_00.png" />
+</figure>
+<p>Visualize diffuse at <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-8_01_00.png" src="../../../_images/pyvista-Property-8_01_00.png" />
+</figure>
+<p>Visualize diffuse at <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-8_02_00.png" src="../../../_images/pyvista-Property-8_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.diffuse_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">diffuse_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a></em><a class="headerlink" href="#pyvista.Property.diffuse_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the diffuse color of this property.</p>
+<p>Either a string, RGB list, or hex color string.  For example:
+<code class="docutils literal notranslate"><span class="pre">color='white'</span></code>, <code class="docutils literal notranslate"><span class="pre">color='w'</span></code>, <code class="docutils literal notranslate"><span class="pre">color=[1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0]</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">color='#FFFFFF'</span></code>.</p>
+<p class="rubric">Examples</p>
+<p>Set the diffuse color to blue.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse_color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse_color</span>
+<span class="go">Color(name=&#39;blue&#39;, hex=&#39;#0000ffff&#39;)</span>
+</pre></div>
+</div>
+<p>Visualize setting the diffuse color to white with <code class="docutils literal notranslate"><span class="pre">diffuse</span> <span class="pre">=</span> <span class="pre">0.5</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">diffuse_color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-9_00_00.png" src="../../../_images/pyvista-Property-9_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.edge_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edge_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a></em><a class="headerlink" href="#pyvista.Property.edge_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the edge color of this property.</p>
+<p>The solid color to give the edges when <code class="docutils literal notranslate"><span class="pre">show_edges=True</span></code>.
+Either a string, RGB list, or hex color string.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">edge_color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">edge_color</span>
+<span class="go">Color(name=&#39;red&#39;, hex=&#39;#ff0000ff&#39;)</span>
+</pre></div>
+</div>
+<p>Visualize red edges. Set the edge’s visibility to <code class="docutils literal notranslate"><span class="pre">True</span></code> so we can see
+them.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">show_edges</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">edge_color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-10_00_00.png" src="../../../_images/pyvista-Property-10_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.interpolation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">interpolation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></em><a class="headerlink" href="#pyvista.Property.interpolation" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the method of shading.</p>
+<p>One of the following options.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'Physically</span> <span class="pre">based</span> <span class="pre">rendering'</span></code> - Physically based rendering.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'pbr'</span></code> - Alias for Physically based rendering.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Phong'</span></code> - Phong shading.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Gouraud'</span></code> - Gouraud shading.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Flat'</span></code> - Flat Shading.</p></li>
+</ul>
+<p>This parameter is case insensitive.</p>
+<p class="rubric">Examples</p>
+<p>Set interpolation to physically based rendering.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;pbr&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span>
+<span class="go">&#39;Physically based rendering&#39;</span>
+</pre></div>
+</div>
+<p>Visualize default flat shading.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;Flat&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-11_00_00.png" src="../../../_images/pyvista-Property-11_00_00.png" />
+</figure>
+<p>Visualize gouraud shading.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;Gouraud&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-11_01_00.png" src="../../../_images/pyvista-Property-11_01_00.png" />
+</figure>
+<p>Visualize phong shading.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;Phong&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-11_02_00.png" src="../../../_images/pyvista-Property-11_02_00.png" />
+</figure>
+<p>Visualize physically based rendering.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;Physically based rendering&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-11_03_00.png" src="../../../_images/pyvista-Property-11_03_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.lighting">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lighting</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pyvista.Property.lighting" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set view direction lighting.</p>
+<p class="rubric">Examples</p>
+<p>Disable lighting.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">lighting</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">lighting</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Visualize it.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-12_00_00.png" src="../../../_images/pyvista-Property-12_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.line_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.line_width" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the line width.</p>
+<p class="rubric">Examples</p>
+<p>Change the line width to <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">line_width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">line_width</span>
+<span class="go">10.0</span>
+</pre></div>
+</div>
+<p>Visualize the default line width.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">line_width</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">show_edges</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-13_00_00.png" src="../../../_images/pyvista-Property-13_00_00.png" />
+</figure>
+<p>Visualize with a line width of 5.0</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">line_width</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-13_01_00.png" src="../../../_images/pyvista-Property-13_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.metallic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metallic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.metallic" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set metallic.</p>
+<p>This requires that the interpolation be set to <code class="docutils literal notranslate"><span class="pre">'Physically</span> <span class="pre">based</span>
+<span class="pre">rendering'</span></code></p>
+<p class="rubric">Examples</p>
+<p>Set metallic to 0.1</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;pbr&#39;</span>  <span class="c1"># requires physically based rendering</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">metallic</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">metallic</span>
+<span class="go">0.1</span>
+</pre></div>
+</div>
+<p>Visualize default metallic.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">metallic</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-14_00_00.png" src="../../../_images/pyvista-Property-14_00_00.png" />
+</figure>
+<p>Visualize metallic at <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">metallic</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-14_01_00.png" src="../../../_images/pyvista-Property-14_01_00.png" />
+</figure>
+<p>Visualize metallic at <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">metallic</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-14_02_00.png" src="../../../_images/pyvista-Property-14_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.opacity">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.opacity" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the opacity of this property.</p>
+<p>Opacity of the mesh. A single float value that will be applied globally
+opacity of the mesh and uniformly applied everywhere. Between 0 and 1.</p>
+<p class="rubric">Examples</p>
+<p>Set opacity to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">opacity</span>
+<span class="go">0.5</span>
+</pre></div>
+</div>
+<p>Visualize default opacity of <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-15_00_00.png" src="../../../_images/pyvista-Property-15_00_00.png" />
+</figure>
+<p>Visualize opacity of <code class="docutils literal notranslate"><span class="pre">0.75</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-15_01_00.png" src="../../../_images/pyvista-Property-15_01_00.png" />
+</figure>
+<p>Visualize opacity of <code class="docutils literal notranslate"><span class="pre">0.25</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-15_02_00.png" src="../../../_images/pyvista-Property-15_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.Property.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/pyvista/plotting/_property.html#Property.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.Property.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot this property on the Stanford Bunny.</p>
+<p>This is useful for visualizing how this property would be applied to an
+actor.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>**kwargs</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Keyword arguments for <a class="reference internal" href="pyvista.Plotter.html#pyvista.Plotter" title="pyvista.Plotter"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.Plotter</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">line_width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">specular</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-16_00_00.png" src="../../../_images/pyvista-Property-16_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.point_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">point_size</span></span><a class="headerlink" href="#pyvista.Property.point_size" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the point size.</p>
+<p class="rubric">Examples</p>
+<p>Change the point size to <code class="docutils literal notranslate"><span class="pre">10.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">point_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">point_size</span>
+<span class="go">10.0</span>
+</pre></div>
+</div>
+<p>Visualize a point size of <code class="docutils literal notranslate"><span class="pre">5.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">point_size</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;points&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-17_00_00.png" src="../../../_images/pyvista-Property-17_00_00.png" />
+</figure>
+<p>Visualize the a point size of <code class="docutils literal notranslate"><span class="pre">10.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">point_size</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-17_01_00.png" src="../../../_images/pyvista-Property-17_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.render_lines_as_tubes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">render_lines_as_tubes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pyvista.Property.render_lines_as_tubes" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set rendering lines as tubes.</p>
+<p>Requires representation style be set to <code class="docutils literal notranslate"><span class="pre">'wireframe'</span></code>.</p>
+<p class="rubric">Examples</p>
+<p>Enable rendering lines as tubes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;wireframe&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">line_width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_lines_as_tubes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_lines_as_tubes</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Visualize default line rendering.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_lines_as_tubes</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-18_00_00.png" src="../../../_images/pyvista-Property-18_00_00.png" />
+</figure>
+<p>Visualize rendering lines as tubes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_lines_as_tubes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-18_01_00.png" src="../../../_images/pyvista-Property-18_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.render_points_as_spheres">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">render_points_as_spheres</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pyvista.Property.render_points_as_spheres" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set rendering points as spheres.</p>
+<p>Requires representation style be set to <code class="docutils literal notranslate"><span class="pre">'points'</span></code>.</p>
+<p class="rubric">Examples</p>
+<p>Enable rendering points as spheres</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;points&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">point_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_points_as_spheres</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_points_as_spheres</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Visualize default point rendering.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_points_as_spheres</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-19_00_00.png" src="../../../_images/pyvista-Property-19_00_00.png" />
+</figure>
+<p>Visualize rendering points as spheres.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">render_points_as_spheres</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-19_01_00.png" src="../../../_images/pyvista-Property-19_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.roughness">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">roughness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.roughness" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set roughness.</p>
+<p>This requires that the interpolation be set to <code class="docutils literal notranslate"><span class="pre">'Physically</span> <span class="pre">based</span>
+<span class="pre">rendering'</span></code></p>
+<p class="rubric">Examples</p>
+<p>Set roughness to 0.1</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;pbr&#39;</span>  <span class="c1"># requires physically based rendering</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">metallic</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># helps to visualize metallic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">roughness</span>
+<span class="go">0.1</span>
+</pre></div>
+</div>
+<p>Visualize default roughness with metallic of <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-20_00_00.png" src="../../../_images/pyvista-Property-20_00_00.png" />
+</figure>
+<p>Visualize roughness at <code class="docutils literal notranslate"><span class="pre">0.0</span></code> with metallic of <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-20_01_00.png" src="../../../_images/pyvista-Property-20_01_00.png" />
+</figure>
+<p>Visualize roughness at <code class="docutils literal notranslate"><span class="pre">1.0</span></code> with metallic of <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-20_02_00.png" src="../../../_images/pyvista-Property-20_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.show_edges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">show_edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pyvista.Property.show_edges" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the visibility of edges.</p>
+<p>Shows or hides the edges.  Does not apply to a wireframe
+representation.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">show_edges</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">show_edges</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Visualize default edge visibility of <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">show_edges</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-21_00_00.png" src="../../../_images/pyvista-Property-21_00_00.png" />
+</figure>
+<p>Visualize edge visibility of <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">show_edges</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-21_01_00.png" src="../../../_images/pyvista-Property-21_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.specular">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">specular</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.specular" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set specular.</p>
+<p>Default 0.0</p>
+<p>Specular lighting simulates the bright spot of a light that appears on
+shiny objects.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span>
+<span class="go">0.2</span>
+</pre></div>
+</div>
+<p>Visualize default specular light.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-22_00_00.png" src="../../../_images/pyvista-Property-22_00_00.png" />
+</figure>
+<p>Visualize specular at <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-22_01_00.png" src="../../../_images/pyvista-Property-22_01_00.png" />
+</figure>
+<p>Visualize specular at <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-22_02_00.png" src="../../../_images/pyvista-Property-22_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.specular_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">specular_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a></em><a class="headerlink" href="#pyvista.Property.specular_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the specular color of this property.</p>
+<p>Either a string, RGB list, or hex color string.  For example:
+<code class="docutils literal notranslate"><span class="pre">color='white'</span></code>, <code class="docutils literal notranslate"><span class="pre">color='w'</span></code>, <code class="docutils literal notranslate"><span class="pre">color=[1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0]</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">color='#FFFFFF'</span></code>.</p>
+<p class="rubric">Examples</p>
+<p>Set the specular color to blue.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_color</span>
+<span class="go">Color(name=&#39;blue&#39;, hex=&#39;#0000ffff&#39;)</span>
+</pre></div>
+</div>
+<p>Visualize setting the specular color to blue with <code class="docutils literal notranslate"><span class="pre">specular</span> <span class="pre">=</span> <span class="pre">0.2</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-23_00_00.png" src="../../../_images/pyvista-Property-23_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.specular_power">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">specular_power</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#pyvista.Property.specular_power" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set specular power.</p>
+<p>The specular power. Between 0.0 and 128.0. Default 1.0</p>
+<p class="rubric">Examples</p>
+<p>Set specular power to 5.0</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># enable specular</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_power</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_power</span>
+<span class="go">5.0</span>
+</pre></div>
+</div>
+<p>Visualize default specular power.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_power</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-24_00_00.png" src="../../../_images/pyvista-Property-24_00_00.png" />
+</figure>
+<p>Visualize specular power at <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_power</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-24_01_00.png" src="../../../_images/pyvista-Property-24_01_00.png" />
+</figure>
+<p>Visualize specular power at <code class="docutils literal notranslate"><span class="pre">5.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_power</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-24_02_00.png" src="../../../_images/pyvista-Property-24_02_00.png" />
+</figure>
+<p>Visualize specular power at <code class="docutils literal notranslate"><span class="pre">128.0</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">specular_power</span> <span class="o">=</span> <span class="mf">128.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-24_03_00.png" src="../../../_images/pyvista-Property-24_03_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.Property.style">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">style</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></em><a class="headerlink" href="#pyvista.Property.style" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set Visualization style of the mesh.</p>
+<p>One of the following (case insensitive):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'surface'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'wireframe'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'points'</span></code></p></li>
+</ul>
+<p class="rubric">Examples</p>
+<p>Set the representation style to <code class="docutils literal notranslate"><span class="pre">'Wireframe'</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Property</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;wireframe&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&#39;Wireframe&#39;</span>
+</pre></div>
+</div>
+<p>Visualize default surface representation style.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;surface&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-25_00_00.png" src="../../../_images/pyvista-Property-25_00_00.png" />
+</figure>
+<p>Visualize wireframe representation style.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;wireframe&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-25_01_00.png" src="../../../_images/pyvista-Property-25_01_00.png" />
+</figure>
+<p>Visualize points representation style.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;points&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">point_size</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-Property-25_02_00.png" src="../../../_images/pyvista-Property-25_02_00.png" />
+</figure>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyvista.Property">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Property
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.ambient">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.ambient
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.ambient_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.ambient_color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.anisotropy">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.anisotropy
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.copy">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.copy()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.culling">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.culling
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.diffuse">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.diffuse
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.diffuse_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.diffuse_color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.edge_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.edge_color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.interpolation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.interpolation
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.lighting">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.lighting
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.line_width">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.line_width
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.metallic">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.metallic
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.opacity">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.opacity
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.plot">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.plot()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.point_size">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.point_size
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.render_lines_as_tubes">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.render_lines_as_tubes
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.render_points_as_spheres">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.render_points_as_spheres
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.roughness">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.roughness
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.show_edges">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.show_edges
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.specular">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.specular
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.specular_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.specular_color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.specular_power">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.specular_power
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.Property.style">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Property.style
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyvista/pyvista/edit/main/doc/api/plotting/_autosummary/pyvista.Property.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/api/plotting/_autosummary/pyvista.Property.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

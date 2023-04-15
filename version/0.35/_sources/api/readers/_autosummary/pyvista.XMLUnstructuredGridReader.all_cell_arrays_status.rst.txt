@@ -1,0 +1,6 @@
+all\_cell\_arrays\_status
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: XMLUnstructuredGridReader.all_cell_arrays_status

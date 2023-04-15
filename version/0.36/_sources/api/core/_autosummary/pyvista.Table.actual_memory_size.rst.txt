@@ -1,0 +1,6 @@
+actual\_memory\_size
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Table.actual_memory_size

@@ -1,0 +1,7 @@
+﻿pyvista.DataSetFilters
+======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DataSetFilters
+   :members:

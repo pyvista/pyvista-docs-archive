@@ -1,0 +1,6 @@
+memory\_address
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: StructuredGrid.memory_address

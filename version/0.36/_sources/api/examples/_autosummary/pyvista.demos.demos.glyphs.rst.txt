@@ -1,0 +1,6 @@
+glyphs
+======
+
+.. currentmodule:: pyvista.demos.demos
+
+.. autofunction:: glyphs

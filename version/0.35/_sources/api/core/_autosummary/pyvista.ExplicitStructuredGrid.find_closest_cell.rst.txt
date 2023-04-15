@@ -1,0 +1,6 @@
+find\_closest\_cell
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.find_closest_cell

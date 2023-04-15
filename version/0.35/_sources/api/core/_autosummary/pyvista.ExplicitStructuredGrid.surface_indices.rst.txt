@@ -1,0 +1,6 @@
+surface\_indices
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.surface_indices

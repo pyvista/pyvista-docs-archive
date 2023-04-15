@@ -1,0 +1,679 @@
+﻿pyvista.RectilinearGrid
+=======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: RectilinearGrid
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      RectilinearGrid.add_field_array
+      
+      
+      RectilinearGrid.add_field_data
+      
+      
+      RectilinearGrid.cast_to_pointset
+      
+      
+      RectilinearGrid.cast_to_structured_grid
+      
+      
+      RectilinearGrid.cast_to_unstructured_grid
+      
+      
+      RectilinearGrid.cell_bounds
+      
+      
+      RectilinearGrid.cell_centers
+      
+      
+      RectilinearGrid.cell_data_to_point_data
+      
+      
+      RectilinearGrid.cell_n_points
+      
+      
+      RectilinearGrid.cell_point_ids
+      
+      
+      RectilinearGrid.cell_points
+      
+      
+      RectilinearGrid.cell_type
+      
+      
+      RectilinearGrid.clear_arrays
+      
+      
+      RectilinearGrid.clear_cell_arrays
+      
+      
+      RectilinearGrid.clear_cell_data
+      
+      
+      RectilinearGrid.clear_data
+      
+      
+      RectilinearGrid.clear_field_arrays
+      
+      
+      RectilinearGrid.clear_field_data
+      
+      
+      RectilinearGrid.clear_point_arrays
+      
+      
+      RectilinearGrid.clear_point_data
+      
+      
+      RectilinearGrid.clear_textures
+      
+      
+      RectilinearGrid.clip
+      
+      
+      RectilinearGrid.clip_box
+      
+      
+      RectilinearGrid.clip_scalar
+      
+      
+      RectilinearGrid.clip_surface
+      
+      
+      RectilinearGrid.compute_cell_quality
+      
+      
+      RectilinearGrid.compute_cell_sizes
+      
+      
+      RectilinearGrid.compute_derivative
+      
+      
+      RectilinearGrid.compute_implicit_distance
+      
+      
+      RectilinearGrid.connectivity
+      
+      
+      RectilinearGrid.contour
+      
+      
+      RectilinearGrid.copy
+      
+      
+      RectilinearGrid.copy_attributes
+      
+      
+      RectilinearGrid.copy_meta_from
+      
+      
+      RectilinearGrid.copy_structure
+      
+      
+      RectilinearGrid.ctp
+      
+      
+      RectilinearGrid.decimate_boundary
+      
+      
+      RectilinearGrid.deep_copy
+      
+      
+      RectilinearGrid.delaunay_3d
+      
+      
+      RectilinearGrid.elevation
+      
+      
+      RectilinearGrid.extract_all_edges
+      
+      
+      RectilinearGrid.extract_cells
+      
+      
+      RectilinearGrid.extract_feature_edges
+      
+      
+      RectilinearGrid.extract_geometry
+      
+      
+      RectilinearGrid.extract_largest
+      
+      
+      RectilinearGrid.extract_points
+      
+      
+      RectilinearGrid.extract_surface
+      
+      
+      RectilinearGrid.find_cells_along_line
+      
+      
+      RectilinearGrid.find_cells_within_bounds
+      
+      
+      RectilinearGrid.find_closest_cell
+      
+      
+      RectilinearGrid.find_closest_point
+      
+      
+      RectilinearGrid.find_containing_cell
+      
+      
+      RectilinearGrid.flip_normal
+      
+      
+      RectilinearGrid.flip_x
+      
+      
+      RectilinearGrid.flip_y
+      
+      
+      RectilinearGrid.flip_z
+      
+      
+      RectilinearGrid.get_array
+      
+      
+      RectilinearGrid.get_array_association
+      
+      
+      RectilinearGrid.get_data_range
+      
+      
+      RectilinearGrid.glyph
+      
+      
+      RectilinearGrid.head
+      
+      
+      RectilinearGrid.integrate_data
+      
+      
+      RectilinearGrid.interpolate
+      
+      
+      RectilinearGrid.merge
+      
+      
+      RectilinearGrid.outline
+      
+      
+      RectilinearGrid.outline_corners
+      
+      
+      RectilinearGrid.override
+      
+      
+      RectilinearGrid.overwrite
+      
+      
+      RectilinearGrid.plot
+      
+      
+      RectilinearGrid.plot_over_circular_arc
+      
+      
+      RectilinearGrid.plot_over_circular_arc_normal
+      
+      
+      RectilinearGrid.plot_over_line
+      
+      
+      RectilinearGrid.point_data_to_cell_data
+      
+      
+      RectilinearGrid.point_is_inside_cell
+      
+      
+      RectilinearGrid.probe
+      
+      
+      RectilinearGrid.ptc
+      
+      
+      RectilinearGrid.reflect
+      
+      
+      RectilinearGrid.rename_array
+      
+      
+      RectilinearGrid.rotate_vector
+      
+      
+      RectilinearGrid.rotate_x
+      
+      
+      RectilinearGrid.rotate_y
+      
+      
+      RectilinearGrid.rotate_z
+      
+      
+      RectilinearGrid.sample
+      
+      
+      RectilinearGrid.sample_over_circular_arc
+      
+      
+      RectilinearGrid.sample_over_circular_arc_normal
+      
+      
+      RectilinearGrid.sample_over_line
+      
+      
+      RectilinearGrid.sample_over_multiple_lines
+      
+      
+      RectilinearGrid.save
+      
+      
+      RectilinearGrid.scale
+      
+      
+      RectilinearGrid.select_enclosed_points
+      
+      
+      RectilinearGrid.set_active_scalars
+      
+      
+      RectilinearGrid.set_active_tensors
+      
+      
+      RectilinearGrid.set_active_vectors
+      
+      
+      RectilinearGrid.shallow_copy
+      
+      
+      RectilinearGrid.shrink
+      
+      
+      RectilinearGrid.slice
+      
+      
+      RectilinearGrid.slice_along_axis
+      
+      
+      RectilinearGrid.slice_along_line
+      
+      
+      RectilinearGrid.slice_orthogonal
+      
+      
+      RectilinearGrid.split_bodies
+      
+      
+      RectilinearGrid.streamlines
+      
+      
+      RectilinearGrid.streamlines_evenly_spaced_2D
+      
+      
+      RectilinearGrid.streamlines_from_source
+      
+      
+      RectilinearGrid.surface_indices
+      
+      
+      RectilinearGrid.tessellate
+      
+      
+      RectilinearGrid.texture_map_to_plane
+      
+      
+      RectilinearGrid.texture_map_to_sphere
+      
+      
+      RectilinearGrid.threshold
+      
+      
+      RectilinearGrid.threshold_percent
+      
+      
+      RectilinearGrid.transform
+      
+      
+      RectilinearGrid.translate
+      
+      
+      RectilinearGrid.triangulate
+      
+      
+      RectilinearGrid.warp_by_scalar
+      
+      
+      RectilinearGrid.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      RectilinearGrid.active_normals
+      
+      
+      RectilinearGrid.active_scalars
+      
+      
+      RectilinearGrid.active_scalars_info
+      
+      
+      RectilinearGrid.active_scalars_name
+      
+      
+      RectilinearGrid.active_t_coords
+      
+      
+      RectilinearGrid.active_tensors
+      
+      
+      RectilinearGrid.active_tensors_info
+      
+      
+      RectilinearGrid.active_tensors_name
+      
+      
+      RectilinearGrid.active_vectors
+      
+      
+      RectilinearGrid.active_vectors_info
+      
+      
+      RectilinearGrid.active_vectors_name
+      
+      
+      RectilinearGrid.actual_memory_size
+      
+      
+      RectilinearGrid.array_names
+      
+      
+      RectilinearGrid.arrows
+      
+      
+      RectilinearGrid.bounds
+      
+      
+      RectilinearGrid.cell_arrays
+      
+      
+      RectilinearGrid.cell_data
+      
+      
+      RectilinearGrid.center
+      
+      
+      RectilinearGrid.dimensions
+      
+      
+      RectilinearGrid.field_arrays
+      
+      
+      RectilinearGrid.field_data
+      
+      
+      RectilinearGrid.length
+      
+      
+      RectilinearGrid.memory_address
+      
+      
+      RectilinearGrid.meshgrid
+      
+      
+      RectilinearGrid.n_arrays
+      
+      
+      RectilinearGrid.n_cells
+      
+      
+      RectilinearGrid.n_points
+      
+      
+      RectilinearGrid.number_of_cells
+      
+      
+      RectilinearGrid.number_of_points
+      
+      
+      RectilinearGrid.point_arrays
+      
+      
+      RectilinearGrid.point_data
+      
+      
+      RectilinearGrid.points
+      
+      
+      RectilinearGrid.t_coords
+      
+      
+      RectilinearGrid.textures
+      
+      
+      RectilinearGrid.vectors
+      
+      
+      RectilinearGrid.volume
+      
+      
+      RectilinearGrid.x
+      
+      
+      RectilinearGrid.y
+      
+      
+      RectilinearGrid.z
+      
+   
+   

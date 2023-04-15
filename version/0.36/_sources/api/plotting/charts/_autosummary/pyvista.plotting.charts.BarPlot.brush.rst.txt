@@ -1,0 +1,6 @@
+brush
+=====
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: BarPlot.brush

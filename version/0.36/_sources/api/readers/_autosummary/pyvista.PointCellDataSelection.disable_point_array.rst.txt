@@ -1,0 +1,6 @@
+disable\_point\_array
+=====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointCellDataSelection.disable_point_array

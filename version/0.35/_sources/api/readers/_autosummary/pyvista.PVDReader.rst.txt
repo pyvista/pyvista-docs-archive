@@ -1,0 +1,70 @@
+﻿pyvista.PVDReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PVDReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PVDReader.hide_progress
+      
+      
+      PVDReader.read
+      
+      
+      PVDReader.set_active_time_point
+      
+      
+      PVDReader.set_active_time_value
+      
+      
+      PVDReader.show_progress
+      
+      
+      PVDReader.time_point_value
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      PVDReader.active_datasets
+      
+      
+      PVDReader.active_readers
+      
+      
+      PVDReader.active_time_value
+      
+      
+      PVDReader.datasets
+      
+      
+      PVDReader.number_time_points
+      
+      
+      PVDReader.path
+      
+      
+      PVDReader.reader
+      
+      
+      PVDReader.time_values
+      
+   
+   

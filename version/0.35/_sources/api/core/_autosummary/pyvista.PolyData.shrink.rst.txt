@@ -1,0 +1,6 @@
+shrink
+======
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.shrink

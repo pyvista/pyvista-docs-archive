@@ -1,0 +1,6 @@
+cast\_to\_unstructured\_grid
+============================
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.cast_to_unstructured_grid

@@ -1,0 +1,2224 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pyvista.PolyData &#8212; PyVista 0.36.1 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="add_field_array" href="pyvista.PolyData.add_field_array.html" />
+    <link rel="prev" title="volume" href="pyvista.PointSet.volume.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../../index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.36  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/core/_autosummary/pyvista.PolyData and {'json_url': 'https://<DEFAULT_CNAME>/versions.json', 'version_match': '0.36'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/core/_autosummary/pyvista.PolyData.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://<DEFAULT_CNAME>/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/core/_autosummary/pyvista.PolyData.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.36.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.36") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API Reference
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Core API
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../objects.html">
+     DataObject
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dataset.html">
+     Data Sets
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../pointsets.html">
+     Point Sets
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.PointSet.html">
+       pyvista.PointSet
+      </a>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="current reference internal" href="#">
+       pyvista.PolyData
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.add_field_array.html">
+         add_field_array
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.add_field_data.html">
+         add_field_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.boolean_add.html">
+         boolean_add
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.boolean_cut.html">
+         boolean_cut
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.boolean_difference.html">
+         boolean_difference
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.boolean_intersection.html">
+         boolean_intersection
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.boolean_union.html">
+         boolean_union
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cast_to_pointset.html">
+         cast_to_pointset
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cast_to_unstructured_grid.html">
+         cast_to_unstructured_grid
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_bounds.html">
+         cell_bounds
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_centers.html">
+         cell_centers
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_data_to_point_data.html">
+         cell_data_to_point_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_n_points.html">
+         cell_n_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_point_ids.html">
+         cell_point_ids
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_points.html">
+         cell_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_type.html">
+         cell_type
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.center_of_mass.html">
+         center_of_mass
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clean.html">
+         clean
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_arrays.html">
+         clear_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_cell_arrays.html">
+         clear_cell_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_cell_data.html">
+         clear_cell_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_data.html">
+         clear_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_field_arrays.html">
+         clear_field_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_field_data.html">
+         clear_field_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_point_arrays.html">
+         clear_point_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_point_data.html">
+         clear_point_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clear_textures.html">
+         clear_textures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clip.html">
+         clip
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clip_box.html">
+         clip_box
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clip_closed_surface.html">
+         clip_closed_surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clip_scalar.html">
+         clip_scalar
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.clip_surface.html">
+         clip_surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.collision.html">
+         collision
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.compute_arc_length.html">
+         compute_arc_length
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.compute_cell_quality.html">
+         compute_cell_quality
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.compute_cell_sizes.html">
+         compute_cell_sizes
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.compute_derivative.html">
+         compute_derivative
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.compute_implicit_distance.html">
+         compute_implicit_distance
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.compute_normals.html">
+         compute_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.connectivity.html">
+         connectivity
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.contour.html">
+         contour
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.copy.html">
+         copy
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.copy_attributes.html">
+         copy_attributes
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.copy_meta_from.html">
+         copy_meta_from
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.copy_structure.html">
+         copy_structure
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.ctp.html">
+         ctp
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.curvature.html">
+         curvature
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.decimate.html">
+         decimate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.decimate_boundary.html">
+         decimate_boundary
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.decimate_pro.html">
+         decimate_pro
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.deep_copy.html">
+         deep_copy
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.delaunay_2d.html">
+         delaunay_2d
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.delaunay_3d.html">
+         delaunay_3d
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.edge_mask.html">
+         edge_mask
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.elevation.html">
+         elevation
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extract_all_edges.html">
+         extract_all_edges
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extract_cells.html">
+         extract_cells
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extract_feature_edges.html">
+         extract_feature_edges
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extract_geometry.html">
+         extract_geometry
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extract_largest.html">
+         extract_largest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extract_points.html">
+         extract_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extract_surface.html">
+         extract_surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extrude.html">
+         extrude
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extrude_rotate.html">
+         extrude_rotate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.extrude_trim.html">
+         extrude_trim
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.fill_holes.html">
+         fill_holes
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.find_cells_along_line.html">
+         find_cells_along_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.find_cells_within_bounds.html">
+         find_cells_within_bounds
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.find_closest_cell.html">
+         find_closest_cell
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.find_closest_point.html">
+         find_closest_point
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.find_containing_cell.html">
+         find_containing_cell
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.flip_normal.html">
+         flip_normal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.flip_normals.html">
+         flip_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.flip_x.html">
+         flip_x
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.flip_y.html">
+         flip_y
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.flip_z.html">
+         flip_z
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.geodesic.html">
+         geodesic
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.geodesic_distance.html">
+         geodesic_distance
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.get_array.html">
+         get_array
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.get_array_association.html">
+         get_array_association
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.get_data_range.html">
+         get_data_range
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.glyph.html">
+         glyph
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.head.html">
+         head
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.integrate_data.html">
+         integrate_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.interpolate.html">
+         interpolate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.intersection.html">
+         intersection
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.merge.html">
+         merge
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.multi_ray_trace.html">
+         multi_ray_trace
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.outline.html">
+         outline
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.outline_corners.html">
+         outline_corners
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.override.html">
+         override
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.overwrite.html">
+         overwrite
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.plot.html">
+         plot
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.plot_boundaries.html">
+         plot_boundaries
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.plot_curvature.html">
+         plot_curvature
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.plot_normals.html">
+         plot_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.plot_over_circular_arc.html">
+         plot_over_circular_arc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.plot_over_circular_arc_normal.html">
+         plot_over_circular_arc_normal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.plot_over_line.html">
+         plot_over_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.point_data_to_cell_data.html">
+         point_data_to_cell_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.point_is_inside_cell.html">
+         point_is_inside_cell
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.points_to_double.html">
+         points_to_double
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.probe.html">
+         probe
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.project_points_to_plane.html">
+         project_points_to_plane
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.ptc.html">
+         ptc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.ray_trace.html">
+         ray_trace
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.reconstruct_surface.html">
+         reconstruct_surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.reflect.html">
+         reflect
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.remove_cells.html">
+         remove_cells
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.remove_points.html">
+         remove_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.rename_array.html">
+         rename_array
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.ribbon.html">
+         ribbon
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.rotate_vector.html">
+         rotate_vector
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.rotate_x.html">
+         rotate_x
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.rotate_y.html">
+         rotate_y
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.rotate_z.html">
+         rotate_z
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.sample.html">
+         sample
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.sample_over_circular_arc.html">
+         sample_over_circular_arc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.sample_over_circular_arc_normal.html">
+         sample_over_circular_arc_normal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.sample_over_line.html">
+         sample_over_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.sample_over_multiple_lines.html">
+         sample_over_multiple_lines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.save.html">
+         save
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.scale.html">
+         scale
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.select_enclosed_points.html">
+         select_enclosed_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.set_active_scalars.html">
+         set_active_scalars
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.set_active_tensors.html">
+         set_active_tensors
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.set_active_vectors.html">
+         set_active_vectors
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.shallow_copy.html">
+         shallow_copy
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.shrink.html">
+         shrink
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.slice.html">
+         slice
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.slice_along_axis.html">
+         slice_along_axis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.slice_along_line.html">
+         slice_along_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.slice_orthogonal.html">
+         slice_orthogonal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.smooth.html">
+         smooth
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.smooth_taubin.html">
+         smooth_taubin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.split_bodies.html">
+         split_bodies
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.streamlines.html">
+         streamlines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.streamlines_evenly_spaced_2D.html">
+         streamlines_evenly_spaced_2D
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.streamlines_from_source.html">
+         streamlines_from_source
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.strip.html">
+         strip
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.subdivide.html">
+         subdivide
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.subdivide_adaptive.html">
+         subdivide_adaptive
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.surface_indices.html">
+         surface_indices
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.tessellate.html">
+         tessellate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.texture_map_to_plane.html">
+         texture_map_to_plane
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.texture_map_to_sphere.html">
+         texture_map_to_sphere
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.threshold.html">
+         threshold
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.threshold_percent.html">
+         threshold_percent
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.transform.html">
+         transform
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.translate.html">
+         translate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.triangulate.html">
+         triangulate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.tube.html">
+         tube
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.warp_by_scalar.html">
+         warp_by_scalar
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.warp_by_vector.html">
+         warp_by_vector
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_normals.html">
+         active_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_scalars.html">
+         active_scalars
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_scalars_info.html">
+         active_scalars_info
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_scalars_name.html">
+         active_scalars_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_t_coords.html">
+         active_t_coords
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_tensors.html">
+         active_tensors
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_tensors_info.html">
+         active_tensors_info
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_tensors_name.html">
+         active_tensors_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_vectors.html">
+         active_vectors
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_vectors_info.html">
+         active_vectors_info
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.active_vectors_name.html">
+         active_vectors_name
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.actual_memory_size.html">
+         actual_memory_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.area.html">
+         area
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.array_names.html">
+         array_names
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.arrows.html">
+         arrows
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.bounds.html">
+         bounds
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_arrays.html">
+         cell_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_data.html">
+         cell_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.cell_normals.html">
+         cell_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.center.html">
+         center
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.face_normals.html">
+         face_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.faces.html">
+         faces
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.field_arrays.html">
+         field_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.field_data.html">
+         field_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.is_all_triangles.html">
+         is_all_triangles
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.is_manifold.html">
+         is_manifold
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.length.html">
+         length
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.lines.html">
+         lines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.memory_address.html">
+         memory_address
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.n_arrays.html">
+         n_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.n_cells.html">
+         n_cells
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.n_faces.html">
+         n_faces
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.n_lines.html">
+         n_lines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.n_open_edges.html">
+         n_open_edges
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.n_points.html">
+         n_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.n_verts.html">
+         n_verts
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.number_of_cells.html">
+         number_of_cells
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.number_of_faces.html">
+         number_of_faces
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.number_of_points.html">
+         number_of_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.obbTree.html">
+         obbTree
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.point_arrays.html">
+         point_arrays
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.point_data.html">
+         point_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.point_normals.html">
+         point_normals
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.points.html">
+         points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.t_coords.html">
+         t_coords
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.textures.html">
+         textures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.vectors.html">
+         vectors
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.verts.html">
+         verts
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.PolyData.volume.html">
+         volume
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.UnstructuredGrid.html">
+       pyvista.UnstructuredGrid
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.StructuredGrid.html">
+       pyvista.StructuredGrid
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.ExplicitStructuredGrid.html">
+       pyvista.ExplicitStructuredGrid
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grids.html">
+     Gridded Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composite.html">
+     Composite Datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../filters.html">
+     Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../camera.html">
+     Cameras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lights.html">
+     Lights
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../helpers.html">
+     Helpers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../misc.html">
+     Miscellaneous
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plotting/index.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../utilities/index.html">
+   Utilities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../readers/index.html">
+   Readers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../examples/index.html">
+   Examples
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyvista/pyvista/edit/main/doc/api/core/_autosummary/pyvista.PolyData.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyvista-polydata">
+<h1>pyvista.PolyData<a class="headerlink" href="#pyvista-polydata" title="Permalink to this headline">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvista.PolyData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PolyData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_inp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">faces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_faces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_float</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/core/pointset.html#PolyData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.PolyData" title="Permalink to this definition">#</a></dt>
+<dd><p>Dataset consisting of surface geometry (e.g. vertices, lines, and polygons).</p>
+<p>Can be initialized in several ways:</p>
+<ul class="simple">
+<li><p>Create an empty mesh</p></li>
+<li><p>Initialize from a vtk.vtkPolyData</p></li>
+<li><p>Using vertices</p></li>
+<li><p>Using vertices and faces</p></li>
+<li><p>From a file</p></li>
+</ul>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>var_inp</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vtk.vtkPolyData</span></code>, <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/glossary.html#term-sequence" title="(in Python v3.12)"><span>sequence</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Flexible input type.  Can be a <code class="docutils literal notranslate"><span class="pre">vtk.vtkPolyData</span></code>, in which case
+this PolyData object will be copied if <code class="docutils literal notranslate"><span class="pre">deep=True</span></code> and will
+be a shallow copy if <code class="docutils literal notranslate"><span class="pre">deep=False</span></code>.</p>
+<p>Also accepts a path, which may be local path as in
+<code class="docutils literal notranslate"><span class="pre">'my_mesh.stl'</span></code> or global path like <code class="docutils literal notranslate"><span class="pre">'/tmp/my_mesh.ply'</span></code>
+or <code class="docutils literal notranslate"><span class="pre">'C:/Users/user/my_mesh.ply'</span></code>.</p>
+<p>Otherwise, this must be a points array or list containing one
+or more points.  Each point must have 3 dimensions.</p>
+</dd>
+<dt><strong>faces</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/glossary.html#term-sequence" title="(in Python v3.12)"><span>sequence</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Face connectivity array.  Faces must contain padding
+indicating the number of points in the face.  For example, the
+two faces <code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">11,</span> <span class="pre">12]</span></code> and <code class="docutils literal notranslate"><span class="pre">[20,</span> <span class="pre">21,</span> <span class="pre">22,</span> <span class="pre">23]</span></code> will be
+represented as <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">10,</span> <span class="pre">11,</span> <span class="pre">12,</span> <span class="pre">4,</span> <span class="pre">20,</span> <span class="pre">21,</span> <span class="pre">22,</span> <span class="pre">23]</span></code>.  This
+lets you have an arbitrary number of points per face.</p>
+<p>When not including the face connectivity array, each point
+will be assigned to a single vertex.  This is used for point
+clouds that have no connectivity.</p>
+</dd>
+<dt><strong>n_faces</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of faces in the <code class="docutils literal notranslate"><span class="pre">faces</span></code> connectivity array.  While
+optional, setting this speeds up the creation of the
+<code class="docutils literal notranslate"><span class="pre">PolyData</span></code>.</p>
+</dd>
+<dt><strong>lines</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/glossary.html#term-sequence" title="(in Python v3.12)"><span>sequence</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The line connectivity array.  Like <code class="docutils literal notranslate"><span class="pre">faces</span></code>, this array
+requires padding indicating the number of points in a line
+segment.  For example, the two line segments <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> and
+<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code> will be represented as
+<code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">4,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code>.</p>
+</dd>
+<dt><strong>n_lines</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of lines in the <code class="docutils literal notranslate"><span class="pre">lines</span></code> connectivity array.  While
+optional, setting this speeds up the creation of the
+<code class="docutils literal notranslate"><span class="pre">PolyData</span></code>.</p>
+</dd>
+<dt><strong>deep</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to copy the inputs, or to create a mesh from them
+without copying them.  Setting <code class="docutils literal notranslate"><span class="pre">deep=True</span></code> ensures that the
+original arrays can be modified outside the mesh without
+affecting the mesh. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>force_ext</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>If initializing from a file, force the reader to treat the
+file as if it had this extension as opposed to the one in the
+file.</p>
+</dd>
+<dt><strong>force_float</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Casts the datatype to <code class="docutils literal notranslate"><span class="pre">float32</span></code> if points datatype is
+non-float.  Default <code class="docutils literal notranslate"><span class="pre">True</span></code>. Set this to <code class="docutils literal notranslate"><span class="pre">False</span></code> to allow
+non-float types, though this may lead to truncation of
+intermediate floats when transforming datasets.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+</pre></div>
+</div>
+<p>Create an empty mesh.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">PolyData</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Initialize from a <code class="docutils literal notranslate"><span class="pre">vtk.vtkPolyData</span></code> object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vtkobj</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkPolyData</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">vtkobj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize from just vertices.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize from vertices and faces.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize from vertices and lines.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="n">lines</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize from a filename.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">examples</span><span class="o">.</span><span class="n">antfile</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../../../examples/00-load/create-poly.html#ref-create-poly"><span class="std std-ref">Create PolyData</span></a> for more examples.</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.add_field_array.html#pyvista.PolyData.add_field_array" title="pyvista.PolyData.add_field_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.add_field_array</span></code></a>(scalars, name[, deep])</p></td>
+<td><p>Add field data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.add_field_data.html#pyvista.PolyData.add_field_data" title="pyvista.PolyData.add_field_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.add_field_data</span></code></a>(array, name[, deep])</p></td>
+<td><p>Add field data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.boolean_add.html#pyvista.PolyData.boolean_add" title="pyvista.PolyData.boolean_add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.boolean_add</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Merge two meshes together.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.boolean_cut.html#pyvista.PolyData.boolean_cut" title="pyvista.PolyData.boolean_cut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.boolean_cut</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Cut two meshes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.boolean_difference.html#pyvista.PolyData.boolean_difference" title="pyvista.PolyData.boolean_difference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.boolean_difference</span></code></a>(other_mesh[, ...])</p></td>
+<td><p>Perform a boolean difference operation between two meshes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.boolean_intersection.html#pyvista.PolyData.boolean_intersection" title="pyvista.PolyData.boolean_intersection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.boolean_intersection</span></code></a>(other_mesh[, ...])</p></td>
+<td><p>Perform a boolean intersection operation on two meshes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.boolean_union.html#pyvista.PolyData.boolean_union" title="pyvista.PolyData.boolean_union"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.boolean_union</span></code></a>(other_mesh[, ...])</p></td>
+<td><p>Perform a boolean union operation on two meshes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.cast_to_pointset.html#pyvista.PolyData.cast_to_pointset" title="pyvista.PolyData.cast_to_pointset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cast_to_pointset</span></code></a>([deep])</p></td>
+<td><p>Get a new representation of this object as a <a class="reference internal" href="pyvista.PointSet.html#pyvista.PointSet" title="pyvista.PointSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.PointSet</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.cast_to_unstructured_grid.html#pyvista.PolyData.cast_to_unstructured_grid" title="pyvista.PolyData.cast_to_unstructured_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cast_to_unstructured_grid</span></code></a>()</p></td>
+<td><p>Get a new representation of this object as a <a class="reference internal" href="pyvista.UnstructuredGrid.html#pyvista.UnstructuredGrid" title="pyvista.UnstructuredGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.UnstructuredGrid</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.cell_bounds.html#pyvista.PolyData.cell_bounds" title="pyvista.PolyData.cell_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_bounds</span></code></a>(ind)</p></td>
+<td><p>Return the bounding box of a cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.cell_centers.html#pyvista.PolyData.cell_centers" title="pyvista.PolyData.cell_centers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_centers</span></code></a>([vertex, progress_bar])</p></td>
+<td><p>Generate points at the center of the cells in this dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.cell_data_to_point_data.html#pyvista.PolyData.cell_data_to_point_data" title="pyvista.PolyData.cell_data_to_point_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_data_to_point_data</span></code></a>([...])</p></td>
+<td><p>Transform cell data into point data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.cell_n_points.html#pyvista.PolyData.cell_n_points" title="pyvista.PolyData.cell_n_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_n_points</span></code></a>(ind)</p></td>
+<td><p>Return the number of points in a cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.cell_point_ids.html#pyvista.PolyData.cell_point_ids" title="pyvista.PolyData.cell_point_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_point_ids</span></code></a>(ind)</p></td>
+<td><p>Return the point ids in a cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.cell_points.html#pyvista.PolyData.cell_points" title="pyvista.PolyData.cell_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_points</span></code></a>(ind)</p></td>
+<td><p>Return the points in a cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.cell_type.html#pyvista.PolyData.cell_type" title="pyvista.PolyData.cell_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_type</span></code></a>(ind)</p></td>
+<td><p>Return the type of a cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.center_of_mass.html#pyvista.PolyData.center_of_mass" title="pyvista.PolyData.center_of_mass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.center_of_mass</span></code></a>([scalars_weight])</p></td>
+<td><p>Return the coordinates for the center of mass of the mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clean.html#pyvista.PolyData.clean" title="pyvista.PolyData.clean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clean</span></code></a>([point_merging, tolerance, ...])</p></td>
+<td><p>Clean the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.clear_arrays.html#pyvista.PolyData.clear_arrays" title="pyvista.PolyData.clear_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_arrays</span></code></a>()</p></td>
+<td><p>Remove all arrays from point/cell/field data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clear_cell_arrays.html#pyvista.PolyData.clear_cell_arrays" title="pyvista.PolyData.clear_cell_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_cell_arrays</span></code></a>()</p></td>
+<td><p>Remove all cell data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.clear_cell_data.html#pyvista.PolyData.clear_cell_data" title="pyvista.PolyData.clear_cell_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_cell_data</span></code></a>()</p></td>
+<td><p>Remove all cell arrays.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clear_data.html#pyvista.PolyData.clear_data" title="pyvista.PolyData.clear_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_data</span></code></a>()</p></td>
+<td><p>Remove all arrays from point/cell/field data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.clear_field_arrays.html#pyvista.PolyData.clear_field_arrays" title="pyvista.PolyData.clear_field_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_field_arrays</span></code></a>()</p></td>
+<td><p>Remove all field data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clear_field_data.html#pyvista.PolyData.clear_field_data" title="pyvista.PolyData.clear_field_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_field_data</span></code></a>()</p></td>
+<td><p>Remove all field data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.clear_point_arrays.html#pyvista.PolyData.clear_point_arrays" title="pyvista.PolyData.clear_point_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_point_arrays</span></code></a>()</p></td>
+<td><p>Remove all point data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clear_point_data.html#pyvista.PolyData.clear_point_data" title="pyvista.PolyData.clear_point_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_point_data</span></code></a>()</p></td>
+<td><p>Remove all point arrays.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.clear_textures.html#pyvista.PolyData.clear_textures" title="pyvista.PolyData.clear_textures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clear_textures</span></code></a>()</p></td>
+<td><p>Clear the textures from this mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clip.html#pyvista.PolyData.clip" title="pyvista.PolyData.clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clip</span></code></a>([normal, origin, invert, ...])</p></td>
+<td><p>Clip a dataset by a plane by specifying the origin and normal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.clip_box.html#pyvista.PolyData.clip_box" title="pyvista.PolyData.clip_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clip_box</span></code></a>([bounds, invert, factor, ...])</p></td>
+<td><p>Clip a dataset by a bounding box defined by the bounds.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clip_closed_surface.html#pyvista.PolyData.clip_closed_surface" title="pyvista.PolyData.clip_closed_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clip_closed_surface</span></code></a>([normal, ...])</p></td>
+<td><p>Clip a closed polydata surface with a plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.clip_scalar.html#pyvista.PolyData.clip_scalar" title="pyvista.PolyData.clip_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clip_scalar</span></code></a>([scalars, invert, ...])</p></td>
+<td><p>Clip a dataset by a scalar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.clip_surface.html#pyvista.PolyData.clip_surface" title="pyvista.PolyData.clip_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.clip_surface</span></code></a>(surface[, invert, ...])</p></td>
+<td><p>Clip any mesh type using a <a class="reference internal" href="#pyvista.PolyData" title="pyvista.PolyData"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.PolyData</span></code></a> surface mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.collision.html#pyvista.PolyData.collision" title="pyvista.PolyData.collision"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.collision</span></code></a>(other_mesh[, ...])</p></td>
+<td><p>Perform collision determination between two polyhedral surfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.compute_arc_length.html#pyvista.PolyData.compute_arc_length" title="pyvista.PolyData.compute_arc_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.compute_arc_length</span></code></a>([progress_bar])</p></td>
+<td><p>Compute the arc length over the length of the probed line.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.compute_cell_quality.html#pyvista.PolyData.compute_cell_quality" title="pyvista.PolyData.compute_cell_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.compute_cell_quality</span></code></a>([...])</p></td>
+<td><p>Compute a function of (geometric) quality for each cell of a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.compute_cell_sizes.html#pyvista.PolyData.compute_cell_sizes" title="pyvista.PolyData.compute_cell_sizes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.compute_cell_sizes</span></code></a>([length, area, ...])</p></td>
+<td><p>Compute sizes for 1D (length), 2D (area) and 3D (volume) cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.compute_derivative.html#pyvista.PolyData.compute_derivative" title="pyvista.PolyData.compute_derivative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.compute_derivative</span></code></a>([scalars, ...])</p></td>
+<td><p>Compute derivative-based quantities of point/cell scalar field.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.compute_implicit_distance.html#pyvista.PolyData.compute_implicit_distance" title="pyvista.PolyData.compute_implicit_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.compute_implicit_distance</span></code></a>(surface)</p></td>
+<td><p>Compute the implicit distance from the points to a surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.compute_normals.html#pyvista.PolyData.compute_normals" title="pyvista.PolyData.compute_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.compute_normals</span></code></a>([cell_normals, ...])</p></td>
+<td><p>Compute point and/or cell normals for a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.connectivity.html#pyvista.PolyData.connectivity" title="pyvista.PolyData.connectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.connectivity</span></code></a>([largest, progress_bar])</p></td>
+<td><p>Find and label connected bodies/volumes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.contour.html#pyvista.PolyData.contour" title="pyvista.PolyData.contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.contour</span></code></a>([isosurfaces, scalars, ...])</p></td>
+<td><p>Contour an input self by an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.copy.html#pyvista.PolyData.copy" title="pyvista.PolyData.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.copy</span></code></a>([deep])</p></td>
+<td><p>Return a copy of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.copy_attributes.html#pyvista.PolyData.copy_attributes" title="pyvista.PolyData.copy_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.copy_attributes</span></code></a>(dataset)</p></td>
+<td><p>Copy the data attributes of the input dataset object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.copy_meta_from.html#pyvista.PolyData.copy_meta_from" title="pyvista.PolyData.copy_meta_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.copy_meta_from</span></code></a>(ido[, deep])</p></td>
+<td><p>Copy pyvista meta data onto this object from another object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.copy_structure.html#pyvista.PolyData.copy_structure" title="pyvista.PolyData.copy_structure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.copy_structure</span></code></a>(dataset)</p></td>
+<td><p>Copy the structure (geometry and topology) of the input dataset object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.ctp.html#pyvista.PolyData.ctp" title="pyvista.PolyData.ctp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.ctp</span></code></a>([pass_cell_data, progress_bar])</p></td>
+<td><p>Transform cell data into point data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.curvature.html#pyvista.PolyData.curvature" title="pyvista.PolyData.curvature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.curvature</span></code></a>([curv_type, progress_bar])</p></td>
+<td><p>Return the pointwise curvature of a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.decimate.html#pyvista.PolyData.decimate" title="pyvista.PolyData.decimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.decimate</span></code></a>(target_reduction[, ...])</p></td>
+<td><p>Reduce the number of triangles in a triangular mesh using <code class="docutils literal notranslate"><span class="pre">vtkQuadricDecimation</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.decimate_boundary.html#pyvista.PolyData.decimate_boundary" title="pyvista.PolyData.decimate_boundary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.decimate_boundary</span></code></a>([...])</p></td>
+<td><p>Return a decimated version of a triangulation of the boundary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.decimate_pro.html#pyvista.PolyData.decimate_pro" title="pyvista.PolyData.decimate_pro"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.decimate_pro</span></code></a>(reduction[, ...])</p></td>
+<td><p>Reduce the number of triangles in a triangular mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.deep_copy.html#pyvista.PolyData.deep_copy" title="pyvista.PolyData.deep_copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.deep_copy</span></code></a>(to_copy)</p></td>
+<td><p>Overwrite this data object with another data object as a deep copy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.delaunay_2d.html#pyvista.PolyData.delaunay_2d" title="pyvista.PolyData.delaunay_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.delaunay_2d</span></code></a>([tol, alpha, offset, ...])</p></td>
+<td><p>Apply a 2D Delaunay filter along the best fitting plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.delaunay_3d.html#pyvista.PolyData.delaunay_3d" title="pyvista.PolyData.delaunay_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.delaunay_3d</span></code></a>([alpha, tol, offset, ...])</p></td>
+<td><p>Construct a 3D Delaunay triangulation of the mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.edge_mask.html#pyvista.PolyData.edge_mask" title="pyvista.PolyData.edge_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.edge_mask</span></code></a>(angle[, progress_bar])</p></td>
+<td><p>Return a mask of the points of a surface mesh that has a surface angle greater than angle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.elevation.html#pyvista.PolyData.elevation" title="pyvista.PolyData.elevation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.elevation</span></code></a>([low_point, high_point, ...])</p></td>
+<td><p>Generate scalar values on a dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.extract_all_edges.html#pyvista.PolyData.extract_all_edges" title="pyvista.PolyData.extract_all_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extract_all_edges</span></code></a>([progress_bar])</p></td>
+<td><p>Extract all the internal/external edges of the dataset as PolyData.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.extract_cells.html#pyvista.PolyData.extract_cells" title="pyvista.PolyData.extract_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extract_cells</span></code></a>(ind[, progress_bar])</p></td>
+<td><p>Return a subset of the grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.extract_feature_edges.html#pyvista.PolyData.extract_feature_edges" title="pyvista.PolyData.extract_feature_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extract_feature_edges</span></code></a>([...])</p></td>
+<td><p>Extract edges from the surface of the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.extract_geometry.html#pyvista.PolyData.extract_geometry" title="pyvista.PolyData.extract_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extract_geometry</span></code></a>([progress_bar])</p></td>
+<td><p>Extract the outer surface of a volume or structured grid dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.extract_largest.html#pyvista.PolyData.extract_largest" title="pyvista.PolyData.extract_largest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extract_largest</span></code></a>([inplace, progress_bar])</p></td>
+<td><p>Extract largest connected set in mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.extract_points.html#pyvista.PolyData.extract_points" title="pyvista.PolyData.extract_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extract_points</span></code></a>(ind[, ...])</p></td>
+<td><p>Return a subset of the grid (with cells) that contains any of the given point indices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.extract_surface.html#pyvista.PolyData.extract_surface" title="pyvista.PolyData.extract_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extract_surface</span></code></a>([pass_pointid, ...])</p></td>
+<td><p>Extract surface mesh of the grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.extrude.html#pyvista.PolyData.extrude" title="pyvista.PolyData.extrude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extrude</span></code></a>(vector[, capping, inplace, ...])</p></td>
+<td><p>Sweep polygonal data creating a &quot;skirt&quot; from free edges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.extrude_rotate.html#pyvista.PolyData.extrude_rotate" title="pyvista.PolyData.extrude_rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extrude_rotate</span></code></a>([resolution, ...])</p></td>
+<td><p>Sweep polygonal data creating &quot;skirt&quot; from free edges and lines, and lines from vertices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.extrude_trim.html#pyvista.PolyData.extrude_trim" title="pyvista.PolyData.extrude_trim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.extrude_trim</span></code></a>(direction, trim_surface)</p></td>
+<td><p>Extrude polygonal data trimmed by a surface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.fill_holes.html#pyvista.PolyData.fill_holes" title="pyvista.PolyData.fill_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.fill_holes</span></code></a>(hole_size[, inplace, ...])</p></td>
+<td><p>Fill holes in a pyvista.PolyData or vtk.vtkPolyData object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.find_cells_along_line.html#pyvista.PolyData.find_cells_along_line" title="pyvista.PolyData.find_cells_along_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.find_cells_along_line</span></code></a>(pointa, pointb)</p></td>
+<td><p>Find the index of cells in this mesh along a line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.find_cells_within_bounds.html#pyvista.PolyData.find_cells_within_bounds" title="pyvista.PolyData.find_cells_within_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.find_cells_within_bounds</span></code></a>(bounds)</p></td>
+<td><p>Find the index of cells in this mesh within bounds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.find_closest_cell.html#pyvista.PolyData.find_closest_cell" title="pyvista.PolyData.find_closest_cell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.find_closest_cell</span></code></a>(point[, ...])</p></td>
+<td><p>Find index of closest cell in this mesh to the given point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.find_closest_point.html#pyvista.PolyData.find_closest_point" title="pyvista.PolyData.find_closest_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.find_closest_point</span></code></a>(point[, n])</p></td>
+<td><p>Find index of closest point in this mesh to the given point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.find_containing_cell.html#pyvista.PolyData.find_containing_cell" title="pyvista.PolyData.find_containing_cell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.find_containing_cell</span></code></a>(point)</p></td>
+<td><p>Find index of a cell that contains the given point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.flip_normal.html#pyvista.PolyData.flip_normal" title="pyvista.PolyData.flip_normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.flip_normal</span></code></a>(normal[, point, ...])</p></td>
+<td><p>Flip mesh about the normal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.flip_normals.html#pyvista.PolyData.flip_normals" title="pyvista.PolyData.flip_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.flip_normals</span></code></a>()</p></td>
+<td><p>Flip normals of a triangular mesh by reversing the point ordering.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.flip_x.html#pyvista.PolyData.flip_x" title="pyvista.PolyData.flip_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.flip_x</span></code></a>([point, ...])</p></td>
+<td><p>Flip mesh about the x-axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.flip_y.html#pyvista.PolyData.flip_y" title="pyvista.PolyData.flip_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.flip_y</span></code></a>([point, ...])</p></td>
+<td><p>Flip mesh about the y-axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.flip_z.html#pyvista.PolyData.flip_z" title="pyvista.PolyData.flip_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.flip_z</span></code></a>([point, ...])</p></td>
+<td><p>Flip mesh about the z-axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.geodesic.html#pyvista.PolyData.geodesic" title="pyvista.PolyData.geodesic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.geodesic</span></code></a>(start_vertex, end_vertex)</p></td>
+<td><p>Calculate the geodesic path between two vertices using Dijkstra's algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.geodesic_distance.html#pyvista.PolyData.geodesic_distance" title="pyvista.PolyData.geodesic_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.geodesic_distance</span></code></a>(start_vertex, ...)</p></td>
+<td><p>Calculate the geodesic distance between two vertices using Dijkstra's algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.get_array.html#pyvista.PolyData.get_array" title="pyvista.PolyData.get_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.get_array</span></code></a>(name[, preference])</p></td>
+<td><p>Search both point, cell and field data for an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.get_array_association.html#pyvista.PolyData.get_array_association" title="pyvista.PolyData.get_array_association"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.get_array_association</span></code></a>(name[, ...])</p></td>
+<td><p>Get the association of an array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.get_data_range.html#pyvista.PolyData.get_data_range" title="pyvista.PolyData.get_data_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.get_data_range</span></code></a>([arr_var, preference])</p></td>
+<td><p>Get the non-NaN min and max of a named array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.glyph.html#pyvista.PolyData.glyph" title="pyvista.PolyData.glyph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.glyph</span></code></a>([orient, scale, factor, ...])</p></td>
+<td><p>Copy a geometric representation (called a glyph) to the input dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.head.html#pyvista.PolyData.head" title="pyvista.PolyData.head"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.head</span></code></a>([display, html])</p></td>
+<td><p>Return the header stats of this dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.integrate_data.html#pyvista.PolyData.integrate_data" title="pyvista.PolyData.integrate_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.integrate_data</span></code></a>([progress_bar])</p></td>
+<td><p>Integrate point and cell data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.interpolate.html#pyvista.PolyData.interpolate" title="pyvista.PolyData.interpolate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.interpolate</span></code></a>(target[, sharpness, ...])</p></td>
+<td><p>Interpolate values onto this mesh from a given dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.intersection.html#pyvista.PolyData.intersection" title="pyvista.PolyData.intersection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.intersection</span></code></a>(mesh[, split_first, ...])</p></td>
+<td><p>Compute the intersection between two meshes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.merge.html#pyvista.PolyData.merge" title="pyvista.PolyData.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.merge</span></code></a>(dataset[, merge_points, ...])</p></td>
+<td><p>Merge this mesh with one or more datasets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.multi_ray_trace.html#pyvista.PolyData.multi_ray_trace" title="pyvista.PolyData.multi_ray_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.multi_ray_trace</span></code></a>(origins, directions)</p></td>
+<td><p>Perform multiple ray trace calculations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.outline.html#pyvista.PolyData.outline" title="pyvista.PolyData.outline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.outline</span></code></a>([generate_faces, progress_bar])</p></td>
+<td><p>Produce an outline of the full extent for the input dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.outline_corners.html#pyvista.PolyData.outline_corners" title="pyvista.PolyData.outline_corners"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.outline_corners</span></code></a>([factor, progress_bar])</p></td>
+<td><p>Produce an outline of the corners for the input dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.override.html#pyvista.PolyData.override" title="pyvista.PolyData.override"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.override</span></code></a></p></td>
+<td><p>This method can be used to override a VTK class with a Python subclass.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.overwrite.html#pyvista.PolyData.overwrite" title="pyvista.PolyData.overwrite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.overwrite</span></code></a>(mesh)</p></td>
+<td><p>Overwrite this dataset inplace with the new dataset's geometries and data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.plot.html#pyvista.PolyData.plot" title="pyvista.PolyData.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.plot</span></code></a>([off_screen, full_screen, ...])</p></td>
+<td><p>Plot a PyVista, numpy, or vtk object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.plot_boundaries.html#pyvista.PolyData.plot_boundaries" title="pyvista.PolyData.plot_boundaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.plot_boundaries</span></code></a>([edge_color, ...])</p></td>
+<td><p>Plot boundaries of a mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.plot_curvature.html#pyvista.PolyData.plot_curvature" title="pyvista.PolyData.plot_curvature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.plot_curvature</span></code></a>([curv_type])</p></td>
+<td><p>Plot the curvature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.plot_normals.html#pyvista.PolyData.plot_normals" title="pyvista.PolyData.plot_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.plot_normals</span></code></a>([show_mesh, mag, ...])</p></td>
+<td><p>Plot the point normals of a mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.plot_over_circular_arc.html#pyvista.PolyData.plot_over_circular_arc" title="pyvista.PolyData.plot_over_circular_arc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.plot_over_circular_arc</span></code></a>(pointa, ...)</p></td>
+<td><p>Sample a dataset along a circular arc and plot it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.plot_over_circular_arc_normal.html#pyvista.PolyData.plot_over_circular_arc_normal" title="pyvista.PolyData.plot_over_circular_arc_normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.plot_over_circular_arc_normal</span></code></a>(center)</p></td>
+<td><p>Sample a dataset along a resolution circular arc defined by a normal and polar vector and plot it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.plot_over_line.html#pyvista.PolyData.plot_over_line" title="pyvista.PolyData.plot_over_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.plot_over_line</span></code></a>(pointa, pointb[, ...])</p></td>
+<td><p>Sample a dataset along a high resolution line and plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.point_data_to_cell_data.html#pyvista.PolyData.point_data_to_cell_data" title="pyvista.PolyData.point_data_to_cell_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.point_data_to_cell_data</span></code></a>([...])</p></td>
+<td><p>Transform point data into cell data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.point_is_inside_cell.html#pyvista.PolyData.point_is_inside_cell" title="pyvista.PolyData.point_is_inside_cell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.point_is_inside_cell</span></code></a>(ind, point)</p></td>
+<td><p>Return whether one or more points are inside a cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.points_to_double.html#pyvista.PolyData.points_to_double" title="pyvista.PolyData.points_to_double"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.points_to_double</span></code></a>()</p></td>
+<td><p>Convert the points datatype to double precision.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.probe.html#pyvista.PolyData.probe" title="pyvista.PolyData.probe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.probe</span></code></a>(points[, tolerance, ...])</p></td>
+<td><p>Sample data values at specified point locations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.project_points_to_plane.html#pyvista.PolyData.project_points_to_plane" title="pyvista.PolyData.project_points_to_plane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.project_points_to_plane</span></code></a>([origin, ...])</p></td>
+<td><p>Project points of this mesh to a plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.ptc.html#pyvista.PolyData.ptc" title="pyvista.PolyData.ptc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.ptc</span></code></a>([pass_point_data, progress_bar])</p></td>
+<td><p>Transform point data into cell data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.ray_trace.html#pyvista.PolyData.ray_trace" title="pyvista.PolyData.ray_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.ray_trace</span></code></a>(origin, end_point[, ...])</p></td>
+<td><p>Perform a single ray trace calculation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.reconstruct_surface.html#pyvista.PolyData.reconstruct_surface" title="pyvista.PolyData.reconstruct_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.reconstruct_surface</span></code></a>([nbr_sz, ...])</p></td>
+<td><p>Reconstruct a surface from the points in this dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.reflect.html#pyvista.PolyData.reflect" title="pyvista.PolyData.reflect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.reflect</span></code></a>(normal[, point, inplace, ...])</p></td>
+<td><p>Reflect a dataset across a plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.remove_cells.html#pyvista.PolyData.remove_cells" title="pyvista.PolyData.remove_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.remove_cells</span></code></a>(ind[, inplace])</p></td>
+<td><p>Remove cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.remove_points.html#pyvista.PolyData.remove_points" title="pyvista.PolyData.remove_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.remove_points</span></code></a>(remove[, mode, ...])</p></td>
+<td><p>Rebuild a mesh by removing points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.rename_array.html#pyvista.PolyData.rename_array" title="pyvista.PolyData.rename_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.rename_array</span></code></a>(old_name, new_name[, ...])</p></td>
+<td><p>Change array name by searching for the array then renaming it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.ribbon.html#pyvista.PolyData.ribbon" title="pyvista.PolyData.ribbon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.ribbon</span></code></a>([width, scalars, angle, ...])</p></td>
+<td><p>Create a ribbon of the lines in this dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.rotate_vector.html#pyvista.PolyData.rotate_vector" title="pyvista.PolyData.rotate_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.rotate_vector</span></code></a>(vector, angle[, ...])</p></td>
+<td><p>Rotate mesh about a vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.rotate_x.html#pyvista.PolyData.rotate_x" title="pyvista.PolyData.rotate_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.rotate_x</span></code></a>(angle[, point, ...])</p></td>
+<td><p>Rotate mesh about the x-axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.rotate_y.html#pyvista.PolyData.rotate_y" title="pyvista.PolyData.rotate_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.rotate_y</span></code></a>(angle[, point, ...])</p></td>
+<td><p>Rotate mesh about the y-axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.rotate_z.html#pyvista.PolyData.rotate_z" title="pyvista.PolyData.rotate_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.rotate_z</span></code></a>(angle[, point, ...])</p></td>
+<td><p>Rotate mesh about the z-axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.sample.html#pyvista.PolyData.sample" title="pyvista.PolyData.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.sample</span></code></a>(target[, tolerance, ...])</p></td>
+<td><p>Resample array data from a passed mesh onto this mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.sample_over_circular_arc.html#pyvista.PolyData.sample_over_circular_arc" title="pyvista.PolyData.sample_over_circular_arc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.sample_over_circular_arc</span></code></a>(pointa, ...)</p></td>
+<td><p>Sample a dataset over a circular arc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.sample_over_circular_arc_normal.html#pyvista.PolyData.sample_over_circular_arc_normal" title="pyvista.PolyData.sample_over_circular_arc_normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.sample_over_circular_arc_normal</span></code></a>(center)</p></td>
+<td><p>Sample a dataset over a circular arc defined by a normal and polar vector and plot it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.sample_over_line.html#pyvista.PolyData.sample_over_line" title="pyvista.PolyData.sample_over_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.sample_over_line</span></code></a>(pointa, pointb[, ...])</p></td>
+<td><p>Sample a dataset onto a line.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.sample_over_multiple_lines.html#pyvista.PolyData.sample_over_multiple_lines" title="pyvista.PolyData.sample_over_multiple_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.sample_over_multiple_lines</span></code></a>(points)</p></td>
+<td><p>Sample a dataset onto a multiple lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.save.html#pyvista.PolyData.save" title="pyvista.PolyData.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.save</span></code></a>(filename[, binary, texture])</p></td>
+<td><p>Write a surface mesh to disk.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.scale.html#pyvista.PolyData.scale" title="pyvista.PolyData.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.scale</span></code></a>(xyz[, ...])</p></td>
+<td><p>Scale the mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.select_enclosed_points.html#pyvista.PolyData.select_enclosed_points" title="pyvista.PolyData.select_enclosed_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.select_enclosed_points</span></code></a>(surface[, ...])</p></td>
+<td><p>Mark points as to whether they are inside a closed surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.set_active_scalars.html#pyvista.PolyData.set_active_scalars" title="pyvista.PolyData.set_active_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.set_active_scalars</span></code></a>(name[, preference])</p></td>
+<td><p>Find the scalars by name and appropriately sets it as active.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.set_active_tensors.html#pyvista.PolyData.set_active_tensors" title="pyvista.PolyData.set_active_tensors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.set_active_tensors</span></code></a>(name[, preference])</p></td>
+<td><p>Find the tensors by name and appropriately sets it as active.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.set_active_vectors.html#pyvista.PolyData.set_active_vectors" title="pyvista.PolyData.set_active_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.set_active_vectors</span></code></a>(name[, preference])</p></td>
+<td><p>Find the vectors by name and appropriately sets it as active.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.shallow_copy.html#pyvista.PolyData.shallow_copy" title="pyvista.PolyData.shallow_copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.shallow_copy</span></code></a>(to_copy)</p></td>
+<td><p>Create a shallow copy from a different dataset into this one.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.shrink.html#pyvista.PolyData.shrink" title="pyvista.PolyData.shrink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.shrink</span></code></a>([shrink_factor, progress_bar])</p></td>
+<td><p>Shrink the individual faces of a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.slice.html#pyvista.PolyData.slice" title="pyvista.PolyData.slice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.slice</span></code></a>([normal, origin, ...])</p></td>
+<td><p>Slice a dataset by a plane at the specified origin and normal vector orientation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.slice_along_axis.html#pyvista.PolyData.slice_along_axis" title="pyvista.PolyData.slice_along_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.slice_along_axis</span></code></a>([n, axis, ...])</p></td>
+<td><p>Create many slices of the input dataset along a specified axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.slice_along_line.html#pyvista.PolyData.slice_along_line" title="pyvista.PolyData.slice_along_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.slice_along_line</span></code></a>(line[, ...])</p></td>
+<td><p>Slice a dataset using a polyline/spline as the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.slice_orthogonal.html#pyvista.PolyData.slice_orthogonal" title="pyvista.PolyData.slice_orthogonal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.slice_orthogonal</span></code></a>([x, y, z, ...])</p></td>
+<td><p>Create three orthogonal slices through the dataset on the three cartesian planes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.smooth.html#pyvista.PolyData.smooth" title="pyvista.PolyData.smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.smooth</span></code></a>([n_iter, relaxation_factor, ...])</p></td>
+<td><p>Adjust point coordinates using Laplacian smoothing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.smooth_taubin.html#pyvista.PolyData.smooth_taubin" title="pyvista.PolyData.smooth_taubin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.smooth_taubin</span></code></a>([n_iter, pass_band, ...])</p></td>
+<td><p>Smooth a PolyData DataSet with Taubin smoothing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.split_bodies.html#pyvista.PolyData.split_bodies" title="pyvista.PolyData.split_bodies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.split_bodies</span></code></a>([label, progress_bar])</p></td>
+<td><p>Find, label, and split connected bodies/volumes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.streamlines.html#pyvista.PolyData.streamlines" title="pyvista.PolyData.streamlines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.streamlines</span></code></a>([vectors, ...])</p></td>
+<td><p>Integrate a vector field to generate streamlines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.streamlines_evenly_spaced_2D.html#pyvista.PolyData.streamlines_evenly_spaced_2D" title="pyvista.PolyData.streamlines_evenly_spaced_2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.streamlines_evenly_spaced_2D</span></code></a>([...])</p></td>
+<td><p>Generate evenly spaced streamlines on a 2D dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.streamlines_from_source.html#pyvista.PolyData.streamlines_from_source" title="pyvista.PolyData.streamlines_from_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.streamlines_from_source</span></code></a>(source[, ...])</p></td>
+<td><p>Generate streamlines of vectors from the points of a source mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.strip.html#pyvista.PolyData.strip" title="pyvista.PolyData.strip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.strip</span></code></a>([join, max_length, ...])</p></td>
+<td><p>Strip poly data cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.subdivide.html#pyvista.PolyData.subdivide" title="pyvista.PolyData.subdivide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.subdivide</span></code></a>(nsub[, subfilter, ...])</p></td>
+<td><p>Increase the number of triangles in a single, connected triangular mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.subdivide_adaptive.html#pyvista.PolyData.subdivide_adaptive" title="pyvista.PolyData.subdivide_adaptive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.subdivide_adaptive</span></code></a>([max_edge_len, ...])</p></td>
+<td><p>Increase the number of triangles in a triangular mesh based on edge and/or area metrics.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.surface_indices.html#pyvista.PolyData.surface_indices" title="pyvista.PolyData.surface_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.surface_indices</span></code></a>([progress_bar])</p></td>
+<td><p>Return the surface indices of a grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.tessellate.html#pyvista.PolyData.tessellate" title="pyvista.PolyData.tessellate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.tessellate</span></code></a>([max_n_subdivide, ...])</p></td>
+<td><p>Tessellate a mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.texture_map_to_plane.html#pyvista.PolyData.texture_map_to_plane" title="pyvista.PolyData.texture_map_to_plane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.texture_map_to_plane</span></code></a>([origin, ...])</p></td>
+<td><p>Texture map this dataset to a user defined plane.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.texture_map_to_sphere.html#pyvista.PolyData.texture_map_to_sphere" title="pyvista.PolyData.texture_map_to_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.texture_map_to_sphere</span></code></a>([center, ...])</p></td>
+<td><p>Texture map this dataset to a user defined sphere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.threshold.html#pyvista.PolyData.threshold" title="pyvista.PolyData.threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.threshold</span></code></a>([value, scalars, invert, ...])</p></td>
+<td><p>Apply a <code class="docutils literal notranslate"><span class="pre">vtkThreshold</span></code> filter to the input dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.threshold_percent.html#pyvista.PolyData.threshold_percent" title="pyvista.PolyData.threshold_percent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.threshold_percent</span></code></a>([percent, ...])</p></td>
+<td><p>Threshold the dataset by a percentage of its range on the active scalars array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.transform.html#pyvista.PolyData.transform" title="pyvista.PolyData.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.transform</span></code></a>(trans[, ...])</p></td>
+<td><p>Transform this mesh with a 4x4 transform.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.translate.html#pyvista.PolyData.translate" title="pyvista.PolyData.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.translate</span></code></a>(xyz[, ...])</p></td>
+<td><p>Translate the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.triangulate.html#pyvista.PolyData.triangulate" title="pyvista.PolyData.triangulate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.triangulate</span></code></a>([inplace, progress_bar])</p></td>
+<td><p>Return an all triangle mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.tube.html#pyvista.PolyData.tube" title="pyvista.PolyData.tube"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.tube</span></code></a>([radius, scalars, capping, ...])</p></td>
+<td><p>Generate a tube around each input line.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.warp_by_scalar.html#pyvista.PolyData.warp_by_scalar" title="pyvista.PolyData.warp_by_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.warp_by_scalar</span></code></a>([scalars, factor, ...])</p></td>
+<td><p>Warp the dataset's points by a point data scalars array's values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.warp_by_vector.html#pyvista.PolyData.warp_by_vector" title="pyvista.PolyData.warp_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.warp_by_vector</span></code></a>([vectors, factor, ...])</p></td>
+<td><p>Warp the dataset's points by a point data vectors array's values.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.active_normals.html#pyvista.PolyData.active_normals" title="pyvista.PolyData.active_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_normals</span></code></a></p></td>
+<td><p>Return the active normals as an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.active_scalars.html#pyvista.PolyData.active_scalars" title="pyvista.PolyData.active_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_scalars</span></code></a></p></td>
+<td><p>Return the active scalars as an array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.active_scalars_info.html#pyvista.PolyData.active_scalars_info" title="pyvista.PolyData.active_scalars_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_scalars_info</span></code></a></p></td>
+<td><p>Return the active scalar's association and name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.active_scalars_name.html#pyvista.PolyData.active_scalars_name" title="pyvista.PolyData.active_scalars_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_scalars_name</span></code></a></p></td>
+<td><p>Return the name of the active scalars.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.active_t_coords.html#pyvista.PolyData.active_t_coords" title="pyvista.PolyData.active_t_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_t_coords</span></code></a></p></td>
+<td><p>Return or set the active texture coordinates on the points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.active_tensors.html#pyvista.PolyData.active_tensors" title="pyvista.PolyData.active_tensors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_tensors</span></code></a></p></td>
+<td><p>Return the active tensors array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.active_tensors_info.html#pyvista.PolyData.active_tensors_info" title="pyvista.PolyData.active_tensors_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_tensors_info</span></code></a></p></td>
+<td><p>Return the active tensor's field and name: [field, name].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.active_tensors_name.html#pyvista.PolyData.active_tensors_name" title="pyvista.PolyData.active_tensors_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_tensors_name</span></code></a></p></td>
+<td><p>Return the name of the active tensor array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.active_vectors.html#pyvista.PolyData.active_vectors" title="pyvista.PolyData.active_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_vectors</span></code></a></p></td>
+<td><p>Return the active vectors array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.active_vectors_info.html#pyvista.PolyData.active_vectors_info" title="pyvista.PolyData.active_vectors_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_vectors_info</span></code></a></p></td>
+<td><p>Return the active vector's association and name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.active_vectors_name.html#pyvista.PolyData.active_vectors_name" title="pyvista.PolyData.active_vectors_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.active_vectors_name</span></code></a></p></td>
+<td><p>Return the name of the active vectors array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.actual_memory_size.html#pyvista.PolyData.actual_memory_size" title="pyvista.PolyData.actual_memory_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.actual_memory_size</span></code></a></p></td>
+<td><p>Return the actual size of the dataset object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.area.html#pyvista.PolyData.area" title="pyvista.PolyData.area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.area</span></code></a></p></td>
+<td><p>Return the mesh surface area.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.array_names.html#pyvista.PolyData.array_names" title="pyvista.PolyData.array_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.array_names</span></code></a></p></td>
+<td><p>Return a list of array names for the dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.arrows.html#pyvista.PolyData.arrows" title="pyvista.PolyData.arrows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.arrows</span></code></a></p></td>
+<td><p>Return a glyph representation of the active vector data as arrows.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.bounds.html#pyvista.PolyData.bounds" title="pyvista.PolyData.bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.bounds</span></code></a></p></td>
+<td><p>Return the bounding box of this dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.cell_arrays.html#pyvista.PolyData.cell_arrays" title="pyvista.PolyData.cell_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_arrays</span></code></a></p></td>
+<td><p>Return vtkCellData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.cell_data.html#pyvista.PolyData.cell_data" title="pyvista.PolyData.cell_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_data</span></code></a></p></td>
+<td><p>Return vtkCellData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.cell_normals.html#pyvista.PolyData.cell_normals" title="pyvista.PolyData.cell_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.cell_normals</span></code></a></p></td>
+<td><p>Return the cell normals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.center.html#pyvista.PolyData.center" title="pyvista.PolyData.center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.center</span></code></a></p></td>
+<td><p>Return the center of the bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.face_normals.html#pyvista.PolyData.face_normals" title="pyvista.PolyData.face_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.face_normals</span></code></a></p></td>
+<td><p>Return the cell normals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.faces.html#pyvista.PolyData.faces" title="pyvista.PolyData.faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.faces</span></code></a></p></td>
+<td><p>Return a pointer to the faces as a numpy array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.field_arrays.html#pyvista.PolyData.field_arrays" title="pyvista.PolyData.field_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.field_arrays</span></code></a></p></td>
+<td><p>Return vtkFieldData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.field_data.html#pyvista.PolyData.field_data" title="pyvista.PolyData.field_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.field_data</span></code></a></p></td>
+<td><p>Return FieldData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.is_all_triangles.html#pyvista.PolyData.is_all_triangles" title="pyvista.PolyData.is_all_triangles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.is_all_triangles</span></code></a></p></td>
+<td><p>Return if all the faces of the <a class="reference internal" href="#pyvista.PolyData" title="pyvista.PolyData"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.PolyData</span></code></a> are triangles.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.is_manifold.html#pyvista.PolyData.is_manifold" title="pyvista.PolyData.is_manifold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.is_manifold</span></code></a></p></td>
+<td><p>Return if the mesh is manifold (no open edges).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.length.html#pyvista.PolyData.length" title="pyvista.PolyData.length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.length</span></code></a></p></td>
+<td><p>Return the length of the diagonal of the bounding box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.lines.html#pyvista.PolyData.lines" title="pyvista.PolyData.lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.lines</span></code></a></p></td>
+<td><p>Return a pointer to the lines as a numpy array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.memory_address.html#pyvista.PolyData.memory_address" title="pyvista.PolyData.memory_address"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.memory_address</span></code></a></p></td>
+<td><p>Get address of the underlying VTK C++ object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.n_arrays.html#pyvista.PolyData.n_arrays" title="pyvista.PolyData.n_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.n_arrays</span></code></a></p></td>
+<td><p>Return the number of arrays present in the dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.n_cells.html#pyvista.PolyData.n_cells" title="pyvista.PolyData.n_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.n_cells</span></code></a></p></td>
+<td><p>Return the number of cells in the entire dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.n_faces.html#pyvista.PolyData.n_faces" title="pyvista.PolyData.n_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.n_faces</span></code></a></p></td>
+<td><p>Return the number of cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.n_lines.html#pyvista.PolyData.n_lines" title="pyvista.PolyData.n_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.n_lines</span></code></a></p></td>
+<td><p>Return the number of lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.n_open_edges.html#pyvista.PolyData.n_open_edges" title="pyvista.PolyData.n_open_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.n_open_edges</span></code></a></p></td>
+<td><p>Return the number of open edges on this mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.n_points.html#pyvista.PolyData.n_points" title="pyvista.PolyData.n_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.n_points</span></code></a></p></td>
+<td><p>Return the number of points in the entire dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.n_verts.html#pyvista.PolyData.n_verts" title="pyvista.PolyData.n_verts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.n_verts</span></code></a></p></td>
+<td><p>Return the number of vertices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.number_of_cells.html#pyvista.PolyData.number_of_cells" title="pyvista.PolyData.number_of_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.number_of_cells</span></code></a></p></td>
+<td><p>Return the number of cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.number_of_faces.html#pyvista.PolyData.number_of_faces" title="pyvista.PolyData.number_of_faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.number_of_faces</span></code></a></p></td>
+<td><p>Return the number of cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.number_of_points.html#pyvista.PolyData.number_of_points" title="pyvista.PolyData.number_of_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.number_of_points</span></code></a></p></td>
+<td><p>Return the number of points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.obbTree.html#pyvista.PolyData.obbTree" title="pyvista.PolyData.obbTree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.obbTree</span></code></a></p></td>
+<td><p>Return the obbTree of the polydata.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.point_arrays.html#pyvista.PolyData.point_arrays" title="pyvista.PolyData.point_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.point_arrays</span></code></a></p></td>
+<td><p>Return vtkPointData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.point_data.html#pyvista.PolyData.point_data" title="pyvista.PolyData.point_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.point_data</span></code></a></p></td>
+<td><p>Return vtkPointData as DataSetAttributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.point_normals.html#pyvista.PolyData.point_normals" title="pyvista.PolyData.point_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.point_normals</span></code></a></p></td>
+<td><p>Return the point normals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.points.html#pyvista.PolyData.points" title="pyvista.PolyData.points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.points</span></code></a></p></td>
+<td><p>Return a reference to the points as a numpy object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.t_coords.html#pyvista.PolyData.t_coords" title="pyvista.PolyData.t_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.t_coords</span></code></a></p></td>
+<td><p>Return the active texture coordinates on the points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.textures.html#pyvista.PolyData.textures" title="pyvista.PolyData.textures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.textures</span></code></a></p></td>
+<td><p>Return a dictionary to hold compatible <code class="docutils literal notranslate"><span class="pre">vtk.vtkTexture</span></code> objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.vectors.html#pyvista.PolyData.vectors" title="pyvista.PolyData.vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.vectors</span></code></a></p></td>
+<td><p>Return active vectors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.PolyData.verts.html#pyvista.PolyData.verts" title="pyvista.PolyData.verts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.verts</span></code></a></p></td>
+<td><p>Get the vertex cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.PolyData.volume.html#pyvista.PolyData.volume" title="pyvista.PolyData.volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolyData.volume</span></code></a></p></td>
+<td><p>Return the volume of the dataset.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

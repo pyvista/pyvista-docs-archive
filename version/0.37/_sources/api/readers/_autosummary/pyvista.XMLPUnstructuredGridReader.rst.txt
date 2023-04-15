@@ -1,0 +1,7 @@
+﻿pyvista.XMLPUnstructuredGridReader
+==================================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLPUnstructuredGridReader
+   :members:

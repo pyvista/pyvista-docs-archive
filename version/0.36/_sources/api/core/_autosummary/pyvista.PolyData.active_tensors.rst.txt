@@ -1,0 +1,6 @@
+active\_tensors
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.active_tensors

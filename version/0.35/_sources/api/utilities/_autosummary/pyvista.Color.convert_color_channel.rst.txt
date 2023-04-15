@@ -1,0 +1,6 @@
+convert\_color\_channel
+=======================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Color.convert_color_channel

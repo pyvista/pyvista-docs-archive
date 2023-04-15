@@ -1,0 +1,6 @@
+clear\_cell\_arrays
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.clear_cell_arrays

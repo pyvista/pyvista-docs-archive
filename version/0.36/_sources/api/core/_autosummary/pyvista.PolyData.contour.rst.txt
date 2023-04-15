@@ -1,0 +1,6 @@
+contour
+=======
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.contour

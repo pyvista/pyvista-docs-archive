@@ -1,0 +1,6 @@
+copy\_structure
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.copy_structure

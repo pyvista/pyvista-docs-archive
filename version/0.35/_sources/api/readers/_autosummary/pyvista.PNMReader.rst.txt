@@ -1,0 +1,43 @@
+﻿pyvista.PNMReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PNMReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PNMReader.hide_progress
+      
+      
+      PNMReader.read
+      
+      
+      PNMReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      PNMReader.path
+      
+      
+      PNMReader.reader
+      
+   
+   

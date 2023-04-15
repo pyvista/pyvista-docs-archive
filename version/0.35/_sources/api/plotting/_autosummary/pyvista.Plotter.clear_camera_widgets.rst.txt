@@ -1,0 +1,6 @@
+clear\_camera\_widgets
+======================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Plotter.clear_camera_widgets

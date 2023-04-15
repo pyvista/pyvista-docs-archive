@@ -1,0 +1,43 @@
+﻿pyvista.BaseReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BaseReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      BaseReader.hide_progress
+      
+      
+      BaseReader.read
+      
+      
+      BaseReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      BaseReader.path
+      
+      
+      BaseReader.reader
+      
+   
+   

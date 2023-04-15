@@ -1,0 +1,6 @@
+download\_embryo
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_embryo

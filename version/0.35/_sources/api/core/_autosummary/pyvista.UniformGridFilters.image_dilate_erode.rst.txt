@@ -1,0 +1,6 @@
+image\_dilate\_erode
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGridFilters.image_dilate_erode

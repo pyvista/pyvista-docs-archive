@@ -1,0 +1,7 @@
+﻿pyvista.Plotter
+===============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Plotter
+   :members:

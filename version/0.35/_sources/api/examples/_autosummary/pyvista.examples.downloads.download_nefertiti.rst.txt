@@ -1,0 +1,6 @@
+download\_nefertiti
+===================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_nefertiti

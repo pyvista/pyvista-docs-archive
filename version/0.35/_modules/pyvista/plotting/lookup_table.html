@@ -1,0 +1,1554 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.plotting.lookup_table &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyvista/plotting/lookup_table';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <h1>Source code for pyvista.plotting.lookup_table</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Wrap vtkLookupTable.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.helpers</span> <span class="kn">import</span> <span class="n">convert_array</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.misc</span> <span class="kn">import</span> <span class="n">has_module</span><span class="p">,</span> <span class="n">no_new_attr</span>
+
+<span class="kn">from</span> <span class="nn">.._typing</span> <span class="kn">import</span> <span class="n">color_like</span>
+<span class="kn">from</span> <span class="nn">.colors</span> <span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">get_cmap_safe</span>
+<span class="kn">from</span> <span class="nn">.tools</span> <span class="kn">import</span> <span class="n">opacity_transfer_function</span>
+
+<span class="n">RAMP_MAP</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;s-curve&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">}</span>
+<span class="n">RAMP_MAP_INV</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">RAMP_MAP</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+
+<span class="k">class</span> <span class="nc">lookup_table_ndarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An ndarray which references the owning table and the underlying vtkArray.</span>
+
+<span class="sd">    This class is used to ensure that the internal vtkLookupTable updates when</span>
+<span class="sd">    the values array is updated.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">array</span><span class="p">,</span>
+        <span class="n">table</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allocate the array.&quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">convert_array</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">VTKObject</span> <span class="o">=</span> <span class="n">array</span>
+
+        <span class="n">obj</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkWeakReference</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finalize array (associate with parent metadata).&quot;&quot;&quot;</span>
+        <span class="n">_vtk</span><span class="o">.</span><span class="n">VTKArray</span><span class="o">.</span><span class="n">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shares_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VTKObject</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;VTKObject&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VTKObject</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implement [] set operator.</span>
+
+<span class="sd">        When the array is changed it triggers &quot;Modified()&quot; which updates</span>
+<span class="sd">        all upstream objects, including any render windows holding the</span>
+<span class="sd">        object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">VTKObject</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VTKObject</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+
+        <span class="c1"># the associated dataset should also be marked as modified</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">Get</span><span class="p">():</span>
+            <span class="c1"># this creates a new shallow copy and is necessary to update the</span>
+            <span class="c1"># internal VTK array</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__array_wrap__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_arr</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a numpy scalar if array is 0d.</span>
+
+<span class="sd">        See https://github.com/numpy/numpy/issues/5819</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">out_arr</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">.</span><span class="n">__array_wrap__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_arr</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+        <span class="c1"># Match numpy&#39;s behavior and return a numpy dtype scalar</span>
+        <span class="k">return</span> <span class="n">out_arr</span><span class="p">[()]</span>
+
+    <span class="fm">__getattr__</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">VTKArray</span><span class="o">.</span><span class="fm">__getattr__</span>
+
+
+<div class="viewcode-block" id="LookupTable"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable">[docs]</a><span class="nd">@no_new_attr</span>
+<span class="k">class</span> <span class="nc">LookupTable</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkLookupTable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Scalar to RGBA mapping table.</span>
+
+<span class="sd">    A lookup table is an array that maps input values to output values. When</span>
+<span class="sd">    plotting data over a dataset, it is necessary to map those scalars to</span>
+<span class="sd">    colors (in the RGBA format), and this class provides the functionality to</span>
+<span class="sd">    do so.</span>
+
+<span class="sd">    See `vtkLookupTable</span>
+<span class="sd">    &lt;https://vtk.org/doc/nightly/html/classvtkLookupTable.html&gt;`_ for more</span>
+<span class="sd">    details regarding the underlying VTK API.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cmap : str, colors.Colormap, optional</span>
+<span class="sd">        Color map from ``matplotlib``, ``colorcet``, or ``cmocean``. Either</span>
+<span class="sd">        ``cmap`` or ``values`` can be set, but not both.</span>
+
+<span class="sd">    n_values : int, default: 256</span>
+<span class="sd">        Number of colors in the color map.</span>
+
+<span class="sd">    flip : bool, default: False</span>
+<span class="sd">        Flip the direction of cmap. Most colormaps allow ``*_r`` suffix to do this</span>
+<span class="sd">        as well.</span>
+
+<span class="sd">    values : numpy.ndarray, optional</span>
+<span class="sd">        Lookup table values. Either ``values`` or ``cmap`` can be set, but not</span>
+<span class="sd">        both.</span>
+
+<span class="sd">    value_range : tuple, optional</span>
+<span class="sd">        The range of the brightness of the mapped lookup table. This range is</span>
+<span class="sd">        only used when creating custom color maps and will be ignored if</span>
+<span class="sd">        ``cmap`` is set.</span>
+
+<span class="sd">    hue_range : tuple, optional</span>
+<span class="sd">        Lookup table hue range. This range is only used when creating custom</span>
+<span class="sd">        color maps and will be ignored if ``cmap`` is set.</span>
+
+<span class="sd">    alpha_range : tuple, optional</span>
+<span class="sd">        Lookup table alpha (transparency) range. This range is only used when</span>
+<span class="sd">        creating custom color maps and will be ignored if ``cmap`` is set.</span>
+
+<span class="sd">    scalar_range : tuple, optional</span>
+<span class="sd">        The range of scalars which will be mapped to colors. Values outside of</span>
+<span class="sd">        this range will be colored according to</span>
+<span class="sd">        :attr`LookupTable.below_range_color` and</span>
+<span class="sd">        :attr`LookupTable.above_range_color`.</span>
+
+<span class="sd">    log_scale : bool, optional</span>
+<span class="sd">        Use a log scale when mapping scalar values.</span>
+
+<span class="sd">    nan_color : color_like, optional</span>
+<span class="sd">        Color to render any values that are NANs.</span>
+
+<span class="sd">    above_range_color : color_like, optional</span>
+<span class="sd">        Color to render any values above :attr:`LookupTable.scalar_range`.</span>
+
+<span class="sd">    below_range_color : color_like, optional</span>
+<span class="sd">        Color to render any values below :attr:`LookupTable.scalar_range`.</span>
+
+<span class="sd">    ramp : str, optional</span>
+<span class="sd">        The shape of the table ramp. This range is only used when creating</span>
+<span class="sd">        custom color maps and will be ignored if ``cmap`` is set.</span>
+
+<span class="sd">    annotations : dict, optional</span>
+<span class="sd">        A dictionary of annotations. Keys are the float values in the scalars</span>
+<span class="sd">        range to annotate on the scalar bar and the values are the the string</span>
+<span class="sd">        annotations.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Plot the lookup table with the default VTK color map.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">    &gt;&gt;&gt; lut  # doctest:+SKIP</span>
+<span class="sd">    LookupTable (0x7ff3de60d580)</span>
+<span class="sd">      Table Range:                (0.0, 1.0)</span>
+<span class="sd">      N Values:                   256</span>
+<span class="sd">      Above Range Color:          None</span>
+<span class="sd">      Below Range Color:          None</span>
+<span class="sd">      NAN Color:                  Color(name=&#39;maroon&#39;, hex=&#39;#800000ff&#39;)</span>
+<span class="sd">      Log Scale:                  False</span>
+<span class="sd">      Color Map:                  &quot;VTK lookup table&quot;</span>
+<span class="sd">        Alpha Range:              (1.0, 1.0)</span>
+<span class="sd">        Hue Range:                (0.0, 0.66667)</span>
+<span class="sd">        Saturation Range          (1.0, 1.0)</span>
+<span class="sd">        Value Range               (1.0, 1.0)</span>
+<span class="sd">        Ramp                      s-curve</span>
+<span class="sd">        Is Opaque                 True</span>
+<span class="sd">    &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">    Plot the lookup table with the ``&#39;inferno&#39;`` color map.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; lut = pv.LookupTable(&#39;inferno&#39;, n_values=32)</span>
+<span class="sd">    &gt;&gt;&gt; lut  # doctest:+SKIP</span>
+<span class="sd">    LookupTable (0x7ff3c053f3a0)</span>
+<span class="sd">      Table Range:                (0.0, 1.0)</span>
+<span class="sd">      N Values:                   32</span>
+<span class="sd">      Above Range Color:          None</span>
+<span class="sd">      Below Range Color:          None</span>
+<span class="sd">      NAN Color:                  Color(name=&#39;maroon&#39;, hex=&#39;#800000ff&#39;)</span>
+<span class="sd">      Log Scale:                  False</span>
+<span class="sd">      Color Map:                  &quot;inferno&quot;</span>
+<span class="sd">    &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_nan_color_set</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">_cmap</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_values_manual</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">_opacity_parm</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;quadratic&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">n_values</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+        <span class="n">flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">value_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">hue_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">alpha_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">scalar_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">log_scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">nan_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">above_range_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">below_range_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">ramp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">annotations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the lookup table.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot set both `cmap` and `values`.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">apply_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">n_values</span><span class="o">=</span><span class="n">n_values</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="n">flip</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_values</span> <span class="o">=</span> <span class="n">n_values</span>
+            <span class="k">if</span> <span class="n">value_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">value_range</span> <span class="o">=</span> <span class="n">value_range</span>
+            <span class="k">if</span> <span class="n">hue_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="n">hue_range</span>
+            <span class="k">if</span> <span class="n">alpha_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">alpha_range</span> <span class="o">=</span> <span class="n">alpha_range</span>
+            <span class="k">if</span> <span class="n">ramp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ramp</span> <span class="o">=</span> <span class="n">ramp</span>
+
+        <span class="k">if</span> <span class="n">nan_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nan_color</span> <span class="o">=</span> <span class="n">nan_color</span>
+        <span class="k">if</span> <span class="n">above_range_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">above_range_color</span> <span class="o">=</span> <span class="n">above_range_color</span>
+        <span class="k">if</span> <span class="n">below_range_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">below_range_color</span> <span class="o">=</span> <span class="n">below_range_color</span>
+        <span class="k">if</span> <span class="n">scalar_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span> <span class="o">=</span> <span class="n">scalar_range</span>
+        <span class="k">if</span> <span class="n">log_scale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_scale</span> <span class="o">=</span> <span class="n">log_scale</span>
+        <span class="k">if</span> <span class="n">annotations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="n">annotations</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">value_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the brightness of the mapped lookup table.</span>
+
+<span class="sd">        This range is only used when creating custom color maps and will return</span>
+<span class="sd">        ``None`` when a color map has been set with :attr:`LookupTable.cmap`.</span>
+
+<span class="sd">        This will clear any existing color map and create new values for the</span>
+<span class="sd">        lookup table when set.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Show the effect of setting the value range on the default color</span>
+<span class="sd">        map.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.value_range = (0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Demonstrate a different value range.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.value_range = (0.5, 0.8)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetValueRange</span><span class="p">()</span>
+
+    <span class="nd">@value_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">value_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetValueRange</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rebuild</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hue_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the hue range.</span>
+
+<span class="sd">        This range is only used when creating custom color maps and will return</span>
+<span class="sd">        ``None`` when a color map has been set with :attr:`LookupTable.cmap`.</span>
+
+<span class="sd">        This will clear any existing color map and create new values for the</span>
+<span class="sd">        lookup table when set.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Set the hue range. This allows you to create a lookup table</span>
+<span class="sd">        without setting a color map.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.hue_range = (0, 0.1)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Create a different color map.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.hue_range = (0.5, 0.8)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetHueRange</span><span class="p">()</span>
+
+    <span class="nd">@hue_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">hue_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetHueRange</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rebuild</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the color map used by this lookup table.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Apply the single Matplotlib color map ``&quot;Oranges&quot;``.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.cmap = &#39;Oranges&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Apply a list of colors as a colormap.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.cmap = [&#39;black&#39;, &#39;red&#39;, &#39;orange&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span>
+
+    <span class="nd">@cmap</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_cmap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_values</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">log_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use log scale.</span>
+
+<span class="sd">        When ``True`` the lookup table is a log scale to</span>
+<span class="sd">        :attr:`LookupTable.scalar_range`. Otherwise, it is linear scale.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Use log scale for the lookup table.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.log_scale = True</span>
+<span class="sd">        &gt;&gt;&gt; lut.scalar_range = (1, 100)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetScale</span><span class="p">())</span>
+
+    <span class="nd">@log_scale</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">log_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetScale</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the representation.&quot;&quot;&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Table Range:                </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  N Values:                   </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_values</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Above Range Color:          </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">above_range_color</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Below Range Color:          </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">below_range_color</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  NAN Color:                  </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nan_color</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Log Scale:                  </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">log_scale</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Color Map:                  &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_lookup_type</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmap</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values_manual</span><span class="p">):</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Alpha Range:              </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha_range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Hue Range:                </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hue_range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Saturation Range          </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">saturation_range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Value Range               </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value_range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    Ramp                      </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ramp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalar_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the table range.</span>
+
+<span class="sd">        This is the range of scalars which will be mapped to colors. Values</span>
+<span class="sd">        outside of this range will be colored according to</span>
+<span class="sd">        :attr`LookupTable.below_range_color` and</span>
+<span class="sd">        :attr`LookupTable.above_range_color`.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.scalar_range = (0, 10)</span>
+<span class="sd">        &gt;&gt;&gt; lut.scalar_range</span>
+<span class="sd">        (0.0, 10.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetTableRange</span><span class="p">()</span>
+
+    <span class="nd">@scalar_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scalar_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetTableRange</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">alpha_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the alpha range.</span>
+
+<span class="sd">        This range is only used when creating custom color maps and will return</span>
+<span class="sd">        ``None`` when a color map has been set with :attr:`LookupTable.cmap`.</span>
+
+<span class="sd">        This will clear any existing color map and create new values for the</span>
+<span class="sd">        lookup table when set.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a custom &quot;blues&quot; lookup table that decreases in opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.hue_range = (0.7, 0.7)</span>
+<span class="sd">        &gt;&gt;&gt; lut.alpha_range = (1.0, 0.0)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot(background=&#39;grey&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetAlphaRange</span><span class="p">()</span>
+
+    <span class="nd">@alpha_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">alpha_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetAlphaRange</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rebuild</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">saturation_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the saturation range.</span>
+
+<span class="sd">        This range is only used when creating custom color maps and will return</span>
+<span class="sd">        ``None`` when a color map has been set with :attr:`LookupTable.cmap`.</span>
+
+<span class="sd">        This will clear any existing color map and create new values for the</span>
+<span class="sd">        lookup table when set.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a custom &quot;blues&quot; lookup table that increases in saturation.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.hue_range = (0.7, 0.7)</span>
+<span class="sd">        &gt;&gt;&gt; lut.saturation_range = (0.0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot(background=&#39;grey&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetSaturationRange</span><span class="p">()</span>
+
+    <span class="nd">@saturation_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">saturation_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSaturationRange</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rebuild</span><span class="p">()</span>
+
+<div class="viewcode-block" id="LookupTable.rebuild"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable.rebuild">[docs]</a>    <span class="k">def</span> <span class="nf">rebuild</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear the color map and recompute the values table.</span>
+
+<span class="sd">        This is called automatically when setting values like</span>
+<span class="sd">        :attr:`LookupTable.value_range`.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This will reset any colormap set with :func:`LookupTable.apply_cmap` or</span>
+<span class="sd">        :attr:`LookupTable.values`.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values_manual</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ForceBuild</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nan_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Color</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the not a number (NAN) color.</span>
+
+<span class="sd">        Any values that are NANs will be rendered with this color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Set the NAN color to ``&#39;grey&#39;``.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.nan_color = &#39;grey&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetNanColor</span><span class="p">())</span>
+
+    <span class="nd">@nan_color</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">nan_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="c1"># NAN value is always set, but make it explicit for example plotting</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nan_color_set</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetNanColor</span><span class="p">(</span><span class="o">*</span><span class="n">Color</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ramp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the shape of the table ramp.</span>
+
+<span class="sd">        This attribute is only used when creating custom color maps and will</span>
+<span class="sd">        return ``None`` when a color map has been set with</span>
+<span class="sd">        :attr:`LookupTable.cmap`. This will clear any existing color map and</span>
+<span class="sd">        create new values for the lookup table when set.</span>
+
+<span class="sd">        This value may be either ``&quot;s-curve&quot;``, ``&quot;linear&quot;``, or ``&quot;sqrt&quot;``.</span>
+
+<span class="sd">        * The default is S-curve, which tails off gradually at either end.</span>
+<span class="sd">        * The equation used for ``&quot;s-curve&quot;`` is ``y = (sin((x - 1/2)*pi) +</span>
+<span class="sd">          1)/2``, For an S-curve greyscale ramp, you should set</span>
+<span class="sd">          :attr:`LookupTable.n_values`` to 402 (which is ``256*pi/2``) to provide</span>
+<span class="sd">          room for the tails of the ramp.</span>
+
+<span class="sd">        * The equation for the ``&quot;linear&quot;`` is simply ``y = x``.</span>
+<span class="sd">        * The equation for the ``&quot;sqrt&quot;`` is ``y = sqrt(x)``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Show the default s-curve ramp.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.hue_range = (0.0, 0.33)</span>
+<span class="sd">        &gt;&gt;&gt; lut.ramp = &#39;s-curve&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Plot the linear ramp.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.hue_range = (0.0, 0.33)</span>
+<span class="sd">        &gt;&gt;&gt; lut.ramp = &#39;linear&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Plot the ``&quot;sqrt&quot;`` ramp.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.hue_range = (0.0, 0.33)</span>
+<span class="sd">        &gt;&gt;&gt; lut.ramp = &#39;sqrt&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">RAMP_MAP</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">GetRamp</span><span class="p">()]</span>
+
+    <span class="nd">@ramp</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">ramp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetRamp</span><span class="p">(</span><span class="n">RAMP_MAP_INV</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`ramp` must be one of the following:</span><span class="se">\n</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">RAMP_MAP_INV</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rebuild</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">above_range_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Color</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the above range color.</span>
+
+<span class="sd">        Any values above :attr:`LookupTable.scalar_range` will be rendered with this</span>
+<span class="sd">        color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Enable the usage of the above range color.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.above_range_color = &#39;blue&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Disable the usage of the above range color.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.above_range_color = None</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetUseAboveRangeColor</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetAboveRangeColor</span><span class="p">())</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@above_range_color</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">above_range_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">color_like</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetUseAboveRangeColor</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetAboveRangeColor</span><span class="p">(</span><span class="o">*</span><span class="n">Color</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">above_range_color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetUseAboveRangeColor</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetAboveRangeColor</span><span class="p">(</span><span class="o">*</span><span class="n">Color</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetUseAboveRangeColor</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">below_range_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Color</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the below range color.</span>
+
+<span class="sd">        Any values below :attr:`LookupTable.scalar_range` will be rendered with this</span>
+<span class="sd">        color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Enable the usage of the below range color.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.below_range_color = &#39;blue&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Disable the usage of the below range color.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.below_range_color = None</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetUseBelowRangeColor</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetBelowRangeColor</span><span class="p">())</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@below_range_color</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">below_range_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">color_like</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetUseBelowRangeColor</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetBelowRangeColor</span><span class="p">(</span><span class="o">*</span><span class="n">Color</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">above_range_color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetUseBelowRangeColor</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetBelowRangeColor</span><span class="p">(</span><span class="o">*</span><span class="n">Color</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetUseBelowRangeColor</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LookupTable.apply_cmap"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable.apply_cmap">[docs]</a>    <span class="k">def</span> <span class="nf">apply_cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">n_values</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span> <span class="n">flip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign a colormap to this lookup table.</span>
+
+<span class="sd">        This can be used instead of :attr:`LookupTable.cmap` when you need to</span>
+<span class="sd">        set the number of values at the same time as the color map.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cmap : str, list, colors.Colormap</span>
+<span class="sd">            Colormap from Matplotlib, colorcet, or cmocean.</span>
+
+<span class="sd">        n_values : int, default: 256</span>
+<span class="sd">            Number of colors in the color map.</span>
+
+<span class="sd">        flip : bool, default: False</span>
+<span class="sd">            Flip direction of cmap. Most colormaps allow ``*_r`` suffix to do</span>
+<span class="sd">            this as well.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Apply ``matplotlib``&#39;s ``&#39;cividis&#39;`` color map.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.apply_cmap(&#39;cividis&#39;, n_values=32)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_module</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s1">&#39;Install Matplotlib to use color maps.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">n_values</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">get_cmap_safe</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_values</span><span class="p">))</span> <span class="o">*</span> <span class="mi">255</span>
+
+        <span class="k">if</span> <span class="n">flip</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values_manual</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># reapply the opacity</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity_parm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">apply_opacity</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_opacity_parm</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span> <span class="o">=</span> <span class="n">cmap</span></div>
+
+<div class="viewcode-block" id="LookupTable.apply_opacity"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable.apply_opacity">[docs]</a>    <span class="k">def</span> <span class="nf">apply_opacity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opacity</span><span class="p">,</span> <span class="n">interpolate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;quadratic&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assign custom opacity to this lookup table.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        opacity : float, list(float), str</span>
+<span class="sd">            The opacity mapping to use. Can be a ``str`` name of a predefined</span>
+<span class="sd">            mapping including ``&#39;linear&#39;``, ``&#39;geom&#39;``, ``&#39;sigmoid&#39;``,</span>
+<span class="sd">            ``&#39;sigmoid_3-10&#39;``.  Append an ``&#39;_r&#39;`` to any of those names to</span>
+<span class="sd">            reverse that mapping.  This can also be a custom array or list of</span>
+<span class="sd">            values that will be interpolated across the ``n_color`` range for</span>
+<span class="sd">            user defined mappings. Values must be between 0 and 1.</span>
+
+<span class="sd">            If a ``float``, simply applies the same opacity across the entire</span>
+<span class="sd">            colormap and must be between 0 and 1. Note that ``int`` values are</span>
+<span class="sd">            interpreted as if they were floats.</span>
+
+<span class="sd">        interpolate : bool, default: True</span>
+<span class="sd">            Flag on whether or not to interpolate the opacity mapping for all</span>
+<span class="sd">            colors.</span>
+
+<span class="sd">        kind : str, default: &#39;quadratic&#39;</span>
+<span class="sd">            The interpolation kind if ``interpolate`` is ``True`` and ``scipy``</span>
+<span class="sd">            is available. See :class:`scipy.interpolate.interp1d` for the</span>
+<span class="sd">            available interpolation kinds.</span>
+
+<span class="sd">            If ``scipy`` is not available, ``&#39;linear&#39;`` interpolation is used.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Apply a user defined custom opacity to a lookup table and plot the</span>
+<span class="sd">        random hills example.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">        &gt;&gt;&gt; mesh = examples.load_random_hills()</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable(cmap=&#39;viridis&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; lut.apply_opacity([1.0, 0.4, 0.0, 0.4, 0.9])</span>
+<span class="sd">        &gt;&gt;&gt; lut.scalar_range = (mesh.active_scalars.min(), mesh.active_scalars.max())</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(mesh, cmap=lut)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">opacity</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">opacity</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Opacity must be between 0 and 1, got </span><span class="si">{</span><span class="n">opacity</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">opacity</span> <span class="o">*</span> <span class="mi">255</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_values</span><span class="p">:</span>
+            <span class="c1"># no interpolation is necessary</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">opacity_transfer_function</span><span class="p">(</span>
+                <span class="n">opacity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_values</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="n">interpolate</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opacity_parm</span> <span class="o">=</span> <span class="p">(</span><span class="n">opacity</span><span class="p">,</span> <span class="n">interpolate</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lookup_table_ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the lookup table values.</span>
+
+<span class="sd">        This attribute is used when creating a custom lookup table. The table</span>
+<span class="sd">        must be a RGBA array shaped ``(n, 4)``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a simple four value lookup table ranging from black to red.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.values = [</span>
+<span class="sd">        ...     [0, 0, 0, 255],</span>
+<span class="sd">        ...     [85, 0, 0, 255],</span>
+<span class="sd">        ...     [170, 0, 0, 255],</span>
+<span class="sd">        ...     [255, 0, 0, 255],</span>
+<span class="sd">        ... ]</span>
+<span class="sd">        &gt;&gt;&gt; lut.values</span>
+<span class="sd">        lookup_table_ndarray([[  0,   0,   0, 255],</span>
+<span class="sd">                              [ 85,   0,   0, 255],</span>
+<span class="sd">                              [170,   0,   0, 255],</span>
+<span class="sd">                              [255,   0,   0, 255]], dtype=uint8)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">lookup_table_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetTable</span><span class="p">(),</span> <span class="n">table</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@values</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_values</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values_manual</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">new_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_values</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetTable</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">numpy_to_vtk</span><span class="p">(</span><span class="n">new_values</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the number of values in the lookup table.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Plot the ``&quot;reds&quot;`` colormap with 10 values.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable(&#39;reds&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; lut.n_values = 10</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Plot the default colormap with 1024 values.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; lut.n_values = 1024</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetNumberOfColors</span><span class="p">()</span>
+
+    <span class="nd">@n_values</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">n_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">apply_cmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetNumberOfTableValues</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values_manual</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s1">&#39;Number of values cannot be set when the values array has been manually set. Reassign the values array if you wish to change the number of values.&#39;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetNumberOfColors</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ForceBuild</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set annotations.</span>
+
+<span class="sd">        Pass a dictionary of annotations. Keys are the float values in the</span>
+<span class="sd">        scalars range to annotate on the scalar bar and the values are the the</span>
+<span class="sd">        string annotations.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Assign annotations to the lookup table.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable(&#39;magma&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; lut.annotations = {0: &#39;low&#39;, 0.5: &#39;medium&#39;, 1: &#39;high&#39;}</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">vtk_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetAnnotatedValues</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">vtk_values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="n">n_items</span> <span class="o">=</span> <span class="n">vtk_values</span><span class="o">.</span><span class="n">GetSize</span><span class="p">()</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">vtk_values</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="o">.</span><span class="n">ToFloat</span><span class="p">()</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_items</span><span class="p">)]</span>
+
+        <span class="n">vtk_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetAnnotations</span><span class="p">()</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">vtk_str</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">ii</span><span class="p">))</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_items</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+
+    <span class="nd">@annotations</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ResetAnnotations</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">val</span><span class="p">,</span> <span class="n">anno</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">SetAnnotation</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">anno</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_lookup_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the lookup type.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmap</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cmap</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>  <span class="c1"># type: ignore</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cmap</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values_manual</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;From values array&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;PyVista Lookup Table&#39;</span>
+
+<div class="viewcode-block" id="LookupTable.plot"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot this lookup table.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs : dict, optional</span>
+<span class="sd">            Optional keyword arguments passed to :func:`pyvista.Plotter.show`.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Plot the ``&quot;viridis&quot;`` colormap with the below and above colors.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable(&#39;viridis&#39;, n_values=8)</span>
+<span class="sd">        &gt;&gt;&gt; lut.below_range_color = &#39;black&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.above_range_color = &#39;grey&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.nan_color = &#39;r&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        Plot only ``&quot;blues&quot;`` colormap.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; lut = pv.LookupTable(&#39;blues&#39;, n_values=1024)</span>
+<span class="sd">        &gt;&gt;&gt; lut.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># need a trivial polydata for this</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+        <span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;Lookup Table&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span>
+
+        <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">230</span><span class="p">),</span> <span class="n">off_screen</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;off_screen&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="n">actor</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">scalars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">actor</span><span class="o">.</span><span class="n">mapper</span><span class="o">.</span><span class="n">lookup_table</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">actor</span><span class="o">.</span><span class="n">visibility</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">scalar_bar_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lookup_type</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;outline&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;title_font_size&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">label_level</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">below_range_color</span><span class="p">:</span>
+            <span class="n">scalar_bar_kwargs</span><span class="p">[</span><span class="s1">&#39;below_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;below&#39;</span>
+            <span class="n">label_level</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">above_range_color</span><span class="p">:</span>
+            <span class="n">scalar_bar_kwargs</span><span class="p">[</span><span class="s1">&#39;above_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;above&#39;</span>
+            <span class="n">label_level</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="n">label_level</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nan_color_set</span>
+
+        <span class="n">scalar_bar</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">add_scalar_bar</span><span class="p">(</span><span class="o">**</span><span class="n">scalar_bar_kwargs</span><span class="p">)</span>
+        <span class="n">scalar_bar</span><span class="o">.</span><span class="n">SetLookupTable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">scalar_bar</span><span class="o">.</span><span class="n">SetMaximumNumberOfColors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_values</span><span class="p">)</span>
+        <span class="n">scalar_bar</span><span class="o">.</span><span class="n">SetPosition</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="n">label_level</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">scalar_bar</span><span class="o">.</span><span class="n">SetPosition2</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.9</span> <span class="o">-</span> <span class="n">label_level</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="c1"># scalar_bar.SetTextPad(-10)</span>
+        <span class="n">scalar_bar</span><span class="o">.</span><span class="n">SetDrawNanAnnotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nan_color_set</span><span class="p">)</span>
+
+        <span class="n">pl</span><span class="o">.</span><span class="n">background_color</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LookupTable.to_color_tf"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable.to_color_tf">[docs]</a>    <span class="k">def</span> <span class="nf">to_color_tf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkColorTransferFunction</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the VTK color transfer function of this table.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        vtk.vtkColorTransferFunction</span>
+<span class="sd">            VTK color transfer function.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; lut = pyvista.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; tf = lut.to_color_tf()</span>
+<span class="sd">        &gt;&gt;&gt; tf  # doctest:+SKIP</span>
+<span class="sd">        &lt;vtkmodules.vtkRenderingCore.vtkColorTransferFunction(0x339bd40) at 0x7ffabf634700&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">color_tf</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkColorTransferFunction</span><span class="p">()</span>
+        <span class="n">mn</span><span class="p">,</span> <span class="n">mx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span>
+        <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mn</span><span class="p">,</span> <span class="n">mx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_values</span><span class="p">)):</span>
+            <span class="n">color_tf</span><span class="o">.</span><span class="n">AddRGBPoint</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">map_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">color_tf</span></div>
+
+<div class="viewcode-block" id="LookupTable.to_opacity_tf"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable.to_opacity_tf">[docs]</a>    <span class="k">def</span> <span class="nf">to_opacity_tf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the opacity transfer function of this table.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        vtk.vtkPiecewiseFunction</span>
+<span class="sd">            Piecewise function of the opacity of this color table.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; lut = pyvista.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; tf = lut.to_opacity_tf()</span>
+<span class="sd">        &gt;&gt;&gt; tf  # doctest:+SKIP</span>
+<span class="sd">        &lt;vtkmodules.vtkCommonDataModel.vtkPiecewiseFunction(0x32fa410) at 0x7fe963d6d5e0&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">opacity_tf</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkPiecewiseFunction</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]):</span>
+            <span class="n">opacity_tf</span><span class="o">.</span><span class="n">AddPoint</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_values</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">opacity_tf</span></div>
+
+<div class="viewcode-block" id="LookupTable.map_value"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.LookupTable.html#pyvista.LookupTable.map_value">[docs]</a>    <span class="k">def</span> <span class="nf">map_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">opacity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map a single value through the lookup table, returning an RBG(A) color.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : float</span>
+<span class="sd">            Scalar value to map to an RGB(A) color.</span>
+
+<span class="sd">        opacity : bool, default: True</span>
+<span class="sd">            Map the opacity as well.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Mapped RGB(A) color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; lut = pyvista.LookupTable()</span>
+<span class="sd">        &gt;&gt;&gt; rgba_color = lut.map_value(0.0)</span>
+<span class="sd">        &gt;&gt;&gt; rgba_color</span>
+<span class="sd">        (1.0, 0.0, 0.0, 1.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">GetColor</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">opacity</span><span class="p">:</span>
+            <span class="n">color</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetOpacity</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implement a Matplotlib colormap-like call.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">map_value</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span><span class="p">])</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;LookupTable __call__ expects a single value or an iterable.&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

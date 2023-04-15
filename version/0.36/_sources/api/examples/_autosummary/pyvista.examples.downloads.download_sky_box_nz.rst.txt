@@ -1,0 +1,6 @@
+download\_sky\_box\_nz
+======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_sky_box_nz

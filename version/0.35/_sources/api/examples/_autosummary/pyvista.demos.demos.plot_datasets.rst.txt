@@ -1,0 +1,6 @@
+plot\_datasets
+==============
+
+.. currentmodule:: pyvista.demos.demos
+
+.. autofunction:: plot_datasets

@@ -1,0 +1,7 @@
+﻿pyvista.DEMReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DEMReader
+   :members:

@@ -1,0 +1,6 @@
+clear\_field\_data
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.clear_field_data

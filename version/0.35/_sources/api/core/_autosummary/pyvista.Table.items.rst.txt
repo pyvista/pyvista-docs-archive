@@ -1,0 +1,6 @@
+items
+=====
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.items

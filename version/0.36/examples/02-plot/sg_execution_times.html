@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Computation times &#8212; PyVista 0.36.1 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.36  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables examples/02-plot/sg_execution_times and {'json_url': 'https://<DEFAULT_CNAME>/versions.json', 'version_match': '0.36'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "examples/02-plot/sg_execution_times.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://<DEFAULT_CNAME>/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "examples/02-plot/sg_execution_times.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.36.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.36") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyvista/pyvista/edit/main/doc/examples/02-plot/sg_execution_times.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="computation-times">
+<span id="sphx-glr-examples-02-plot-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Permalink to this headline">#</a></h1>
+<p><strong>03:06.561</strong> total execution time for <strong>examples_02-plot</strong> files:</p>
+<table class="table">
+<colgroup>
+<col style="width: 83%" />
+<col style="width: 10%" />
+<col style="width: 7%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="volume.html#sphx-glr-examples-02-plot-volume-py"><span class="std std-ref">Volume Rendering</span></a> (<code class="docutils literal notranslate"><span class="pre">volume.py</span></code>)</p></td>
+<td><p>00:46.208</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="orbit.html#sphx-glr-examples-02-plot-orbit-py"><span class="std std-ref">Orbiting</span></a> (<code class="docutils literal notranslate"><span class="pre">orbit.py</span></code>)</p></td>
+<td><p>00:23.983</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pbr.html#sphx-glr-examples-02-plot-pbr-py"><span class="std std-ref">Physically Based Rendering</span></a> (<code class="docutils literal notranslate"><span class="pre">pbr.py</span></code>)</p></td>
+<td><p>00:12.077</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="topo-map.html#sphx-glr-examples-02-plot-topo-map-py"><span class="std std-ref">Topographic Map</span></a> (<code class="docutils literal notranslate"><span class="pre">topo-map.py</span></code>)</p></td>
+<td><p>00:11.363</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="isovalue.html#sphx-glr-examples-02-plot-isovalue-py"><span class="std std-ref">Moving Isovalue</span></a> (<code class="docutils literal notranslate"><span class="pre">isovalue.py</span></code>)</p></td>
+<td><p>00:11.048</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="opacity.html#sphx-glr-examples-02-plot-opacity-py"><span class="std std-ref">Plot with Opacity</span></a> (<code class="docutils literal notranslate"><span class="pre">opacity.py</span></code>)</p></td>
+<td><p>00:09.818</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="movie.html#sphx-glr-examples-02-plot-movie-py"><span class="std std-ref">Create a MP4 Movie</span></a> (<code class="docutils literal notranslate"><span class="pre">movie.py</span></code>)</p></td>
+<td><p>00:07.728</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="silhouette.html#sphx-glr-examples-02-plot-silhouette-py"><span class="std std-ref">Silhouette Highlight</span></a> (<code class="docutils literal notranslate"><span class="pre">silhouette.py</span></code>)</p></td>
+<td><p>00:07.249</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="floors.html#sphx-glr-examples-02-plot-floors-py"><span class="std std-ref">Plot with Floors</span></a> (<code class="docutils literal notranslate"><span class="pre">floors.py</span></code>)</p></td>
+<td><p>00:07.236</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="depth-peeling.html#sphx-glr-examples-02-plot-depth-peeling-py"><span class="std std-ref">Depth Peeling</span></a> (<code class="docutils literal notranslate"><span class="pre">depth-peeling.py</span></code>)</p></td>
+<td><p>00:05.012</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="texture.html#sphx-glr-examples-02-plot-texture-py"><span class="std std-ref">Applying Textures</span></a> (<code class="docutils literal notranslate"><span class="pre">texture.py</span></code>)</p></td>
+<td><p>00:04.543</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="movie_glyphs.html#sphx-glr-examples-02-plot-movie-glyphs-py"><span class="std std-ref">Save a Movie Using Glyphs</span></a> (<code class="docutils literal notranslate"><span class="pre">movie_glyphs.py</span></code>)</p></td>
+<td><p>00:04.306</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="moving_cmap.html#sphx-glr-examples-02-plot-moving-cmap-py"><span class="std std-ref">Create a GIF Movie of a Static Object with a Moving Colormap</span></a> (<code class="docutils literal notranslate"><span class="pre">moving_cmap.py</span></code>)</p></td>
+<td><p>00:03.586</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="edl.html#sphx-glr-examples-02-plot-edl-py"><span class="std std-ref">Eye Dome Lighting</span></a> (<code class="docutils literal notranslate"><span class="pre">edl.py</span></code>)</p></td>
+<td><p>00:02.944</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="cmap.html#sphx-glr-examples-02-plot-cmap-py"><span class="std std-ref">Colormap Choices</span></a> (<code class="docutils literal notranslate"><span class="pre">cmap.py</span></code>)</p></td>
+<td><p>00:02.470</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="bounds.html#sphx-glr-examples-02-plot-bounds-py"><span class="std std-ref">Plotting Bounds</span></a> (<code class="docutils literal notranslate"><span class="pre">bounds.py</span></code>)</p></td>
+<td><p>00:02.203</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="themes.html#sphx-glr-examples-02-plot-themes-py"><span class="std std-ref">Control Global and Local Plotting Themes</span></a> (<code class="docutils literal notranslate"><span class="pre">themes.py</span></code>)</p></td>
+<td><p>00:02.014</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="chart_basics.html#sphx-glr-examples-02-plot-chart-basics-py"><span class="std std-ref">Chart Basics</span></a> (<code class="docutils literal notranslate"><span class="pre">chart_basics.py</span></code>)</p></td>
+<td><p>00:01.863</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="background_image.html#sphx-glr-examples-02-plot-background-image-py"><span class="std std-ref">Background Image</span></a> (<code class="docutils literal notranslate"><span class="pre">background_image.py</span></code>)</p></td>
+<td><p>00:01.840</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ortho-slices.html#sphx-glr-examples-02-plot-ortho-slices-py"><span class="std std-ref">Orthogonal Slices</span></a> (<code class="docutils literal notranslate"><span class="pre">ortho-slices.py</span></code>)</p></td>
+<td><p>00:01.656</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ghost-cells.html#sphx-glr-examples-02-plot-ghost-cells-py"><span class="std std-ref">Hide Cells with Ghosting</span></a> (<code class="docutils literal notranslate"><span class="pre">ghost-cells.py</span></code>)</p></td>
+<td><p>00:01.592</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="lighting_mesh.html#sphx-glr-examples-02-plot-lighting-mesh-py"><span class="std std-ref">Lighting Properties</span></a> (<code class="docutils literal notranslate"><span class="pre">lighting_mesh.py</span></code>)</p></td>
+<td><p>00:01.577</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="multi-window.html#sphx-glr-examples-02-plot-multi-window-py"><span class="std std-ref">Multi-Window Plot</span></a> (<code class="docutils literal notranslate"><span class="pre">multi-window.py</span></code>)</p></td>
+<td><p>00:01.436</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="chart_overlays.html#sphx-glr-examples-02-plot-chart-overlays-py"><span class="std std-ref">Chart Overlays</span></a> (<code class="docutils literal notranslate"><span class="pre">chart_overlays.py</span></code>)</p></td>
+<td><p>00:01.303</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="scalar-bars.html#sphx-glr-examples-02-plot-scalar-bars-py"><span class="std std-ref">Customize Scalar Bars</span></a> (<code class="docutils literal notranslate"><span class="pre">scalar-bars.py</span></code>)</p></td>
+<td><p>00:01.265</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="vector-component.html#sphx-glr-examples-02-plot-vector-component-py"><span class="std std-ref">Plot Vector Component</span></a> (<code class="docutils literal notranslate"><span class="pre">vector-component.py</span></code>)</p></td>
+<td><p>00:01.175</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot-over-line.html#sphx-glr-examples-02-plot-plot-over-line-py"><span class="std std-ref">Plot Over Line</span></a> (<code class="docutils literal notranslate"><span class="pre">plot-over-line.py</span></code>)</p></td>
+<td><p>00:01.131</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gif.html#sphx-glr-examples-02-plot-gif-py"><span class="std std-ref">Create a GIF Movie</span></a> (<code class="docutils literal notranslate"><span class="pre">gif.py</span></code>)</p></td>
+<td><p>00:00.998</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="interpolate-before-map.html#sphx-glr-examples-02-plot-interpolate-before-map-py"><span class="std std-ref">Interpolate Before Mapping</span></a> (<code class="docutils literal notranslate"><span class="pre">interpolate-before-map.py</span></code>)</p></td>
+<td><p>00:00.958</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="linked.html#sphx-glr-examples-02-plot-linked-py"><span class="std std-ref">Linked Views in Subplots</span></a> (<code class="docutils literal notranslate"><span class="pre">linked.py</span></code>)</p></td>
+<td><p>00:00.849</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="shading.html#sphx-glr-examples-02-plot-shading-py"><span class="std std-ref">Types of Shading</span></a> (<code class="docutils literal notranslate"><span class="pre">shading.py</span></code>)</p></td>
+<td><p>00:00.842</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="edges.html#sphx-glr-examples-02-plot-edges-py"><span class="std std-ref">Show Edges</span></a> (<code class="docutils literal notranslate"><span class="pre">edges.py</span></code>)</p></td>
+<td><p>00:00.720</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="point-picking.html#sphx-glr-examples-02-plot-point-picking-py"><span class="std std-ref">Picking points on a mesh</span></a> (<code class="docutils literal notranslate"><span class="pre">point-picking.py</span></code>)</p></td>
+<td><p>00:00.681</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="labels.html#sphx-glr-examples-02-plot-labels-py"><span class="std std-ref">Label Points</span></a> (<code class="docutils literal notranslate"><span class="pre">labels.py</span></code>)</p></td>
+<td><p>00:00.558</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spherical.html#sphx-glr-examples-02-plot-spherical-py"><span class="std std-ref">Plot data in spherical coordinates</span></a> (<code class="docutils literal notranslate"><span class="pre">spherical.py</span></code>)</p></td>
+<td><p>00:00.496</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="clear.html#sphx-glr-examples-02-plot-clear-py"><span class="std std-ref">Clearing a Mesh or the Entire Plot</span></a> (<code class="docutils literal notranslate"><span class="pre">clear.py</span></code>)</p></td>
+<td><p>00:00.384</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="image_depth.html#sphx-glr-examples-02-plot-image-depth-py"><span class="std std-ref">Render a depth image</span></a> (<code class="docutils literal notranslate"><span class="pre">image_depth.py</span></code>)</p></td>
+<td><p>00:00.354</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mesh-picking.html#sphx-glr-examples-02-plot-mesh-picking-py"><span class="std std-ref">Picking Meshes</span></a> (<code class="docutils literal notranslate"><span class="pre">mesh-picking.py</span></code>)</p></td>
+<td><p>00:00.353</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="surface-picking.html#sphx-glr-examples-02-plot-surface-picking-py"><span class="std std-ref">Picking a Point on the Surface of a Mesh</span></a> (<code class="docutils literal notranslate"><span class="pre">surface-picking.py</span></code>)</p></td>
+<td><p>00:00.336</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="screenshot.html#sphx-glr-examples-02-plot-screenshot-py"><span class="std std-ref">Saving Screenshots</span></a> (<code class="docutils literal notranslate"><span class="pre">screenshot.py</span></code>)</p></td>
+<td><p>00:00.223</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot-over-circular-arc.html#sphx-glr-examples-02-plot-plot-over-circular-arc-py"><span class="std std-ref">Plot Scalars Over a Circular Arc</span></a> (<code class="docutils literal notranslate"><span class="pre">plot-over-circular-arc.py</span></code>)</p></td>
+<td><p>00:00.183</p></td>
+<td><p>0.0 MB</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

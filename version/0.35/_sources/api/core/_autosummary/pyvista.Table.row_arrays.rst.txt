@@ -1,0 +1,6 @@
+row\_arrays
+===========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Table.row_arrays

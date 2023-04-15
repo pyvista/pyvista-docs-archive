@@ -1,0 +1,6 @@
+download\_dicom\_stack
+======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_dicom_stack

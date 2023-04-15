@@ -1,0 +1,323 @@
+﻿pyvista.MultiBlock
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: MultiBlock
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      MultiBlock.add_field_array
+      
+      
+      MultiBlock.add_field_data
+      
+      
+      MultiBlock.append
+      
+      
+      MultiBlock.cell_centers
+      
+      
+      MultiBlock.cell_data_to_point_data
+      
+      
+      MultiBlock.clean
+      
+      
+      MultiBlock.clear_field_arrays
+      
+      
+      MultiBlock.clear_field_data
+      
+      
+      MultiBlock.clip
+      
+      
+      MultiBlock.clip_box
+      
+      
+      MultiBlock.combine
+      
+      
+      MultiBlock.compute_cell_sizes
+      
+      
+      MultiBlock.copy
+      
+      
+      MultiBlock.copy_attributes
+      
+      
+      MultiBlock.copy_meta_from
+      
+      
+      MultiBlock.copy_structure
+      
+      
+      MultiBlock.deep_copy
+      
+      
+      MultiBlock.elevation
+      
+      
+      MultiBlock.extract_all_edges
+      
+      
+      MultiBlock.extract_geometry
+      
+      
+      MultiBlock.get
+      
+      
+      MultiBlock.get_block_name
+      
+      
+      MultiBlock.get_data_range
+      
+      
+      MultiBlock.get_index_by_name
+      
+      
+      MultiBlock.head
+      
+      
+      MultiBlock.keys
+      
+      
+      MultiBlock.next
+      
+      
+      MultiBlock.outline
+      
+      
+      MultiBlock.outline_corners
+      
+      
+      MultiBlock.override
+      
+      
+      MultiBlock.plot
+      
+      
+      MultiBlock.point_data_to_cell_data
+      
+      
+      MultiBlock.pop
+      
+      
+      MultiBlock.save
+      
+      
+      MultiBlock.set_block_name
+      
+      
+      MultiBlock.shallow_copy
+      
+      
+      MultiBlock.slice
+      
+      
+      MultiBlock.slice_along_axis
+      
+      
+      MultiBlock.slice_along_line
+      
+      
+      MultiBlock.slice_orthogonal
+      
+      
+      MultiBlock.triangulate
+      
+      
+      MultiBlock.wrap_nested
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      MultiBlock.actual_memory_size
+      
+      
+      MultiBlock.bounds
+      
+      
+      MultiBlock.center
+      
+      
+      MultiBlock.field_arrays
+      
+      
+      MultiBlock.field_data
+      
+      
+      MultiBlock.length
+      
+      
+      MultiBlock.memory_address
+      
+      
+      MultiBlock.n_blocks
+      
+      
+      MultiBlock.volume
+      
+   
+   

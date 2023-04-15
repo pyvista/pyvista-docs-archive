@@ -1,0 +1,6 @@
+download\_bolt\_nut
+===================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_bolt_nut

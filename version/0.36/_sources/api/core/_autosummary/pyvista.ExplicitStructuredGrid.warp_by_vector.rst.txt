@@ -1,0 +1,6 @@
+warp\_by\_vector
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.warp_by_vector

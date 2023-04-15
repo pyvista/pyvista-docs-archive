@@ -1,0 +1,7 @@
+﻿pyvista.XMLMultiBlockDataReader
+===============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLMultiBlockDataReader
+   :members:

@@ -1,0 +1,6 @@
+download\_dragon
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_dragon

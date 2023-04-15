@@ -1,0 +1,6 @@
+subdivide\_adaptive
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.subdivide_adaptive

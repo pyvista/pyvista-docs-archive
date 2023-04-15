@@ -1,0 +1,7 @@
+﻿pyvista.themes.\_ColorbarConfig
+===============================
+
+.. currentmodule:: pyvista.themes
+
+.. autoclass:: _ColorbarConfig
+   :members:

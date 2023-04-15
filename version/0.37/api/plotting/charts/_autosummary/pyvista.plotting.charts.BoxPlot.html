@@ -1,0 +1,1504 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pyvista.plotting.charts.BoxPlot &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/thebelab-helper.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/plotting/charts/_autosummary/pyvista.plotting.charts.BoxPlot';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="pyvista.plotting.charts.PiePlot" href="pyvista.plotting.charts.PiePlot.html" />
+    <link rel="prev" title="pyvista.plotting.charts.StackPlot" href="pyvista.plotting.charts.StackPlot.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core API</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Plotting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../plotting.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qt_plotting.html">PyVista and PyQt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theme.html">Themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.Plotter.html">pyvista.Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.Renderer.html">pyvista.Renderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.Property.html">pyvista.Property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.Actor.html">pyvista.Actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.DataSetMapper.html">pyvista.DataSetMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.LookupTable.html">pyvista.LookupTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.CompositePolyDataMapper.html">pyvista.CompositePolyDataMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.CompositeAttributes.html">pyvista.CompositeAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/pyvista.BlockAttributes.html">pyvista.BlockAttributes</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Charts</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pyvista.Chart2D.html">pyvista.Chart2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.ChartBox.html">pyvista.ChartBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.ChartPie.html">pyvista.ChartPie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.ChartMPL.html">pyvista.ChartMPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.Pen.html">pyvista.plotting.charts.Pen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.Brush.html">pyvista.plotting.charts.Brush</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.Axis.html">pyvista.plotting.charts.Axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.LinePlot2D.html">pyvista.plotting.charts.LinePlot2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.ScatterPlot2D.html">pyvista.plotting.charts.ScatterPlot2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.BarPlot.html">pyvista.plotting.charts.BarPlot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.AreaPlot.html">pyvista.plotting.charts.AreaPlot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.StackPlot.html">pyvista.plotting.charts.StackPlot</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">pyvista.plotting.charts.BoxPlot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyvista.plotting.charts.PiePlot.html">pyvista.plotting.charts.PiePlot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../conv_func.html">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilities/index.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readers/index.html">Readers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="pyvista-plotting-charts-boxplot">
+<h1>pyvista.plotting.charts.BoxPlot<a class="headerlink" href="#pyvista-plotting-charts-boxplot" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BoxPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pyvista/plotting/charts.html#BoxPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Class representing a box plot.</p>
+<p>Users should typically not directly create new plot instances, but
+use the dedicated <code class="docutils literal notranslate"><span class="pre">ChartBox</span></code> class.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.24)"><span>array_like</span></a></span></dt><dd><p>Dataset(s) from which the relevant statistics will be
+calculated used to draw the box plot.</p>
+</dd>
+<dt><strong>colors</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">color_like</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Color of the boxes drawn in this plot. Any color parsable by
+<a class="reference internal" href="../../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.Color</span></code></a> is allowed.  Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>labels</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Label for each box drawn in this plot, as shown in the chart’s
+legend. Defaults to <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Create boxplots for datasets sampled from shifted normal distributions.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Seeded random number generator used for data generation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normal_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">(</span><span class="n">normal_data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;x ~ N(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">,1)&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-1_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-1_00_00.png" />
+</figure>
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.brush">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">brush</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.brush" title="Permalink to this definition">#</a></dt>
+<dd><p>Brush object controlling how shapes in this plot are filled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="pyvista.plotting.charts.Brush.html#pyvista.plotting.charts.Brush" title="pyvista.plotting.charts.Brush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Brush</span></code></a></dt><dd><p>Brush object controlling how shapes in this plot are filled.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Use a custom texture for the box plot’s brush object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">brush</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_puppy_texture</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-2_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-2_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the plot’s color.</p>
+<p>This is the color used by the plot’s brush
+to draw the different components.</p>
+<p class="rubric">Examples</p>
+<p>Set the box plot’s color to red.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-3_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-3_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.color_scheme">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color_scheme</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.color_scheme" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the plot’s color scheme.</p>
+<p>This scheme defines the colors of the different
+components drawn by this plot.
+See the table below for the available color
+schemes.</p>
+<p class="rubric">Notes</p>
+<p id="plot-color-schemes">Overview of all available color schemes.</p>
+<table class="table" id="id1">
+<caption><span class="caption-text">Color schemes</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 50.0%" />
+<col style="width: 5.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Color scheme</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p># colors</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;spectrum&quot;</span></code></p></td>
+<td><p>black, red, blue, green, purple, orange, brown</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_0.png" src="../../../../_images/cs_0.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;warm&quot;</span></code></p></td>
+<td><p>dark red → yellow</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_1.png" src="../../../../_images/cs_1.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cool&quot;</span></code></p></td>
+<td><p>green → blue → purple</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_2.png" src="../../../../_images/cs_2.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;blues&quot;</span></code></p></td>
+<td><p>Different shades of blue</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_3.png" src="../../../../_images/cs_3.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;wild_flower&quot;</span></code></p></td>
+<td><p>blue → purple → pink</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_4.png" src="../../../../_images/cs_4.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;citrus&quot;</span></code></p></td>
+<td><p>green → yellow → orange</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_5.png" src="../../../../_images/cs_5.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange11&quot;</span></code></p></td>
+<td><p>dark brown → white → dark purple</p></td>
+<td><p>11</p></td>
+<td><img alt="../../../../_images/cs_6.png" src="../../../../_images/cs_6.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange10&quot;</span></code></p></td>
+<td><p>dark brown → white → dark purple</p></td>
+<td><p>10</p></td>
+<td><img alt="../../../../_images/cs_7.png" src="../../../../_images/cs_7.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange9&quot;</span></code></p></td>
+<td><p>brown → white → purple</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_8.png" src="../../../../_images/cs_8.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange8&quot;</span></code></p></td>
+<td><p>brown → white → purple</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_9.png" src="../../../../_images/cs_9.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange7&quot;</span></code></p></td>
+<td><p>brown → white → purple</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_10.png" src="../../../../_images/cs_10.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange6&quot;</span></code></p></td>
+<td><p>brown → white → purple</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_11.png" src="../../../../_images/cs_11.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange5&quot;</span></code></p></td>
+<td><p>orange → white → purple</p></td>
+<td><p>5</p></td>
+<td><img alt="../../../../_images/cs_12.png" src="../../../../_images/cs_12.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange4&quot;</span></code></p></td>
+<td><p>orange → white → purple</p></td>
+<td><p>4</p></td>
+<td><img alt="../../../../_images/cs_13.png" src="../../../../_images/cs_13.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_purple_orange3&quot;</span></code></p></td>
+<td><p>orange → white → purple</p></td>
+<td><p>3</p></td>
+<td><img alt="../../../../_images/cs_14.png" src="../../../../_images/cs_14.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral11&quot;</span></code></p></td>
+<td><p>dark red → light yellow → dark blue</p></td>
+<td><p>11</p></td>
+<td><img alt="../../../../_images/cs_15.png" src="../../../../_images/cs_15.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral10&quot;</span></code></p></td>
+<td><p>dark red → light yellow → dark blue</p></td>
+<td><p>10</p></td>
+<td><img alt="../../../../_images/cs_16.png" src="../../../../_images/cs_16.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral9&quot;</span></code></p></td>
+<td><p>red → light yellow → blue</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_17.png" src="../../../../_images/cs_17.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral8&quot;</span></code></p></td>
+<td><p>red → light yellow → blue</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_18.png" src="../../../../_images/cs_18.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral7&quot;</span></code></p></td>
+<td><p>red → light yellow → blue</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_19.png" src="../../../../_images/cs_19.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral6&quot;</span></code></p></td>
+<td><p>red → light yellow → blue</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_20.png" src="../../../../_images/cs_20.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral5&quot;</span></code></p></td>
+<td><p>red → light yellow → blue</p></td>
+<td><p>5</p></td>
+<td><img alt="../../../../_images/cs_21.png" src="../../../../_images/cs_21.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral4&quot;</span></code></p></td>
+<td><p>red → light yellow → blue</p></td>
+<td><p>4</p></td>
+<td><img alt="../../../../_images/cs_22.png" src="../../../../_images/cs_22.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_spectral3&quot;</span></code></p></td>
+<td><p>orange → light yellow → green</p></td>
+<td><p>3</p></td>
+<td><img alt="../../../../_images/cs_23.png" src="../../../../_images/cs_23.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green11&quot;</span></code></p></td>
+<td><p>dark brown → white → dark blue-green</p></td>
+<td><p>11</p></td>
+<td><img alt="../../../../_images/cs_24.png" src="../../../../_images/cs_24.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green10&quot;</span></code></p></td>
+<td><p>dark brown → white → dark blue-green</p></td>
+<td><p>10</p></td>
+<td><img alt="../../../../_images/cs_25.png" src="../../../../_images/cs_25.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green9&quot;</span></code></p></td>
+<td><p>brown → white → blue-green</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_26.png" src="../../../../_images/cs_26.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green8&quot;</span></code></p></td>
+<td><p>brown → white → blue-green</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_27.png" src="../../../../_images/cs_27.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green7&quot;</span></code></p></td>
+<td><p>brown → white → blue-green</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_28.png" src="../../../../_images/cs_28.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green6&quot;</span></code></p></td>
+<td><p>brown → white → blue-green</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_29.png" src="../../../../_images/cs_29.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green5&quot;</span></code></p></td>
+<td><p>brown → white → blue-green</p></td>
+<td><p>5</p></td>
+<td><img alt="../../../../_images/cs_30.png" src="../../../../_images/cs_30.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green4&quot;</span></code></p></td>
+<td><p>brown → white → blue-green</p></td>
+<td><p>4</p></td>
+<td><img alt="../../../../_images/cs_31.png" src="../../../../_images/cs_31.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;div_brown_blue_green3&quot;</span></code></p></td>
+<td><p>brown → white → blue-green</p></td>
+<td><p>3</p></td>
+<td><img alt="../../../../_images/cs_32.png" src="../../../../_images/cs_32.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_green9&quot;</span></code></p></td>
+<td><p>light blue → dark green</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_33.png" src="../../../../_images/cs_33.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_green8&quot;</span></code></p></td>
+<td><p>light blue → dark green</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_34.png" src="../../../../_images/cs_34.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_green7&quot;</span></code></p></td>
+<td><p>light blue → dark green</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_35.png" src="../../../../_images/cs_35.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_green6&quot;</span></code></p></td>
+<td><p>light blue → green</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_36.png" src="../../../../_images/cs_36.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_green5&quot;</span></code></p></td>
+<td><p>light blue → green</p></td>
+<td><p>5</p></td>
+<td><img alt="../../../../_images/cs_37.png" src="../../../../_images/cs_37.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_green4&quot;</span></code></p></td>
+<td><p>light blue → green</p></td>
+<td><p>4</p></td>
+<td><img alt="../../../../_images/cs_38.png" src="../../../../_images/cs_38.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_green3&quot;</span></code></p></td>
+<td><p>light blue → green</p></td>
+<td><p>3</p></td>
+<td><img alt="../../../../_images/cs_39.png" src="../../../../_images/cs_39.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_yellow_orange_brown9&quot;</span></code></p></td>
+<td><p>light yellow → orange → dark brown</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_40.png" src="../../../../_images/cs_40.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_yellow_orange_brown8&quot;</span></code></p></td>
+<td><p>light yellow → orange → brown</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_41.png" src="../../../../_images/cs_41.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_yellow_orange_brown7&quot;</span></code></p></td>
+<td><p>light yellow → orange → brown</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_42.png" src="../../../../_images/cs_42.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_yellow_orange_brown6&quot;</span></code></p></td>
+<td><p>light yellow → orange → brown</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_43.png" src="../../../../_images/cs_43.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_yellow_orange_brown5&quot;</span></code></p></td>
+<td><p>light yellow → orange → brown</p></td>
+<td><p>5</p></td>
+<td><img alt="../../../../_images/cs_44.png" src="../../../../_images/cs_44.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_yellow_orange_brown4&quot;</span></code></p></td>
+<td><p>light yellow → orange</p></td>
+<td><p>4</p></td>
+<td><img alt="../../../../_images/cs_45.png" src="../../../../_images/cs_45.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_yellow_orange_brown3&quot;</span></code></p></td>
+<td><p>light yellow → orange</p></td>
+<td><p>3</p></td>
+<td><img alt="../../../../_images/cs_46.png" src="../../../../_images/cs_46.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_purple9&quot;</span></code></p></td>
+<td><p>light blue → dark purple</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_47.png" src="../../../../_images/cs_47.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_purple8&quot;</span></code></p></td>
+<td><p>light blue → purple</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_48.png" src="../../../../_images/cs_48.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_purple7&quot;</span></code></p></td>
+<td><p>light blue → purple</p></td>
+<td><p>7</p></td>
+<td><img alt="../../../../_images/cs_49.png" src="../../../../_images/cs_49.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_purple6&quot;</span></code></p></td>
+<td><p>light blue → purple</p></td>
+<td><p>6</p></td>
+<td><img alt="../../../../_images/cs_50.png" src="../../../../_images/cs_50.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_purple5&quot;</span></code></p></td>
+<td><p>light blue → purple</p></td>
+<td><p>5</p></td>
+<td><img alt="../../../../_images/cs_51.png" src="../../../../_images/cs_51.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_purple4&quot;</span></code></p></td>
+<td><p>light blue → purple</p></td>
+<td><p>4</p></td>
+<td><img alt="../../../../_images/cs_52.png" src="../../../../_images/cs_52.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;seq_blue_purple3&quot;</span></code></p></td>
+<td><p>light blue → purple</p></td>
+<td><p>3</p></td>
+<td><img alt="../../../../_images/cs_53.png" src="../../../../_images/cs_53.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_accent&quot;</span></code></p></td>
+<td><p>pastel green, pastel purple, pastel orange, pastel yellow, blue, pink, brown, gray</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_54.png" src="../../../../_images/cs_54.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_dark2&quot;</span></code></p></td>
+<td><p>darker shade of qual_set2</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_55.png" src="../../../../_images/cs_55.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_set3&quot;</span></code></p></td>
+<td><p>pastel colors: blue green, light yellow, dark purple, red, blue, orange, green, pink, gray, purple, light green, yellow</p></td>
+<td><p>12</p></td>
+<td><img alt="../../../../_images/cs_56.png" src="../../../../_images/cs_56.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_set2&quot;</span></code></p></td>
+<td><p>blue green, orange, purple, pink, green, yellow, brown, gray</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_57.png" src="../../../../_images/cs_57.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_set1&quot;</span></code></p></td>
+<td><p>red, blue, green, purple, orange, yellow, brown, pink, gray</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_58.png" src="../../../../_images/cs_58.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_pastel2&quot;</span></code></p></td>
+<td><p>pastel shade of qual_set2</p></td>
+<td><p>8</p></td>
+<td><img alt="../../../../_images/cs_59.png" src="../../../../_images/cs_59.png" />
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_pastel1&quot;</span></code></p></td>
+<td><p>pastel shade of qual_set1</p></td>
+<td><p>9</p></td>
+<td><img alt="../../../../_images/cs_60.png" src="../../../../_images/cs_60.png" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;qual_paired&quot;</span></code></p></td>
+<td><p>light blue, blue, light green, green, light red, red, light orange, orange, light purple, purple, light yellow</p></td>
+<td><p>11</p></td>
+<td><img alt="../../../../_images/cs_61.png" src="../../../../_images/cs_61.png" />
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Set the box plot’s color scheme to warm.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">color_scheme</span> <span class="o">=</span> <span class="s2">&quot;warm&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-4_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-4_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.colors">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">colors</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.colors" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the plot’s colors.</p>
+<p>These are the colors used for the different
+components drawn by this plot.</p>
+<p class="rubric">Examples</p>
+<p>Set the box plot’s colors manually.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-5_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-5_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.data" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve the datasets of which the boxplots are drawn.</p>
+<p class="rubric">Examples</p>
+<p>Create a box plot and display the datasets.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">data</span>
+<span class="go">(pyvista_ndarray([0, 1, 1, 2, 3, 3, 4]),)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-6_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-6_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.label">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.label" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the this plot’s label, as shown in the chart’s legend.</p>
+<p class="rubric">Examples</p>
+<p>Create a box plot with custom label.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-7_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-7_00_00.png" />
+</figure>
+<p>Modify the label.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;My awesome plot&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-7_01_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-7_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.labels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.labels" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the this plot’s labels, as shown in the chart’s legend.</p>
+<p class="rubric">Examples</p>
+<p>Create a box plot.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-8_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-8_00_00.png" />
+</figure>
+<p>Modify the labels.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-8_01_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-8_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.line_style">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_style</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.line_style" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the line style of all lines drawn in this plot.</p>
+<p>This is equivalent to accessing/modifying the style of this plot’s pen.</p>
+<p class="rubric">Examples</p>
+<p>Set a custom line style.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">line_style</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-9_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-9_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.line_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_width</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.line_width" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the line width of all lines drawn in this plot.</p>
+<p>This is equivalent to accessing/modifying the width of this plot’s pen.</p>
+<p class="rubric">Examples</p>
+<p>Set the line width to 10</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">line_style</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>  <span class="c1"># Make sure all lines are visible</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">line_width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-10_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-10_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.pen">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pen</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.pen" title="Permalink to this definition">#</a></dt>
+<dd><p>Pen object controlling how lines in this plot are drawn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="pyvista.plotting.charts.Pen.html#pyvista.plotting.charts.Pen" title="pyvista.plotting.charts.Pen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pen</span></code></a></dt><dd><p>Pen object controlling how lines in this plot are drawn.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Increase the line width of the box plot’s pen object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">line_style</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>  <span class="c1"># Make sure all lines are visible</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">pen</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-11_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-11_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.stats">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stats</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.stats" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve the statistics (quartiles and extremum values) of the datasets of which the boxplots are drawn.</p>
+<p class="rubric">Examples</p>
+<p>Create a box plot and display the statistics.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">stats</span>
+<span class="go">(pyvista_ndarray([0., 1., 2., 3., 4.]),)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-12_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-12_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.toggle">
+<span class="sig-name descname"><span class="pre">toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.toggle" title="Permalink to this definition">#</a></dt>
+<dd><p>Toggle the plot’s visibility.</p>
+<p class="rubric">Examples</p>
+<p>Create a box plot.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-13_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-13_00_00.png" />
+</figure>
+<p>Hide it.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-13_01_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-13_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pyvista/plotting/charts.html#BoxPlot.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update the plot’s underlying dataset(s).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.24)"><span>array_like</span></a></span></dt><dd><p>The new dataset(s) used in this box plot.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Create a box plot from a standard Gaussian dataset.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Seeded random number generator for data generation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-14_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-14_00_00.png" />
+</figure>
+<p>Update the box plot (shift the standard Gaussian distribution).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-14_01_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-14_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.plotting.charts.BoxPlot.visible">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#pyvista.plotting.charts.BoxPlot.visible" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the this plot’s visibility.</p>
+<p class="rubric">Examples</p>
+<p>Create a box plot.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">ChartBox</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-15_00_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-15_00_00.png" />
+</figure>
+<p>Hide it.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../../_images/pyvista-plotting-charts-BoxPlot-15_01_00.png" src="../../../../_images/pyvista-plotting-charts-BoxPlot-15_01_00.png" />
+</figure>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BoxPlot
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.brush">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.brush
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.color_scheme">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.color_scheme
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.colors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.colors
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.data
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.label">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.label
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.labels">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.labels
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.line_style">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.line_style
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.line_width">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.line_width
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.pen">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.pen
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.stats">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.stats
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.toggle">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.toggle()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.update">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.update()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.plotting.charts.BoxPlot.visible">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BoxPlot.visible
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyvista/pyvista/edit/main/doc/api/plotting/charts/_autosummary/pyvista.plotting.charts.BoxPlot.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../../../_sources/api/plotting/charts/_autosummary/pyvista.plotting.charts.BoxPlot.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

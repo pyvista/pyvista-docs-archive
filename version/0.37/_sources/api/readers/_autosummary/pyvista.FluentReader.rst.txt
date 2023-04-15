@@ -1,0 +1,7 @@
+﻿pyvista.FluentReader
+====================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: FluentReader
+   :members:

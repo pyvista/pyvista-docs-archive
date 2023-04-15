@@ -1,0 +1,6 @@
+get\_array
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.get_array

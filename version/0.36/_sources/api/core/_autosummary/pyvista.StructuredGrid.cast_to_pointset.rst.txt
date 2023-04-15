@@ -1,0 +1,6 @@
+cast\_to\_pointset
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.cast_to_pointset

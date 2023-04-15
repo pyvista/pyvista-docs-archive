@@ -1,0 +1,266 @@
+﻿pyvista.plotting.charts.Axis
+============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: Axis
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Axis.override
+      
+      
+      Axis.toggle
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      Axis.behavior
+      
+      
+      Axis.grid
+      
+      
+      Axis.label
+      
+      
+      Axis.label_size
+      
+      
+      Axis.label_visible
+      
+      
+      Axis.log_scale
+      
+      
+      Axis.margin
+      
+      
+      Axis.range
+      
+      
+      Axis.tick_count
+      
+      
+      Axis.tick_label_size
+      
+      
+      Axis.tick_labels
+      
+      
+      Axis.tick_labels_offset
+      
+      
+      Axis.tick_labels_visible
+      
+      
+      Axis.tick_locations
+      
+      
+      Axis.tick_size
+      
+      
+      Axis.ticks_visible
+      
+      
+      Axis.visible
+      
+   
+   

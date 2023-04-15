@@ -1,0 +1,6 @@
+download\_bunny\_coarse
+=======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_bunny_coarse

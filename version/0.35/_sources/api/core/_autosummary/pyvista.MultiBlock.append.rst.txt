@@ -1,0 +1,6 @@
+append
+======
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlock.append

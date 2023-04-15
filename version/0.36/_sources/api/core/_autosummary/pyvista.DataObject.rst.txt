@@ -1,0 +1,79 @@
+﻿pyvista.DataObject
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DataObject
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      DataObject.add_field_array
+      
+      
+      DataObject.add_field_data
+      
+      
+      DataObject.clear_field_arrays
+      
+      
+      DataObject.clear_field_data
+      
+      
+      DataObject.copy
+      
+      
+      DataObject.copy_attributes
+      
+      
+      DataObject.copy_meta_from
+      
+      
+      DataObject.copy_structure
+      
+      
+      DataObject.deep_copy
+      
+      
+      DataObject.get_data_range
+      
+      
+      DataObject.head
+      
+      
+      DataObject.save
+      
+      
+      DataObject.shallow_copy
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      DataObject.actual_memory_size
+      
+      
+      DataObject.field_arrays
+      
+      
+      DataObject.field_data
+      
+      
+      DataObject.memory_address
+      
+   
+   

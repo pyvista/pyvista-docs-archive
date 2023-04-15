@@ -1,0 +1,6 @@
+color\_scheme
+=============
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: PiePlot.color_scheme

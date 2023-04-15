@@ -1,0 +1,268 @@
+﻿pyvista.Table
+=============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Table
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Table.add_field_array
+      
+      
+      Table.add_field_data
+      
+      
+      Table.clear_field_arrays
+      
+      
+      Table.clear_field_data
+      
+      
+      Table.copy
+      
+      
+      Table.copy_attributes
+      
+      
+      Table.copy_meta_from
+      
+      
+      Table.copy_structure
+      
+      
+      Table.deep_copy
+      
+      
+      Table.get
+      
+      
+      Table.get_data_range
+      
+      
+      Table.head
+      
+      
+      Table.items
+      
+      
+      Table.keys
+      
+      
+      Table.override
+      
+      
+      Table.pop
+      
+      
+      Table.save
+      
+      
+      Table.shallow_copy
+      
+      
+      Table.to_pandas
+      
+      
+      Table.update
+      
+      
+      Table.values
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      Table.actual_memory_size
+      
+      
+      Table.field_arrays
+      
+      
+      Table.field_data
+      
+      
+      Table.memory_address
+      
+      
+      Table.n_arrays
+      
+      
+      Table.n_columns
+      
+      
+      Table.n_rows
+      
+      
+      Table.row_arrays
+      
+   
+   

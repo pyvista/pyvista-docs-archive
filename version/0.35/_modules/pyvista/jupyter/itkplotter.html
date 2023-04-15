@@ -1,0 +1,601 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.jupyter.itkplotter &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/jupyter/itkplotter and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/jupyter/itkplotter.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/jupyter/itkplotter.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.jupyter.itkplotter</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;PyVista-like ITKwidgets plotter.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+
+
+<div class="viewcode-block" id="PlotterITK"><a class="viewcode-back" href="../../../user-guide/jupyter/itk_plotting.html#pyvista.PlotterITK">[docs]</a><span class="k">class</span> <span class="nc">PlotterITK</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ITKwidgets plotter.</span>
+
+<span class="sd">    Used for plotting interactively within a jupyter notebook.</span>
+<span class="sd">    Requires ``itkwidgets&gt;=0.25.2``.  For installation see:</span>
+
+<span class="sd">    https://github.com/InsightSoftwareConsortium/itkwidgets#installation</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.Sphere()</span>
+<span class="sd">    &gt;&gt;&gt; pl = pyvista.PlotterITK()  # doctest:+SKIP</span>
+<span class="sd">    &gt;&gt;&gt; pl.add_mesh(mesh, color=&#39;w&#39;)  # doctest:+SKIP</span>
+<span class="sd">    &gt;&gt;&gt; pl.background_color = &#39;k&#39;  # doctest:+SKIP</span>
+<span class="sd">    &gt;&gt;&gt; pl.show()  # doctest:+SKIP</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the itkwidgets plotter.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">itkwidgets</span>  <span class="c1"># noqa</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install `itkwidgets&gt;=0.25.2`&quot;</span><span class="p">)</span>
+
+        <span class="kn">from</span> <span class="nn">itkwidgets</span> <span class="kn">import</span> <span class="n">__version__</span>
+        <span class="kn">from</span> <span class="nn">scooby</span> <span class="kn">import</span> <span class="n">meets_version</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">meets_version</span><span class="p">(</span><span class="n">__version__</span><span class="p">,</span> <span class="s2">&quot;0.25.2&quot;</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install `itkwidgets&gt;=0.25.2`&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_point_sets</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometry_colors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometry_opacities</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_point_set_colors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camera_position</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_point_set_sizes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_point_set_representations</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="PlotterITK.add_points"><a class="viewcode-back" href="../../../user-guide/jupyter/itk_plotting.html#pyvista.PlotterITK.add_points">[docs]</a>    <span class="k">def</span> <span class="nf">add_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mf">3.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add points to plotter.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        points : numpy.ndarray or pyvista.DataSet</span>
+<span class="sd">            An ``n x 3`` numpy array of points or PyVista dataset with</span>
+<span class="sd">            points.</span>
+
+<span class="sd">        color : color_like, optional</span>
+<span class="sd">            Either a string, RGB sequence, or hex color string.  For one</span>
+<span class="sd">            of the following.</span>
+
+<span class="sd">            * ``color=&#39;white&#39;``</span>
+<span class="sd">            * ``color=&#39;w&#39;``</span>
+<span class="sd">            * ``color=[1.0, 1.0, 1.0]``</span>
+<span class="sd">            * ``color=&#39;#FFFFFF&#39;``</span>
+
+<span class="sd">        point_size : float, optional</span>
+<span class="sd">            Point size of any nodes in the dataset plotted. Also applicable</span>
+<span class="sd">            when style=&#39;points&#39;. Default ``3.0``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Add 10 random points to the plotter</span>
+
+<span class="sd">        &gt;&gt;&gt; add_points(np.random.random((10, 3)), &#39;r&#39;, 10)  # doctest:+SKIP</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">is_pyvista_dataset</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+            <span class="n">point_array</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">points</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">point_array</span> <span class="o">=</span> <span class="n">points</span>
+
+        <span class="c1"># style : str, optional</span>
+        <span class="c1">#     How to represent the point set. One of ``&#39;hidden&#39;``,</span>
+        <span class="c1">#     ``&#39;points&#39;``, or ``&#39;spheres&#39;``.</span>
+
+        <span class="c1"># if style not in [&#39;hidden&#39;, &#39;points&#39;, &#39;spheres&#39;]:</span>
+        <span class="c1">#     raise ValueError(&quot;``style`` must be either &#39;hidden&#39;, &#39;points&#39;, or&quot;</span>
+        <span class="c1">#                      &quot;&#39;spheres&#39;&quot;)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">point_size</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;``point_size`` parameter must be a float&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_point_set_sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_point_set_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_point_sets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point_array</span><span class="p">)</span></div>
+        <span class="c1"># self._point_set_representations.append(style)</span>
+
+<div class="viewcode-block" id="PlotterITK.add_mesh"><a class="viewcode-back" href="../../../user-guide/jupyter/itk_plotting.html#pyvista.PlotterITK.add_mesh">[docs]</a>    <span class="k">def</span> <span class="nf">add_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scalars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">smooth_shading</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a PyVista/VTK mesh or dataset.</span>
+
+<span class="sd">        Adds any PyVista/VTK mesh that itkwidgets can wrap to the</span>
+<span class="sd">        scene.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mesh : pyvista.DataSet or pyvista.MultiBlock</span>
+<span class="sd">            Any PyVista or VTK mesh is supported. Also, any dataset</span>
+<span class="sd">            that :func:`pyvista.wrap` can handle including NumPy arrays of XYZ</span>
+<span class="sd">            points.</span>
+
+<span class="sd">        color : color_like, optional</span>
+<span class="sd">            Use to make the entire mesh have a single solid color.</span>
+<span class="sd">            Either a string, RGB list, or hex color string.  For example:</span>
+<span class="sd">            ``color=&#39;white&#39;``, ``color=&#39;w&#39;``, ``color=[1.0, 1.0, 1.0]``, or</span>
+<span class="sd">            ``color=&#39;#FFFFFF&#39;``. Color will be overridden if scalars are</span>
+<span class="sd">            specified.</span>
+
+<span class="sd">        scalars : str or numpy.ndarray, optional</span>
+<span class="sd">            Scalars used to &quot;color&quot; the mesh.  Accepts a string name of an</span>
+<span class="sd">            array that is present on the mesh or an array equal</span>
+<span class="sd">            to the number of cells or the number of points in the</span>
+<span class="sd">            mesh.  Array should be sized as a single vector. If both</span>
+<span class="sd">            ``color`` and ``scalars`` are ``None``, then the active scalars are</span>
+<span class="sd">            used.</span>
+
+<span class="sd">        opacity : float, optional</span>
+<span class="sd">            Opacity of the mesh. If a single float value is given, it will be</span>
+<span class="sd">            the global opacity of the mesh and uniformly applied everywhere -</span>
+<span class="sd">            should be between 0 and 1.  Default 1.0.</span>
+
+<span class="sd">        smooth_shading : bool, optional</span>
+<span class="sd">            Smooth mesh surface mesh by taking into account surface</span>
+<span class="sd">            normals.  Surface will appear smoother while sharp edges</span>
+<span class="sd">            will still look sharp.  Default ``False``.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pv</span><span class="o">.</span><span class="n">is_pyvista_dataset</span><span class="p">(</span><span class="n">mesh</span><span class="p">):</span>
+            <span class="n">mesh</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+
+        <span class="c1"># smooth shading requires point normals to be freshly computed</span>
+        <span class="k">if</span> <span class="n">smooth_shading</span><span class="p">:</span>
+            <span class="c1"># extract surface if mesh is exterior</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">):</span>
+                <span class="n">grid</span> <span class="o">=</span> <span class="n">mesh</span>
+                <span class="n">mesh</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">()</span>
+                <span class="n">ind</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s1">&#39;vtkOriginalPointIds&#39;</span><span class="p">]</span>
+                <span class="c1"># remap scalars</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                    <span class="n">scalars</span> <span class="o">=</span> <span class="n">scalars</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+
+            <span class="n">mesh</span><span class="o">.</span><span class="n">compute_normals</span><span class="p">(</span><span class="n">cell_normals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s1">&#39;Normals&#39;</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">:</span>
+            <span class="c1"># if &#39;normals&#39; in mesh.point_data:</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Normals&#39;</span><span class="p">)</span>
+
+        <span class="c1"># make the scalars active</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">scalars</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span> <span class="ow">or</span> <span class="n">scalars</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cell_data</span><span class="p">:</span>
+                <span class="n">array</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">[</span><span class="n">scalars</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Scalars (</span><span class="si">{</span><span class="n">scalars</span><span class="si">}</span><span class="s1">) not in mesh&#39;</span><span class="p">)</span>
+            <span class="n">mesh</span><span class="p">[</span><span class="n">scalars</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="o">=</span> <span class="n">scalars</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">array</span> <span class="o">=</span> <span class="n">scalars</span>
+            <span class="n">scalar_name</span> <span class="o">=</span> <span class="s1">&#39;_scalars&#39;</span>
+            <span class="n">mesh</span><span class="p">[</span><span class="n">scalar_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="o">=</span> <span class="n">scalar_name</span>
+        <span class="k">elif</span> <span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># itkwidgets does not support VTK_ID_TYPE</span>
+        <span class="k">if</span> <span class="s1">&#39;vtkOriginalPointIds&#39;</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">:</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;vtkOriginalPointIds&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;vtkOriginalCellIds&#39;</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cell_data</span><span class="p">:</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">cell_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;vtkOriginalCellIds&#39;</span><span class="p">)</span>
+
+        <span class="kn">from</span> <span class="nn">itkwidgets._transform_types</span> <span class="kn">import</span> <span class="n">to_geometry</span>
+
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">to_geometry</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometry_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometry_opacities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">background_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the background color of the plotter.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span>
+
+    <span class="nd">@background_color</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">background_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the background color of the plotter.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Set the background color to black</span>
+
+<span class="sd">        &gt;&gt;&gt; plotter.background_color = &#39;k&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">camera_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return camera position of the plotter as a list.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_camera_position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_camera_position</span>
+
+    <span class="nd">@camera_position</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">camera_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera_location</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set camera position of the plotter.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">camera_location</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;String camera positions are not supported in PlotterITK&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># check if a valid camera position</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">camera_location</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">pv</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">InvalidCameraError</span>
+            <span class="k">elif</span> <span class="nb">any</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">camera_location</span><span class="p">]):</span>
+                <span class="k">raise</span> <span class="n">pv</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">InvalidCameraError</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camera_position</span> <span class="o">=</span> <span class="n">camera_location</span>
+
+<div class="viewcode-block" id="PlotterITK.show"><a class="viewcode-back" href="../../../user-guide/jupyter/itk_plotting.html#pyvista.PlotterITK.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ui_collapsed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_bounds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show itkwidgets plotter in cell output.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ui_collapsed : bool, optional</span>
+<span class="sd">            Plot with the user interface collapsed.  UI can be enabled</span>
+<span class="sd">            when plotting.  Default ``False``.</span>
+
+<span class="sd">        rotate : bool, optional</span>
+<span class="sd">            Rotate the camera around the scene.  Default ``False``.</span>
+<span class="sd">            Appears to be computationally intensive.</span>
+
+<span class="sd">        show_bounds : bool, optional</span>
+<span class="sd">            Show the bounding box.  Default ``False``.</span>
+
+<span class="sd">        **kwargs : dict, optional</span>
+<span class="sd">            Additional arguments to pass to ``itkwidgets.Viewer``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        itkwidgets.Viewer</span>
+<span class="sd">            ``ITKwidgets`` viewer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_camera_position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;camera&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_camera_position</span><span class="p">)</span>
+
+        <span class="kn">from</span> <span class="nn">itkwidgets</span> <span class="kn">import</span> <span class="n">Viewer</span>
+
+        <span class="n">viewer</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span>
+            <span class="n">geometries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometries</span><span class="p">,</span>
+            <span class="n">geometry_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry_colors</span><span class="p">,</span>
+            <span class="n">geometry_opacities</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry_opacities</span><span class="p">,</span>
+            <span class="n">point_set_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_point_set_colors</span><span class="p">,</span>
+            <span class="n">point_sets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_point_sets</span><span class="p">,</span>
+            <span class="n">point_set_sizes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_point_set_sizes</span><span class="p">,</span>
+            <span class="n">point_set_representations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_point_set_representations</span><span class="p">,</span>
+            <span class="n">ui_collapsed</span><span class="o">=</span><span class="n">ui_collapsed</span><span class="p">,</span>
+            <span class="n">rotate</span><span class="o">=</span><span class="n">rotate</span><span class="p">,</span>
+            <span class="n">axes</span><span class="o">=</span><span class="n">show_bounds</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># always show if iPython is installed</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+
+            <span class="n">display</span><span class="o">.</span><span class="n">display_html</span><span class="p">(</span><span class="n">viewer</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">viewer</span></div></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

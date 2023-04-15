@@ -1,0 +1,7 @@
+﻿pyvista.BYUReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BYUReader
+   :members:

@@ -1,0 +1,6 @@
+vectors
+=======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ExplicitStructuredGrid.vectors

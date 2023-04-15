@@ -1,0 +1,6 @@
+range
+=====
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.range

@@ -1,0 +1,6 @@
+verts
+=====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.verts

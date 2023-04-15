@@ -1,0 +1,7 @@
+﻿pyvista.PolyDataFilters
+=======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PolyDataFilters
+   :members:

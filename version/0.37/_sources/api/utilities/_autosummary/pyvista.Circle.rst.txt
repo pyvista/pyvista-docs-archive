@@ -1,0 +1,6 @@
+﻿Circle
+======
+
+.. currentmodule:: pyvista
+
+.. autofunction:: Circle

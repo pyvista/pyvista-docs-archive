@@ -1,0 +1,6 @@
+center
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: RectilinearGrid.center

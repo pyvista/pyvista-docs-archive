@@ -1,0 +1,133 @@
+﻿pyvista.CGNSReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: CGNSReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      CGNSReader.base_array_status
+      
+      
+      CGNSReader.cell_array_status
+      
+      
+      CGNSReader.disable_all_bases
+      
+      
+      CGNSReader.disable_all_cell_arrays
+      
+      
+      CGNSReader.disable_all_families
+      
+      
+      CGNSReader.disable_all_point_arrays
+      
+      
+      CGNSReader.disable_cell_array
+      
+      
+      CGNSReader.disable_point_array
+      
+      
+      CGNSReader.enable_all_bases
+      
+      
+      CGNSReader.enable_all_cell_arrays
+      
+      
+      CGNSReader.enable_all_families
+      
+      
+      CGNSReader.enable_all_point_arrays
+      
+      
+      CGNSReader.enable_cell_array
+      
+      
+      CGNSReader.enable_point_array
+      
+      
+      CGNSReader.family_array_status
+      
+      
+      CGNSReader.hide_progress
+      
+      
+      CGNSReader.point_array_status
+      
+      
+      CGNSReader.read
+      
+      
+      CGNSReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      CGNSReader.all_cell_arrays_status
+      
+      
+      CGNSReader.all_point_arrays_status
+      
+      
+      CGNSReader.base_array_names
+      
+      
+      CGNSReader.cell_array_names
+      
+      
+      CGNSReader.distribute_blocks
+      
+      
+      CGNSReader.family_array_names
+      
+      
+      CGNSReader.load_boundary_patch
+      
+      
+      CGNSReader.number_base_arrays
+      
+      
+      CGNSReader.number_cell_arrays
+      
+      
+      CGNSReader.number_family_arrays
+      
+      
+      CGNSReader.number_point_arrays
+      
+      
+      CGNSReader.path
+      
+      
+      CGNSReader.point_array_names
+      
+      
+      CGNSReader.reader
+      
+      
+      CGNSReader.unsteady_pattern
+      
+      
+      CGNSReader.vector_3d
+      
+   
+   

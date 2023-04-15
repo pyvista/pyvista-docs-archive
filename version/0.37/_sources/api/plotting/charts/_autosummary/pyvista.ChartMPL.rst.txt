@@ -1,0 +1,7 @@
+﻿pyvista.ChartMPL
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: ChartMPL
+   :members:

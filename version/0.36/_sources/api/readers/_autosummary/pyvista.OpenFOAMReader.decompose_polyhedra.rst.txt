@@ -1,0 +1,6 @@
+decompose\_polyhedra
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: OpenFOAMReader.decompose_polyhedra

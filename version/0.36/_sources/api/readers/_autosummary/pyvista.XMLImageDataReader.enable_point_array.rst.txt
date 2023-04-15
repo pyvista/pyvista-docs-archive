@@ -1,0 +1,6 @@
+enable\_point\_array
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: XMLImageDataReader.enable_point_array

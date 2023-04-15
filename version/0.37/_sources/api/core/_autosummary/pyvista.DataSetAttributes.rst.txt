@@ -1,0 +1,7 @@
+﻿pyvista.DataSetAttributes
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DataSetAttributes
+   :members:

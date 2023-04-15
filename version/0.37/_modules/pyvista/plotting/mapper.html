@@ -1,0 +1,1452 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.plotting.mapper &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyvista/plotting/mapper';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <h1>Source code for pyvista.plotting.mapper</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;An internal module for wrapping the use of mappers.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">abstract_class</span><span class="p">,</span>
+    <span class="n">convert_array</span><span class="p">,</span>
+    <span class="n">convert_string_array</span><span class="p">,</span>
+    <span class="n">raise_not_matching</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.misc</span> <span class="kn">import</span> <span class="n">has_module</span><span class="p">,</span> <span class="n">no_new_attr</span>
+
+<span class="kn">from</span> <span class="nn">.colors</span> <span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">get_cmap_safe</span>
+<span class="kn">from</span> <span class="nn">.lookup_table</span> <span class="kn">import</span> <span class="n">LookupTable</span>
+<span class="kn">from</span> <span class="nn">.tools</span> <span class="kn">import</span> <span class="n">normalize</span>
+
+
+<span class="nd">@abstract_class</span>
+<span class="k">class</span> <span class="nc">_BaseMapper</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkAbstractMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base Mapper with methods common to other mappers.&quot;&quot;&quot;</span>
+
+    <span class="n">_theme</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_theme</span> <span class="o">=</span> <span class="n">theme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span> <span class="o">=</span> <span class="n">LookupTable</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;_BaseMapper&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a copy of this mapper.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.DataSetMapper</span>
+<span class="sd">            A copy of this dataset mapper.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mapper = pv.DataSetMapper(dataset=pv.Cube())</span>
+<span class="sd">        &gt;&gt;&gt; mapper_copy = mapper.copy()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_mapper</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)()</span>
+        <span class="c1"># even though this uses ShallowCopy, the new mapper no longer retains</span>
+        <span class="c1"># any connection with the original</span>
+        <span class="n">new_mapper</span><span class="o">.</span><span class="n">ShallowCopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;dataset&#39;</span><span class="p">):</span>
+            <span class="n">new_mapper</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span>
+        <span class="k">return</span> <span class="n">new_mapper</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalar_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the scalar range.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Return the scalar range of a mapper.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh, scalars=mesh.points[:, 2])</span>
+<span class="sd">        &gt;&gt;&gt; actor.mapper.scalar_range</span>
+<span class="sd">        (-0.5, 0.5)</span>
+<span class="sd">        &gt;&gt;&gt; pl.close()</span>
+
+<span class="sd">        Return the scalar range of a composite dataset. In this example it&#39;s</span>
+<span class="sd">        set to its default value of ``(0.0, 1.0)``.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; dataset = pv.MultiBlock([pv.Cube(), pv.Sphere(center=(0, 0, 1))])</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor, mapper = pl.add_composite(dataset)</span>
+<span class="sd">        &gt;&gt;&gt; mapper.scalar_range</span>
+<span class="sd">        (0.0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.close()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetScalarRange</span><span class="p">()</span>
+
+    <span class="nd">@scalar_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scalar_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clim</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarRange</span><span class="p">(</span><span class="o">*</span><span class="n">clim</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;pv.LookupTable&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the lookup table.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Return the lookup table of a dataset mapper.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh, scalars=mesh.points[:, 2], cmap=&#39;bwr&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor.mapper.lookup_table  # doctest:+SKIP</span>
+<span class="sd">        LookupTable (0x7ff3be8d8c40)</span>
+<span class="sd">          Table Range:                (-0.5, 0.5)</span>
+<span class="sd">          N Values:                   256</span>
+<span class="sd">          Above Range Color:          None</span>
+<span class="sd">          Below Range Color:          None</span>
+<span class="sd">          NAN Color:                  Color(name=&#39;darkgray&#39;, hex=&#39;#a9a9a9ff&#39;)</span>
+<span class="sd">          Log Scale:                  False</span>
+<span class="sd">          Color Map:                  &quot;From values array&quot;</span>
+
+<span class="sd">        Return the lookup table of a composite dataset mapper.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; dataset = pv.MultiBlock([pv.Cube(), pv.Sphere(center=(0, 0, 1))])</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor, mapper = pl.add_composite(dataset)</span>
+<span class="sd">        &gt;&gt;&gt; mapper.lookup_table  # doctest:+SKIP</span>
+<span class="sd">        &lt;vtkmodules.vtkCommonCore.vtkLookupTable(0x2d4c6e0) at 0x7fce74a89fa0&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetLookupTable</span><span class="p">()</span>
+
+    <span class="nd">@lookup_table</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetLookupTable</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the color mode.</span>
+
+<span class="sd">        Either ``&#39;direct&#39;``, or ``&#39;map&#39;``.</span>
+
+<span class="sd">        * ``&#39;direct&#39;`` - All integer types are treated as colors with values in</span>
+<span class="sd">          the range 0-255 and floating types are treated as colors with values</span>
+<span class="sd">          in the range 0.0-1.0</span>
+<span class="sd">        * ``&#39;map&#39;`` - All scalar data will be mapped through the lookup table.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetColorModeAsString</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;mapscalars&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;map&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;direct&#39;</span>
+
+    <span class="nd">@color_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;direct&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetColorModeToDirectScalars</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;map&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetColorModeToMapScalars</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Color mode must be either &quot;default&quot;, &quot;direct&quot; or &quot;map&quot;&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">interpolate_before_map</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the interpolation of scalars before mapping.</span>
+
+<span class="sd">        Enabling makes for a smoother scalars display.  When ``False``,</span>
+<span class="sd">        OpenGL will interpolate the mapped colors which can result in</span>
+<span class="sd">        showing colors that are not present in the color map.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Disable interpolation before mapping.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; dataset = pv.MultiBlock([pv.Cube(), pv.Sphere(center=(0, 0, 1))])</span>
+<span class="sd">        &gt;&gt;&gt; dataset[0].point_data[&#39;data&#39;] = dataset[0].points[:, 2]</span>
+<span class="sd">        &gt;&gt;&gt; dataset[1].point_data[&#39;data&#39;] = dataset[1].points[:, 2]</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor, mapper = pl.add_composite(</span>
+<span class="sd">        ...     dataset, show_scalar_bar=False, n_colors=3, cmap=&#39;bwr&#39;,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; mapper.interpolate_before_map = False</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        Enable interpolation before mapping.</span>
+
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor, mapper = pl.add_composite(</span>
+<span class="sd">        ...     dataset, show_scalar_bar=False, n_colors=3, cmap=&#39;bwr&#39;,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; mapper.interpolate_before_map = True</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        See :ref:`interpolate_before_mapping_example` for additional</span>
+<span class="sd">        explanation regarding this attribute.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetInterpolateScalarsBeforeMapping</span><span class="p">())</span>
+
+    <span class="nd">@interpolate_before_map</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">interpolate_before_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetInterpolateScalarsBeforeMapping</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">array_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the array name or number and component to color by.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Show the name of the active scalars in the mapper.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">        &gt;&gt;&gt; mesh[&#39;my_scalars&#39;] = mesh.points[:, 2]</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh, scalars=&#39;my_scalars&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor.mapper.array_name</span>
+<span class="sd">        &#39;my_scalars&#39;</span>
+<span class="sd">        &gt;&gt;&gt; pl.close()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetArrayName</span><span class="p">()</span>
+
+    <span class="nd">@array_name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">array_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the array name or number and component to color by.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetArrayName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalar_map_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the scalar map mode.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Show that the scalar map mode is set to ``&#39;point&#39;`` when setting the</span>
+<span class="sd">        active scalars to point data.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; dataset = pv.MultiBlock([pv.Cube(), pv.Sphere(center=(0, 0, 1))])</span>
+<span class="sd">        &gt;&gt;&gt; dataset[0].point_data[&#39;data&#39;] = dataset[0].points[:, 2]</span>
+<span class="sd">        &gt;&gt;&gt; dataset[1].point_data[&#39;data&#39;] = dataset[1].points[:, 2]</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor, mapper = pl.add_composite(dataset, scalars=&#39;data&#39;, show_scalar_bar=False)</span>
+<span class="sd">        &gt;&gt;&gt; mapper.scalar_map_mode</span>
+<span class="sd">        &#39;point&#39;</span>
+<span class="sd">        &gt;&gt;&gt; pl.close()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># map vtk strings to more sensible strings</span>
+        <span class="n">vtk_to_pv</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Default&#39;</span><span class="p">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;UsePointData&#39;</span><span class="p">:</span> <span class="s1">&#39;point&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;UseCellData&#39;</span><span class="p">:</span> <span class="s1">&#39;cell&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;UsePointFieldData&#39;</span><span class="p">:</span> <span class="s1">&#39;point_field&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;UseCellFieldData&#39;</span><span class="p">:</span> <span class="s1">&#39;cell_field&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;UseFieldData&#39;</span><span class="p">:</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">vtk_to_pv</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">GetScalarModeAsString</span><span class="p">()]</span>
+
+    <span class="nd">@scalar_map_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scalar_map_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar_mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">scalar_mode</span> <span class="o">==</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarModeToDefault</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">scalar_mode</span> <span class="o">==</span> <span class="s1">&#39;point&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarModeToUsePointData</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">scalar_mode</span> <span class="o">==</span> <span class="s1">&#39;cell&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarModeToUseCellData</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">scalar_mode</span> <span class="o">==</span> <span class="s1">&#39;point_field&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarModeToUsePointFieldData</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">scalar_mode</span> <span class="o">==</span> <span class="s1">&#39;cell_field&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarModeToUseCellFieldData</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">scalar_mode</span> <span class="o">==</span> <span class="s1">&#39;field&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarModeToUseFieldData</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Invalid `scalar_map_mode` &quot;</span><span class="si">{</span><span class="n">scalar_mode</span><span class="si">}</span><span class="s1">&quot;. Should be either &#39;</span>
+                <span class="s1">&#39;&quot;default&quot;, &quot;point&quot;, &quot;cell&quot;, &quot;point_field&quot;, &quot;cell_field&quot; or &quot;field&quot;.&#39;</span>
+            <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalar_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the scalar visibility.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Show that scalar visibility is ``False``.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh)</span>
+<span class="sd">        &gt;&gt;&gt; actor.mapper.scalar_visibility</span>
+<span class="sd">        False</span>
+<span class="sd">        &gt;&gt;&gt; pl.close()</span>
+
+<span class="sd">        Show that scalar visibility is ``True``.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; dataset = pv.MultiBlock([pv.Cube(), pv.Sphere(center=(0, 0, 1))])</span>
+<span class="sd">        &gt;&gt;&gt; dataset[0].point_data[&#39;data&#39;] = dataset[0].points[:, 2]</span>
+<span class="sd">        &gt;&gt;&gt; dataset[1].point_data[&#39;data&#39;] = dataset[1].points[:, 2]</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor, mapper = pl.add_composite(dataset, scalars=&#39;data&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; mapper.scalar_visibility</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; pl.close()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetScalarVisibility</span><span class="p">())</span>
+
+    <span class="nd">@scalar_visibility</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scalar_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetScalarVisibility</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update this mapper.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="DataSetMapper"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.DataSetMapper.html#pyvista.DataSetMapper">[docs]</a><span class="nd">@no_new_attr</span>
+<span class="k">class</span> <span class="nc">DataSetMapper</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkDataSetMapper</span><span class="p">,</span> <span class="n">_BaseMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap _vtk.vtkDataSetMapper.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dataset : pyvista.DataSet, optional</span>
+<span class="sd">        Dataset to assign to this mapper.</span>
+
+<span class="sd">    theme : pyvista.themes.DefaultTheme, optional</span>
+<span class="sd">        Plot-specific theme.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a mapper outside :class:`pyvista.Plotter` and assign it to an</span>
+<span class="sd">    actor.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">    &gt;&gt;&gt; mapper = pv.DataSetMapper(dataset=mesh)</span>
+<span class="sd">    &gt;&gt;&gt; actor = pv.Actor(mapper=mapper)</span>
+<span class="sd">    &gt;&gt;&gt; actor.plot()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_cmap</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dataset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;pv.DataSet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">theme</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;pv.themes.DefaultTheme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize this class.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="n">theme</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dataset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;pv.DataSet&#39;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the dataset assigned to this mapper.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetInputAsDataSet</span><span class="p">()</span>
+
+    <span class="nd">@dataset</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="s1">&#39;pv.core.dataset.DataSet&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DataSetMapper.as_rgba"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.DataSetMapper.html#pyvista.DataSetMapper.as_rgba">[docs]</a>    <span class="k">def</span> <span class="nf">as_rgba</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the active scalars to RGBA.</span>
+
+<span class="sd">        This method is used to convert the active scalars to a fixed RGBA array</span>
+<span class="sd">        and is used for certain mappers that do not support the &quot;map&quot; color</span>
+<span class="sd">        mode.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">color_mode</span> <span class="o">==</span> <span class="s1">&#39;direct&#39;</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;__rgba__&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_configure_scalars_mode</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">active_scalars</span><span class="p">),</span>
+            <span class="s1">&#39;__rgba__&#39;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalar_map_mode</span><span class="p">,</span>
+            <span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_configure_scalars_mode</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">scalars</span><span class="p">,</span>
+        <span class="n">scalars_name</span><span class="p">,</span>
+        <span class="n">preference</span><span class="p">,</span>
+        <span class="n">direct_scalars_color_mode</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configure scalar mode.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        scalars : numpy.ndarray</span>
+<span class="sd">            Array of scalars to assign to the mapper.</span>
+
+<span class="sd">        scalars_name : str</span>
+<span class="sd">            If the name of this array exists, scalars is ignored. Otherwise,</span>
+<span class="sd">            the scalars will be added to the existing dataset and this</span>
+<span class="sd">            parameter is the name to assign the scalars.</span>
+
+<span class="sd">        preference : str</span>
+<span class="sd">            Either ``&#39;point&#39;`` or ``&#39;cell&#39;``.</span>
+
+<span class="sd">        direct_scalars_color_mode : bool</span>
+<span class="sd">            When ``True``, scalars are treated as RGB colors. When</span>
+<span class="sd">            ``False``, scalars are mapped to the color table.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_points</span> <span class="ow">and</span> <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_cells</span><span class="p">:</span>
+            <span class="n">use_points</span> <span class="o">=</span> <span class="n">preference</span> <span class="o">==</span> <span class="s1">&#39;point&#39;</span>
+            <span class="n">use_cells</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">use_points</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">use_points</span> <span class="o">=</span> <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_points</span>
+            <span class="n">use_cells</span> <span class="o">=</span> <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_cells</span>
+
+        <span class="c1"># Scalars interpolation approach</span>
+        <span class="k">if</span> <span class="n">use_points</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">scalars_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">point_data</span>
+                <span class="ow">or</span> <span class="n">scalars_name</span> <span class="o">==</span> <span class="n">pv</span><span class="o">.</span><span class="n">DEFAULT_SCALARS_NAME</span>
+            <span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">scalars_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="o">=</span> <span class="n">scalars_name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalar_map_mode</span> <span class="o">=</span> <span class="s1">&#39;point&#39;</span>
+        <span class="k">elif</span> <span class="n">use_cells</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">scalars_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">cell_data</span>
+                <span class="ow">or</span> <span class="n">scalars_name</span> <span class="o">==</span> <span class="n">pv</span><span class="o">.</span><span class="n">DEFAULT_SCALARS_NAME</span>
+            <span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">cell_data</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">scalars_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">active_scalars_name</span> <span class="o">=</span> <span class="n">scalars_name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalar_map_mode</span> <span class="o">=</span> <span class="s1">&#39;cell&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">raise_not_matching</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">color_mode</span> <span class="o">=</span> <span class="s1">&#39;direct&#39;</span> <span class="k">if</span> <span class="n">direct_scalars_color_mode</span> <span class="k">else</span> <span class="s1">&#39;map&#39;</span>
+
+<div class="viewcode-block" id="DataSetMapper.set_scalars"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.DataSetMapper.html#pyvista.DataSetMapper.set_scalars">[docs]</a>    <span class="k">def</span> <span class="nf">set_scalars</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">scalars</span><span class="p">,</span>
+        <span class="n">scalars_name</span><span class="p">,</span>
+        <span class="n">n_colors</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+        <span class="n">scalar_bar_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">rgb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">component</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">preference</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">,</span>
+        <span class="n">custom_opac</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">annotations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">log_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">nan_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">above_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">below_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">flip_scalars</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">categories</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">clim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the scalars on this mapper.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        scalars : numpy.ndarray</span>
+<span class="sd">            Array of scalars to assign to the mapper.</span>
+
+<span class="sd">        scalars_name : str</span>
+<span class="sd">            If the name of this array exists, scalars is ignored. Otherwise,</span>
+<span class="sd">            the scalars will be added to the existing dataset and this</span>
+<span class="sd">            parameter is the name to assign the scalars.</span>
+
+<span class="sd">        n_colors : int, default: 256</span>
+<span class="sd">            Number of colors to use when displaying scalars.</span>
+
+<span class="sd">        scalar_bar_args : dict, optional</span>
+<span class="sd">            Dictionary of keyword arguments to pass when adding the</span>
+<span class="sd">            scalar bar to the scene. For options, see</span>
+<span class="sd">            :func:`pyvista.BasePlotter.add_scalar_bar`.</span>
+
+<span class="sd">        rgb : bool, default: False</span>
+<span class="sd">            If an 2 dimensional array is passed as the scalars, plot</span>
+<span class="sd">            those values as RGB(A) colors. ``rgba`` is also an</span>
+<span class="sd">            accepted alias for this.  Opacity (the A) is optional.  If</span>
+<span class="sd">            a scalars array ending with ``&quot;_rgba&quot;`` is passed, the default</span>
+<span class="sd">            becomes ``True``.  This can be overridden by setting this</span>
+<span class="sd">            parameter to ``False``.</span>
+
+<span class="sd">        component : int, optional</span>
+<span class="sd">            Set component of vector valued scalars to plot.  Must be</span>
+<span class="sd">            nonnegative, if supplied. If ``None``, the magnitude of</span>
+<span class="sd">            the vector is plotted.</span>
+
+<span class="sd">        preference : str, default: &#39;Point&#39;</span>
+<span class="sd">            When ``dataset.n_points == dataset.n_cells`` and setting scalars,</span>
+<span class="sd">            this parameter sets how the scalars will be mapped to the mesh.</span>
+<span class="sd">            Can be either ``&#39;point&#39;`` or ``&#39;cell&#39;``.</span>
+
+<span class="sd">        custom_opac : bool, default: False</span>
+<span class="sd">            Use custom opacity.</span>
+
+<span class="sd">        annotations : dict, optional</span>
+<span class="sd">            Pass a dictionary of annotations. Keys are the float</span>
+<span class="sd">            values in the scalars range to annotate on the scalar bar</span>
+<span class="sd">            and the values are the the string annotations.</span>
+
+<span class="sd">        log_scale : bool, default: False</span>
+<span class="sd">            Use log scale when mapping data to colors. Scalars less</span>
+<span class="sd">            than zero are mapped to the smallest representable</span>
+<span class="sd">            positive float.</span>
+
+<span class="sd">        nan_color : color_like, optional</span>
+<span class="sd">            The color to use for all ``NaN`` values in the plotted</span>
+<span class="sd">            scalar array.</span>
+
+<span class="sd">        above_color : color_like, optional</span>
+<span class="sd">            Solid color for values below the scalars range</span>
+<span class="sd">            (``clim``). This will automatically set the scalar bar</span>
+<span class="sd">            ``above_label`` to ``&#39;Above&#39;``.</span>
+
+<span class="sd">        below_color : color_like, optional</span>
+<span class="sd">            Solid color for values below the scalars range</span>
+<span class="sd">            (``clim``). This will automatically set the scalar bar</span>
+<span class="sd">            ``below_label`` to ``&#39;Below&#39;``.</span>
+
+<span class="sd">        cmap : str, list, or pyvista.LookupTable</span>
+<span class="sd">            Name of the Matplotlib colormap to use when mapping the</span>
+<span class="sd">            ``scalars``.  See available Matplotlib colormaps.  Only applicable</span>
+<span class="sd">            for when displaying ``scalars``. Requires Matplotlib to be</span>
+<span class="sd">            installed.  ``colormap`` is also an accepted alias for this. If</span>
+<span class="sd">            ``colorcet`` or ``cmocean`` are installed, their colormaps can be</span>
+<span class="sd">            specified by name.</span>
+
+<span class="sd">            You can also specify a list of colors to override an existing</span>
+<span class="sd">            colormap with a custom one.  For example, to create a three color</span>
+<span class="sd">            colormap you might specify ``[&#39;green&#39;, &#39;red&#39;, &#39;blue&#39;]``.</span>
+
+<span class="sd">            This parameter also accepts a :class:`pyvista.LookupTable`. If this</span>
+<span class="sd">            is set, all parameters controlling the color map like ``n_colors``</span>
+<span class="sd">            will be ignored.</span>
+
+<span class="sd">        flip_scalars : bool, default: False</span>
+<span class="sd">            Flip direction of cmap. Most colormaps allow ``*_r`` suffix to do</span>
+<span class="sd">            this as well.</span>
+
+<span class="sd">        opacity : str or numpy.ndarray, optional</span>
+<span class="sd">            Opacity mapping for the scalars array.</span>
+<span class="sd">            A string can also be specified to map the scalars range to a</span>
+<span class="sd">            predefined opacity transfer function (options include: &#39;linear&#39;,</span>
+<span class="sd">            &#39;linear_r&#39;, &#39;geom&#39;, &#39;geom_r&#39;). Or you can pass a custom made</span>
+<span class="sd">            transfer function that is an array either ``n_colors`` in length or</span>
+<span class="sd">            shorter.</span>
+
+<span class="sd">        categories : bool, default: False</span>
+<span class="sd">            If set to ``True``, then the number of unique values in the scalar</span>
+<span class="sd">            array will be used as the ``n_colors`` argument.</span>
+
+<span class="sd">        clim : 2 item list, optional</span>
+<span class="sd">            Color bar range for scalars.  Defaults to minimum and</span>
+<span class="sd">            maximum of scalars array.  Example: ``(-1, 2)``.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">scalar_bar_args</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">scalar_bar_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_colors&#39;</span><span class="p">:</span> <span class="n">n_colors</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">scalars</span><span class="p">)</span>
+
+        <span class="c1"># Set the array title for when it is added back to the mesh</span>
+        <span class="k">if</span> <span class="n">custom_opac</span><span class="p">:</span>
+            <span class="n">scalars_name</span> <span class="o">=</span> <span class="s1">&#39;__custom_rgba&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">scalars</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">):</span>
+
+            <span class="c1"># we can rapidly handle bools</span>
+            <span class="k">if</span> <span class="n">scalars</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">:</span>
+                <span class="n">cats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">b</span><span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;True&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;|S5&#39;</span><span class="p">)</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># If str array, digitize and annotate</span>
+                <span class="n">cats</span><span class="p">,</span> <span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">scalars</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;|S&#39;</span><span class="p">),</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">scalars</span><span class="p">)</span>
+                <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">]</span>
+                <span class="n">scalars_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scalars_name</span><span class="si">}</span><span class="s1">-digitized&#39;</span>
+
+            <span class="n">n_colors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cats</span><span class="p">)</span>
+            <span class="n">scalar_bar_args</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;n_labels&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">SetAnnotations</span><span class="p">(</span><span class="n">convert_array</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="n">convert_string_array</span><span class="p">(</span><span class="n">cats</span><span class="p">))</span>
+
+        <span class="c1"># Use only the real component if an array is complex</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">scalars</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">complexfloating</span><span class="p">):</span>
+            <span class="n">scalars</span> <span class="o">=</span> <span class="n">scalars</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+            <span class="n">scalars_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scalars_name</span><span class="si">}</span><span class="s1">-real&#39;</span>
+
+        <span class="k">if</span> <span class="n">scalars</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rgb</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">scalars</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_points</span>
+                <span class="ow">or</span> <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_cells</span>
+            <span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))):</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;component must be either None or an integer&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">component</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">scalars</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">scalars_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scalars_name</span><span class="si">}</span><span class="s1">-normed&#39;</span>
+                <span class="k">elif</span> <span class="n">component</span> <span class="o">&lt;</span> <span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">component</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scalars</span><span class="p">[:,</span> <span class="n">component</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">scalars_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scalars_name</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s1">&#39;Component must be nonnegative and less than the &#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;dimensionality of the scalars array: </span><span class="si">{</span><span class="n">scalars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                    <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">scalars</span> <span class="o">=</span> <span class="n">scalars</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">scalars</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">:</span>
+            <span class="n">scalars</span> <span class="o">=</span> <span class="n">scalars</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float_</span><span class="p">)</span>
+
+        <span class="c1"># Set scalars range</span>
+        <span class="k">if</span> <span class="n">clim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">scalars</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">scalars</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clim</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">clim</span><span class="p">,</span> <span class="n">clim</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">log_scale</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">clim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">min</span><span class="p">,</span> <span class="n">clim</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">clim</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rgb</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span> <span class="o">=</span> <span class="n">clim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">clim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span> <span class="o">=</span> <span class="n">cmap</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">scalar_range</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">scalar_range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span>
+            <span class="c1"># Set default map if matplotlib is available</span>
+            <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">has_module</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theme</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">cmap</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">cmap</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">cmap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theme</span><span class="o">.</span><span class="n">cmap</span>
+
+            <span class="c1"># have to add the attribute to pass it onward to some classes</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span> <span class="o">=</span> <span class="n">cmap</span>
+            <span class="c1"># ipygany uses different colormaps</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theme</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">jupyter_backend</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">jupyter_backend</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">jupyter_backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theme</span><span class="o">.</span><span class="n">jupyter_backend</span>
+            <span class="k">if</span> <span class="n">jupyter_backend</span> <span class="o">==</span> <span class="s1">&#39;ipygany&#39;</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="kn">from</span> <span class="nn">..jupyter.pv_ipygany</span> <span class="kn">import</span> <span class="n">check_colormap</span>
+
+                <span class="n">check_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">categories</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">categories</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">n_colors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">scalars</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                        <span class="n">n_colors</span> <span class="o">=</span> <span class="n">categories</span>
+
+                <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">apply_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                    <span class="c1"># should be impossible to get to this point as VTK package</span>
+                    <span class="c1"># no requires matplotlib</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">n_values</span> <span class="o">=</span> <span class="n">n_colors</span>
+                    <span class="k">if</span> <span class="n">flip_scalars</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.66667</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.66667</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+                <span class="c1"># Set opactities</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">opacity</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">custom_opac</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">apply_opacity</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">flip_scalars</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">values</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="n">custom_opac</span> <span class="ow">and</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># need to round the colors here since we&#39;re</span>
+                    <span class="c1"># directly displaying the colors</span>
+                    <span class="n">hue</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">scalars</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="n">clim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maximum</span><span class="o">=</span><span class="n">clim</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">hue</span> <span class="o">*</span> <span class="n">n_colors</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_colors</span>
+                    <span class="n">scalars</span> <span class="o">=</span> <span class="n">get_cmap_safe</span><span class="p">(</span><span class="n">cmap</span><span class="p">)(</span><span class="n">scalars</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
+                    <span class="n">scalars</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="n">opacity</span>
+                    <span class="n">scalars</span> <span class="o">=</span> <span class="n">scalars</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+            <span class="c1"># configure the lookup table</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">nan_color</span> <span class="o">=</span> <span class="n">nan_color</span>
+            <span class="k">if</span> <span class="n">above_color</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">above_range_color</span> <span class="o">=</span> <span class="n">above_color</span>
+                <span class="n">scalar_bar_args</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;above_label&#39;</span><span class="p">,</span> <span class="s1">&#39;Above&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">below_color</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">below_range_color</span> <span class="o">=</span> <span class="n">below_color</span>
+                <span class="n">scalar_bar_args</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;below_label&#39;</span><span class="p">,</span> <span class="s1">&#39;Below&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">annotations</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="n">annotations</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">log_scale</span> <span class="o">=</span> <span class="n">log_scale</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_configure_scalars_mode</span><span class="p">(</span>
+            <span class="n">scalars</span><span class="p">,</span>
+            <span class="n">scalars_name</span><span class="p">,</span>
+            <span class="n">preference</span><span class="p">,</span>
+            <span class="n">rgb</span> <span class="ow">or</span> <span class="n">custom_opac</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">PointGaussianMapper</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">as_rgba</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Colormap assigned to this mapper.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span>
+
+<div class="viewcode-block" id="DataSetMapper.set_custom_opacity"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.DataSetMapper.html#pyvista.DataSetMapper.set_custom_opacity">[docs]</a>    <span class="k">def</span> <span class="nf">set_custom_opacity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opacity</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="n">preference</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set custom opacity.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        opacity : numpy.ndarray</span>
+<span class="sd">            Opacity array to color the dataset. Array length must match either</span>
+<span class="sd">            the number of points or cells.</span>
+
+<span class="sd">        color : color_like</span>
+<span class="sd">            The color to use with the opacity array.</span>
+
+<span class="sd">        n_colors : int</span>
+<span class="sd">            Number of colors to use.</span>
+
+<span class="sd">        preference : str, default: &#39;point&#39;</span>
+<span class="sd">            Either ``&#39;point&#39;`` or ``&#39;cell&#39;``. Used when the number of cells</span>
+<span class="sd">            matches the number of points.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Create a custom RGBA array to supply our opacity to</span>
+        <span class="k">if</span> <span class="n">opacity</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_points</span><span class="p">:</span>
+            <span class="n">rgba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_points</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">opacity</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_cells</span><span class="p">:</span>
+            <span class="n">rgba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_cells</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Opacity array size (</span><span class="si">{</span><span class="n">opacity</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">) does not equal &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;the number of points (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_points</span><span class="si">}</span><span class="s2">) or the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;number of cells (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">n_cells</span><span class="si">}</span><span class="s2">).&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theme</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">default_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theme</span><span class="o">.</span><span class="n">color</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">default_color</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">color</span>
+
+        <span class="n">rgba</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">default_color</span><span class="p">)</span><span class="o">.</span><span class="n">int_rgb</span>
+        <span class="n">rgba</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">opacity</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">color_mode</span> <span class="o">=</span> <span class="s1">&#39;direct&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">n_values</span> <span class="o">=</span> <span class="n">n_colors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_configure_scalars_mode</span><span class="p">(</span><span class="n">rgba</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">preference</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Representation of the mapper.&quot;&quot;&quot;</span>
+        <span class="n">mapper_attr</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Scalar visibility:           </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_visibility</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Scalar range:                </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Interpolate before mapping:  </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">interpolate_before_map</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Scalar map mode:             </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_map_mode</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Color mode:                  </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">color_mode</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="n">mapper_attr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Attached dataset:&#39;</span><span class="p">)</span>
+        <span class="n">mapper_attr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mapper_attr</span><span class="p">)</span></div>
+
+
+<span class="nd">@no_new_attr</span>
+<span class="k">class</span> <span class="nc">PointGaussianMapper</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkPointGaussianMapper</span><span class="p">,</span> <span class="n">DataSetMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap vtkPointGaussianMapper.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">emissive</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set or return emissive.</span>
+
+<span class="sd">        This treats points as emissive light sources. Two points that overlap</span>
+<span class="sd">        will have their brightness combined.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetEmissive</span><span class="p">())</span>
+
+    <span class="nd">@emissive</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">emissive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetEmissive</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set or return the scale factor.</span>
+
+<span class="sd">        Ranges from 0 to 1. A value of 0 will cause the splats to be rendered</span>
+<span class="sd">        as simple points. Defaults to 1.0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetScaleFactor</span><span class="p">()</span>
+
+    <span class="nd">@scale_factor</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetScaleFactor</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">use_circular_splat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opacity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the fragment shader code to create a circular splat.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        opacity : float, default: 1.0</span>
+<span class="sd">            Desired opacity between 0 and 1.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This very close to ParaView&#39;s PointGaussianMapper, but uses opacity to</span>
+<span class="sd">        modify the scale as the opacity cannot be set from the actor&#39;s property.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSplatShaderCode</span><span class="p">(</span>
+            <span class="s2">&quot;//VTK::Color::Impl</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;float dist = dot(offsetVCVSOutput.xy,offsetVCVSOutput.xy);</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;if (dist &gt; 1.0) {</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;  discard;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;} else {</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;  float scale = (</span><span class="si">{</span><span class="n">opacity</span><span class="si">}</span><span class="s2"> - dist);</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;  ambientColor *= scale;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;  diffuseColor *= scale;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="c1"># maintain consistency with the default style</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emissive</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">*=</span> <span class="mf">1.5</span>
+
+    <span class="k">def</span> <span class="nf">use_default_splat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear the fragment shader and use the default splat.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSplatShaderCode</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">/=</span> <span class="mf">1.5</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Representation of the gaussian mapper.&quot;&quot;&quot;</span>
+        <span class="n">mapper_attr</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Scalar visibility:           </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_visibility</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Scalar range:                </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Emissive:                    </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">emissive</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Scale Factor:                </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Using custom splat:          </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GetSplatShaderCode</span><span class="p">()</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="n">mapper_attr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Attached dataset:&#39;</span><span class="p">)</span>
+        <span class="n">mapper_attr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mapper_attr</span><span class="p">)</span>
+
+
+<span class="nd">@abstract_class</span>
+<span class="k">class</span> <span class="nc">_BaseVolumeMapper</span><span class="p">(</span><span class="n">_BaseMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Volume mapper class to override methods and attributes for to volume mappers.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize this class.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="n">theme</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lut</span> <span class="o">=</span> <span class="n">LookupTable</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scalar_range</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the dataset assigned to this mapper.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetInputAsDataSet</span><span class="p">()</span>
+
+    <span class="nd">@dataset</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_dataset</span><span class="p">:</span> <span class="s1">&#39;pv.core.dataset.DataSet&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="n">new_dataset</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lut</span>
+
+    <span class="nd">@lookup_table</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lut</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lut</span> <span class="o">=</span> <span class="n">lut</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalar_range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the scalar range.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scalar_range</span>
+
+    <span class="nd">@scalar_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scalar_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clim</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lookup_table</span><span class="o">.</span><span class="n">SetRange</span><span class="p">(</span><span class="o">*</span><span class="n">clim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scalar_range</span> <span class="o">=</span> <span class="n">clim</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lut</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">class</span> <span class="nc">FixedPointVolumeRayCastMapper</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkFixedPointVolumeRayCastMapper</span><span class="p">,</span> <span class="n">_BaseVolumeMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap _vtk.vtkFixedPointVolumeRayCastMapper.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">GPUVolumeRayCastMapper</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkGPUVolumeRayCastMapper</span><span class="p">,</span> <span class="n">_BaseVolumeMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap _vtk.vtkGPUVolumeRayCastMapper.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">OpenGLGPUVolumeRayCastMapper</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkOpenGLGPUVolumeRayCastMapper</span><span class="p">,</span> <span class="n">_BaseVolumeMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap _vtk.vtkOpenGLGPUVolumeRayCastMapper.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">SmartVolumeMapper</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkSmartVolumeMapper</span><span class="p">,</span> <span class="n">_BaseVolumeMapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap _vtk.vtkSmartVolumeMapper.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+</pre></div>
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

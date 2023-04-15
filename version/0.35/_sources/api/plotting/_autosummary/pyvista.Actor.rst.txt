@@ -1,0 +1,7 @@
+﻿pyvista.Actor
+=============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Actor
+   :members:

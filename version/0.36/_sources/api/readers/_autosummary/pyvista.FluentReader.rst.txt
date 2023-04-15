@@ -1,0 +1,43 @@
+﻿pyvista.FluentReader
+====================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: FluentReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      FluentReader.hide_progress
+      
+      
+      FluentReader.read
+      
+      
+      FluentReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      FluentReader.path
+      
+      
+      FluentReader.reader
+      
+   
+   

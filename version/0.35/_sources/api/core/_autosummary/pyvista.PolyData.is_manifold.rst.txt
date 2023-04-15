@@ -1,0 +1,6 @@
+is\_manifold
+============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.is_manifold

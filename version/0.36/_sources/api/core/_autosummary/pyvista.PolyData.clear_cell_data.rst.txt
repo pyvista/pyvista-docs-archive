@@ -1,0 +1,6 @@
+clear\_cell\_data
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.clear_cell_data

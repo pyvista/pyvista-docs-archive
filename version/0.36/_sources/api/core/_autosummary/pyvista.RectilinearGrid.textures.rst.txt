@@ -1,0 +1,6 @@
+textures
+========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: RectilinearGrid.textures

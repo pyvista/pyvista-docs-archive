@@ -1,0 +1,6 @@
+clear\_field\_arrays
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.clear_field_arrays

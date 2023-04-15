@@ -1,0 +1,6 @@
+active\_vectors\_name
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: RectilinearGrid.active_vectors_name

@@ -1,0 +1,700 @@
+﻿pyvista.StructuredGrid
+======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: StructuredGrid
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      StructuredGrid.add_field_array
+      
+      
+      StructuredGrid.add_field_data
+      
+      
+      StructuredGrid.cast_to_pointset
+      
+      
+      StructuredGrid.cast_to_unstructured_grid
+      
+      
+      StructuredGrid.cell_bounds
+      
+      
+      StructuredGrid.cell_centers
+      
+      
+      StructuredGrid.cell_data_to_point_data
+      
+      
+      StructuredGrid.cell_n_points
+      
+      
+      StructuredGrid.cell_point_ids
+      
+      
+      StructuredGrid.cell_points
+      
+      
+      StructuredGrid.cell_type
+      
+      
+      StructuredGrid.center_of_mass
+      
+      
+      StructuredGrid.clear_arrays
+      
+      
+      StructuredGrid.clear_cell_arrays
+      
+      
+      StructuredGrid.clear_cell_data
+      
+      
+      StructuredGrid.clear_data
+      
+      
+      StructuredGrid.clear_field_arrays
+      
+      
+      StructuredGrid.clear_field_data
+      
+      
+      StructuredGrid.clear_point_arrays
+      
+      
+      StructuredGrid.clear_point_data
+      
+      
+      StructuredGrid.clear_textures
+      
+      
+      StructuredGrid.clip
+      
+      
+      StructuredGrid.clip_box
+      
+      
+      StructuredGrid.clip_scalar
+      
+      
+      StructuredGrid.clip_surface
+      
+      
+      StructuredGrid.compute_cell_quality
+      
+      
+      StructuredGrid.compute_cell_sizes
+      
+      
+      StructuredGrid.compute_derivative
+      
+      
+      StructuredGrid.compute_implicit_distance
+      
+      
+      StructuredGrid.concatenate
+      
+      
+      StructuredGrid.connectivity
+      
+      
+      StructuredGrid.contour
+      
+      
+      StructuredGrid.copy
+      
+      
+      StructuredGrid.copy_attributes
+      
+      
+      StructuredGrid.copy_meta_from
+      
+      
+      StructuredGrid.copy_structure
+      
+      
+      StructuredGrid.ctp
+      
+      
+      StructuredGrid.decimate_boundary
+      
+      
+      StructuredGrid.deep_copy
+      
+      
+      StructuredGrid.delaunay_3d
+      
+      
+      StructuredGrid.elevation
+      
+      
+      StructuredGrid.extract_all_edges
+      
+      
+      StructuredGrid.extract_cells
+      
+      
+      StructuredGrid.extract_feature_edges
+      
+      
+      StructuredGrid.extract_geometry
+      
+      
+      StructuredGrid.extract_largest
+      
+      
+      StructuredGrid.extract_points
+      
+      
+      StructuredGrid.extract_subset
+      
+      
+      StructuredGrid.extract_surface
+      
+      
+      StructuredGrid.find_cells_along_line
+      
+      
+      StructuredGrid.find_cells_within_bounds
+      
+      
+      StructuredGrid.find_closest_cell
+      
+      
+      StructuredGrid.find_closest_point
+      
+      
+      StructuredGrid.find_containing_cell
+      
+      
+      StructuredGrid.flip_normal
+      
+      
+      StructuredGrid.flip_x
+      
+      
+      StructuredGrid.flip_y
+      
+      
+      StructuredGrid.flip_z
+      
+      
+      StructuredGrid.get_array
+      
+      
+      StructuredGrid.get_array_association
+      
+      
+      StructuredGrid.get_data_range
+      
+      
+      StructuredGrid.glyph
+      
+      
+      StructuredGrid.head
+      
+      
+      StructuredGrid.hide_cells
+      
+      
+      StructuredGrid.hide_points
+      
+      
+      StructuredGrid.integrate_data
+      
+      
+      StructuredGrid.interpolate
+      
+      
+      StructuredGrid.merge
+      
+      
+      StructuredGrid.outline
+      
+      
+      StructuredGrid.outline_corners
+      
+      
+      StructuredGrid.override
+      
+      
+      StructuredGrid.overwrite
+      
+      
+      StructuredGrid.plot
+      
+      
+      StructuredGrid.plot_curvature
+      
+      
+      StructuredGrid.plot_over_circular_arc
+      
+      
+      StructuredGrid.plot_over_circular_arc_normal
+      
+      
+      StructuredGrid.plot_over_line
+      
+      
+      StructuredGrid.point_data_to_cell_data
+      
+      
+      StructuredGrid.point_is_inside_cell
+      
+      
+      StructuredGrid.points_to_double
+      
+      
+      StructuredGrid.probe
+      
+      
+      StructuredGrid.ptc
+      
+      
+      StructuredGrid.reflect
+      
+      
+      StructuredGrid.remove_cells
+      
+      
+      StructuredGrid.rename_array
+      
+      
+      StructuredGrid.rotate_vector
+      
+      
+      StructuredGrid.rotate_x
+      
+      
+      StructuredGrid.rotate_y
+      
+      
+      StructuredGrid.rotate_z
+      
+      
+      StructuredGrid.sample
+      
+      
+      StructuredGrid.sample_over_circular_arc
+      
+      
+      StructuredGrid.sample_over_circular_arc_normal
+      
+      
+      StructuredGrid.sample_over_line
+      
+      
+      StructuredGrid.sample_over_multiple_lines
+      
+      
+      StructuredGrid.save
+      
+      
+      StructuredGrid.scale
+      
+      
+      StructuredGrid.select_enclosed_points
+      
+      
+      StructuredGrid.set_active_scalars
+      
+      
+      StructuredGrid.set_active_tensors
+      
+      
+      StructuredGrid.set_active_vectors
+      
+      
+      StructuredGrid.shallow_copy
+      
+      
+      StructuredGrid.shrink
+      
+      
+      StructuredGrid.slice
+      
+      
+      StructuredGrid.slice_along_axis
+      
+      
+      StructuredGrid.slice_along_line
+      
+      
+      StructuredGrid.slice_orthogonal
+      
+      
+      StructuredGrid.split_bodies
+      
+      
+      StructuredGrid.streamlines
+      
+      
+      StructuredGrid.streamlines_evenly_spaced_2D
+      
+      
+      StructuredGrid.streamlines_from_source
+      
+      
+      StructuredGrid.surface_indices
+      
+      
+      StructuredGrid.tessellate
+      
+      
+      StructuredGrid.texture_map_to_plane
+      
+      
+      StructuredGrid.texture_map_to_sphere
+      
+      
+      StructuredGrid.threshold
+      
+      
+      StructuredGrid.threshold_percent
+      
+      
+      StructuredGrid.transform
+      
+      
+      StructuredGrid.translate
+      
+      
+      StructuredGrid.triangulate
+      
+      
+      StructuredGrid.warp_by_scalar
+      
+      
+      StructuredGrid.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      StructuredGrid.active_normals
+      
+      
+      StructuredGrid.active_scalars
+      
+      
+      StructuredGrid.active_scalars_info
+      
+      
+      StructuredGrid.active_scalars_name
+      
+      
+      StructuredGrid.active_t_coords
+      
+      
+      StructuredGrid.active_tensors
+      
+      
+      StructuredGrid.active_tensors_info
+      
+      
+      StructuredGrid.active_tensors_name
+      
+      
+      StructuredGrid.active_vectors
+      
+      
+      StructuredGrid.active_vectors_info
+      
+      
+      StructuredGrid.active_vectors_name
+      
+      
+      StructuredGrid.actual_memory_size
+      
+      
+      StructuredGrid.array_names
+      
+      
+      StructuredGrid.arrows
+      
+      
+      StructuredGrid.bounds
+      
+      
+      StructuredGrid.cell_arrays
+      
+      
+      StructuredGrid.cell_data
+      
+      
+      StructuredGrid.center
+      
+      
+      StructuredGrid.dimensions
+      
+      
+      StructuredGrid.field_arrays
+      
+      
+      StructuredGrid.field_data
+      
+      
+      StructuredGrid.length
+      
+      
+      StructuredGrid.memory_address
+      
+      
+      StructuredGrid.n_arrays
+      
+      
+      StructuredGrid.n_cells
+      
+      
+      StructuredGrid.n_points
+      
+      
+      StructuredGrid.number_of_cells
+      
+      
+      StructuredGrid.number_of_points
+      
+      
+      StructuredGrid.point_arrays
+      
+      
+      StructuredGrid.point_data
+      
+      
+      StructuredGrid.points
+      
+      
+      StructuredGrid.points_matrix
+      
+      
+      StructuredGrid.t_coords
+      
+      
+      StructuredGrid.textures
+      
+      
+      StructuredGrid.vectors
+      
+      
+      StructuredGrid.volume
+      
+      
+      StructuredGrid.x
+      
+      
+      StructuredGrid.y
+      
+      
+      StructuredGrid.z
+      
+   
+   

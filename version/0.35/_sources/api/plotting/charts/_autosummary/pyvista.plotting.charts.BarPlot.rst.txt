@@ -1,0 +1,242 @@
+﻿pyvista.plotting.charts.BarPlot
+===============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: BarPlot
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      BarPlot.override
+      
+      
+      BarPlot.toggle
+      
+      
+      BarPlot.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      BarPlot.brush
+      
+      
+      BarPlot.color
+      
+      
+      BarPlot.color_scheme
+      
+      
+      BarPlot.colors
+      
+      
+      BarPlot.label
+      
+      
+      BarPlot.labels
+      
+      
+      BarPlot.line_style
+      
+      
+      BarPlot.line_width
+      
+      
+      BarPlot.orientation
+      
+      
+      BarPlot.pen
+      
+      
+      BarPlot.visible
+      
+      
+      BarPlot.x
+      
+      
+      BarPlot.y
+      
+   
+   

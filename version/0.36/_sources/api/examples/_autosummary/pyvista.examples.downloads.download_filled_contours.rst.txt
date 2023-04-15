@@ -1,0 +1,6 @@
+download\_filled\_contours
+==========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_filled_contours

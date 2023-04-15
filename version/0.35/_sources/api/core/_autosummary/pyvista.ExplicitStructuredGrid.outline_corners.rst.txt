@@ -1,0 +1,6 @@
+outline\_corners
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.outline_corners

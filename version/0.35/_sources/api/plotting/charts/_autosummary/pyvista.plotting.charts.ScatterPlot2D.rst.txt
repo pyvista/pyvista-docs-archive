@@ -1,0 +1,230 @@
+﻿pyvista.plotting.charts.ScatterPlot2D
+=====================================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: ScatterPlot2D
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      ScatterPlot2D.override
+      
+      
+      ScatterPlot2D.toggle
+      
+      
+      ScatterPlot2D.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      ScatterPlot2D.brush
+      
+      
+      ScatterPlot2D.color
+      
+      
+      ScatterPlot2D.label
+      
+      
+      ScatterPlot2D.line_style
+      
+      
+      ScatterPlot2D.line_width
+      
+      
+      ScatterPlot2D.marker_size
+      
+      
+      ScatterPlot2D.marker_style
+      
+      
+      ScatterPlot2D.pen
+      
+      
+      ScatterPlot2D.visible
+      
+      
+      ScatterPlot2D.x
+      
+      
+      ScatterPlot2D.y
+      
+   
+   

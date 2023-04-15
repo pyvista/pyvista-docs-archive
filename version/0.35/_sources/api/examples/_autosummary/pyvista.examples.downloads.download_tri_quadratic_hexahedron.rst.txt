@@ -1,0 +1,6 @@
+download\_tri\_quadratic\_hexahedron
+====================================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_tri_quadratic_hexahedron

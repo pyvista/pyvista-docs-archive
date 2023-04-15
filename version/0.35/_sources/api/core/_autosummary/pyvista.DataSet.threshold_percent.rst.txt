@@ -1,0 +1,6 @@
+threshold\_percent
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.threshold_percent

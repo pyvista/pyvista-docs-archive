@@ -1,0 +1,6 @@
+compute\_cell\_quality
+======================
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.compute_cell_quality

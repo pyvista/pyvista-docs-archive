@@ -1,0 +1,6 @@
+add\_cursor
+===========
+
+.. currentmodule:: pyvista
+
+.. automethod:: Plotter.add_cursor

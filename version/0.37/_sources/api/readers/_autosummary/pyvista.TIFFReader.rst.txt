@@ -1,0 +1,7 @@
+﻿pyvista.TIFFReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: TIFFReader
+   :members:

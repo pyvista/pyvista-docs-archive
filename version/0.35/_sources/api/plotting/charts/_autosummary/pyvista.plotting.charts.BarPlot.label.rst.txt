@@ -1,0 +1,6 @@
+label
+=====
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: BarPlot.label

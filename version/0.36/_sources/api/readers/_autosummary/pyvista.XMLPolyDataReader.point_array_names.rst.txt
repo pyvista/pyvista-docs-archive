@@ -1,0 +1,6 @@
+point\_array\_names
+===================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: XMLPolyDataReader.point_array_names

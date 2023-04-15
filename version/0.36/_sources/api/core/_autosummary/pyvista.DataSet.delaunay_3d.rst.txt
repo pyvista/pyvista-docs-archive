@@ -1,0 +1,6 @@
+delaunay\_3d
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.delaunay_3d

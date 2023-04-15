@@ -1,0 +1,6 @@
+download\_dual\_sphere\_animation
+=================================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_dual_sphere_animation

@@ -1,0 +1,6 @@
+download\_emoji\_texture
+========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_emoji_texture

@@ -1,0 +1,6 @@
+cells\_dict
+===========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.cells_dict

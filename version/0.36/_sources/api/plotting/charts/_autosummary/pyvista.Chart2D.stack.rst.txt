@@ -1,0 +1,6 @@
+stack
+=====
+
+.. currentmodule:: pyvista
+
+.. automethod:: Chart2D.stack

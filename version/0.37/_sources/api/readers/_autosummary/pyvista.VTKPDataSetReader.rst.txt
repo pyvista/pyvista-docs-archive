@@ -1,0 +1,7 @@
+﻿pyvista.VTKPDataSetReader
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: VTKPDataSetReader
+   :members:

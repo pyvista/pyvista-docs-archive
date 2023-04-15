@@ -1,0 +1,6 @@
+point\_array\_names
+===================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: XMLPUnstructuredGridReader.point_array_names

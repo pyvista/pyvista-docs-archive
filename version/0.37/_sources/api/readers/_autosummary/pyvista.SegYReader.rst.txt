@@ -1,0 +1,7 @@
+﻿pyvista.SegYReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: SegYReader
+   :members:

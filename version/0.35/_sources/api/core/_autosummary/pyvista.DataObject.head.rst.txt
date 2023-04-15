@@ -1,0 +1,6 @@
+head
+====
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataObject.head

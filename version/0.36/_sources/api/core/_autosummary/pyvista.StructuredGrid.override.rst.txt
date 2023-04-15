@@ -1,0 +1,6 @@
+override
+========
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.override

@@ -1,0 +1,6 @@
+marker\_style
+=============
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: ScatterPlot2D.marker_style

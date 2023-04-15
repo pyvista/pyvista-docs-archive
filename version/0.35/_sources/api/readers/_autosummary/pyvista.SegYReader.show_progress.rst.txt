@@ -1,0 +1,6 @@
+show\_progress
+==============
+
+.. currentmodule:: pyvista
+
+.. automethod:: SegYReader.show_progress

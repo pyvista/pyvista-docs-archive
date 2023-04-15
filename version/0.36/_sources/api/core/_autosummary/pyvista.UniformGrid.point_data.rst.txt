@@ -1,0 +1,6 @@
+point\_data
+===========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UniformGrid.point_data

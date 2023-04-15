@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.Brush
+=============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: Brush
+   :members:

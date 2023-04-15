@@ -1,0 +1,7 @@
+﻿pyvista.CompositeAttributes
+===========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: CompositeAttributes
+   :members:

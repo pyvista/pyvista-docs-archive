@@ -1,0 +1,6 @@
+add\_camera\_orientation\_widget
+================================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Plotter.add_camera_orientation_widget

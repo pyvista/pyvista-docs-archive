@@ -1,0 +1,7 @@
+﻿pyvista.DataSetMapper
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DataSetMapper
+   :members:

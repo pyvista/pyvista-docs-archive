@@ -1,0 +1,6 @@
+﻿Line
+====
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Line

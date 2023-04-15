@@ -1,0 +1,6 @@
+load\_sphere\_vectors
+=====================
+
+.. currentmodule:: pyvista.examples.examples
+
+.. autofunction:: load_sphere_vectors

@@ -1,0 +1,6 @@
+rotate\_vector
+==============
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.rotate_vector

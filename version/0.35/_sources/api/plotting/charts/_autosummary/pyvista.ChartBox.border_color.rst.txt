@@ -1,0 +1,6 @@
+border\_color
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ChartBox.border_color

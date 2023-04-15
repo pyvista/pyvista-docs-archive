@@ -1,0 +1,6 @@
+color
+=====
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: BoxPlot.color

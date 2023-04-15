@@ -1,0 +1,7 @@
+﻿pyvista.MFIXReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: MFIXReader
+   :members:

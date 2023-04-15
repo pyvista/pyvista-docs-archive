@@ -1,0 +1,6 @@
+enable\_cell\_array
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointCellDataSelection.enable_cell_array

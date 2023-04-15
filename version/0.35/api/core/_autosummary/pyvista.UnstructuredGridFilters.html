@@ -1,0 +1,992 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pyvista.UnstructuredGridFilters &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="cell_centers" href="pyvista.UnstructuredGridFilters.cell_centers.html" />
+    <link rel="prev" title="warp_by_vector" href="pyvista.PolyDataFilters.warp_by_vector.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../../index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables api/core/_autosummary/pyvista.UnstructuredGridFilters and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "api/core/_autosummary/pyvista.UnstructuredGridFilters.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "api/core/_autosummary/pyvista.UnstructuredGridFilters.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API Reference
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Core API
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../objects.html">
+     DataObject
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dataset.html">
+     Data Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pointsets.html">
+     Point Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grids.html">
+     Gridded Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composite.html">
+     Composite Datasets
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../filters.html">
+     Filters
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.DataSetFilters.html">
+       pyvista.DataSetFilters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.PolyDataFilters.html">
+       pyvista.PolyDataFilters
+      </a>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="current reference internal" href="#">
+       pyvista.UnstructuredGridFilters
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.cell_centers.html">
+         cell_centers
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.cell_data_to_point_data.html">
+         cell_data_to_point_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.clip.html">
+         clip
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.clip_box.html">
+         clip_box
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.clip_scalar.html">
+         clip_scalar
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.clip_surface.html">
+         clip_surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_cell_quality.html">
+         compute_cell_quality
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_cell_sizes.html">
+         compute_cell_sizes
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_derivative.html">
+         compute_derivative
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_implicit_distance.html">
+         compute_implicit_distance
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.connectivity.html">
+         connectivity
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.contour.html">
+         contour
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.ctp.html">
+         ctp
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.decimate_boundary.html">
+         decimate_boundary
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.delaunay_2d.html">
+         delaunay_2d
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.delaunay_3d.html">
+         delaunay_3d
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.elevation.html">
+         elevation
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_all_edges.html">
+         extract_all_edges
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_cells.html">
+         extract_cells
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_feature_edges.html">
+         extract_feature_edges
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_geometry.html">
+         extract_geometry
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_largest.html">
+         extract_largest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_points.html">
+         extract_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_surface.html">
+         extract_surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.glyph.html">
+         glyph
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.integrate_data.html">
+         integrate_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.interpolate.html">
+         interpolate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.merge.html">
+         merge
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.outline.html">
+         outline
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.outline_corners.html">
+         outline_corners
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.plot_over_circular_arc.html">
+         plot_over_circular_arc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.plot_over_circular_arc_normal.html">
+         plot_over_circular_arc_normal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.plot_over_line.html">
+         plot_over_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.point_data_to_cell_data.html">
+         point_data_to_cell_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.probe.html">
+         probe
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.ptc.html">
+         ptc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.reconstruct_surface.html">
+         reconstruct_surface
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.reflect.html">
+         reflect
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.sample.html">
+         sample
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_circular_arc.html">
+         sample_over_circular_arc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_circular_arc_normal.html">
+         sample_over_circular_arc_normal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_line.html">
+         sample_over_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_multiple_lines.html">
+         sample_over_multiple_lines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.select_enclosed_points.html">
+         select_enclosed_points
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.shrink.html">
+         shrink
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.slice.html">
+         slice
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.slice_along_axis.html">
+         slice_along_axis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.slice_along_line.html">
+         slice_along_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.slice_orthogonal.html">
+         slice_orthogonal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.split_bodies.html">
+         split_bodies
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.streamlines.html">
+         streamlines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.streamlines_evenly_spaced_2D.html">
+         streamlines_evenly_spaced_2D
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.streamlines_from_source.html">
+         streamlines_from_source
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.surface_indices.html">
+         surface_indices
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.tessellate.html">
+         tessellate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.texture_map_to_plane.html">
+         texture_map_to_plane
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.texture_map_to_sphere.html">
+         texture_map_to_sphere
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.threshold.html">
+         threshold
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.threshold_percent.html">
+         threshold_percent
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.transform.html">
+         transform
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.triangulate.html">
+         triangulate
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.warp_by_scalar.html">
+         warp_by_scalar
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pyvista.UnstructuredGridFilters.warp_by_vector.html">
+         warp_by_vector
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.UniformGridFilters.html">
+       pyvista.UniformGridFilters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyvista.CompositeFilters.html">
+       pyvista.CompositeFilters
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../camera.html">
+     Cameras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lights.html">
+     Lights
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../helpers.html">
+     Helpers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../misc.html">
+     Miscellaneous
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plotting/index.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../utilities/index.html">
+   Utilities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../readers/index.html">
+   Readers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../examples/index.html">
+   Examples
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyvista-unstructuredgridfilters">
+<h1>pyvista.UnstructuredGridFilters<a class="headerlink" href="#pyvista-unstructuredgridfilters" title="Permalink to this headline">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvista.UnstructuredGridFilters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UnstructuredGridFilters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/core/filters/unstructured_grid.html#UnstructuredGridFilters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.UnstructuredGridFilters" title="Permalink to this definition">#</a></dt>
+<dd><p>An internal class to manage filters/algorithms for unstructured grid datasets.</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.cell_centers.html#pyvista.UnstructuredGridFilters.cell_centers" title="pyvista.UnstructuredGridFilters.cell_centers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.cell_centers</span></code></a>([...])</p></td>
+<td><p>Generate points at the center of the cells in this dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.cell_data_to_point_data.html#pyvista.UnstructuredGridFilters.cell_data_to_point_data" title="pyvista.UnstructuredGridFilters.cell_data_to_point_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.cell_data_to_point_data</span></code></a>([...])</p></td>
+<td><p>Transform cell data into point data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.clip.html#pyvista.UnstructuredGridFilters.clip" title="pyvista.UnstructuredGridFilters.clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.clip</span></code></a>([normal, ...])</p></td>
+<td><p>Clip a dataset by a plane by specifying the origin and normal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.clip_box.html#pyvista.UnstructuredGridFilters.clip_box" title="pyvista.UnstructuredGridFilters.clip_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.clip_box</span></code></a>([bounds, ...])</p></td>
+<td><p>Clip a dataset by a bounding box defined by the bounds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.clip_scalar.html#pyvista.UnstructuredGridFilters.clip_scalar" title="pyvista.UnstructuredGridFilters.clip_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.clip_scalar</span></code></a>([...])</p></td>
+<td><p>Clip a dataset by a scalar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.clip_surface.html#pyvista.UnstructuredGridFilters.clip_surface" title="pyvista.UnstructuredGridFilters.clip_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.clip_surface</span></code></a>(surface)</p></td>
+<td><p>Clip any mesh type using a <a class="reference internal" href="pyvista.PolyData.html#pyvista.PolyData" title="pyvista.PolyData"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.PolyData</span></code></a> surface mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_cell_quality.html#pyvista.UnstructuredGridFilters.compute_cell_quality" title="pyvista.UnstructuredGridFilters.compute_cell_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.compute_cell_quality</span></code></a>([...])</p></td>
+<td><p>Compute a function of (geometric) quality for each cell of a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_cell_sizes.html#pyvista.UnstructuredGridFilters.compute_cell_sizes" title="pyvista.UnstructuredGridFilters.compute_cell_sizes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.compute_cell_sizes</span></code></a>([...])</p></td>
+<td><p>Compute sizes for 1D (length), 2D (area) and 3D (volume) cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_derivative.html#pyvista.UnstructuredGridFilters.compute_derivative" title="pyvista.UnstructuredGridFilters.compute_derivative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.compute_derivative</span></code></a>([...])</p></td>
+<td><p>Compute derivative-based quantities of point/cell scalar field.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.compute_implicit_distance.html#pyvista.UnstructuredGridFilters.compute_implicit_distance" title="pyvista.UnstructuredGridFilters.compute_implicit_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.compute_implicit_distance</span></code></a>(surface)</p></td>
+<td><p>Compute the implicit distance from the points to a surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.connectivity.html#pyvista.UnstructuredGridFilters.connectivity" title="pyvista.UnstructuredGridFilters.connectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.connectivity</span></code></a>([...])</p></td>
+<td><p>Find and label connected bodies/volumes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.contour.html#pyvista.UnstructuredGridFilters.contour" title="pyvista.UnstructuredGridFilters.contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.contour</span></code></a>([...])</p></td>
+<td><p>Contour an input self by an array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.ctp.html#pyvista.UnstructuredGridFilters.ctp" title="pyvista.UnstructuredGridFilters.ctp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.ctp</span></code></a>([...])</p></td>
+<td><p>Transform cell data into point data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.decimate_boundary.html#pyvista.UnstructuredGridFilters.decimate_boundary" title="pyvista.UnstructuredGridFilters.decimate_boundary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.decimate_boundary</span></code></a>([...])</p></td>
+<td><p>Return a decimated version of a triangulation of the boundary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.delaunay_2d.html#pyvista.UnstructuredGridFilters.delaunay_2d" title="pyvista.UnstructuredGridFilters.delaunay_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.delaunay_2d</span></code></a>([tol, ...])</p></td>
+<td><p>Apply a 2D Delaunay filter along the best fitting plane.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.delaunay_3d.html#pyvista.UnstructuredGridFilters.delaunay_3d" title="pyvista.UnstructuredGridFilters.delaunay_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.delaunay_3d</span></code></a>([alpha, ...])</p></td>
+<td><p>Construct a 3D Delaunay triangulation of the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.elevation.html#pyvista.UnstructuredGridFilters.elevation" title="pyvista.UnstructuredGridFilters.elevation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.elevation</span></code></a>([...])</p></td>
+<td><p>Generate scalar values on a dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_all_edges.html#pyvista.UnstructuredGridFilters.extract_all_edges" title="pyvista.UnstructuredGridFilters.extract_all_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.extract_all_edges</span></code></a>([...])</p></td>
+<td><p>Extract all the internal/external edges of the dataset as PolyData.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_cells.html#pyvista.UnstructuredGridFilters.extract_cells" title="pyvista.UnstructuredGridFilters.extract_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.extract_cells</span></code></a>(ind[, ...])</p></td>
+<td><p>Return a subset of the grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_feature_edges.html#pyvista.UnstructuredGridFilters.extract_feature_edges" title="pyvista.UnstructuredGridFilters.extract_feature_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.extract_feature_edges</span></code></a>([...])</p></td>
+<td><p>Extract edges from the surface of the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_geometry.html#pyvista.UnstructuredGridFilters.extract_geometry" title="pyvista.UnstructuredGridFilters.extract_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.extract_geometry</span></code></a>([...])</p></td>
+<td><p>Extract the outer surface of a volume or structured grid dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_largest.html#pyvista.UnstructuredGridFilters.extract_largest" title="pyvista.UnstructuredGridFilters.extract_largest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.extract_largest</span></code></a>([...])</p></td>
+<td><p>Extract largest connected set in mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_points.html#pyvista.UnstructuredGridFilters.extract_points" title="pyvista.UnstructuredGridFilters.extract_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.extract_points</span></code></a>(ind)</p></td>
+<td><p>Return a subset of the grid (with cells) that contains any of the given point indices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.extract_surface.html#pyvista.UnstructuredGridFilters.extract_surface" title="pyvista.UnstructuredGridFilters.extract_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.extract_surface</span></code></a>([...])</p></td>
+<td><p>Extract surface mesh of the grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.glyph.html#pyvista.UnstructuredGridFilters.glyph" title="pyvista.UnstructuredGridFilters.glyph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.glyph</span></code></a>([orient, ...])</p></td>
+<td><p>Copy a geometric representation (called a glyph) to the input dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.integrate_data.html#pyvista.UnstructuredGridFilters.integrate_data" title="pyvista.UnstructuredGridFilters.integrate_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.integrate_data</span></code></a>([...])</p></td>
+<td><p>Integrate point and cell data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.interpolate.html#pyvista.UnstructuredGridFilters.interpolate" title="pyvista.UnstructuredGridFilters.interpolate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.interpolate</span></code></a>(target)</p></td>
+<td><p>Interpolate values onto this mesh from a given dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.merge.html#pyvista.UnstructuredGridFilters.merge" title="pyvista.UnstructuredGridFilters.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.merge</span></code></a>([grid, ...])</p></td>
+<td><p>Join one or many other grids to this grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.outline.html#pyvista.UnstructuredGridFilters.outline" title="pyvista.UnstructuredGridFilters.outline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.outline</span></code></a>([...])</p></td>
+<td><p>Produce an outline of the full extent for the input dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.outline_corners.html#pyvista.UnstructuredGridFilters.outline_corners" title="pyvista.UnstructuredGridFilters.outline_corners"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.outline_corners</span></code></a>([...])</p></td>
+<td><p>Produce an outline of the corners for the input dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.plot_over_circular_arc.html#pyvista.UnstructuredGridFilters.plot_over_circular_arc" title="pyvista.UnstructuredGridFilters.plot_over_circular_arc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.plot_over_circular_arc</span></code></a>(...)</p></td>
+<td><p>Sample a dataset along a circular arc and plot it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.plot_over_circular_arc_normal.html#pyvista.UnstructuredGridFilters.plot_over_circular_arc_normal" title="pyvista.UnstructuredGridFilters.plot_over_circular_arc_normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.plot_over_circular_arc_normal</span></code></a>(center)</p></td>
+<td><p>Sample a dataset along a resolution circular arc defined by a normal and polar vector and plot it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.plot_over_line.html#pyvista.UnstructuredGridFilters.plot_over_line" title="pyvista.UnstructuredGridFilters.plot_over_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.plot_over_line</span></code></a>(...)</p></td>
+<td><p>Sample a dataset along a high resolution line and plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.point_data_to_cell_data.html#pyvista.UnstructuredGridFilters.point_data_to_cell_data" title="pyvista.UnstructuredGridFilters.point_data_to_cell_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.point_data_to_cell_data</span></code></a>([...])</p></td>
+<td><p>Transform point data into cell data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.probe.html#pyvista.UnstructuredGridFilters.probe" title="pyvista.UnstructuredGridFilters.probe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.probe</span></code></a>(points[, ...])</p></td>
+<td><p>Sample data values at specified point locations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.ptc.html#pyvista.UnstructuredGridFilters.ptc" title="pyvista.UnstructuredGridFilters.ptc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.ptc</span></code></a>([...])</p></td>
+<td><p>Transform point data into cell data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.reconstruct_surface.html#pyvista.UnstructuredGridFilters.reconstruct_surface" title="pyvista.UnstructuredGridFilters.reconstruct_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.reconstruct_surface</span></code></a>([...])</p></td>
+<td><p>Reconstruct a surface from the points in this dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.reflect.html#pyvista.UnstructuredGridFilters.reflect" title="pyvista.UnstructuredGridFilters.reflect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.reflect</span></code></a>(normal[, ...])</p></td>
+<td><p>Reflect a dataset across a plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.sample.html#pyvista.UnstructuredGridFilters.sample" title="pyvista.UnstructuredGridFilters.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.sample</span></code></a>(target[, ...])</p></td>
+<td><p>Resample array data from a passed mesh onto this mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_circular_arc.html#pyvista.UnstructuredGridFilters.sample_over_circular_arc" title="pyvista.UnstructuredGridFilters.sample_over_circular_arc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.sample_over_circular_arc</span></code></a>(...)</p></td>
+<td><p>Sample a dataset over a circular arc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_circular_arc_normal.html#pyvista.UnstructuredGridFilters.sample_over_circular_arc_normal" title="pyvista.UnstructuredGridFilters.sample_over_circular_arc_normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.sample_over_circular_arc_normal</span></code></a>(center)</p></td>
+<td><p>Sample a dataset over a circular arc defined by a normal and polar vector and plot it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_line.html#pyvista.UnstructuredGridFilters.sample_over_line" title="pyvista.UnstructuredGridFilters.sample_over_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.sample_over_line</span></code></a>(...)</p></td>
+<td><p>Sample a dataset onto a line.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.sample_over_multiple_lines.html#pyvista.UnstructuredGridFilters.sample_over_multiple_lines" title="pyvista.UnstructuredGridFilters.sample_over_multiple_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.sample_over_multiple_lines</span></code></a>(points)</p></td>
+<td><p>Sample a dataset onto a multiple lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.select_enclosed_points.html#pyvista.UnstructuredGridFilters.select_enclosed_points" title="pyvista.UnstructuredGridFilters.select_enclosed_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.select_enclosed_points</span></code></a>(surface)</p></td>
+<td><p>Mark points as to whether they are inside a closed surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.shrink.html#pyvista.UnstructuredGridFilters.shrink" title="pyvista.UnstructuredGridFilters.shrink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.shrink</span></code></a>([...])</p></td>
+<td><p>Shrink the individual faces of a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.slice.html#pyvista.UnstructuredGridFilters.slice" title="pyvista.UnstructuredGridFilters.slice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.slice</span></code></a>([normal, ...])</p></td>
+<td><p>Slice a dataset by a plane at the specified origin and normal vector orientation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.slice_along_axis.html#pyvista.UnstructuredGridFilters.slice_along_axis" title="pyvista.UnstructuredGridFilters.slice_along_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.slice_along_axis</span></code></a>([...])</p></td>
+<td><p>Create many slices of the input dataset along a specified axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.slice_along_line.html#pyvista.UnstructuredGridFilters.slice_along_line" title="pyvista.UnstructuredGridFilters.slice_along_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.slice_along_line</span></code></a>(line)</p></td>
+<td><p>Slice a dataset using a polyline/spline as the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.slice_orthogonal.html#pyvista.UnstructuredGridFilters.slice_orthogonal" title="pyvista.UnstructuredGridFilters.slice_orthogonal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.slice_orthogonal</span></code></a>([...])</p></td>
+<td><p>Create three orthogonal slices through the dataset on the three cartesian planes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.split_bodies.html#pyvista.UnstructuredGridFilters.split_bodies" title="pyvista.UnstructuredGridFilters.split_bodies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.split_bodies</span></code></a>([...])</p></td>
+<td><p>Find, label, and split connected bodies/volumes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.streamlines.html#pyvista.UnstructuredGridFilters.streamlines" title="pyvista.UnstructuredGridFilters.streamlines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.streamlines</span></code></a>([...])</p></td>
+<td><p>Integrate a vector field to generate streamlines.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.streamlines_evenly_spaced_2D.html#pyvista.UnstructuredGridFilters.streamlines_evenly_spaced_2D" title="pyvista.UnstructuredGridFilters.streamlines_evenly_spaced_2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.streamlines_evenly_spaced_2D</span></code></a>([...])</p></td>
+<td><p>Generate evenly spaced streamlines on a 2D dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.streamlines_from_source.html#pyvista.UnstructuredGridFilters.streamlines_from_source" title="pyvista.UnstructuredGridFilters.streamlines_from_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.streamlines_from_source</span></code></a>(source)</p></td>
+<td><p>Generate streamlines of vectors from the points of a source mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.surface_indices.html#pyvista.UnstructuredGridFilters.surface_indices" title="pyvista.UnstructuredGridFilters.surface_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.surface_indices</span></code></a>([...])</p></td>
+<td><p>Return the surface indices of a grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.tessellate.html#pyvista.UnstructuredGridFilters.tessellate" title="pyvista.UnstructuredGridFilters.tessellate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.tessellate</span></code></a>([...])</p></td>
+<td><p>Tessellate a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.texture_map_to_plane.html#pyvista.UnstructuredGridFilters.texture_map_to_plane" title="pyvista.UnstructuredGridFilters.texture_map_to_plane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.texture_map_to_plane</span></code></a>([...])</p></td>
+<td><p>Texture map this dataset to a user defined plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.texture_map_to_sphere.html#pyvista.UnstructuredGridFilters.texture_map_to_sphere" title="pyvista.UnstructuredGridFilters.texture_map_to_sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.texture_map_to_sphere</span></code></a>([...])</p></td>
+<td><p>Texture map this dataset to a user defined sphere.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.threshold.html#pyvista.UnstructuredGridFilters.threshold" title="pyvista.UnstructuredGridFilters.threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.threshold</span></code></a>([value, ...])</p></td>
+<td><p>Apply a <code class="docutils literal notranslate"><span class="pre">vtkThreshold</span></code> filter to the input dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.threshold_percent.html#pyvista.UnstructuredGridFilters.threshold_percent" title="pyvista.UnstructuredGridFilters.threshold_percent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.threshold_percent</span></code></a>([...])</p></td>
+<td><p>Threshold the dataset by a percentage of its range on the active scalars array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.transform.html#pyvista.UnstructuredGridFilters.transform" title="pyvista.UnstructuredGridFilters.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.transform</span></code></a>(trans[, ...])</p></td>
+<td><p>Transform this mesh with a 4x4 transform.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.triangulate.html#pyvista.UnstructuredGridFilters.triangulate" title="pyvista.UnstructuredGridFilters.triangulate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.triangulate</span></code></a>([...])</p></td>
+<td><p>Return an all triangle mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.warp_by_scalar.html#pyvista.UnstructuredGridFilters.warp_by_scalar" title="pyvista.UnstructuredGridFilters.warp_by_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.warp_by_scalar</span></code></a>([...])</p></td>
+<td><p>Warp the dataset's points by a point data scalars array's values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyvista.UnstructuredGridFilters.warp_by_vector.html#pyvista.UnstructuredGridFilters.warp_by_vector" title="pyvista.UnstructuredGridFilters.warp_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstructuredGridFilters.warp_by_vector</span></code></a>([...])</p></td>
+<td><p>Warp the dataset's points by a point data vectors array's values.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

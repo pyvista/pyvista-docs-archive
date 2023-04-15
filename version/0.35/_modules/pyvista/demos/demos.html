@@ -1,0 +1,897 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.demos.demos &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/demos/demos and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/demos/demos.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/demos/demos.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.demos.demos</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Demos to show off the functionality of PyVista.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+
+<span class="kn">from</span> <span class="nn">.logo</span> <span class="kn">import</span> <span class="n">text_3d</span>
+
+
+<div class="viewcode-block" id="glyphs"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.glyphs.html#pyvista.demos.demos.glyphs">[docs]</a><span class="k">def</span> <span class="nf">glyphs</span><span class="p">(</span><span class="n">grid_sz</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create several parametric supertoroids using VTK&#39;s glyph table functionality.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    grid_sz : int, optional</span>
+<span class="sd">        Create ``grid_sz x grid_sz`` supertoroids.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.PolyData</span>
+<span class="sd">        Mesh of supertoroids.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    plot_glyphs</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; mesh = demos.glyphs()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># values for scalars to look up glyphs by</span>
+
+    <span class="c1"># taken from:</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># (n1, n2) parameters for the toroids</span>
+
+    <span class="n">geoms</span> <span class="o">=</span> <span class="p">[</span><span class="n">pv</span><span class="o">.</span><span class="n">ParametricSuperToroid</span><span class="p">(</span><span class="n">n1</span><span class="o">=</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="o">=</span><span class="n">n2</span><span class="p">)</span> <span class="k">for</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
+
+    <span class="c1"># get dataset where to put glyphs</span>
+    <span class="n">grid_sz</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">grid_sz</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[:</span><span class="n">grid_sz</span><span class="p">,</span> <span class="p">:</span><span class="n">grid_sz</span><span class="p">,</span> <span class="p">:</span><span class="n">grid_sz</span><span class="p">]</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">StructuredGrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+    <span class="c1"># add random scalars</span>
+    <span class="n">rng_int</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s1">&#39;scalars&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng_int</span>
+
+    <span class="c1"># construct the glyphs on top of the mesh; don&#39;t scale by scalars now</span>
+    <span class="k">return</span> <span class="n">mesh</span><span class="o">.</span><span class="n">glyph</span><span class="p">(</span>
+        <span class="n">geom</span><span class="o">=</span><span class="n">geoms</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">orient</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_glyphs"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.plot_glyphs.html#pyvista.demos.demos.plot_glyphs">[docs]</a><span class="k">def</span> <span class="nf">plot_glyphs</span><span class="p">(</span><span class="n">grid_sz</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot several parametric supertoroids using VTK&#39;s glyph table functionality.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    grid_sz : int, optional</span>
+<span class="sd">        Create ``grid_sz x grid_sz`` supertoroids.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        All additional keyword arguments will be passed to</span>
+<span class="sd">        :func:`pyvista.Plotter.add_mesh`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    various</span>
+<span class="sd">        See :func:`show &lt;pyvista.Plotter.show&gt;`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; demos.plot_glyphs()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># construct the glyphs on top of the mesh; don&#39;t scale by scalars now</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">glyphs</span><span class="p">(</span><span class="n">grid_sz</span><span class="p">)</span>
+
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;specular&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;specular_power&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;smooth_shading&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># create plotter and add our glyphs with some nontrivial lighting</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="orientation_cube"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.orientation_cube.html#pyvista.demos.demos.orientation_cube">[docs]</a><span class="k">def</span> <span class="nf">orientation_cube</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a dictionary containing the meshes composing an orientation cube.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Dictionary containing the meshes composing an orientation cube.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Load the cube mesh and plot it</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; ocube = demos.orientation_cube()</span>
+<span class="sd">    &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_mesh(ocube[&#39;cube&#39;], show_edges=True)</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_mesh(ocube[&#39;x_p&#39;], color=&#39;blue&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_mesh(ocube[&#39;x_n&#39;], color=&#39;blue&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_mesh(ocube[&#39;y_p&#39;], color=&#39;green&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_mesh(ocube[&#39;y_n&#39;], color=&#39;green&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_mesh(ocube[&#39;z_p&#39;], color=&#39;red&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_mesh(ocube[&#39;z_n&#39;], color=&#39;red&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; pl.show_axes()</span>
+<span class="sd">    &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cube</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Cube</span><span class="p">()</span>
+
+    <span class="n">x_p</span> <span class="o">=</span> <span class="n">text_3d</span><span class="p">(</span><span class="s1">&#39;X+&#39;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">x_p</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mf">0.45</span>
+    <span class="n">x_p</span><span class="o">.</span><span class="n">rotate_y</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_p</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_p</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_p</span><span class="o">.</span><span class="n">center</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_p</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># x_p.point_data[&#39;mesh&#39;] = 1</span>
+
+    <span class="n">x_n</span> <span class="o">=</span> <span class="n">text_3d</span><span class="p">(</span><span class="s1">&#39;X-&#39;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">x_n</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mf">0.45</span>
+    <span class="n">x_n</span><span class="o">.</span><span class="n">rotate_y</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_n</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_n</span><span class="o">.</span><span class="n">rotate_z</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_n</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_n</span><span class="o">.</span><span class="n">center</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_n</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># x_n.point_data[&#39;mesh&#39;] = 2</span>
+
+    <span class="n">y_p</span> <span class="o">=</span> <span class="n">text_3d</span><span class="p">(</span><span class="s1">&#39;Y+&#39;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">y_p</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mf">0.45</span>
+    <span class="n">y_p</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">y_p</span><span class="o">.</span><span class="n">rotate_z</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">y_p</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_p</span><span class="o">.</span><span class="n">center</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">y_p</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># y_p.point_data[&#39;mesh&#39;] = 3</span>
+
+    <span class="n">y_n</span> <span class="o">=</span> <span class="n">text_3d</span><span class="p">(</span><span class="s1">&#39;Y-&#39;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">y_n</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mf">0.45</span>
+    <span class="n">y_n</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">y_n</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_n</span><span class="o">.</span><span class="n">center</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">y_n</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># y_n.point_data[&#39;mesh&#39;] = 4</span>
+
+    <span class="n">z_p</span> <span class="o">=</span> <span class="n">text_3d</span><span class="p">(</span><span class="s1">&#39;Z+&#39;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">z_p</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mf">0.45</span>
+    <span class="n">z_p</span><span class="o">.</span><span class="n">rotate_z</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">z_p</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">z_p</span><span class="o">.</span><span class="n">center</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">z_p</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># z_p.point_data[&#39;mesh&#39;] = 5</span>
+
+    <span class="n">z_n</span> <span class="o">=</span> <span class="n">text_3d</span><span class="p">(</span><span class="s1">&#39;Z-&#39;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">z_n</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mf">0.45</span>
+    <span class="n">z_n</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">z_n</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">z_n</span><span class="o">.</span><span class="n">center</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">z_n</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;cube&#39;</span><span class="p">:</span> <span class="n">cube</span><span class="p">,</span>
+        <span class="s1">&#39;x_p&#39;</span><span class="p">:</span> <span class="n">x_p</span><span class="p">,</span>
+        <span class="s1">&#39;x_n&#39;</span><span class="p">:</span> <span class="n">x_n</span><span class="p">,</span>
+        <span class="s1">&#39;y_p&#39;</span><span class="p">:</span> <span class="n">y_p</span><span class="p">,</span>
+        <span class="s1">&#39;y_n&#39;</span><span class="p">:</span> <span class="n">y_n</span><span class="p">,</span>
+        <span class="s1">&#39;z_p&#39;</span><span class="p">:</span> <span class="n">z_p</span><span class="p">,</span>
+        <span class="s1">&#39;z_n&#39;</span><span class="p">:</span> <span class="n">z_n</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="orientation_plotter"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.orientation_plotter.html#pyvista.demos.demos.orientation_plotter">[docs]</a><span class="k">def</span> <span class="nf">orientation_plotter</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a plotter containing the orientation cube.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.Plotter</span>
+<span class="sd">        Orientation cube plotter.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; plotter = demos.orientation_plotter()</span>
+<span class="sd">    &gt;&gt;&gt; plotter.show()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ocube</span> <span class="o">=</span> <span class="n">orientation_cube</span><span class="p">()</span>
+    <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ocube</span><span class="p">[</span><span class="s1">&#39;cube&#39;</span><span class="p">],</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ocube</span><span class="p">[</span><span class="s1">&#39;x_p&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ocube</span><span class="p">[</span><span class="s1">&#39;x_n&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ocube</span><span class="p">[</span><span class="s1">&#39;y_p&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ocube</span><span class="p">[</span><span class="s1">&#39;y_n&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ocube</span><span class="p">[</span><span class="s1">&#39;z_p&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ocube</span><span class="p">[</span><span class="s1">&#39;z_n&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">show_axes</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pl</span></div>
+
+
+<div class="viewcode-block" id="plot_wave"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.plot_wave.html#pyvista.demos.demos.plot_wave">[docs]</a><span class="k">def</span> <span class="nf">plot_wave</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">wavetime</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">interactive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a 3D moving wave in a render window.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fps : int, optional</span>
+<span class="sd">        Maximum frames per second to display.  Defaults to 30.</span>
+
+<span class="sd">    frequency : float, optional</span>
+<span class="sd">        Wave cycles per second.  Defaults to 1 Hz.</span>
+
+<span class="sd">    wavetime : float, optional</span>
+<span class="sd">        The desired total display time in seconds.  Defaults to 3 seconds.</span>
+
+<span class="sd">    interactive : bool, optional</span>
+<span class="sd">        Allows the user to set the camera position before the start of the</span>
+<span class="sd">        wave movement.  Default ``False``.</span>
+
+<span class="sd">    notebook : bool, optional</span>
+<span class="sd">        When ``True``, the resulting plot is placed inline a jupyter</span>
+<span class="sd">        notebook.  Assumes a jupyter console is active.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Position of points at last frame.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; out = demos.plot_wave()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># camera position</span>
+    <span class="n">cpos</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mf">6.879481857604187</span><span class="p">,</span> <span class="o">-</span><span class="mf">32.143727535933195</span><span class="p">,</span> <span class="mf">23.05622921691103</span><span class="p">),</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">0.2336056403734026</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6960083534590372</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7226721553894022</span><span class="p">),</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">0.008900669873416645</span><span class="p">,</span> <span class="mf">0.6018246347860926</span><span class="p">,</span> <span class="mf">0.7985786667826725</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Make data</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+    <span class="c1"># Create and plot structured grid</span>
+    <span class="n">sgrid</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">StructuredGrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+
+    <span class="c1"># Get pointer to points</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">sgrid</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">sgrid</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">()</span>
+
+    <span class="c1"># Start a plotter object and set the scalars to the Z height</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="n">notebook</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">scalars</span><span class="o">=</span><span class="n">Z</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">smooth_shading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="n">cpos</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Wave Example&#39;</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span> <span class="n">auto_close</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">interactive_update</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Update Z and display a frame for each updated position</span>
+    <span class="n">tdelay</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">fps</span>
+    <span class="n">tlast</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">tstart</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tstart</span> <span class="o">&lt;</span> <span class="n">wavetime</span><span class="p">:</span>
+        <span class="c1"># get phase from start</span>
+        <span class="n">telap</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tstart</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="n">telap</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span>
+        <span class="n">points</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="c1"># update plotting object, but don&#39;t automatically render</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">update_coordinates</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">update_scalars</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">mesh</span><span class="o">.</span><span class="n">compute_normals</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Render and get time to render</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="c1"># time delay</span>
+        <span class="n">tpast</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tlast</span>
+        <span class="k">if</span> <span class="n">tpast</span> <span class="o">&lt;</span> <span class="n">tdelay</span> <span class="ow">and</span> <span class="n">tpast</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">plotter</span><span class="o">.</span><span class="n">off_screen</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">tdelay</span> <span class="o">-</span> <span class="n">tpast</span><span class="p">)</span>
+
+        <span class="c1"># store when rendering complete</span>
+        <span class="n">tlast</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="c1"># Close movie and delete object</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">points</span></div>
+
+
+<div class="viewcode-block" id="plot_ants_plane"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.plot_ants_plane.html#pyvista.demos.demos.plot_ants_plane">[docs]</a><span class="k">def</span> <span class="nf">plot_ants_plane</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot two ants and airplane.</span>
+
+<span class="sd">    Demonstrate how to create a plot class to plot multiple meshes while</span>
+<span class="sd">    adding scalars and text.</span>
+
+<span class="sd">    This example plots the following:</span>
+
+<span class="sd">    .. code:: python</span>
+
+<span class="sd">       &gt;&gt;&gt; import pyvista</span>
+<span class="sd">       &gt;&gt;&gt; from pyvista import examples</span>
+
+<span class="sd">       Load and shrink airplane</span>
+
+<span class="sd">       &gt;&gt;&gt; airplane = examples.load_airplane()</span>
+<span class="sd">       &gt;&gt;&gt; airplane.points /= 10</span>
+
+<span class="sd">       Rotate and translate ant so it is on the plane.</span>
+
+<span class="sd">       &gt;&gt;&gt; ant = examples.load_ant()</span>
+<span class="sd">       &gt;&gt;&gt; _ = ant.rotate_x(90, inplace=True)</span>
+<span class="sd">       &gt;&gt;&gt; _ = ant.translate([90, 60, 15], inplace=True)</span>
+
+<span class="sd">       Make a copy and add another ant.</span>
+
+<span class="sd">       &gt;&gt;&gt; ant_copy = ant.translate([30, 0, -10], inplace=False)</span>
+
+<span class="sd">       Create plotting object.</span>
+
+<span class="sd">       &gt;&gt;&gt; plotter = pyvista.Plotter()</span>
+<span class="sd">       &gt;&gt;&gt; _ = plotter.add_mesh(ant, &#39;r&#39;)</span>
+<span class="sd">       &gt;&gt;&gt; _ = plotter.add_mesh(ant_copy, &#39;b&#39;)</span>
+
+<span class="sd">       Add airplane mesh and make the color equal to the Y position.</span>
+
+<span class="sd">       &gt;&gt;&gt; plane_scalars = airplane.points[:, 1]</span>
+<span class="sd">       &gt;&gt;&gt; _ = plotter.add_mesh(airplane, scalars=plane_scalars,</span>
+<span class="sd">       ...                      scalar_bar_args={&#39;title&#39;: &#39;Plane Y Location&#39;})</span>
+<span class="sd">       &gt;&gt;&gt; _ = plotter.add_text(&#39;Ants and Plane Example&#39;)</span>
+<span class="sd">       &gt;&gt;&gt; plotter.show()</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    notebook : bool, optional</span>
+<span class="sd">        When ``True``, the resulting plot is placed inline a jupyter</span>
+<span class="sd">        notebook.  Assumes a jupyter console is active.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; demos.plot_ants_plane()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># load and shrink airplane</span>
+    <span class="n">airplane</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_airplane</span><span class="p">()</span>
+    <span class="n">airplane</span><span class="o">.</span><span class="n">points</span> <span class="o">/=</span> <span class="mi">10</span>
+
+    <span class="c1"># rotate and translate ant so it is on the plane</span>
+    <span class="n">ant</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_ant</span><span class="p">()</span>
+    <span class="n">ant</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ant</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mi">90</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Make a copy and add another ant</span>
+    <span class="n">ant_copy</span> <span class="o">=</span> <span class="n">ant</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">ant_copy</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Create plotting object</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="n">notebook</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ant</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ant_copy</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add airplane mesh and make the color equal to the Y position</span>
+    <span class="n">plane_scalars</span> <span class="o">=</span> <span class="n">airplane</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
+        <span class="n">airplane</span><span class="p">,</span> <span class="n">scalars</span><span class="o">=</span><span class="n">plane_scalars</span><span class="p">,</span> <span class="n">scalar_bar_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Plane Y</span><span class="se">\n</span><span class="s1">Location&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;Ants and Plane Example&#39;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="plot_beam"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.plot_beam.html#pyvista.demos.demos.plot_beam">[docs]</a><span class="k">def</span> <span class="nf">plot_beam</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a beam with displacement.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    notebook : bool, optional</span>
+<span class="sd">        When ``True``, the resulting plot is placed inline a jupyter</span>
+<span class="sd">        notebook.  Assumes a jupyter console is active.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; demos.plot_beam()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Create fiticious displacements as a function of Z location</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_hexbeam</span><span class="p">()</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">250</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">d</span>
+
+    <span class="c1"># Camera position</span>
+    <span class="n">cpos</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mf">11.915126303095157</span><span class="p">,</span> <span class="mf">6.11392754955802</span><span class="p">,</span> <span class="mf">3.6124956735471914</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.375</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="o">-</span><span class="mf">0.42546442225230097</span><span class="p">,</span> <span class="mf">0.9024244135964158</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.06789847673314177</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">matplotlib</span>  <span class="c1"># noqa</span>
+
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;bwr&#39;</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># plot this displaced beam</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="n">notebook</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
+        <span class="n">grid</span><span class="p">,</span>
+        <span class="n">scalars</span><span class="o">=</span><span class="n">d</span><span class="p">,</span>
+        <span class="n">scalar_bar_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Y Displacement&#39;</span><span class="p">},</span>
+        <span class="n">rng</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="n">d</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">d</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="n">cpos</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;Static Beam Example&#39;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="plot_datasets"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.demos.demos.plot_datasets.html#pyvista.demos.demos.plot_datasets">[docs]</a><span class="k">def</span> <span class="nf">plot_datasets</span><span class="p">(</span><span class="n">dataset_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the pyvista dataset types.</span>
+
+<span class="sd">    This demo plots the following PyVista dataset types:</span>
+
+<span class="sd">    * :class:`pyvista.PolyData`</span>
+<span class="sd">    * :class:`pyvista.UnstructuredGrid`</span>
+<span class="sd">    * :class:`pyvista.UniformGrid`</span>
+<span class="sd">    * :class:`pyvista.RectilinearGrid`</span>
+<span class="sd">    * :class:`pyvista.StructuredGrid`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dataset_type : str, optional</span>
+<span class="sd">        If set, plot just that dataset.  Must be one of the following:</span>
+
+<span class="sd">        * ``&#39;PolyData&#39;``</span>
+<span class="sd">        * ``&#39;UnstructuredGrid&#39;``</span>
+<span class="sd">        * ``&#39;UniformGrid&#39;``</span>
+<span class="sd">        * ``&#39;RectilinearGrid&#39;``</span>
+<span class="sd">        * ``&#39;StructuredGrid&#39;``</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">    &gt;&gt;&gt; demos.plot_datasets()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">allowable_types</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;PolyData&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;UnstructuredGrid&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;UniformGrid&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;RectilinearGrid&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;StructuredGrid&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">allowable_types</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Invalid dataset_type </span><span class="si">{</span><span class="n">dataset_type</span><span class="si">}</span><span class="s1">.  Must be one &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;of the following: </span><span class="si">{</span><span class="n">allowable_types</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">)</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># uniform grid</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">UniformGrid</span><span class="p">(</span><span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># RectilinearGrid</span>
+    <span class="n">xrng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">])</span>
+    <span class="n">yrng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">zrng</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">rec_grid</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">RectilinearGrid</span><span class="p">(</span><span class="n">xrng</span><span class="p">,</span> <span class="n">yrng</span><span class="p">,</span> <span class="n">zrng</span><span class="p">)</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># structured grid</span>
+    <span class="n">ang</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ang</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ang</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">)</span>
+
+    <span class="n">struct_grid</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">StructuredGrid</span><span class="p">(</span><span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># polydata</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]])</span>
+
+    <span class="n">line</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Line</span><span class="p">()</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">points</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">clear_data</span><span class="p">()</span>
+
+    <span class="n">tri</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Triangle</span><span class="p">()</span>
+    <span class="n">tri</span><span class="o">.</span><span class="n">points</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Circle</span><span class="p">()</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">points</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">tri</span> <span class="o">+</span> <span class="n">circ</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># unstructuredgrid</span>
+    <span class="n">pyr</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Pyramid</span><span class="p">()</span>
+    <span class="n">pyr</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mf">0.7</span>
+    <span class="n">cube</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Cube</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">ugrid</span> <span class="o">=</span> <span class="n">circ</span> <span class="o">+</span> <span class="n">pyr</span> <span class="o">+</span> <span class="n">cube</span> <span class="o">+</span> <span class="n">tri</span>
+
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s1">&#39;3/2&#39;</span><span class="p">)</span>
+
+    <span class="c1"># polydata</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;4. PolyData&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;PolyData&#39;</span><span class="p">]:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">extract_all_edges</span><span class="p">(),</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="c1"># unstructuredgrid</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;5. UnstructuredGrid&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;UnstructuredGrid&#39;</span><span class="p">]:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ugrid</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">ugrid</span><span class="o">.</span><span class="n">extract_all_edges</span><span class="p">(),</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="c1"># UniformGrid</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;1. UniformGrid&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;UniformGrid&#39;</span><span class="p">]:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">extract_all_edges</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;wireframe&#39;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="s1">&#39;xy&#39;</span>
+
+    <span class="c1"># RectilinearGrid</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;2. RectilinearGrid&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;RectilinearGrid&#39;</span><span class="p">]:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">rec_grid</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">rec_grid</span><span class="o">.</span><span class="n">extract_all_edges</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;wireframe&#39;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="s1">&#39;xy&#39;</span>
+
+    <span class="c1"># StructuredGrid</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;3. StructuredGrid&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dataset_type</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;StructuredGrid&#39;</span><span class="p">]:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">struct_grid</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">struct_grid</span><span class="o">.</span><span class="n">extract_all_edges</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;wireframe&#39;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="s1">&#39;xy&#39;</span>
+
+    <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

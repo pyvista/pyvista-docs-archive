@@ -1,0 +1,6 @@
+base\_array\_names
+==================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: CGNSReader.base_array_names

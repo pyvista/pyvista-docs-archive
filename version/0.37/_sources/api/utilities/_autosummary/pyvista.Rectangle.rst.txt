@@ -1,0 +1,6 @@
+﻿Rectangle
+=========
+
+.. currentmodule:: pyvista
+
+.. autofunction:: Rectangle

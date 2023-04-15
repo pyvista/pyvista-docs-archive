@@ -1,0 +1,43 @@
+﻿pyvista.BinaryMarchingCubesReader
+=================================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BinaryMarchingCubesReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      BinaryMarchingCubesReader.hide_progress
+      
+      
+      BinaryMarchingCubesReader.read
+      
+      
+      BinaryMarchingCubesReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      BinaryMarchingCubesReader.path
+      
+      
+      BinaryMarchingCubesReader.reader
+      
+   
+   

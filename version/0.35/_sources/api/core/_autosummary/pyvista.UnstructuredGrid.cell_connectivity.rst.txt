@@ -1,0 +1,6 @@
+cell\_connectivity
+==================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.cell_connectivity

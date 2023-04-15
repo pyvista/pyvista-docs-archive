@@ -1,0 +1,6 @@
+download\_quadratic\_pyramid
+============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_quadratic_pyramid

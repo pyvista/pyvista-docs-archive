@@ -1,0 +1,6 @@
+cell\_n\_points
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.cell_n_points

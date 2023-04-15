@@ -1,0 +1,6 @@
+margin
+======
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.margin

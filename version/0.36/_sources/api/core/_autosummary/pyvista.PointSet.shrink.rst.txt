@@ -1,0 +1,6 @@
+shrink
+======
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.shrink

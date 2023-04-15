@@ -1,0 +1,6 @@
+cast\_to\_pointset
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.cast_to_pointset

@@ -1,0 +1,6 @@
+download\_osmnx\_graph
+======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_osmnx_graph

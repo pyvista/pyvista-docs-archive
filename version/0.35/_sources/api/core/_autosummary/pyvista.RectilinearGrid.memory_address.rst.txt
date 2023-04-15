@@ -1,0 +1,6 @@
+memory\_address
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: RectilinearGrid.memory_address

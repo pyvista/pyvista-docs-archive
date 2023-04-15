@@ -1,0 +1,6 @@
+download\_tetrahedron
+=====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_tetrahedron

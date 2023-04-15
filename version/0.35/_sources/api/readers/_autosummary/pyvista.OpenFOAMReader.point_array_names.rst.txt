@@ -1,0 +1,6 @@
+point\_array\_names
+===================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: OpenFOAMReader.point_array_names

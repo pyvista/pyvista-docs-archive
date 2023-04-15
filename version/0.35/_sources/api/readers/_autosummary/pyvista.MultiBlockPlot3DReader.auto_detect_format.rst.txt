@@ -1,0 +1,6 @@
+auto\_detect\_format
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: MultiBlockPlot3DReader.auto_detect_format

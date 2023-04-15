@@ -1,0 +1,7 @@
+﻿pyvista.BaseReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BaseReader
+   :members:

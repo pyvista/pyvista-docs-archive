@@ -1,0 +1,7 @@
+﻿pyvista.GLTFReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: GLTFReader
+   :members:

@@ -1,0 +1,6 @@
+reconstruct\_surface
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.reconstruct_surface

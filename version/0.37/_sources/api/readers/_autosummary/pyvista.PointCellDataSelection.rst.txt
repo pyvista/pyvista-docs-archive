@@ -1,0 +1,7 @@
+﻿pyvista.PointCellDataSelection
+==============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PointCellDataSelection
+   :members:

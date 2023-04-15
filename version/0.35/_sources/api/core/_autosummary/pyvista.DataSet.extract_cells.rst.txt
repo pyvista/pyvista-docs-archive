@@ -1,0 +1,6 @@
+extract\_cells
+==============
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.extract_cells

@@ -1,0 +1,7 @@
+﻿pyvista.HDFReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: HDFReader
+   :members:

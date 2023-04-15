@@ -1,0 +1,6 @@
+number\_of\_cells
+=================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.number_of_cells

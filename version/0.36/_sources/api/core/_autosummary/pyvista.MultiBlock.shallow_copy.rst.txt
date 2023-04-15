@@ -1,0 +1,6 @@
+shallow\_copy
+=============
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlock.shallow_copy

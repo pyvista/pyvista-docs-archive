@@ -1,0 +1,6 @@
+disable\_all\_point\_arrays
+===========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: OpenFOAMReader.disable_all_point_arrays

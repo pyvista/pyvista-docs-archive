@@ -1,0 +1,43 @@
+﻿pyvista.DICOMReader
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DICOMReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      DICOMReader.hide_progress
+      
+      
+      DICOMReader.read
+      
+      
+      DICOMReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      DICOMReader.path
+      
+      
+      DICOMReader.reader
+      
+   
+   

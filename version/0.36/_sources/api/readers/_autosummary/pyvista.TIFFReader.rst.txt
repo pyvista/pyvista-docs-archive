@@ -1,0 +1,43 @@
+﻿pyvista.TIFFReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: TIFFReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      TIFFReader.hide_progress
+      
+      
+      TIFFReader.read
+      
+      
+      TIFFReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      TIFFReader.path
+      
+      
+      TIFFReader.reader
+      
+   
+   

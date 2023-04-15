@@ -1,0 +1,6 @@
+download\_mars\_jpg
+===================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_mars_jpg

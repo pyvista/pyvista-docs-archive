@@ -1,0 +1,6 @@
+rotate\_x
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.rotate_x

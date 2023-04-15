@@ -1,0 +1,6 @@
+﻿PolyLine
+========
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: PolyLine

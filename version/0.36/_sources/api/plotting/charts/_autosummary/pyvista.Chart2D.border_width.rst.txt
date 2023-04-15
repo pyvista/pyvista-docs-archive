@@ -1,0 +1,6 @@
+border\_width
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.border_width

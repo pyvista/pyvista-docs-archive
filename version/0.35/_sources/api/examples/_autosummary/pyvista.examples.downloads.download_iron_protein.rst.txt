@@ -1,0 +1,6 @@
+download\_iron\_protein
+=======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_iron_protein

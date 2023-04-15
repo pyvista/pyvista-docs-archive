@@ -1,0 +1,6 @@
+rotate\_y
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.rotate_y

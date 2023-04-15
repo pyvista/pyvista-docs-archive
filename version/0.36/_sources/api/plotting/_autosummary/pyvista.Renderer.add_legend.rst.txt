@@ -1,0 +1,6 @@
+add\_legend
+===========
+
+.. currentmodule:: pyvista
+
+.. automethod:: Renderer.add_legend

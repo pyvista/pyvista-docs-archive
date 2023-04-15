@@ -1,0 +1,6 @@
+download\_gears
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_gears

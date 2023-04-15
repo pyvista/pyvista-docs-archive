@@ -1,0 +1,6 @@
+center\_of\_mass
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.center_of_mass

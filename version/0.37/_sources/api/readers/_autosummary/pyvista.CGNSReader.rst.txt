@@ -1,0 +1,7 @@
+﻿pyvista.CGNSReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: CGNSReader
+   :members:

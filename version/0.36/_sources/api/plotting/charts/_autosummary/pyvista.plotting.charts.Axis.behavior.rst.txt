@@ -1,0 +1,6 @@
+behavior
+========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.behavior

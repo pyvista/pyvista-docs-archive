@@ -1,0 +1,1472 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pyvista.LookupTable &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/plotting/_autosummary/pyvista.LookupTable';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="pyvista.CompositePolyDataMapper" href="pyvista.CompositePolyDataMapper.html" />
+    <link rel="prev" title="pyvista.DataSetMapper" href="pyvista.DataSetMapper.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core API</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Plotting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../plotting.html">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qt_plotting.html">PyVista and PyQt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theme.html">Themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Plotter.html">pyvista.Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Renderer.html">pyvista.Renderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Property.html">pyvista.Property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.Actor.html">pyvista.Actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.DataSetMapper.html">pyvista.DataSetMapper</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">pyvista.LookupTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.CompositePolyDataMapper.html">pyvista.CompositePolyDataMapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.CompositeAttributes.html">pyvista.CompositeAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyvista.BlockAttributes.html">pyvista.BlockAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../charts/index.html">Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conv_func.html">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilities/index.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../readers/index.html">Readers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="pyvista-lookuptable">
+<h1>pyvista.LookupTable<a class="headerlink" href="#pyvista-lookuptable" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvista.LookupTable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LookupTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalar_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nan_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">above_range_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">below_range_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ramp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable" title="Permalink to this definition">#</a></dt>
+<dd><p>Scalar to RGBA mapping table.</p>
+<p>A lookup table is an array that maps input values to output values. When
+plotting data over a dataset, it is necessary to map those scalars to
+colors (in the RGBA format), and this class provides the functionality to
+do so.</p>
+<p>See <a class="reference external" href="https://vtk.org/doc/nightly/html/classvtkLookupTable.html">vtkLookupTable</a> for more
+details regarding the underlying VTK API.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>cmap</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">colors.Colormap</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Color map from <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">colorcet</span></code>, or <code class="docutils literal notranslate"><span class="pre">cmocean</span></code>. Either
+<code class="docutils literal notranslate"><span class="pre">cmap</span></code> or <code class="docutils literal notranslate"><span class="pre">values</span></code> can be set, but not both.</p>
+</dd>
+<dt><strong>n_values</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, default: 256</span></dt><dd><p>Number of colors in the color map.</p>
+</dd>
+<dt><strong>flip</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a></span></dt><dd><p>Flip the direction of cmap. Most colormaps allow <code class="docutils literal notranslate"><span class="pre">*_r</span></code> suffix to do this
+as well.</p>
+</dd>
+<dt><strong>values</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Lookup table values. Either <code class="docutils literal notranslate"><span class="pre">values</span></code> or <code class="docutils literal notranslate"><span class="pre">cmap</span></code> can be set, but not
+both.</p>
+</dd>
+<dt><strong>value_range</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The range of the brightness of the mapped lookup table. This range is
+only used when creating custom color maps and will be ignored if
+<code class="docutils literal notranslate"><span class="pre">cmap</span></code> is set.</p>
+</dd>
+<dt><strong>hue_range</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Lookup table hue range. This range is only used when creating custom
+color maps and will be ignored if <code class="docutils literal notranslate"><span class="pre">cmap</span></code> is set.</p>
+</dd>
+<dt><strong>alpha_range</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Lookup table alpha (transparency) range. This range is only used when
+creating custom color maps and will be ignored if <code class="docutils literal notranslate"><span class="pre">cmap</span></code> is set.</p>
+</dd>
+<dt><strong>scalar_range</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The range of scalars which will be mapped to colors. Values outside of
+this range will be colored according to
+:attr`LookupTable.below_range_color` and
+:attr`LookupTable.above_range_color`.</p>
+</dd>
+<dt><strong>log_scale</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Use a log scale when mapping scalar values.</p>
+</dd>
+<dt><strong>nan_color</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.color_like.html#pyvista.color_like" title="pyvista.color_like"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_like</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Color to render any values that are NANs.</p>
+</dd>
+<dt><strong>above_range_color</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.color_like.html#pyvista.color_like" title="pyvista.color_like"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_like</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Color to render any values above <a class="reference internal" href="#pyvista.LookupTable.scalar_range" title="pyvista.LookupTable.scalar_range"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.scalar_range</span></code></a>.</p>
+</dd>
+<dt><strong>below_range_color</strong><span class="classifier"><a class="reference internal" href="../../utilities/_autosummary/pyvista.color_like.html#pyvista.color_like" title="pyvista.color_like"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_like</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Color to render any values below <a class="reference internal" href="#pyvista.LookupTable.scalar_range" title="pyvista.LookupTable.scalar_range"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.scalar_range</span></code></a>.</p>
+</dd>
+<dt><strong>ramp</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The shape of the table ramp. This range is only used when creating
+custom color maps and will be ignored if <code class="docutils literal notranslate"><span class="pre">cmap</span></code> is set.</p>
+</dd>
+<dt><strong>annotations</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>A dictionary of annotations. Keys are the float values in the scalars
+range to annotate on the scalar bar and the values are the the string
+annotations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Plot the lookup table with the default VTK color map.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span>  
+<span class="go">LookupTable (0x7ff3de60d580)</span>
+<span class="go">  Table Range:                (0.0, 1.0)</span>
+<span class="go">  N Values:                   256</span>
+<span class="go">  Above Range Color:          None</span>
+<span class="go">  Below Range Color:          None</span>
+<span class="go">  NAN Color:                  Color(name=&#39;maroon&#39;, hex=&#39;#800000ff&#39;)</span>
+<span class="go">  Log Scale:                  False</span>
+<span class="go">  Color Map:                  &quot;VTK lookup table&quot;</span>
+<span class="go">    Alpha Range:              (1.0, 1.0)</span>
+<span class="go">    Hue Range:                (0.0, 0.66667)</span>
+<span class="go">    Saturation Range          (1.0, 1.0)</span>
+<span class="go">    Value Range               (1.0, 1.0)</span>
+<span class="go">    Ramp                      s-curve</span>
+<span class="go">    Is Opaque                 True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Plot the lookup table with the <code class="docutils literal notranslate"><span class="pre">'inferno'</span></code> color map.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">(</span><span class="s1">&#39;inferno&#39;</span><span class="p">,</span> <span class="n">n_values</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span>  
+<span class="go">LookupTable (0x7ff3c053f3a0)</span>
+<span class="go">  Table Range:                (0.0, 1.0)</span>
+<span class="go">  N Values:                   32</span>
+<span class="go">  Above Range Color:          None</span>
+<span class="go">  Below Range Color:          None</span>
+<span class="go">  NAN Color:                  Color(name=&#39;maroon&#39;, hex=&#39;#800000ff&#39;)</span>
+<span class="go">  Log Scale:                  False</span>
+<span class="go">  Color Map:                  &quot;inferno&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.above_range_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">above_range_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pyvista.LookupTable.above_range_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the above range color.</p>
+<p>Any values above <a class="reference internal" href="#pyvista.LookupTable.scalar_range" title="pyvista.LookupTable.scalar_range"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.scalar_range</span></code></a> will be rendered with this
+color.</p>
+<p class="rubric">Examples</p>
+<p>Enable the usage of the above range color.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">above_range_color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-2_00_00.png" src="../../../_images/pyvista-LookupTable-2_00_00.png" />
+</figure>
+<p>Disable the usage of the above range color.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">above_range_color</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-2_01_00.png" src="../../../_images/pyvista-LookupTable-2_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.alpha_range">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">alpha_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></em><a class="headerlink" href="#pyvista.LookupTable.alpha_range" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the alpha range.</p>
+<p>This range is only used when creating custom color maps and will return
+<code class="docutils literal notranslate"><span class="pre">None</span></code> when a color map has been set with <a class="reference internal" href="#pyvista.LookupTable.cmap" title="pyvista.LookupTable.cmap"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.cmap</span></code></a>.</p>
+<p>This will clear any existing color map and create new values for the
+lookup table when set.</p>
+<p class="rubric">Examples</p>
+<p>Create a custom “blues” lookup table that decreases in opacity.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">alpha_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-3_00_00.png" src="../../../_images/pyvista-LookupTable-3_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.annotations">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">annotations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a></em><a class="headerlink" href="#pyvista.LookupTable.annotations" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set annotations.</p>
+<p>Pass a dictionary of annotations. Keys are the float values in the
+scalars range to annotate on the scalar bar and the values are the the
+string annotations.</p>
+<p class="rubric">Examples</p>
+<p>Assign annotations to the lookup table.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">(</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">:</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;high&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-4_00_00.png" src="../../../_images/pyvista-LookupTable-4_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.LookupTable.apply_cmap">
+<span class="sig-name descname"><span class="pre">apply_cmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable.apply_cmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable.apply_cmap" title="Permalink to this definition">#</a></dt>
+<dd><p>Assign a colormap to this lookup table.</p>
+<p>This can be used instead of <a class="reference internal" href="#pyvista.LookupTable.cmap" title="pyvista.LookupTable.cmap"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.cmap</span></code></a> when you need to
+set the number of values at the same time as the color map.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>cmap</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">colors.Colormap</span></code></span></dt><dd><p>Colormap from Matplotlib, colorcet, or cmocean.</p>
+</dd>
+<dt><strong>n_values</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, default: 256</span></dt><dd><p>Number of colors in the color map.</p>
+</dd>
+<dt><strong>flip</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">False</span></code></a></span></dt><dd><p>Flip direction of cmap. Most colormaps allow <code class="docutils literal notranslate"><span class="pre">*_r</span></code> suffix to do
+this as well.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Apply <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s <code class="docutils literal notranslate"><span class="pre">'cividis'</span></code> color map.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">apply_cmap</span><span class="p">(</span><span class="s1">&#39;cividis&#39;</span><span class="p">,</span> <span class="n">n_values</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-5_00_00.png" src="../../../_images/pyvista-LookupTable-5_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.LookupTable.apply_opacity">
+<span class="sig-name descname"><span class="pre">apply_opacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'quadratic'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable.apply_opacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable.apply_opacity" title="Permalink to this definition">#</a></dt>
+<dd><p>Assign custom opacity to this lookup table.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>opacity</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>(<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>), <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The opacity mapping to use. Can be a <code class="docutils literal notranslate"><span class="pre">str</span></code> name of a predefined
+mapping including <code class="docutils literal notranslate"><span class="pre">'linear'</span></code>, <code class="docutils literal notranslate"><span class="pre">'geom'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sigmoid'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'sigmoid_3-10'</span></code>.  Append an <code class="docutils literal notranslate"><span class="pre">'_r'</span></code> to any of those names to
+reverse that mapping.  This can also be a custom array or list of
+values that will be interpolated across the <code class="docutils literal notranslate"><span class="pre">n_color</span></code> range for
+user defined mappings. Values must be between 0 and 1.</p>
+<p>If a <code class="docutils literal notranslate"><span class="pre">float</span></code>, simply applies the same opacity across the entire
+colormap and must be between 0 and 1. Note that <code class="docutils literal notranslate"><span class="pre">int</span></code> values are
+interpreted as if they were floats.</p>
+</dd>
+<dt><strong>interpolate</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">True</span></code></a></span></dt><dd><p>Flag on whether or not to interpolate the opacity mapping for all
+colors.</p>
+</dd>
+<dt><strong>kind</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, default: ‘quadratic’</span></dt><dd><p>The interpolation kind if <code class="docutils literal notranslate"><span class="pre">interpolate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy</span></code>
+is available. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html#scipy.interpolate.interp1d" title="(in SciPy v1.10.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.interpolate.interp1d</span></code></a> for the
+available interpolation kinds.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">scipy</span></code> is not available, <code class="docutils literal notranslate"><span class="pre">'linear'</span></code> interpolation is used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Apply a user defined custom opacity to a lookup table and plot the
+random hills example.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">load_random_hills</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">apply_opacity</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">scalar_range</span> <span class="o">=</span> <span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">active_scalars</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">mesh</span><span class="o">.</span><span class="n">active_scalars</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">lut</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-6_00_00.png" src="../../../_images/pyvista-LookupTable-6_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.below_range_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">below_range_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pyvista.LookupTable.below_range_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the below range color.</p>
+<p>Any values below <a class="reference internal" href="#pyvista.LookupTable.scalar_range" title="pyvista.LookupTable.scalar_range"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.scalar_range</span></code></a> will be rendered with this
+color.</p>
+<p class="rubric">Examples</p>
+<p>Enable the usage of the below range color.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">below_range_color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-7_00_00.png" src="../../../_images/pyvista-LookupTable-7_00_00.png" />
+</figure>
+<p>Disable the usage of the below range color.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">below_range_color</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-7_01_00.png" src="../../../_images/pyvista-LookupTable-7_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.cmap">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pyvista.LookupTable.cmap" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the color map used by this lookup table.</p>
+<p class="rubric">Examples</p>
+<p>Apply the single Matplotlib color map <code class="docutils literal notranslate"><span class="pre">&quot;Oranges&quot;</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Oranges&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-8_00_00.png" src="../../../_images/pyvista-LookupTable-8_00_00.png" />
+</figure>
+<p>Apply a list of colors as a colormap.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-8_01_00.png" src="../../../_images/pyvista-LookupTable-8_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.hue_range">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hue_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pyvista.LookupTable.hue_range" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the hue range.</p>
+<p>This range is only used when creating custom color maps and will return
+<code class="docutils literal notranslate"><span class="pre">None</span></code> when a color map has been set with <a class="reference internal" href="#pyvista.LookupTable.cmap" title="pyvista.LookupTable.cmap"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.cmap</span></code></a>.</p>
+<p>This will clear any existing color map and create new values for the
+lookup table when set.</p>
+<p class="rubric">Examples</p>
+<p>Set the hue range. This allows you to create a lookup table
+without setting a color map.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-9_00_00.png" src="../../../_images/pyvista-LookupTable-9_00_00.png" />
+</figure>
+<p>Create a different color map.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-9_01_00.png" src="../../../_images/pyvista-LookupTable-9_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.log_scale">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log_scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pyvista.LookupTable.log_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Use log scale.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">True</span></code> the lookup table is a log scale to
+<a class="reference internal" href="#pyvista.LookupTable.scalar_range" title="pyvista.LookupTable.scalar_range"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.scalar_range</span></code></a>. Otherwise, it is linear scale.</p>
+<p class="rubric">Examples</p>
+<p>Use log scale for the lookup table.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">log_scale</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">scalar_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-10_00_00.png" src="../../../_images/pyvista-LookupTable-10_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.LookupTable.map_value">
+<span class="sig-name descname"><span class="pre">map_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></span></span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable.map_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable.map_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Map a single value through the lookup table, returning an RBG(A) color.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>value</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Scalar value to map to an RGB(A) color.</p>
+</dd>
+<dt><strong>opacity</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.11)"><span class="xref std std-ref">bool</span></a>, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">True</span></code></a></span></dt><dd><p>Map the opacity as well.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></dt><dd><p>Mapped RGB(A) color.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgba_color</span> <span class="o">=</span> <span class="n">lut</span><span class="o">.</span><span class="n">map_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgba_color</span>
+<span class="go">(1.0, 0.0, 0.0, 1.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.n_values">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_values</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></em><a class="headerlink" href="#pyvista.LookupTable.n_values" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the number of values in the lookup table.</p>
+<p class="rubric">Examples</p>
+<p>Plot the <code class="docutils literal notranslate"><span class="pre">&quot;reds&quot;</span></code> colormap with 10 values.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">(</span><span class="s1">&#39;reds&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">n_values</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-12_00_00.png" src="../../../_images/pyvista-LookupTable-12_00_00.png" />
+</figure>
+<p>Plot the default colormap with 1024 values.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">n_values</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-12_01_00.png" src="../../../_images/pyvista-LookupTable-12_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.nan_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nan_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../utilities/_autosummary/pyvista.Color.html#pyvista.Color" title="pyvista.plotting.colors.Color"><span class="pre">Color</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pyvista.LookupTable.nan_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the not a number (NAN) color.</p>
+<p>Any values that are NANs will be rendered with this color.</p>
+<p class="rubric">Examples</p>
+<p>Set the NAN color to <code class="docutils literal notranslate"><span class="pre">'grey'</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">nan_color</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-13_00_00.png" src="../../../_images/pyvista-LookupTable-13_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.LookupTable.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot this lookup table.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>**kwargs</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Optional keyword arguments passed to <a class="reference internal" href="pyvista.Plotter.html#pyvista.Plotter.show" title="pyvista.Plotter.show"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyvista.Plotter.show()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Plot the <code class="docutils literal notranslate"><span class="pre">&quot;viridis&quot;</span></code> colormap with the below and above colors.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">n_values</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">below_range_color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">above_range_color</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">nan_color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-14_00_00.png" src="../../../_images/pyvista-LookupTable-14_00_00.png" />
+</figure>
+<p>Plot only <code class="docutils literal notranslate"><span class="pre">&quot;blues&quot;</span></code> colormap.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">(</span><span class="s1">&#39;blues&#39;</span><span class="p">,</span> <span class="n">n_values</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-14_01_00.png" src="../../../_images/pyvista-LookupTable-14_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.ramp">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ramp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></em><a class="headerlink" href="#pyvista.LookupTable.ramp" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the shape of the table ramp.</p>
+<p>This attribute is only used when creating custom color maps and will
+return <code class="docutils literal notranslate"><span class="pre">None</span></code> when a color map has been set with
+<a class="reference internal" href="#pyvista.LookupTable.cmap" title="pyvista.LookupTable.cmap"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.cmap</span></code></a>. This will clear any existing color map and
+create new values for the lookup table when set.</p>
+<p>This value may be either <code class="docutils literal notranslate"><span class="pre">&quot;s-curve&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;linear&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;sqrt&quot;</span></code>.</p>
+<ul class="simple">
+<li><p>The default is S-curve, which tails off gradually at either end.</p></li>
+<li><p>The equation used for <code class="docutils literal notranslate"><span class="pre">&quot;s-curve&quot;</span></code> is <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">(sin((x</span> <span class="pre">-</span> <span class="pre">1/2)*pi)</span> <span class="pre">+</span>
+<span class="pre">1)/2</span></code>, For an S-curve greyscale ramp, you should set
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.n_values`</span></code> to 402 (which is <code class="docutils literal notranslate"><span class="pre">256*pi/2</span></code>) to provide
+room for the tails of the ramp.</p></li>
+<li><p>The equation for the <code class="docutils literal notranslate"><span class="pre">&quot;linear&quot;</span></code> is simply <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code>.</p></li>
+<li><p>The equation for the <code class="docutils literal notranslate"><span class="pre">&quot;sqrt&quot;</span></code> is <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">sqrt(x)</span></code>.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<p>Show the default s-curve ramp.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">ramp</span> <span class="o">=</span> <span class="s1">&#39;s-curve&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-15_00_00.png" src="../../../_images/pyvista-LookupTable-15_00_00.png" />
+</figure>
+<p>Plot the linear ramp.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">ramp</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-15_01_00.png" src="../../../_images/pyvista-LookupTable-15_01_00.png" />
+</figure>
+<p>Plot the <code class="docutils literal notranslate"><span class="pre">&quot;sqrt&quot;</span></code> ramp.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">ramp</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-15_02_00.png" src="../../../_images/pyvista-LookupTable-15_02_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.LookupTable.rebuild">
+<span class="sig-name descname"><span class="pre">rebuild</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable.rebuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable.rebuild" title="Permalink to this definition">#</a></dt>
+<dd><p>Clear the color map and recompute the values table.</p>
+<p>This is called automatically when setting values like
+<a class="reference internal" href="#pyvista.LookupTable.value_range" title="pyvista.LookupTable.value_range"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.value_range</span></code></a>.</p>
+<p class="rubric">Notes</p>
+<p>This will reset any colormap set with <a class="reference internal" href="#pyvista.LookupTable.apply_cmap" title="pyvista.LookupTable.apply_cmap"><code class="xref py py-func docutils literal notranslate"><span class="pre">LookupTable.apply_cmap()</span></code></a> or
+<a class="reference internal" href="#pyvista.LookupTable.values" title="pyvista.LookupTable.values"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.values</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.saturation_range">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">saturation_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></em><a class="headerlink" href="#pyvista.LookupTable.saturation_range" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the saturation range.</p>
+<p>This range is only used when creating custom color maps and will return
+<code class="docutils literal notranslate"><span class="pre">None</span></code> when a color map has been set with <a class="reference internal" href="#pyvista.LookupTable.cmap" title="pyvista.LookupTable.cmap"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.cmap</span></code></a>.</p>
+<p>This will clear any existing color map and create new values for the
+lookup table when set.</p>
+<p class="rubric">Examples</p>
+<p>Create a custom “blues” lookup table that increases in saturation.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">hue_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">saturation_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-16_00_00.png" src="../../../_images/pyvista-LookupTable-16_00_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.scalar_range">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></em><a class="headerlink" href="#pyvista.LookupTable.scalar_range" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the table range.</p>
+<p>This is the range of scalars which will be mapped to colors. Values
+outside of this range will be colored according to
+:attr`LookupTable.below_range_color` and
+:attr`LookupTable.above_range_color`.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">scalar_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">scalar_range</span>
+<span class="go">(0.0, 10.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.LookupTable.to_color_tf">
+<span class="sig-name descname"><span class="pre">to_color_tf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">vtkColorTransferFunction</span></span></span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable.to_color_tf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable.to_color_tf" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the VTK color transfer function of this table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">vtk.vtkColorTransferFunction</span></code></dt><dd><p>VTK color transfer function.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span> <span class="o">=</span> <span class="n">lut</span><span class="o">.</span><span class="n">to_color_tf</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span>  
+<span class="go">&lt;vtkmodules.vtkRenderingCore.vtkColorTransferFunction(0x339bd40) at 0x7ffabf634700&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvista.LookupTable.to_opacity_tf">
+<span class="sig-name descname"><span class="pre">to_opacity_tf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyvista/plotting/lookup_table.html#LookupTable.to_opacity_tf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyvista.LookupTable.to_opacity_tf" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the opacity transfer function of this table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">vtk.vtkPiecewiseFunction</span></code></dt><dd><p>Piecewise function of the opacity of this color table.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span> <span class="o">=</span> <span class="n">lut</span><span class="o">.</span><span class="n">to_opacity_tf</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span>  
+<span class="go">&lt;vtkmodules.vtkCommonDataModel.vtkPiecewiseFunction(0x32fa410) at 0x7fe963d6d5e0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.value_range">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pyvista.LookupTable.value_range" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the brightness of the mapped lookup table.</p>
+<p>This range is only used when creating custom color maps and will return
+<code class="docutils literal notranslate"><span class="pre">None</span></code> when a color map has been set with <a class="reference internal" href="#pyvista.LookupTable.cmap" title="pyvista.LookupTable.cmap"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LookupTable.cmap</span></code></a>.</p>
+<p>This will clear any existing color map and create new values for the
+lookup table when set.</p>
+<p class="rubric">Examples</p>
+<p>Show the effect of setting the value range on the default color
+map.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">value_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-20_00_00.png" src="../../../_images/pyvista-LookupTable-20_00_00.png" />
+</figure>
+<p>Demonstrate a different value range.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">value_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-20_01_00.png" src="../../../_images/pyvista-LookupTable-20_01_00.png" />
+</figure>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyvista.LookupTable.values">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">lookup_table_ndarray</span></em><a class="headerlink" href="#pyvista.LookupTable.values" title="Permalink to this definition">#</a></dt>
+<dd><p>Return or set the lookup table values.</p>
+<p>This attribute is used when creating a custom lookup table. The table
+must be a RGBA array shaped <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">4)</span></code>.</p>
+<p class="rubric">Examples</p>
+<p>Create a simple four value lookup table ranging from black to red.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">LookupTable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">170</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">values</span>
+<span class="go">lookup_table_ndarray([[  0,   0,   0, 255],</span>
+<span class="go">                      [ 85,   0,   0, 255],</span>
+<span class="go">                      [170,   0,   0, 255],</span>
+<span class="go">                      [255,   0,   0, 255]], dtype=uint8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lut</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/pyvista-LookupTable-21_00_00.png" src="../../../_images/pyvista-LookupTable-21_00_00.png" />
+</figure>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyvista.LookupTable">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     LookupTable
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.above_range_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.above_range_color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.alpha_range">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.alpha_range
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.annotations">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.annotations
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.apply_cmap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.apply_cmap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.apply_opacity">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.apply_opacity()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.below_range_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.below_range_color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.cmap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.cmap
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.hue_range">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.hue_range
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.log_scale">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.log_scale
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.map_value">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.map_value()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.n_values">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.n_values
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.nan_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.nan_color
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.plot">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.plot()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.ramp">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.ramp
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.rebuild">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.rebuild()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.saturation_range">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.saturation_range
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.scalar_range">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.scalar_range
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.to_color_tf">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.to_color_tf()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.to_opacity_tf">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.to_opacity_tf()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.value_range">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.value_range
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pyvista.LookupTable.values">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LookupTable.values
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyvista/pyvista/edit/main/doc/api/plotting/_autosummary/pyvista.LookupTable.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/api/plotting/_autosummary/pyvista.LookupTable.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

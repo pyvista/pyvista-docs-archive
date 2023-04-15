@@ -1,0 +1,6 @@
+set\_active\_vectors
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.set_active_vectors

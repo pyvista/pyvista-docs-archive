@@ -1,0 +1,6 @@
+field\_data
+===========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ExplicitStructuredGrid.field_data

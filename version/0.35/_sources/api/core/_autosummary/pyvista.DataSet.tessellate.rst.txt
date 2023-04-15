@@ -1,0 +1,6 @@
+tessellate
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.tessellate

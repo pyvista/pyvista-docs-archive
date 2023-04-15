@@ -1,0 +1,6 @@
+download\_structured\_grid
+==========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_structured_grid

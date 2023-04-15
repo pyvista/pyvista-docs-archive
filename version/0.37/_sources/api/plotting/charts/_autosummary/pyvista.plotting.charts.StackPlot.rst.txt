@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.StackPlot
+=================================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: StackPlot
+   :members:

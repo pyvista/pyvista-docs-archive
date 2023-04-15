@@ -1,0 +1,6 @@
+flip\_x
+=======
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.flip_x

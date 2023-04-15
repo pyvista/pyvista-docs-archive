@@ -1,0 +1,7 @@
+﻿pyvista.NIFTIReader
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: NIFTIReader
+   :members:

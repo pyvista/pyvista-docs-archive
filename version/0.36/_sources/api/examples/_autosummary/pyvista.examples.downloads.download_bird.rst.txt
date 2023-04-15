@@ -1,0 +1,6 @@
+download\_bird
+==============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_bird

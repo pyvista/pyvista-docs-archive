@@ -1,0 +1,6 @@
+cell\_array\_status
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: EnSightReader.cell_array_status

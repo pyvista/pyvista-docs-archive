@@ -1,0 +1,6 @@
+find\_containing\_cell
+======================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.find_containing_cell

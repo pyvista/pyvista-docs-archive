@@ -1,0 +1,6 @@
+legend
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Plotter.legend

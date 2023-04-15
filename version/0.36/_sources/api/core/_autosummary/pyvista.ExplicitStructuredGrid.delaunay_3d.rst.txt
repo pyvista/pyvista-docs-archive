@@ -1,0 +1,6 @@
+delaunay\_3d
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.delaunay_3d

@@ -1,0 +1,6 @@
+n\_arrays
+=========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.n_arrays

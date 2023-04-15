@@ -1,0 +1,6 @@
+load\_uniform
+=============
+
+.. currentmodule:: pyvista.examples.examples
+
+.. autofunction:: load_uniform

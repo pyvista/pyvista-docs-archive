@@ -1,0 +1,5 @@
+﻿pyvista.demos.demos
+===================
+
+.. automodule:: pyvista.demos.demos
+   :members:

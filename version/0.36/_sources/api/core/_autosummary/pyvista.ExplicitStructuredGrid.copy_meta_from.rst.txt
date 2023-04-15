@@ -1,0 +1,6 @@
+copy\_meta\_from
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.copy_meta_from

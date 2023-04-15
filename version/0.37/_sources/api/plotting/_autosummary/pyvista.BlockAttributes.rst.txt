@@ -1,0 +1,7 @@
+﻿pyvista.BlockAttributes
+=======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BlockAttributes
+   :members:

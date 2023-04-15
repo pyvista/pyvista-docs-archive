@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.LinePlot2D
+==================================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: LinePlot2D
+   :members:

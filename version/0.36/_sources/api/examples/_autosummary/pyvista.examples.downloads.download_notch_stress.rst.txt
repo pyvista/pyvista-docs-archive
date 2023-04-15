@@ -1,0 +1,6 @@
+download\_notch\_stress
+=======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_notch_stress

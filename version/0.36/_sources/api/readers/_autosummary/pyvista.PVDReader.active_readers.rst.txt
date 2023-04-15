@@ -1,0 +1,6 @@
+active\_readers
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PVDReader.active_readers

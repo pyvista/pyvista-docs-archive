@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.BoxPlot
+===============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: BoxPlot
+   :members:

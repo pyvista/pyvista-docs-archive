@@ -1,0 +1,43 @@
+﻿pyvista.PLYReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PLYReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PLYReader.hide_progress
+      
+      
+      PLYReader.read
+      
+      
+      PLYReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      PLYReader.path
+      
+      
+      PLYReader.reader
+      
+   
+   

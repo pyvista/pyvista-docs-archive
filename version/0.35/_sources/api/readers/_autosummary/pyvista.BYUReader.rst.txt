@@ -1,0 +1,43 @@
+﻿pyvista.BYUReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BYUReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      BYUReader.hide_progress
+      
+      
+      BYUReader.read
+      
+      
+      BYUReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      BYUReader.path
+      
+      
+      BYUReader.reader
+      
+   
+   

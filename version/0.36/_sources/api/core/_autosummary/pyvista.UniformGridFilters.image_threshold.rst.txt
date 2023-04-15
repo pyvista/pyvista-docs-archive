@@ -1,0 +1,6 @@
+image\_threshold
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGridFilters.image_threshold

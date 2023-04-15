@@ -1,0 +1,6 @@
+n\_open\_edges
+==============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.n_open_edges

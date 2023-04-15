@@ -1,0 +1,7 @@
+﻿pyvista.GIFReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: GIFReader
+   :members:

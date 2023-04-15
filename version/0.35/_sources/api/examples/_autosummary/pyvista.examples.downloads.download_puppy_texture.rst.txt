@@ -1,0 +1,6 @@
+download\_puppy\_texture
+========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_puppy_texture

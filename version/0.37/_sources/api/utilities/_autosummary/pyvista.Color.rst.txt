@@ -1,0 +1,7 @@
+﻿pyvista.Color
+=============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Color
+   :members:

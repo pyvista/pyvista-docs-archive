@@ -1,0 +1,43 @@
+﻿pyvista.AVSucdReader
+====================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: AVSucdReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      AVSucdReader.hide_progress
+      
+      
+      AVSucdReader.read
+      
+      
+      AVSucdReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      AVSucdReader.path
+      
+      
+      AVSucdReader.reader
+      
+   
+   

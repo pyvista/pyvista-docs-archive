@@ -1,0 +1,7 @@
+﻿pyvista.PVDReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PVDReader
+   :members:

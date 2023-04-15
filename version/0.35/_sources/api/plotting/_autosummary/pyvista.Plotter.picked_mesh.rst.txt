@@ -1,0 +1,6 @@
+picked\_mesh
+============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Plotter.picked_mesh

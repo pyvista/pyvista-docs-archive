@@ -1,0 +1,43 @@
+﻿pyvista.HDRReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: HDRReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      HDRReader.hide_progress
+      
+      
+      HDRReader.read
+      
+      
+      HDRReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      HDRReader.path
+      
+      
+      HDRReader.reader
+      
+   
+   

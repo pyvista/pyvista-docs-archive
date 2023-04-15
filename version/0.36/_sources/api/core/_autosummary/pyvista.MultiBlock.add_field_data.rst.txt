@@ -1,0 +1,6 @@
+add\_field\_data
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlock.add_field_data

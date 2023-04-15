@@ -1,0 +1,6 @@
+float\_rgb
+==========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Color.float_rgb

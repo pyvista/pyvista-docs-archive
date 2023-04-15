@@ -1,0 +1,6 @@
+t\_coords
+=========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSet.t_coords

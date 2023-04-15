@@ -1,0 +1,6 @@
+download\_torso
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_torso

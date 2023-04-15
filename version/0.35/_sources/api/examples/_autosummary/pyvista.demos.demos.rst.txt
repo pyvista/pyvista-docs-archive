@@ -1,0 +1,37 @@
+﻿pyvista.demos.demos
+===================
+
+.. automodule:: pyvista.demos.demos
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      glyphs
+      orientation_cube
+      orientation_plotter
+      plot_ants_plane
+      plot_beam
+      plot_datasets
+      plot_glyphs
+      plot_wave
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

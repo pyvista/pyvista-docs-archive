@@ -1,0 +1,7 @@
+﻿pyvista.UniformGrid
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: UniformGrid
+   :members:

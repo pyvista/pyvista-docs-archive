@@ -1,0 +1,6 @@
+download\_exodus
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_exodus

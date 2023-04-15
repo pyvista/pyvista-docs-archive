@@ -1,0 +1,6 @@
+download\_poly\_line
+====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_poly_line

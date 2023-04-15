@@ -1,0 +1,6 @@
+clear\_textures
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.clear_textures

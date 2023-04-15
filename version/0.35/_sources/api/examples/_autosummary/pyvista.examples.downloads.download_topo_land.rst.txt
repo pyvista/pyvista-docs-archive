@@ -1,0 +1,6 @@
+download\_topo\_land
+====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_topo_land

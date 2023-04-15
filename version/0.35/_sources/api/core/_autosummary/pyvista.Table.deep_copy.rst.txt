@@ -1,0 +1,6 @@
+deep\_copy
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.deep_copy

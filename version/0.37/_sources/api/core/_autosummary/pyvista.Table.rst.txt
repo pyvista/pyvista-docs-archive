@@ -1,0 +1,7 @@
+﻿pyvista.Table
+=============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Table
+   :members:

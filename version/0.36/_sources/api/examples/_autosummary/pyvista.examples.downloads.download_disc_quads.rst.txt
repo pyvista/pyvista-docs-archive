@@ -1,0 +1,6 @@
+download\_disc\_quads
+=====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_disc_quads

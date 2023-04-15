@@ -1,0 +1,6 @@
+from\_dict
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: Color.from_dict

@@ -1,0 +1,6 @@
+download\_cylinder\_crossflow
+=============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_cylinder_crossflow

@@ -1,0 +1,6 @@
+rotate\_y
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.rotate_y

@@ -1,0 +1,6 @@
+ticks\_visible
+==============
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.ticks_visible

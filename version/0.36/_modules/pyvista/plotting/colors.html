@@ -1,0 +1,1322 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.plotting.colors &#8212; PyVista 0.36.1 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.36  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/plotting/colors and {'json_url': 'https://<DEFAULT_CNAME>/versions.json', 'version_match': '0.36'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/plotting/colors.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://<DEFAULT_CNAME>/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/plotting/colors.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.36.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.36") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.plotting.colors</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Color module supporting plotting module.</span>
+
+<span class="sd">Used code from matplotlib.colors.  Thanks for your work!</span>
+
+
+<span class="sd">SUPPORTED COLORS</span>
+<span class="sd">aliceblue</span>
+<span class="sd">antiquewhite</span>
+<span class="sd">aqua</span>
+<span class="sd">aquamarine</span>
+<span class="sd">azure</span>
+<span class="sd">beige</span>
+<span class="sd">bisque</span>
+<span class="sd">black</span>
+<span class="sd">blanchedalmond</span>
+<span class="sd">blue</span>
+<span class="sd">blueviolet</span>
+<span class="sd">brown</span>
+<span class="sd">burlywood</span>
+<span class="sd">cadetblue</span>
+<span class="sd">chartreuse</span>
+<span class="sd">chocolate</span>
+<span class="sd">coral</span>
+<span class="sd">cornflowerblue</span>
+<span class="sd">cornsilk</span>
+<span class="sd">crimson</span>
+<span class="sd">cyan</span>
+<span class="sd">darkblue</span>
+<span class="sd">darkcyan</span>
+<span class="sd">darkgoldenrod</span>
+<span class="sd">darkgray</span>
+<span class="sd">darkgreen</span>
+<span class="sd">darkgrey</span>
+<span class="sd">darkkhaki</span>
+<span class="sd">darkmagenta</span>
+<span class="sd">darkolivegreen</span>
+<span class="sd">darkorange</span>
+<span class="sd">darkorchid</span>
+<span class="sd">darkred</span>
+<span class="sd">darksalmon</span>
+<span class="sd">darkseagreen</span>
+<span class="sd">darkslateblue</span>
+<span class="sd">darkslategray</span>
+<span class="sd">darkslategrey</span>
+<span class="sd">darkturquoise</span>
+<span class="sd">darkviolet</span>
+<span class="sd">deeppink</span>
+<span class="sd">deepskyblue</span>
+<span class="sd">dimgray</span>
+<span class="sd">dimgrey</span>
+<span class="sd">dodgerblue</span>
+<span class="sd">firebrick</span>
+<span class="sd">floralwhite</span>
+<span class="sd">forestgreen</span>
+<span class="sd">fuchsia</span>
+<span class="sd">gainsboro</span>
+<span class="sd">ghostwhite</span>
+<span class="sd">gold</span>
+<span class="sd">goldenrod</span>
+<span class="sd">gray</span>
+<span class="sd">green</span>
+<span class="sd">greenyellow</span>
+<span class="sd">grey</span>
+<span class="sd">honeydew</span>
+<span class="sd">hotpink</span>
+<span class="sd">indianred</span>
+<span class="sd">indigo</span>
+<span class="sd">ivory</span>
+<span class="sd">khaki</span>
+<span class="sd">lavender</span>
+<span class="sd">lavenderblush</span>
+<span class="sd">lawngreen</span>
+<span class="sd">lemonchiffon</span>
+<span class="sd">lightblue</span>
+<span class="sd">lightcoral</span>
+<span class="sd">lightcyan</span>
+<span class="sd">lightgoldenrodyellow</span>
+<span class="sd">lightgray</span>
+<span class="sd">lightgreen</span>
+<span class="sd">lightgrey</span>
+<span class="sd">lightpink</span>
+<span class="sd">lightsalmon</span>
+<span class="sd">lightseagreen</span>
+<span class="sd">lightskyblue</span>
+<span class="sd">lightslategray</span>
+<span class="sd">lightslategrey</span>
+<span class="sd">lightsteelblue</span>
+<span class="sd">lightyellow</span>
+<span class="sd">lime</span>
+<span class="sd">limegreen</span>
+<span class="sd">linen</span>
+<span class="sd">magenta</span>
+<span class="sd">maroon</span>
+<span class="sd">mediumaquamarine</span>
+<span class="sd">mediumblue</span>
+<span class="sd">mediumorchid</span>
+<span class="sd">mediumpurple</span>
+<span class="sd">mediumseagreen</span>
+<span class="sd">mediumslateblue</span>
+<span class="sd">mediumspringgreen</span>
+<span class="sd">mediumturquoise</span>
+<span class="sd">mediumvioletred</span>
+<span class="sd">midnightblue</span>
+<span class="sd">mintcream</span>
+<span class="sd">mistyrose</span>
+<span class="sd">moccasin</span>
+<span class="sd">navajowhite</span>
+<span class="sd">navy</span>
+<span class="sd">oldlace</span>
+<span class="sd">olive</span>
+<span class="sd">olivedrab</span>
+<span class="sd">orange</span>
+<span class="sd">orangered</span>
+<span class="sd">orchid</span>
+<span class="sd">palegoldenrod</span>
+<span class="sd">palegreen</span>
+<span class="sd">paleturquoise</span>
+<span class="sd">palevioletred</span>
+<span class="sd">papayawhip</span>
+<span class="sd">peachpuff</span>
+<span class="sd">peru</span>
+<span class="sd">pink</span>
+<span class="sd">plum</span>
+<span class="sd">powderblue</span>
+<span class="sd">purple</span>
+<span class="sd">rebeccapurple</span>
+<span class="sd">red</span>
+<span class="sd">rosybrown</span>
+<span class="sd">royalblue</span>
+<span class="sd">saddlebrown</span>
+<span class="sd">salmon</span>
+<span class="sd">sandybrown</span>
+<span class="sd">seagreen</span>
+<span class="sd">seashell</span>
+<span class="sd">sienna</span>
+<span class="sd">silver</span>
+<span class="sd">skyblue</span>
+<span class="sd">slateblue</span>
+<span class="sd">slategray</span>
+<span class="sd">slategrey</span>
+<span class="sd">snow</span>
+<span class="sd">springgreen</span>
+<span class="sd">steelblue</span>
+<span class="sd">tan</span>
+<span class="sd">teal</span>
+<span class="sd">thistle</span>
+<span class="sd">tomato</span>
+<span class="sd">turquoise</span>
+<span class="sd">violet</span>
+<span class="sd">wheat</span>
+<span class="sd">white</span>
+<span class="sd">whitesmoke</span>
+<span class="sd">yellow</span>
+<span class="sd">yellowgreen</span>
+<span class="sd">tab:blue</span>
+<span class="sd">tab:orange</span>
+<span class="sd">tab:green</span>
+<span class="sd">tab:red</span>
+<span class="sd">tab:purple</span>
+<span class="sd">tab:brown</span>
+<span class="sd">tab:pink</span>
+<span class="sd">tab:gray</span>
+<span class="sd">tab:olive</span>
+<span class="sd">tab:cyan</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Necessary for autodoc_type_aliases to recognize the type aliases used in the signatures</span>
+<span class="c1"># of methods defined in this module.</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista._typing</span> <span class="kn">import</span> <span class="n">color_like</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities</span> <span class="kn">import</span> <span class="n">PyvistaDeprecationWarning</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.misc</span> <span class="kn">import</span> <span class="n">has_module</span>
+
+<span class="n">IPYGANY_MAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;reds&#39;</span><span class="p">:</span> <span class="s1">&#39;Reds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spectral&#39;</span><span class="p">:</span> <span class="s1">&#39;Spectral&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Following colors are copied from matplotlib.colors, synonyms (colors with a</span>
+<span class="c1"># different name but same hex value) are removed and put in the `color_synonyms`</span>
+<span class="c1"># dictionary. An extra `paraview_background` color is added.</span>
+<span class="n">hexcolors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;aliceblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0F8FF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;antiquewhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#FAEBD7&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;aquamarine&#39;</span><span class="p">:</span> <span class="s1">&#39;#7FFFD4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;azure&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0FFFF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;beige&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5F5DC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bisque&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFE4C4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;black&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;blanchedalmond&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFEBCD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="s1">&#39;#0000FF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;blueviolet&#39;</span><span class="p">:</span> <span class="s1">&#39;#8A2BE2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;brown&#39;</span><span class="p">:</span> <span class="s1">&#39;#654321&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;burlywood&#39;</span><span class="p">:</span> <span class="s1">&#39;#DEB887&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cadetblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#5F9EA0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;chartreuse&#39;</span><span class="p">:</span> <span class="s1">&#39;#7FFF00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;chocolate&#39;</span><span class="p">:</span> <span class="s1">&#39;#D2691E&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;coral&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF7F50&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cornflowerblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#6495ED&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cornsilk&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFF8DC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;crimson&#39;</span><span class="p">:</span> <span class="s1">&#39;#DC143C&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cyan&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FFFF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#00008B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkcyan&#39;</span><span class="p">:</span> <span class="s1">&#39;#008B8B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkgoldenrod&#39;</span><span class="p">:</span> <span class="s1">&#39;#B8860B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkgray&#39;</span><span class="p">:</span> <span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#006400&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkkhaki&#39;</span><span class="p">:</span> <span class="s1">&#39;#BDB76B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkmagenta&#39;</span><span class="p">:</span> <span class="s1">&#39;#8B008B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkolivegreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#556B2F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkorange&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF8C00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkorchid&#39;</span><span class="p">:</span> <span class="s1">&#39;#9932CC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkred&#39;</span><span class="p">:</span> <span class="s1">&#39;#8B0000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darksalmon&#39;</span><span class="p">:</span> <span class="s1">&#39;#E9967A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkseagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#8FBC8F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkslateblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#483D8B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkslategray&#39;</span><span class="p">:</span> <span class="s1">&#39;#2F4F4F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkturquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#00CED1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkviolet&#39;</span><span class="p">:</span> <span class="s1">&#39;#9400D3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;deeppink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF1493&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;deepskyblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#00BFFF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dimgray&#39;</span><span class="p">:</span> <span class="s1">&#39;#696969&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dodgerblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#1E90FF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;firebrick&#39;</span><span class="p">:</span> <span class="s1">&#39;#B22222&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;floralwhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFAF0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;forestgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#228B22&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;gainsboro&#39;</span><span class="p">:</span> <span class="s1">&#39;#DCDCDC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ghostwhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#F8F8FF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFD700&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;goldenrod&#39;</span><span class="p">:</span> <span class="s1">&#39;#DAA520&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;gray&#39;</span><span class="p">:</span> <span class="s1">&#39;#808080&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="s1">&#39;#008000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;greenyellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#ADFF2F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;honeydew&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0FFF0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;hotpink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF69B4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;indianred&#39;</span><span class="p">:</span> <span class="s1">&#39;#CD5C5C&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;indigo&#39;</span><span class="p">:</span> <span class="s1">&#39;#4B0082&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ivory&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFF0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;khaki&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0E68C&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lavender&#39;</span><span class="p">:</span> <span class="s1">&#39;#E6E6FA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lavenderblush&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFF0F5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lawngreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#7CFC00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lemonchiffon&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFACD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#ADD8E6&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightcoral&#39;</span><span class="p">:</span> <span class="s1">&#39;#F08080&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightcyan&#39;</span><span class="p">:</span> <span class="s1">&#39;#E0FFFF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightgoldenrodyellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FAFAD2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightgray&#39;</span><span class="p">:</span> <span class="s1">&#39;#D3D3D3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#90EE90&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightpink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFB6C1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightsalmon&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFA07A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightseagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#20B2AA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightskyblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#87CEFA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightslategray&#39;</span><span class="p">:</span> <span class="s1">&#39;#778899&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightsteelblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#B0C4DE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightyellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFE0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lime&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;limegreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#32CD32&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linen&#39;</span><span class="p">:</span> <span class="s1">&#39;#FAF0E6&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;magenta&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF00FF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;maroon&#39;</span><span class="p">:</span> <span class="s1">&#39;#800000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumaquamarine&#39;</span><span class="p">:</span> <span class="s1">&#39;#66CDAA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#0000CD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumorchid&#39;</span><span class="p">:</span> <span class="s1">&#39;#BA55D3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumpurple&#39;</span><span class="p">:</span> <span class="s1">&#39;#9370DB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumseagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#3CB371&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumslateblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#7B68EE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumspringgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FA9A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumturquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#48D1CC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumvioletred&#39;</span><span class="p">:</span> <span class="s1">&#39;#C71585&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;midnightblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#191970&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mintcream&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5FFFA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mistyrose&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFE4E1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;moccasin&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFE4B5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;navajowhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFDEAD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;navy&#39;</span><span class="p">:</span> <span class="s1">&#39;#000080&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;oldlace&#39;</span><span class="p">:</span> <span class="s1">&#39;#FDF5E6&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;olive&#39;</span><span class="p">:</span> <span class="s1">&#39;#808000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;olivedrab&#39;</span><span class="p">:</span> <span class="s1">&#39;#6B8E23&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;orange&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFA500&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;orangered&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF4500&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;orchid&#39;</span><span class="p">:</span> <span class="s1">&#39;#DA70D6&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;palegoldenrod&#39;</span><span class="p">:</span> <span class="s1">&#39;#EEE8AA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;palegreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#98FB98&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;paleturquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#AFEEEE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;palevioletred&#39;</span><span class="p">:</span> <span class="s1">&#39;#DB7093&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;papayawhip&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFEFD5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;paraview_background&#39;</span><span class="p">:</span> <span class="s1">&#39;#52576e&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;peachpuff&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFDAB9&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;peru&#39;</span><span class="p">:</span> <span class="s1">&#39;#CD853F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFC0CB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;plum&#39;</span><span class="p">:</span> <span class="s1">&#39;#DDA0DD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;powderblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#B0E0E6&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;purple&#39;</span><span class="p">:</span> <span class="s1">&#39;#800080&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;raw_sienna&#39;</span><span class="p">:</span> <span class="s1">&#39;#965434&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rebeccapurple&#39;</span><span class="p">:</span> <span class="s1">&#39;#663399&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rosybrown&#39;</span><span class="p">:</span> <span class="s1">&#39;#BC8F8F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;royalblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#4169E1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;saddlebrown&#39;</span><span class="p">:</span> <span class="s1">&#39;#8B4513&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;salmon&#39;</span><span class="p">:</span> <span class="s1">&#39;#FA8072&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sandybrown&#39;</span><span class="p">:</span> <span class="s1">&#39;#F4A460&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;seagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#2E8B57&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;seashell&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFF5EE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sienna&#39;</span><span class="p">:</span> <span class="s1">&#39;#A0522D&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;silver&#39;</span><span class="p">:</span> <span class="s1">&#39;#C0C0C0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;skyblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#87CEEB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;slateblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#6A5ACD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;slategray&#39;</span><span class="p">:</span> <span class="s1">&#39;#708090&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;snow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFAFA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;springgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FF7F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;steelblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#4682B4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tan&#39;</span><span class="p">:</span> <span class="s1">&#39;#D2B48C&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;teal&#39;</span><span class="p">:</span> <span class="s1">&#39;#008080&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;thistle&#39;</span><span class="p">:</span> <span class="s1">&#39;#D8BFD8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tomato&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF6347&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;turquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#40E0D0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;violet&#39;</span><span class="p">:</span> <span class="s1">&#39;#EE82EE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;wheat&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5DEB3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;white&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;whitesmoke&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5F5F5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFF00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;yellowgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#9ACD32&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:blue&#39;</span><span class="p">:</span> <span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:orange&#39;</span><span class="p">:</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:green&#39;</span><span class="p">:</span> <span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:red&#39;</span><span class="p">:</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:purple&#39;</span><span class="p">:</span> <span class="s1">&#39;#9467bd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:brown&#39;</span><span class="p">:</span> <span class="s1">&#39;#8c564b&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:pink&#39;</span><span class="p">:</span> <span class="s1">&#39;#e377c2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:gray&#39;</span><span class="p">:</span> <span class="s1">&#39;#7f7f7f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:olive&#39;</span><span class="p">:</span> <span class="s1">&#39;#bcbd22&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab:cyan&#39;</span><span class="p">:</span> <span class="s1">&#39;#17becf&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">color_names</span> <span class="o">=</span> <span class="p">{</span><span class="n">h</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hexcolors</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="n">color_char_to_word</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">color_synonyms</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">**</span><span class="n">color_char_to_word</span><span class="p">,</span>
+    <span class="s1">&#39;aqua&#39;</span><span class="p">:</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkgrey&#39;</span><span class="p">:</span> <span class="s1">&#39;darkgray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;darkslategrey&#39;</span><span class="p">:</span> <span class="s1">&#39;darkslategray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dimgrey&#39;</span><span class="p">:</span> <span class="s1">&#39;dimgray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fuchsia&#39;</span><span class="p">:</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;grey&#39;</span><span class="p">:</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightgrey&#39;</span><span class="p">:</span> <span class="s1">&#39;lightgray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lightslategrey&#39;</span><span class="p">:</span> <span class="s1">&#39;lightslategray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pv&#39;</span><span class="p">:</span> <span class="s1">&#39;paraview_background&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;paraview&#39;</span><span class="p">:</span> <span class="s1">&#39;paraview_background&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;slategrey&#39;</span><span class="p">:</span> <span class="s1">&#39;slategray&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="Color"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Color.html#pyvista.Color">[docs]</a><span class="k">class</span> <span class="nc">Color</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper class to convert between different color representations used in the pyvista library.</span>
+
+<span class="sd">    Many pyvista methods accept :data:`color_like` parameters. This helper class</span>
+<span class="sd">    is used to convert such parameters to the necessary format, used by</span>
+<span class="sd">    underlying (VTK) methods. Any color name (``str``), hex string (``str``)</span>
+<span class="sd">    or RGB(A) sequence (``tuple``, ``list`` or ``numpy.ndarray`` of ``int``</span>
+<span class="sd">    or ``float``) is considered a :data:`color_like` parameter and can be converted</span>
+<span class="sd">    by this class.</span>
+<span class="sd">    See :attr:`Color.name` for a list of supported color names.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color : color_like, optional</span>
+<span class="sd">        Either a string, RGB sequence, RGBA sequence, or hex color string.</span>
+<span class="sd">        RGB(A) sequences should either be provided as floats between 0 and 1</span>
+<span class="sd">        or as ints between 0 and 255. Hex color strings can contain optional</span>
+<span class="sd">        ``&#39;#&#39;`` or ``&#39;0x&#39;`` prefixes. If no opacity is provided, the</span>
+<span class="sd">        ``default_opacity`` will be used. If ``color`` is ``None``, the</span>
+<span class="sd">        ``default_color`` is used instead.</span>
+<span class="sd">        The following examples all denote the color &#39;white&#39;:</span>
+
+<span class="sd">        * ``&#39;white&#39;``</span>
+<span class="sd">        * ``&#39;w&#39;``</span>
+<span class="sd">        * ``[1.0, 1.0, 1.0]``</span>
+<span class="sd">        * ``[255, 255, 255, 255]``</span>
+<span class="sd">        * ``&#39;#FFFFFF&#39;``</span>
+
+<span class="sd">    opacity : int, float or str, optional</span>
+<span class="sd">        Opacity of the represented color. Overrides any opacity associated</span>
+<span class="sd">        with the provided ``color``. Allowed opacities are floats between 0</span>
+<span class="sd">        and 1, ints between 0 and 255 or hexadecimal strings of length 2</span>
+<span class="sd">        (plus the length of the optional prefix).</span>
+<span class="sd">        The following examples all denote a fully opaque color:</span>
+
+<span class="sd">        * ``1.0``</span>
+<span class="sd">        * ``255``</span>
+<span class="sd">        * ``&#39;#ff&#39;``</span>
+
+<span class="sd">    default_color : color_like, optional</span>
+<span class="sd">        Default color to use when ``color`` is ``None``. If this value is</span>
+<span class="sd">        ``None``, then defaults to the global theme color. Format is</span>
+<span class="sd">        identical to ``color``.</span>
+
+<span class="sd">    default_opacity : int, float or str, optional</span>
+<span class="sd">        Default opacity of the represented color. Used when ``color``</span>
+<span class="sd">        does not specify an opacity and ``opacity`` is ``None``. Format</span>
+<span class="sd">        is identical to ``opacity``.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The internally used representation is an integer RGBA sequence (values</span>
+<span class="sd">    between 0 and 255). This might however change in future releases.</span>
+
+<span class="sd">    .. raw:: html</span>
+
+<span class="sd">       &lt;details&gt;&lt;summary&gt;Refer to the table below for a list of supported colors.&lt;/summary&gt;</span>
+
+<span class="sd">    .. include:: ../colors.rst</span>
+
+<span class="sd">    .. raw:: html</span>
+
+<span class="sd">       &lt;/details&gt;</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a transparent green color using a color name, float RGBA sequence,</span>
+<span class="sd">    integer RGBA sequence and RGBA hexadecimal string.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; pyvista.Color(&quot;green&quot;, opacity=0.5)</span>
+<span class="sd">    Color(name=&#39;green&#39;, hex=&#39;#00800080&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; pyvista.Color([0.0, 0.5, 0.0, 0.5])</span>
+<span class="sd">    Color(name=&#39;green&#39;, hex=&#39;#00800080&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; pyvista.Color([0, 128, 0, 128])</span>
+<span class="sd">    Color(name=&#39;green&#39;, hex=&#39;#00800080&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; pyvista.Color(&quot;#00800080&quot;)</span>
+<span class="sd">    Color(name=&#39;green&#39;, hex=&#39;#00800080&#39;)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Supported names for each color channel.</span>
+    <span class="n">CHANNEL_NAMES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">},</span>  <span class="c1"># 0</span>
+        <span class="p">{</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">},</span>  <span class="c1"># 1</span>
+        <span class="p">{</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">},</span>  <span class="c1"># 2</span>
+        <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;opacity&#39;</span><span class="p">},</span>  <span class="c1"># 3</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">color</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">color_like</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">default_color</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">color_like</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">default_opacity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize new instance.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_color_channel</span><span class="p">(</span><span class="n">default_opacity</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Use default color if no color is provided</span>
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">default_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">color</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">default_color</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">Color</span><span class="p">):</span>
+                <span class="c1"># Create copy of color instance</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">int_rgba</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="c1"># From named color or hex string</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_str</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="c1"># From dictionary</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_dict</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
+                <span class="c1"># From RGB(A) sequence</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_rgba</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkColor3ub</span><span class="p">):</span>
+                <span class="c1"># From vtkColor3ub instance (can be unpacked as rgb tuple)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_rgba</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported color type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">color_names</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hex_rgb</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Invalid color input: (</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Must be a string, rgb(a) sequence, or hex color string.  For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=&#39;white&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=&#39;w&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=[1.0, 1.0, 1.0]</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=[255, 255, 255]</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=&#39;#FFFFFF&#39;&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+        <span class="c1"># Overwrite opacity if it is provided</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_color_channel</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Invalid opacity input: (</span><span class="si">{</span><span class="n">opacity</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Must be an integer, float or string.  For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">opacity=&#39;1.0&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">opacity=&#39;255&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">opacity=&#39;#FF&#39;&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+<div class="viewcode-block" id="Color.strip_hex_prefix"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Color.strip_hex_prefix.html#pyvista.Color.strip_hex_prefix">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">strip_hex_prefix</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Strip any ``&#39;#&#39;`` or ``&#39;0x&#39;`` prefix from a hexadecimal string.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        h : str</span>
+<span class="sd">            Hexadecimal string to strip.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            Stripped hexadecimal string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;0x&#39;</span><span class="p">):</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">h</span></div>
+
+<div class="viewcode-block" id="Color.convert_color_channel"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Color.convert_color_channel.html#pyvista.Color.convert_color_channel">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">convert_color_channel</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the given color channel value to the integer representation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        val : int, float or str</span>
+<span class="sd">            Color channel value to convert. Supported input values are a</span>
+<span class="sd">            hex string of length 2 (``&#39;00&#39;`` to ``&#39;ff&#39;``) with an optional</span>
+<span class="sd">            prefix (``&#39;#&#39;`` or ``&#39;0x&#39;``), a float (``0.0`` to ``1.0``) or</span>
+<span class="sd">            an integer (``0`` to ``255``).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            Color channel value in the integer representation (values between</span>
+<span class="sd">            ``0`` and ``255``).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># From hexadecimal value</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">strip_hex_prefix</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># From float</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">255</span> <span class="o">*</span> <span class="n">val</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">val</span> <span class="o">&lt;=</span> <span class="mi">255</span>
+        <span class="p">):</span>
+            <span class="c1"># From integer</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported color channel value provided: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_from_rgba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rgba</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct color from an RGB(A) sequence.&quot;&quot;&quot;</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="n">rgba</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="c1"># Keep using current opacity if it is not provided.</span>
+            <span class="n">rgba</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">rgba</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid length for RGBA sequence.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">convert_color_channel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">rgba</span>
+            <span class="p">]</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid RGB(A) sequence: </span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dct</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct color from an RGB(A) dictionary.&quot;&quot;&quot;</span>
+        <span class="c1"># Get any of the keys associated with each color channel (or None).</span>
+        <span class="n">rgba</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nb">next</span><span class="p">((</span><span class="n">dct</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cnames</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dct</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">cnames</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">CHANNEL_NAMES</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_from_rgba</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_from_hex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct color from a hex string.&quot;&quot;&quot;</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">strip_hex_prefix</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_from_rgba</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_color_channel</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="mi">2</span><span class="p">)])</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid hex string: </span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_from_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct color from a name or hex string.&quot;&quot;&quot;</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">color_synonyms</span><span class="p">:</span>
+            <span class="c1"># Synonym of registered color name</span>
+            <span class="c1"># Convert from synonym to full hex</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">color_synonyms</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_from_hex</span><span class="p">(</span><span class="n">hexcolors</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">hexcolors</span><span class="p">:</span>
+            <span class="c1"># Color name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_from_hex</span><span class="p">(</span><span class="n">hexcolors</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Otherwise, try conversion to hex</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_hex</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid color name or hex string: </span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">int_rgba</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color value as an RGBA integer tuple.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with half opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, opacity=128)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff80&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.int_rgba</span>
+<span class="sd">        (0, 0, 255, 128)</span>
+
+<span class="sd">        Create a transparent red color using an integer RGBA sequence.</span>
+
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color([255, 0, 0, 64])</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;red&#39;, hex=&#39;#ff000040&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.int_rgba</span>
+<span class="sd">        (255, 0, 0, 64)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">int_rgb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color value as an RGB integer tuple.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with half opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, opacity=128)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff80&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.int_rgb</span>
+<span class="sd">        (0, 0, 255)</span>
+
+<span class="sd">        Create a red color using an integer RGB sequence.</span>
+
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color([255, 0, 0])</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;red&#39;, hex=&#39;#ff0000ff&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.int_rgb</span>
+<span class="sd">        (255, 0, 0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">int_rgba</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">float_rgba</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color value as an RGBA float tuple.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with custom opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, opacity=0.6)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff99&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.float_rgba</span>
+<span class="sd">        (0.0, 0.0, 1.0, 0.6)</span>
+
+<span class="sd">        Create a transparent red color using a float RGBA sequence.</span>
+
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color([1.0, 0.0, 0.0, 0.2])</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;red&#39;, hex=&#39;#ff000033&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.float_rgba</span>
+<span class="sd">        (1.0, 0.0, 0.0, 0.2)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_red</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">float_rgb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color value as an RGB float tuple.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with custom opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, default_opacity=0.6)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff99&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.float_rgb</span>
+<span class="sd">        (0.0, 0.0, 1.0)</span>
+
+<span class="sd">        Create a red color using a float RGB sequence.</span>
+
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color([1.0, 0.0, 0.0])</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;red&#39;, hex=&#39;#ff0000ff&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.float_rgb</span>
+<span class="sd">        (1.0, 0.0, 0.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hex_rgba</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color value as an RGBA hexadecimal value.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with half opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, default_opacity=&quot;#80&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff80&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.hex_rgba</span>
+<span class="sd">        &#39;#0000ff80&#39;</span>
+
+<span class="sd">        Create a transparent red color using an RGBA hexadecimal value.</span>
+
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;0xff000040&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;red&#39;, hex=&#39;#ff000040&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.hex_rgba</span>
+<span class="sd">        &#39;#ff000040&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">0&gt;2x</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hex_rgb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color value as an RGB hexadecimal value.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with half opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, default_opacity=&quot;#80&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff80&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.hex_rgb</span>
+<span class="sd">        &#39;#0000ff&#39;</span>
+
+<span class="sd">        Create a red color using an RGB hexadecimal value.</span>
+
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;0xff0000&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;red&#39;, hex=&#39;#ff0000ff&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.hex_rgb</span>
+<span class="sd">        &#39;#ff0000&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hex_rgba</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color name.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str or None</span>
+<span class="sd">            The color name, in case this color has a name; otherwise ``None``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Refer to the table below for a list of supported colors.</span>
+
+<span class="sd">        .. include:: ../colors.rst</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with half opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, default_opacity=0.5)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff80&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">vtk_c3ub</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkColor3ub</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the color value as a VTK Color3ub instance.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a blue color with half opacity.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; c = pyvista.Color(&quot;blue&quot;, default_opacity=0.5)</span>
+<span class="sd">        &gt;&gt;&gt; c</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ff80&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c.vtk_c3ub</span>
+<span class="sd">        vtkmodules.vtkCommonDataModel.vtkColor3ub([0, 0, 255])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkColor3ub</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Color.linear_to_srgb"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Color.linear_to_srgb.html#pyvista.Color.linear_to_srgb">[docs]</a>    <span class="k">def</span> <span class="nf">linear_to_srgb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert from linear color values to sRGB color values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new ``Color`` instance with sRGB color values.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rgba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">rgba</span> <span class="o">&lt;</span> <span class="mf">0.0031308</span>
+        <span class="n">rgba</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">12.92</span>
+        <span class="n">rgba</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.055</span> <span class="o">*</span> <span class="n">rgba</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mf">2.4</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.055</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Color.srgb_to_linear"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Color.srgb_to_linear.html#pyvista.Color.srgb_to_linear">[docs]</a>    <span class="k">def</span> <span class="nf">srgb_to_linear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert from sRGB color values to linear color values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new ``Color`` instance with linear color values.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rgba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">rgba</span> <span class="o">&lt;</span> <span class="mf">0.04045</span>
+        <span class="n">rgba</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">/=</span> <span class="mf">12.92</span>
+        <span class="n">rgba</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">rgba</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.055</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.055</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.4</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Color.from_dict"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Color.from_dict.html#pyvista.Color.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dict_</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct from dictionary for JSON deserialization.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">dict_</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Color.to_dict"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.Color.to_dict.html#pyvista.Color.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert to dictionary for JSON serialization.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Equality comparison.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">int_rgba</span> <span class="o">==</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">int_rgba</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hash calculation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opacity</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Support indexing the float RGBA representation for backward compatibility.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">slice</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Invalid index specified, only strings and integers are supported.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cnames</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">CHANNEL_NAMES</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">cnames</span><span class="p">:</span>
+                    <span class="n">item</span> <span class="o">=</span> <span class="n">i</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid string index </span><span class="si">{</span><span class="n">item</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Support iteration over the float RGBA representation for backward compatibility.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">float_rgba</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Human readable representation.&quot;&quot;&quot;</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;hex=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hex_rgba</span><span class="si">!r}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2">, &quot;</span> <span class="o">+</span> <span class="n">kwargs</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Color(</span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+
+<span class="n">PARAVIEW_BACKGROUND</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;paraview&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span>  <span class="c1"># [82, 87, 110] / 255</span>
+
+
+<span class="k">def</span> <span class="nf">hex_to_rgb</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return 0 to 1 rgb from a hex list or tuple.&quot;&quot;&quot;</span>
+    <span class="c1"># Deprecated on v0.34.0, estimated removal on v0.37.0</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;The usage of `hex_to_rgb` is deprecated in favor of the new `Color` class.&quot;</span><span class="p">,</span>
+        <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span>
+
+
+<span class="k">def</span> <span class="nf">string_to_rgb</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a literal color string (i.e. white) to a color rgb.</span>
+
+<span class="sd">    Also accepts hex strings or single characters from the following list.</span>
+
+<span class="sd">        b: blue</span>
+<span class="sd">        g: green</span>
+<span class="sd">        r: red</span>
+<span class="sd">        c: cyan</span>
+<span class="sd">        m: magenta</span>
+<span class="sd">        y: yellow</span>
+<span class="sd">        k: black</span>
+<span class="sd">        w: white</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Deprecated on v0.34.0, estimated removal on v0.37.0</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;The usage of `string_to_rgb` is deprecated in favor of the new `Color` class.&quot;</span><span class="p">,</span>
+        <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span>
+
+
+<span class="k">def</span> <span class="nf">get_cmap_safe</span><span class="p">(</span><span class="n">cmap</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetch a colormap by name from matplotlib, colorcet, or cmocean.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># check if this colormap has been mapped between ipygany</span>
+        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">in</span> <span class="n">IPYGANY_MAP</span><span class="p">:</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">IPYGANY_MAP</span><span class="p">[</span><span class="n">cmap</span><span class="p">]</span>
+
+        <span class="c1"># Try colorcet first</span>
+        <span class="k">if</span> <span class="n">has_module</span><span class="p">(</span><span class="s1">&#39;colorcet&#39;</span><span class="p">):</span>
+            <span class="kn">import</span> <span class="nn">colorcet</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">colorcet</span><span class="o">.</span><span class="n">cm</span><span class="p">[</span><span class="n">cmap</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="c1"># Try cmocean second</span>
+        <span class="k">if</span> <span class="n">has_module</span><span class="p">(</span><span class="s1">&#39;cmocean&#39;</span><span class="p">):</span>
+            <span class="kn">import</span> <span class="nn">cmocean</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cmocean</span><span class="o">.</span><span class="n">cm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="c1"># Else use Matplotlib</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_module</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+                <span class="s1">&#39;The use of custom colormaps requires the installation of matplotlib.&#39;</span>
+            <span class="p">)</span>  <span class="c1"># pragma: no cover</span>
+
+        <span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">get_cmap</span>
+
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">cmap</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;When inputting a list as a cmap, each item should be a string.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_module</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+                <span class="s1">&#39;The use of custom colormaps requires the installation of matplotlib.&#39;</span>
+            <span class="p">)</span>  <span class="c1"># pragma: no cover</span>
+
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
+
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cmap</span>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

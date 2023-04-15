@@ -1,0 +1,6 @@
+active\_vectors\_name
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.active_vectors_name

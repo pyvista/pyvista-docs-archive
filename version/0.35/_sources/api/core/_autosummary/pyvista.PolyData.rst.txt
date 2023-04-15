@@ -1,0 +1,878 @@
+﻿pyvista.PolyData
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PolyData
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PolyData.add_field_array
+      
+      
+      PolyData.add_field_data
+      
+      
+      PolyData.boolean_add
+      
+      
+      PolyData.boolean_cut
+      
+      
+      PolyData.boolean_difference
+      
+      
+      PolyData.boolean_intersection
+      
+      
+      PolyData.boolean_union
+      
+      
+      PolyData.cast_to_pointset
+      
+      
+      PolyData.cast_to_unstructured_grid
+      
+      
+      PolyData.cell_bounds
+      
+      
+      PolyData.cell_centers
+      
+      
+      PolyData.cell_data_to_point_data
+      
+      
+      PolyData.cell_n_points
+      
+      
+      PolyData.cell_point_ids
+      
+      
+      PolyData.cell_points
+      
+      
+      PolyData.cell_type
+      
+      
+      PolyData.center_of_mass
+      
+      
+      PolyData.clean
+      
+      
+      PolyData.clear_arrays
+      
+      
+      PolyData.clear_cell_arrays
+      
+      
+      PolyData.clear_cell_data
+      
+      
+      PolyData.clear_data
+      
+      
+      PolyData.clear_field_arrays
+      
+      
+      PolyData.clear_field_data
+      
+      
+      PolyData.clear_point_arrays
+      
+      
+      PolyData.clear_point_data
+      
+      
+      PolyData.clear_textures
+      
+      
+      PolyData.clip
+      
+      
+      PolyData.clip_box
+      
+      
+      PolyData.clip_closed_surface
+      
+      
+      PolyData.clip_scalar
+      
+      
+      PolyData.clip_surface
+      
+      
+      PolyData.collision
+      
+      
+      PolyData.compute_arc_length
+      
+      
+      PolyData.compute_cell_quality
+      
+      
+      PolyData.compute_cell_sizes
+      
+      
+      PolyData.compute_derivative
+      
+      
+      PolyData.compute_implicit_distance
+      
+      
+      PolyData.compute_normals
+      
+      
+      PolyData.connectivity
+      
+      
+      PolyData.contour
+      
+      
+      PolyData.copy
+      
+      
+      PolyData.copy_attributes
+      
+      
+      PolyData.copy_meta_from
+      
+      
+      PolyData.copy_structure
+      
+      
+      PolyData.ctp
+      
+      
+      PolyData.curvature
+      
+      
+      PolyData.decimate
+      
+      
+      PolyData.decimate_boundary
+      
+      
+      PolyData.decimate_pro
+      
+      
+      PolyData.deep_copy
+      
+      
+      PolyData.delaunay_2d
+      
+      
+      PolyData.delaunay_3d
+      
+      
+      PolyData.edge_mask
+      
+      
+      PolyData.elevation
+      
+      
+      PolyData.extract_all_edges
+      
+      
+      PolyData.extract_cells
+      
+      
+      PolyData.extract_feature_edges
+      
+      
+      PolyData.extract_geometry
+      
+      
+      PolyData.extract_largest
+      
+      
+      PolyData.extract_points
+      
+      
+      PolyData.extract_surface
+      
+      
+      PolyData.extrude
+      
+      
+      PolyData.extrude_rotate
+      
+      
+      PolyData.extrude_trim
+      
+      
+      PolyData.fill_holes
+      
+      
+      PolyData.find_cells_along_line
+      
+      
+      PolyData.find_cells_within_bounds
+      
+      
+      PolyData.find_closest_cell
+      
+      
+      PolyData.find_closest_point
+      
+      
+      PolyData.find_containing_cell
+      
+      
+      PolyData.flip_normal
+      
+      
+      PolyData.flip_normals
+      
+      
+      PolyData.flip_x
+      
+      
+      PolyData.flip_y
+      
+      
+      PolyData.flip_z
+      
+      
+      PolyData.geodesic
+      
+      
+      PolyData.geodesic_distance
+      
+      
+      PolyData.get_array
+      
+      
+      PolyData.get_array_association
+      
+      
+      PolyData.get_data_range
+      
+      
+      PolyData.glyph
+      
+      
+      PolyData.head
+      
+      
+      PolyData.integrate_data
+      
+      
+      PolyData.interpolate
+      
+      
+      PolyData.intersection
+      
+      
+      PolyData.merge
+      
+      
+      PolyData.multi_ray_trace
+      
+      
+      PolyData.outline
+      
+      
+      PolyData.outline_corners
+      
+      
+      PolyData.override
+      
+      
+      PolyData.overwrite
+      
+      
+      PolyData.plot
+      
+      
+      PolyData.plot_boundaries
+      
+      
+      PolyData.plot_curvature
+      
+      
+      PolyData.plot_normals
+      
+      
+      PolyData.plot_over_circular_arc
+      
+      
+      PolyData.plot_over_circular_arc_normal
+      
+      
+      PolyData.plot_over_line
+      
+      
+      PolyData.point_data_to_cell_data
+      
+      
+      PolyData.point_is_inside_cell
+      
+      
+      PolyData.points_to_double
+      
+      
+      PolyData.probe
+      
+      
+      PolyData.project_points_to_plane
+      
+      
+      PolyData.ptc
+      
+      
+      PolyData.ray_trace
+      
+      
+      PolyData.reconstruct_surface
+      
+      
+      PolyData.reflect
+      
+      
+      PolyData.remove_cells
+      
+      
+      PolyData.remove_points
+      
+      
+      PolyData.rename_array
+      
+      
+      PolyData.ribbon
+      
+      
+      PolyData.rotate_vector
+      
+      
+      PolyData.rotate_x
+      
+      
+      PolyData.rotate_y
+      
+      
+      PolyData.rotate_z
+      
+      
+      PolyData.sample
+      
+      
+      PolyData.sample_over_circular_arc
+      
+      
+      PolyData.sample_over_circular_arc_normal
+      
+      
+      PolyData.sample_over_line
+      
+      
+      PolyData.sample_over_multiple_lines
+      
+      
+      PolyData.save
+      
+      
+      PolyData.scale
+      
+      
+      PolyData.select_enclosed_points
+      
+      
+      PolyData.set_active_scalars
+      
+      
+      PolyData.set_active_tensors
+      
+      
+      PolyData.set_active_vectors
+      
+      
+      PolyData.shallow_copy
+      
+      
+      PolyData.shrink
+      
+      
+      PolyData.slice
+      
+      
+      PolyData.slice_along_axis
+      
+      
+      PolyData.slice_along_line
+      
+      
+      PolyData.slice_orthogonal
+      
+      
+      PolyData.smooth
+      
+      
+      PolyData.smooth_taubin
+      
+      
+      PolyData.split_bodies
+      
+      
+      PolyData.streamlines
+      
+      
+      PolyData.streamlines_evenly_spaced_2D
+      
+      
+      PolyData.streamlines_from_source
+      
+      
+      PolyData.strip
+      
+      
+      PolyData.subdivide
+      
+      
+      PolyData.subdivide_adaptive
+      
+      
+      PolyData.surface_indices
+      
+      
+      PolyData.tessellate
+      
+      
+      PolyData.texture_map_to_plane
+      
+      
+      PolyData.texture_map_to_sphere
+      
+      
+      PolyData.threshold
+      
+      
+      PolyData.threshold_percent
+      
+      
+      PolyData.transform
+      
+      
+      PolyData.translate
+      
+      
+      PolyData.triangulate
+      
+      
+      PolyData.tube
+      
+      
+      PolyData.warp_by_scalar
+      
+      
+      PolyData.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      PolyData.active_normals
+      
+      
+      PolyData.active_scalars
+      
+      
+      PolyData.active_scalars_info
+      
+      
+      PolyData.active_scalars_name
+      
+      
+      PolyData.active_t_coords
+      
+      
+      PolyData.active_tensors
+      
+      
+      PolyData.active_tensors_info
+      
+      
+      PolyData.active_tensors_name
+      
+      
+      PolyData.active_vectors
+      
+      
+      PolyData.active_vectors_info
+      
+      
+      PolyData.active_vectors_name
+      
+      
+      PolyData.actual_memory_size
+      
+      
+      PolyData.area
+      
+      
+      PolyData.array_names
+      
+      
+      PolyData.arrows
+      
+      
+      PolyData.bounds
+      
+      
+      PolyData.cell_arrays
+      
+      
+      PolyData.cell_data
+      
+      
+      PolyData.cell_normals
+      
+      
+      PolyData.center
+      
+      
+      PolyData.face_normals
+      
+      
+      PolyData.faces
+      
+      
+      PolyData.field_arrays
+      
+      
+      PolyData.field_data
+      
+      
+      PolyData.is_all_triangles
+      
+      
+      PolyData.is_manifold
+      
+      
+      PolyData.length
+      
+      
+      PolyData.lines
+      
+      
+      PolyData.memory_address
+      
+      
+      PolyData.n_arrays
+      
+      
+      PolyData.n_cells
+      
+      
+      PolyData.n_faces
+      
+      
+      PolyData.n_lines
+      
+      
+      PolyData.n_open_edges
+      
+      
+      PolyData.n_points
+      
+      
+      PolyData.n_verts
+      
+      
+      PolyData.number_of_cells
+      
+      
+      PolyData.number_of_faces
+      
+      
+      PolyData.number_of_points
+      
+      
+      PolyData.obbTree
+      
+      
+      PolyData.point_arrays
+      
+      
+      PolyData.point_data
+      
+      
+      PolyData.point_normals
+      
+      
+      PolyData.points
+      
+      
+      PolyData.t_coords
+      
+      
+      PolyData.textures
+      
+      
+      PolyData.vectors
+      
+      
+      PolyData.verts
+      
+      
+      PolyData.volume
+      
+   
+   

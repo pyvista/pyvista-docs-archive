@@ -1,0 +1,6 @@
+download\_parched\_canal\_4k
+============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_parched_canal_4k

@@ -1,0 +1,6 @@
+concatenate
+===========
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.concatenate

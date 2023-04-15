@@ -1,0 +1,6 @@
+active\_tensors\_info
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSet.active_tensors_info

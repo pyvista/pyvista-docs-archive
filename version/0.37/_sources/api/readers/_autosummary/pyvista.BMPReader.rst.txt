@@ -1,0 +1,7 @@
+﻿pyvista.BMPReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: BMPReader
+   :members:

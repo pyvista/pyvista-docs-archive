@@ -1,0 +1,6 @@
+clip\_scalar
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.clip_scalar

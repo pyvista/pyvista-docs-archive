@@ -1,0 +1,6 @@
+vector\_3d
+==========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: CGNSReader.vector_3d

@@ -1,0 +1,5 @@
+﻿pyvista.examples.planets
+========================
+
+.. automodule:: pyvista.examples.planets
+   :members:

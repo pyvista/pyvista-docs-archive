@@ -1,0 +1,6 @@
+slice\_along\_line
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.slice_along_line

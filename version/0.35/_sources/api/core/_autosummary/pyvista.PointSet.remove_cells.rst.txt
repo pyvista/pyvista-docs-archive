@@ -1,0 +1,6 @@
+remove\_cells
+=============
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.remove_cells

@@ -1,0 +1,43 @@
+﻿pyvista.NRRDReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: NRRDReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      NRRDReader.hide_progress
+      
+      
+      NRRDReader.read
+      
+      
+      NRRDReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      NRRDReader.path
+      
+      
+      NRRDReader.reader
+      
+   
+   

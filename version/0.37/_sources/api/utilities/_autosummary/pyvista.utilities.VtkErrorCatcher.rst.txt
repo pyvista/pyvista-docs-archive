@@ -1,0 +1,7 @@
+﻿pyvista.utilities.VtkErrorCatcher
+=================================
+
+.. currentmodule:: pyvista.utilities
+
+.. autoclass:: VtkErrorCatcher
+   :members:

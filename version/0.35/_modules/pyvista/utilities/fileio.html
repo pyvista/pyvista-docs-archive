@@ -1,0 +1,922 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.utilities.fileio &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/utilities/fileio and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/utilities/fileio.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/utilities/fileio.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.utilities.fileio</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Contains a dictionary that maps file extensions to VTK readers.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.misc</span> <span class="kn">import</span> <span class="n">PyvistaDeprecationWarning</span>
+
+
+<span class="k">def</span> <span class="nf">_get_ext_force</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">force_ext</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">force_ext</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">force_ext</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_ext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_ext</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract the extension of the filename.&quot;&quot;&quot;</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ext</span>
+
+
+<span class="k">def</span> <span class="nf">set_vtkwriter_mode</span><span class="p">(</span><span class="n">vtk_writer</span><span class="p">,</span> <span class="n">use_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set any vtk writer to write as binary or ascii.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vtk_writer</span><span class="p">,</span> <span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkDataWriter</span><span class="p">,</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkPLYWriter</span><span class="p">,</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkSTLWriter</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">use_binary</span><span class="p">:</span>
+            <span class="n">vtk_writer</span><span class="o">.</span><span class="n">SetFileTypeToBinary</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vtk_writer</span><span class="o">.</span><span class="n">SetFileTypeToASCII</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vtk_writer</span><span class="p">,</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkXMLWriter</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">use_binary</span><span class="p">:</span>
+            <span class="n">vtk_writer</span><span class="o">.</span><span class="n">SetDataModeToBinary</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vtk_writer</span><span class="o">.</span><span class="n">SetDataModeToAscii</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">vtk_writer</span>
+
+
+<div class="viewcode-block" id="read_legacy"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.read_legacy.html#pyvista.read_legacy">[docs]</a><span class="k">def</span> <span class="nf">read_legacy</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use VTK&#39;s legacy reader to read a file.</span>
+
+<span class="sd">    .. deprecated:: 0.35.0</span>
+<span class="sd">        This function is deprecated. Use :func:`pyvsista.read` instead.</span>
+
+<span class="sd">    This uses ``vtk.vtkDataSetReader`` to read the data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The string path to the file to read.</span>
+
+<span class="sd">    progress_bar : bool, optional</span>
+<span class="sd">        Optionally show a progress bar. Default ``False``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.DataSet</span>
+<span class="sd">        Wrapped pyvista mesh.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Load an example mesh using the legacy reader.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.read_legacy(examples.uniformfile)  # doctest:+SKIP</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;Using read_legacy is deprecated. Use pyvista.read instead&quot;</span><span class="p">,</span> <span class="n">PyvistaDeprecationWarning</span>
+    <span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="n">progress_bar</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="read"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.read.html#pyvista.read">[docs]</a><span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force_ext</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read any file type supported by ``vtk`` or ``meshio``.</span>
+
+<span class="sd">    .. deprecated:: 0.35.0</span>
+<span class="sd">        Use of `attrs` is deprecated.</span>
+<span class="sd">        Use a reader class using :func:`pyvista.get_reader`</span>
+
+<span class="sd">    Automatically determines the correct reader to use then wraps the</span>
+<span class="sd">    corresponding mesh as a pyvista object.  Attempts native ``vtk``</span>
+<span class="sd">    readers first then tries to use ``meshio``.</span>
+
+<span class="sd">    See :func:`pyvista.get_reader` for list of formats supported.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       See https://github.com/nschloe/meshio for formats supported by</span>
+<span class="sd">       ``meshio``. Be sure to install ``meshio`` with ``pip install</span>
+<span class="sd">       meshio`` if you wish to use it.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The string path to the file to read. If a list of files is</span>
+<span class="sd">        given, a :class:`pyvista.MultiBlock` dataset is returned with</span>
+<span class="sd">        each file being a separate block in the dataset.</span>
+
+<span class="sd">    attrs : dict, optional</span>
+<span class="sd">        Deprecated. Use a Reader class using :func:`pyvista.get_reader`.</span>
+<span class="sd">        A dictionary of attributes to call on the reader. Keys of</span>
+<span class="sd">        dictionary are the attribute/method names and values are the</span>
+<span class="sd">        arguments passed to those calls. If you do not have any</span>
+<span class="sd">        attributes to call, pass ``None`` as the value.</span>
+
+<span class="sd">    force_ext : str, optional</span>
+<span class="sd">        If specified, the reader will be chosen by an extension which</span>
+<span class="sd">        is different to its actual extension. For example, ``&#39;.vts&#39;``,</span>
+<span class="sd">        ``&#39;.vtu&#39;``.</span>
+
+<span class="sd">    file_format : str, optional</span>
+<span class="sd">        Format of file to read with meshio.</span>
+
+<span class="sd">    progress_bar : bool, optional</span>
+<span class="sd">        Optionally show a progress bar. Default ``False``. Ignored when using</span>
+<span class="sd">        ``meshio``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.DataSet</span>
+<span class="sd">        Wrapped PyVista dataset.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Load an example mesh.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.read(examples.antfile)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.plot(cpos=&#39;xz&#39;)</span>
+
+<span class="sd">    Load a vtk file.</span>
+
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.read(&#39;my_mesh.vtk&#39;)  # doctest:+SKIP</span>
+
+<span class="sd">    Load a meshio file.</span>
+
+<span class="sd">    &gt;&gt;&gt; mesh = pyvista.read(&quot;mesh.obj&quot;)  # doctest:+SKIP</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">file_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">force_ext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Only one of `file_format` and `force_ext` may be specified.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">multi</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">MultiBlock</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">each</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">each</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">multi</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">each</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="n">file_format</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">multi</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File (</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">) not found&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Read file using meshio.read if file_format is present</span>
+    <span class="k">if</span> <span class="n">file_format</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">read_meshio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">file_format</span><span class="p">)</span>
+
+    <span class="n">ext</span> <span class="o">=</span> <span class="n">_get_ext_force</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">force_ext</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;.e&#39;</span><span class="p">,</span> <span class="s1">&#39;.exo&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">read_exodus</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">get_reader</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">force_ext</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># if using force_ext, we are explicitly only using vtk readers</span>
+        <span class="k">if</span> <span class="n">force_ext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;This file was not able to be automatically read by pvista.&quot;</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">meshio._exceptions</span> <span class="kn">import</span> <span class="n">ReadError</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">read_meshio</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ReadError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;This file was not able to be automatically read by pyvista.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">observer</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">Observer</span><span class="p">()</span>
+        <span class="n">observer</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">reader</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_apply_attrs_to_reader</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">progress_bar</span><span class="p">:</span>
+            <span class="n">reader</span><span class="o">.</span><span class="n">show_progress</span><span class="p">()</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">observer</span><span class="o">.</span><span class="n">has_event_occurred</span><span class="p">():</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The VTK reader `</span><span class="si">{</span><span class="n">reader</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">GetClassName</span><span class="p">()</span><span class="si">}</span><span class="s2">` in pyvista reader `</span><span class="si">{</span><span class="n">reader</span><span class="si">}</span><span class="s2">` raised an error&quot;</span>
+                <span class="s2">&quot;while reading the file.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&quot;</span><span class="si">{</span><span class="n">observer</span><span class="o">.</span><span class="n">get_message</span><span class="p">()</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">mesh</span></div>
+
+
+<span class="k">def</span> <span class="nf">_apply_attrs_to_reader</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;For a given pyvista reader, call methods according to attrs.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    reader : pyvista.BaseReader</span>
+<span class="sd">        Reader to call methods on.</span>
+
+<span class="sd">    attrs : dict</span>
+<span class="sd">        Mapping of methods to call on reader.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;attrs use is deprecated.  Use a Reader class for more flexible control&quot;</span><span class="p">,</span>
+        <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">attr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">reader</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="p">]</span>
+            <span class="n">attr</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">attr</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="read_texture"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.read_texture.html#pyvista.read_texture">[docs]</a><span class="k">def</span> <span class="nf">read_texture</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a texture from an image file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The path of the texture file to read.</span>
+
+<span class="sd">    attrs : dict, optional</span>
+<span class="sd">        A dictionary of attributes to call on the reader. Keys of</span>
+<span class="sd">        dictionary are the attribute/method names and values are the</span>
+<span class="sd">        arguments passed to those calls. If you do not have any</span>
+<span class="sd">        attributes to call, pass ``None`` as the value.</span>
+
+<span class="sd">    progress_bar : bool, optional</span>
+<span class="sd">        Optionally show a progress bar.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.Texture</span>
+<span class="sd">        PyVista texture object.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Read in an example jpg map file as a texture.</span>
+
+<span class="sd">    &gt;&gt;&gt; import os</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; os.path.basename(examples.mapfile)</span>
+<span class="sd">    &#39;2k_earth_daymap.jpg&#39;</span>
+<span class="sd">    &gt;&gt;&gt; texture = pyvista.read_texture(examples.mapfile)</span>
+<span class="sd">    &gt;&gt;&gt; type(texture)</span>
+<span class="sd">    &lt;class &#39;pyvista.core.objects.Texture&#39;&gt;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># initialize the reader using the extension to find it</span>
+
+        <span class="n">image</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="n">progress_bar</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">n_points</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Problem reading the image with VTK.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Texture</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="c1"># Otherwise, use the imageio reader</span>
+        <span class="k">pass</span>
+    <span class="kn">import</span> <span class="nn">imageio</span>
+
+    <span class="k">return</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Texture</span><span class="p">(</span><span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="read_exodus"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.read_exodus.html#pyvista.read_exodus">[docs]</a><span class="k">def</span> <span class="nf">read_exodus</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">,</span>
+    <span class="n">animate_mode_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">apply_displacements</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">displacement_magnitude</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">read_point_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">read_cell_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">enabled_sidesets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read an ExodusII file (``&#39;.e&#39;`` or ``&#39;.exo&#39;``).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The path to the exodus file to read.</span>
+
+<span class="sd">    animate_mode_shapes : bool, optional</span>
+<span class="sd">        When ``True`` then this reader will report a continuous time</span>
+<span class="sd">        range [0,1] and animate the displacements in a periodic</span>
+<span class="sd">        sinusoid.</span>
+
+<span class="sd">    apply_displacements : bool, optional</span>
+<span class="sd">        Geometric locations can include displacements. When ``True``,</span>
+<span class="sd">        the nodal positions are &#39;displaced&#39; by the standard exodus</span>
+<span class="sd">        displacement vector. If displacements are turned off, the user</span>
+<span class="sd">        can explicitly add them by applying a warp filter.</span>
+
+<span class="sd">    displacement_magnitude : bool, optional</span>
+<span class="sd">        This is a number between 0 and 1 that is used to scale the</span>
+<span class="sd">        ``DisplacementMagnitude`` in a sinusoidal pattern.</span>
+
+<span class="sd">    read_point_data : bool, optional</span>
+<span class="sd">        Read in data associated with points.  Default ``True``.</span>
+
+<span class="sd">    read_cell_data : bool, optional</span>
+<span class="sd">        Read in data associated with cells.  Default ``True``.</span>
+
+<span class="sd">    enabled_sidesets : str or int, optional</span>
+<span class="sd">        The name of the array that store the mapping from side set</span>
+<span class="sd">        cells back to the global id of the elements they bound.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.DataSet</span>
+<span class="sd">        Wrapped PyVista dataset.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; data = pv.read_exodus(&#39;mymesh.exo&#39;)  # doctest:+SKIP</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># lazy import here to avoid loading module on import pyvista</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">vtkmodules.vtkIOExodus</span> <span class="kn">import</span> <span class="n">vtkExodusIIReader</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">vtk</span> <span class="kn">import</span> <span class="n">vtkExodusIIReader</span>
+
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">vtkExodusIIReader</span><span class="p">()</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">SetFileName</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">UpdateInformation</span><span class="p">()</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">SetAnimateModeShapes</span><span class="p">(</span><span class="n">animate_mode_shapes</span><span class="p">)</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">SetApplyDisplacements</span><span class="p">(</span><span class="n">apply_displacements</span><span class="p">)</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">SetDisplacementMagnitude</span><span class="p">(</span><span class="n">displacement_magnitude</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">read_point_data</span><span class="p">:</span>  <span class="c1"># read in all point data variables</span>
+        <span class="n">reader</span><span class="o">.</span><span class="n">SetAllArrayStatus</span><span class="p">(</span><span class="n">vtkExodusIIReader</span><span class="o">.</span><span class="n">NODAL</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">read_cell_data</span><span class="p">:</span>  <span class="c1"># read in all cell data variables</span>
+        <span class="n">reader</span><span class="o">.</span><span class="n">SetAllArrayStatus</span><span class="p">(</span><span class="n">vtkExodusIIReader</span><span class="o">.</span><span class="n">ELEM_BLOCK</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">enabled_sidesets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">enabled_sidesets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">GetNumberOfSideSetArrays</span><span class="p">()))</span>
+
+    <span class="k">for</span> <span class="n">sideset</span> <span class="ow">in</span> <span class="n">enabled_sidesets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sideset</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">GetSideSetArrayName</span><span class="p">(</span><span class="n">sideset</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sideset</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">sideset</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not parse sideset ID/name: </span><span class="si">{</span><span class="n">sideset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">reader</span><span class="o">.</span><span class="n">SetSideSetArrayStatus</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">reader</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span></div>
+
+
+<span class="k">def</span> <span class="nf">read_plot3d</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">q_filenames</span><span class="o">=</span><span class="p">(),</span> <span class="n">auto_detect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a Plot3D grid file (e.g., grid.in) and optional q file(s).</span>
+
+<span class="sd">    .. deprecated:: 0.35.0</span>
+<span class="sd">        This function is deprecated and will be removed in a future version.</span>
+<span class="sd">        Use :class:`pyvista.MultiBlockPlot3DReader`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The string filename to the data file to read.</span>
+
+<span class="sd">    q_filenames : str or tuple(str), optional</span>
+<span class="sd">        The string filename of the q-file, or iterable of such</span>
+<span class="sd">        filenames.</span>
+
+<span class="sd">    auto_detect : bool, optional</span>
+<span class="sd">        When this option is turned on, the reader will try to figure</span>
+<span class="sd">        out the values of various options such as byte order, byte</span>
+<span class="sd">        count etc. Default is ``True``.</span>
+
+<span class="sd">    attrs : dict, optional</span>
+<span class="sd">        A dictionary of attributes to call on the reader. Keys of</span>
+<span class="sd">        dictionary are the attribute/method names and values are the</span>
+<span class="sd">        arguments passed to those calls. If you do not have any</span>
+<span class="sd">        attributes to call, pass ``None`` as the value.</span>
+
+<span class="sd">    progress_bar : bool, optional</span>
+<span class="sd">        Optionally show a progress bar.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.MultiBlock</span>
+<span class="sd">        Data read from the file.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;Using read_plot3d is deprecated.  Use :class:`pyvista.MultiBlockPlot3DReader`&quot;</span><span class="p">,</span>
+        <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">_process_filename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">MultiBlockPlot3DReader</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">add_q_files</span><span class="p">(</span><span class="n">q_filenames</span><span class="p">)</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">auto_detect_format</span> <span class="o">=</span> <span class="n">auto_detect</span>
+    <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_apply_attrs_to_reader</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">progress_bar</span><span class="p">:</span>
+        <span class="n">reader</span><span class="o">.</span><span class="n">show_progress</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">from_meshio</span><span class="p">(</span><span class="n">mesh</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a ``meshio`` mesh instance to a PyVista mesh.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># meshio&lt;5.0 compatibility</span>
+        <span class="kn">from</span> <span class="nn">meshio.vtk._vtk</span> <span class="kn">import</span> <span class="n">meshio_to_vtk_type</span><span class="p">,</span> <span class="n">vtk_type_to_numnodes</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="kn">from</span> <span class="nn">meshio._vtk_common</span> <span class="kn">import</span> <span class="n">meshio_to_vtk_type</span>
+        <span class="kn">from</span> <span class="nn">meshio.vtk._vtk_42</span> <span class="kn">import</span> <span class="n">vtk_type_to_numnodes</span>
+
+    <span class="c1"># Extract cells from meshio.Mesh object</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cell_type</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">next_offset</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">vtk_type</span> <span class="o">=</span> <span class="n">meshio_to_vtk_type</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">type</span><span class="p">]</span>
+        <span class="n">numnodes</span> <span class="o">=</span> <span class="n">vtk_type_to_numnodes</span><span class="p">[</span><span class="n">vtk_type</span><span class="p">]</span>
+        <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">numnodes</span><span class="p">),</span> <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+        <span class="n">cell_type</span> <span class="o">+=</span> <span class="p">[</span><span class="n">vtk_type</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">VTK9</span><span class="p">:</span>
+            <span class="n">offset</span> <span class="o">+=</span> <span class="p">[</span><span class="n">next_offset</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">numnodes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">))]</span>
+            <span class="n">next_offset</span> <span class="o">=</span> <span class="n">offset</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">numnodes</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Extract cell data from meshio.Mesh object</span>
+    <span class="n">cell_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cell_data</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="c1"># Create pyvista.UnstructuredGrid object</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">points</span>
+    <span class="k">if</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">),</span> <span class="mi">1</span><span class="p">))))</span>
+
+    <span class="k">if</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">VTK9</span><span class="p">:</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cells</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cell_type</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">offset</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cells</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cell_type</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Set point data</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+
+    <span class="c1"># Set cell data</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">cell_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cell_data</span><span class="p">)</span>
+
+    <span class="c1"># Call datatype-specific post-load processing</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">_post_file_load_processing</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">grid</span>
+
+
+<span class="k">def</span> <span class="nf">read_meshio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read any mesh file using meshio.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">meshio</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;To use this feature install meshio with:</span><span class="se">\n\n</span><span class="s2">pip install meshio&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Make sure relative paths will work</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">)))</span>
+    <span class="c1"># Read mesh file</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">meshio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">file_format</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">from_meshio</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="save_meshio"><a class="viewcode-back" href="../../../api/utilities/_autosummary/pyvista.save_meshio.html#pyvista.save_meshio">[docs]</a><span class="k">def</span> <span class="nf">save_meshio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save mesh to file using meshio.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Filename to save the mesh to.</span>
+
+<span class="sd">    mesh : pyvista.DataSet</span>
+<span class="sd">        Any PyVista mesh/spatial data type.</span>
+
+<span class="sd">    file_format : str, optional</span>
+<span class="sd">        File type for meshio to save.  For example ``&#39;.bdf&#39;``.  This</span>
+<span class="sd">        is normally inferred from the extension but this can be</span>
+<span class="sd">        overridden.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        Additional keyword arguments.  See</span>
+<span class="sd">        ``meshio.write_points_cells`` for more details.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Save a pyvista sphere to a Abaqus data file.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; sphere = pyvista.Sphere()</span>
+<span class="sd">    &gt;&gt;&gt; pyvista.save_meshio(&#39;mymesh.inp&#39;, sphere)  # doctest:+SKIP</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">meshio</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;To use this feature install meshio with:</span><span class="se">\n\n</span><span class="s2">pip install meshio&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># for meshio&lt;5.0 compatibility</span>
+        <span class="kn">from</span> <span class="nn">meshio.vtk._vtk</span> <span class="kn">import</span> <span class="n">vtk_to_meshio_type</span>
+    <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722 pragma: no cover</span>
+        <span class="kn">from</span> <span class="nn">meshio._vtk_common</span> <span class="kn">import</span> <span class="n">vtk_to_meshio_type</span>
+
+    <span class="c1"># Make sure relative paths will work</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">)))</span>
+
+    <span class="c1"># Cast to pyvista.UnstructuredGrid</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">):</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cast_to_unstructured_grid</span><span class="p">()</span>
+
+    <span class="c1"># Copy useful arrays to avoid repeated calls to properties</span>
+    <span class="n">vtk_offset</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">offset</span>
+    <span class="n">vtk_cells</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cells</span>
+    <span class="n">vtk_cell_type</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">celltypes</span>
+
+    <span class="c1"># Check that meshio supports all cell types in input mesh</span>
+    <span class="n">pixel_voxel</span> <span class="o">=</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">}</span>  <span class="c1"># Handle pixels and voxels</span>
+    <span class="k">for</span> <span class="n">cell_type</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vtk_cell_type</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">cell_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vtk_to_meshio_type</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="n">cell_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pixel_voxel</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;meshio does not support VTK type </span><span class="si">{</span><span class="n">cell_type</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get cells</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">offset</span><span class="p">,</span> <span class="n">cell_type</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vtk_offset</span><span class="p">,</span> <span class="n">vtk_cell_type</span><span class="p">):</span>
+        <span class="n">numnodes</span> <span class="o">=</span> <span class="n">vtk_cells</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="n">c</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">VTK9</span><span class="p">:</span>  <span class="c1"># must offset by cell count</span>
+            <span class="n">cell</span> <span class="o">=</span> <span class="n">vtk_cells</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">c</span> <span class="p">:</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">numnodes</span><span class="p">]</span>
+            <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cell</span> <span class="o">=</span> <span class="n">vtk_cells</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">numnodes</span><span class="p">]</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">cell</span>
+            <span class="k">if</span> <span class="n">cell_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pixel_voxel</span>
+            <span class="k">else</span> <span class="n">cell</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="n">cell_type</span> <span class="o">==</span> <span class="mi">8</span>
+            <span class="k">else</span> <span class="n">cell</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+        <span class="p">)</span>
+        <span class="n">cell_type</span> <span class="o">=</span> <span class="n">cell_type</span> <span class="k">if</span> <span class="n">cell_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pixel_voxel</span> <span class="k">else</span> <span class="n">cell_type</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">cell_type</span> <span class="o">=</span> <span class="n">vtk_to_meshio_type</span><span class="p">[</span><span class="n">cell_type</span><span class="p">]</span> <span class="k">if</span> <span class="n">cell_type</span> <span class="o">!=</span> <span class="mi">7</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;polygon</span><span class="si">{</span><span class="n">numnodes</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">cells</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_type</span><span class="p">:</span>
+            <span class="n">cells</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cell_type</span><span class="p">,</span> <span class="p">[</span><span class="n">cell</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+        <span class="n">cells</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1"># Get point data</span>
+    <span class="n">point_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="c1"># Get cell data</span>
+    <span class="n">vtk_cell_data</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cell_data</span>
+    <span class="n">n_cells</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">cell_data</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">):</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n_cells</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vtk_cell_data</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">if</span> <span class="n">vtk_cell_data</span>
+        <span class="k">else</span> <span class="p">{}</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Save using meshio</span>
+    <span class="n">meshio</span><span class="o">.</span><span class="n">write_points_cells</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+        <span class="n">points</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">points</span><span class="p">),</span>
+        <span class="n">cells</span><span class="o">=</span><span class="n">cells</span><span class="p">,</span>
+        <span class="n">point_data</span><span class="o">=</span><span class="n">point_data</span><span class="p">,</span>
+        <span class="n">cell_data</span><span class="o">=</span><span class="n">cell_data</span><span class="p">,</span>
+        <span class="n">file_format</span><span class="o">=</span><span class="n">file_format</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_process_filename</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">)))</span>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

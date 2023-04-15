@@ -1,0 +1,6 @@
+download\_crater\_imagery
+=========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_crater_imagery

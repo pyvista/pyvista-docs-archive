@@ -1,0 +1,6 @@
+load\_boundary\_patch
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: CGNSReader.load_boundary_patch

@@ -1,0 +1,6 @@
+add\_field\_array
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.add_field_array

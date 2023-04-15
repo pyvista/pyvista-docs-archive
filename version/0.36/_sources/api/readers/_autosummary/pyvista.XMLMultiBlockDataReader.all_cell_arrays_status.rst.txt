@@ -1,0 +1,6 @@
+all\_cell\_arrays\_status
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: XMLMultiBlockDataReader.all_cell_arrays_status

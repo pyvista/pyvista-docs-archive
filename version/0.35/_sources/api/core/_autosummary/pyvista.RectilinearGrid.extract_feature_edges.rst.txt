@@ -1,0 +1,6 @@
+extract\_feature\_edges
+=======================
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.extract_feature_edges

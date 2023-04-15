@@ -1,0 +1,6 @@
+x
+=
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: AreaPlot.x

@@ -1,0 +1,6 @@
+active\_scalars
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSet.active_scalars

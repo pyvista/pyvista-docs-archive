@@ -1,0 +1,43 @@
+﻿pyvista.PTSReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PTSReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PTSReader.hide_progress
+      
+      
+      PTSReader.read
+      
+      
+      PTSReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      PTSReader.path
+      
+      
+      PTSReader.reader
+      
+   
+   

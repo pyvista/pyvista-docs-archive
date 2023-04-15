@@ -1,0 +1,6 @@
+download\_vtk\_logo
+===================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_vtk_logo

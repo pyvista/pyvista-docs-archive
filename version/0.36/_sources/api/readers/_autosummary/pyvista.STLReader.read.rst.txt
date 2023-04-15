@@ -1,0 +1,6 @@
+read
+====
+
+.. currentmodule:: pyvista
+
+.. automethod:: STLReader.read

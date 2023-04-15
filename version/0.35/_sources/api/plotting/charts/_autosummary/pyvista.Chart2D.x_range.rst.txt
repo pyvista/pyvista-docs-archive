@@ -1,0 +1,6 @@
+x\_range
+========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.x_range

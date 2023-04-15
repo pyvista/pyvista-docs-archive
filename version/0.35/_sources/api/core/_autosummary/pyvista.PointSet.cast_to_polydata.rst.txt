@@ -1,0 +1,6 @@
+cast\_to\_polydata
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.cast_to_polydata

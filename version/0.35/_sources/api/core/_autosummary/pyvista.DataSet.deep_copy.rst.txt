@@ -1,0 +1,6 @@
+deep\_copy
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.deep_copy

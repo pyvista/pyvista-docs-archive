@@ -1,0 +1,1160 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.plotting.actor &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyvista/plotting/actor';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <h1>Source code for pyvista.plotting.actor</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Wrap vtkActor.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.misc</span> <span class="kn">import</span> <span class="n">no_new_attr</span>
+
+<span class="kn">from</span> <span class="nn">._property</span> <span class="kn">import</span> <span class="n">Property</span>
+<span class="kn">from</span> <span class="nn">.mapper</span> <span class="kn">import</span> <span class="n">_BaseMapper</span>
+
+
+<div class="viewcode-block" id="Actor"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.Actor.html#pyvista.Actor">[docs]</a><span class="nd">@no_new_attr</span>
+<span class="k">class</span> <span class="nc">Actor</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap vtkActor.</span>
+
+<span class="sd">    This class represents the geometry &amp; properties in a rendered</span>
+<span class="sd">    scene. Normally, a :class:`pyvista.Actor` is constructed from</span>
+<span class="sd">    :func:`pyvista.Plotter.add_mesh`, but there may be times when it is more</span>
+<span class="sd">    convenient to construct an actor directly from a</span>
+<span class="sd">    :class:`pyvista.DataSetMapper`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mapper : pyvista.DataSetMapper, optional</span>
+<span class="sd">        DataSetMapper.</span>
+
+<span class="sd">    prop : pyvista.Property, optional</span>
+<span class="sd">        Property of the actor.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create an actor without using :class:`pyvista.Plotter`.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">    &gt;&gt;&gt; mapper = pv.DataSetMapper(mesh)</span>
+<span class="sd">    &gt;&gt;&gt; actor = pv.Actor(mapper=mapper)</span>
+<span class="sd">    &gt;&gt;&gt; actor  # doctest:+SKIP</span>
+<span class="sd">    Actor (0x7f54c4d65ee0)</span>
+<span class="sd">      Center:                     (0.0, 0.0, 0.0)</span>
+<span class="sd">      Pickable:                   True</span>
+<span class="sd">      Position:                   (0.0, 0.0, 0.0)</span>
+<span class="sd">      Scale:                      (1.0, 1.0, 1.0)</span>
+<span class="sd">      Visible:                    True</span>
+<span class="sd">      X Bounds                    -4.993E-01, 4.993E-01</span>
+<span class="sd">      Y Bounds                    -4.965E-01, 4.965E-01</span>
+<span class="sd">      Z Bounds                    -5.000E-01, 5.000E-01</span>
+<span class="sd">      User matrix:                Unset</span>
+<span class="sd">      Has mapper:                 True</span>
+<span class="sd">    ...</span>
+
+<span class="sd">    Change the actor properties and plot the actor.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">    &gt;&gt;&gt; mapper = pv.DataSetMapper(mesh)</span>
+<span class="sd">    &gt;&gt;&gt; actor = pv.Actor(mapper=mapper)</span>
+<span class="sd">    &gt;&gt;&gt; actor.prop.color = &#39;blue&#39;</span>
+<span class="sd">    &gt;&gt;&gt; actor.plot()</span>
+
+<span class="sd">    Create an actor using the :class:`pyvista.Plotter` and then change the</span>
+<span class="sd">    visibility of the actor.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">    &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">    &gt;&gt;&gt; actor = pl.add_mesh(mesh)</span>
+<span class="sd">    &gt;&gt;&gt; actor.visibility = False</span>
+<span class="sd">    &gt;&gt;&gt; actor.visibility</span>
+<span class="sd">    False</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_renderer</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mapper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize actor.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">mapper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mapper</span> <span class="o">=</span> <span class="n">mapper</span>
+        <span class="k">if</span> <span class="n">prop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prop</span> <span class="o">=</span> <span class="n">Property</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">mapper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_BaseMapper</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the mapper of the actor.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create an actor and assign a mapper to it.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; dataset = pv.Sphere()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pv.Actor()</span>
+<span class="sd">        &gt;&gt;&gt; actor.mapper = pv.DataSetMapper(dataset)</span>
+<span class="sd">        &gt;&gt;&gt; actor.mapper  # doctest:+SKIP</span>
+<span class="sd">        DataSetMapper (0x7f34dcec5040)</span>
+<span class="sd">          Scalar visibility:           True</span>
+<span class="sd">          Scalar range:                (0.0, 1.0)</span>
+<span class="sd">          Interpolate before mapping:  False</span>
+<span class="sd">          Scalar map mode:             default</span>
+<span class="sd">          Color mode:                  direct</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">        Attached dataset:</span>
+<span class="sd">        PolyData (0x7f34dcec5f40)</span>
+<span class="sd">          N Cells:  1680</span>
+<span class="sd">          N Points: 842</span>
+<span class="sd">          N Strips: 0</span>
+<span class="sd">          X Bounds: -4.993e-01, 4.993e-01</span>
+<span class="sd">          Y Bounds: -4.965e-01, 4.965e-01</span>
+<span class="sd">          Z Bounds: -5.000e-01, 5.000e-01</span>
+<span class="sd">          N Arrays: 1</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetMapper</span><span class="p">()</span>
+
+    <span class="nd">@mapper</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">mapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">prop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the property of this actor.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Modify the properties of an actor after adding a dataset to the plotter.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(pv.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; prop = actor.prop</span>
+<span class="sd">        &gt;&gt;&gt; prop.diffuse = 0.6</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetProperty</span><span class="p">()</span>
+
+    <span class="nd">@prop</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">prop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">Property</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">texture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the actor texture.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The mapper dataset must have texture coordinates for the texture to be</span>
+<span class="sd">        used.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create an actor and add a texture to it. Note how the</span>
+<span class="sd">        :class:`pyvista.PolyData` has texture coordinates by default.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">        &gt;&gt;&gt; plane = pv.Plane()</span>
+<span class="sd">        &gt;&gt;&gt; plane.active_t_coords is not None</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(plane)</span>
+<span class="sd">        &gt;&gt;&gt; actor.texture = examples.download_masonry_texture()</span>
+<span class="sd">        &gt;&gt;&gt; actor.texture  # doctest:+SKIP</span>
+<span class="sd">        &lt;Texture(0x378c920) at 0x7f7af577e700&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetTexture</span><span class="p">()</span>
+
+    <span class="nd">@texture</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">texture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetTexture</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">renderer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the renderer associated with this actor.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span>
+
+    <span class="nd">@renderer</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">renderer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ProxyType</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Only a ProxyType can be assigned to `renderer`&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span> <span class="o">=</span> <span class="n">obj</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">memory_address</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the memory address of this actor.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetAddressAsString</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pickable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set actor pickability.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create an actor using the :class:`pyvista.Plotter` and then make the</span>
+<span class="sd">        actor unpickable.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(pv.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; actor.pickable = False</span>
+<span class="sd">        &gt;&gt;&gt; actor.pickable</span>
+<span class="sd">        False</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetPickable</span><span class="p">())</span>
+
+    <span class="nd">@pickable</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">pickable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetPickable</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set actor visibility.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create an actor using the :class:`pyvista.Plotter` and then change the</span>
+<span class="sd">        visibility of the actor.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(pv.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; actor.visibility = False</span>
+<span class="sd">        &gt;&gt;&gt; actor.visibility</span>
+<span class="sd">        False</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetVisibility</span><span class="p">())</span>
+
+    <span class="nd">@visibility</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetVisibility</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set actor scale.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create an actor using the :class:`pyvista.Plotter` and then change the</span>
+<span class="sd">        scale of the actor.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(pv.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; actor.scale = (2.0, 2.0, 2.0)</span>
+<span class="sd">        &gt;&gt;&gt; actor.scale</span>
+<span class="sd">        (2.0, 2.0, 2.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetScale</span><span class="p">()</span>
+
+    <span class="nd">@scale</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetScale</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Actor.plot"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.Actor.html#pyvista.Actor.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot just the actor.</span>
+
+<span class="sd">        This may be useful when interrogating or debugging individual actors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs : dict, optional</span>
+<span class="sd">            Optional keyword arguments passed to :func:`pyvista.Plotter.show`.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create an actor without the :class:`pyvista.Plotter`, change its</span>
+<span class="sd">        properties, and plot it.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">        &gt;&gt;&gt; mapper = pv.DataSetMapper(mesh)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pv.Actor(mapper=mapper)</span>
+<span class="sd">        &gt;&gt;&gt; actor.prop.color = &#39;red&#39;</span>
+<span class="sd">        &gt;&gt;&gt; actor.prop.show_edges = True</span>
+<span class="sd">        &gt;&gt;&gt; actor.plot()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the actor position.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Change the position of an actor. Note how this does not change the</span>
+<span class="sd">        position of the underlying dataset, just the relative location of the</span>
+<span class="sd">        actor in the :class:`pyvista.Plotter`.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Sphere()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(mesh, color=&#39;b&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh, color=&#39;r&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor.position = (0, 0, 1)  # shifts the red sphere up</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetPosition</span><span class="p">()</span>
+
+    <span class="nd">@position</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetPosition</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Actor.rotate_x"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.Actor.html#pyvista.Actor.rotate_x">[docs]</a>    <span class="k">def</span> <span class="nf">rotate_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate the actor about the x axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        angle : float</span>
+<span class="sd">            Angle to rotate the actor about the x axis in degrees.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Rotate the actor about the x axis 45 degrees. Note how this does not</span>
+<span class="sd">        change the location of the underlying dataset.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(mesh, color=&#39;b&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(</span>
+<span class="sd">        ...     mesh, color=&#39;r&#39;, style=&#39;wireframe&#39;, line_width=5, lighting=False,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; actor.rotate_x(45)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show_axes()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RotateX</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Actor.rotate_y"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.Actor.html#pyvista.Actor.rotate_y">[docs]</a>    <span class="k">def</span> <span class="nf">rotate_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate the actor about the y axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        angle : float</span>
+<span class="sd">            Angle to rotate the actor about the y axis in degrees.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Rotate the actor about the y axis 45 degrees. Note how this does not</span>
+<span class="sd">        change the location of the underlying dataset.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(mesh, color=&#39;b&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(</span>
+<span class="sd">        ...     mesh, color=&#39;r&#39;, style=&#39;wireframe&#39;, line_width=5, lighting=False,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; actor.rotate_y(45)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show_axes()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RotateY</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Actor.rotate_z"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.Actor.html#pyvista.Actor.rotate_z">[docs]</a>    <span class="k">def</span> <span class="nf">rotate_z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate the actor about the z axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        angle : float</span>
+<span class="sd">            Angle to rotate the actor about the z axis in degrees.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Rotate the actor about the Z axis 45 degrees. Note how this does not</span>
+<span class="sd">        change the location of the underlying dataset.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(mesh, color=&#39;b&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(</span>
+<span class="sd">        ...     mesh, color=&#39;r&#39;, style=&#39;wireframe&#39;, line_width=5, lighting=False,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; actor.rotate_z(45)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show_axes()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RotateZ</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the actor orientation.</span>
+
+<span class="sd">        Orientation is defined as the rotation from the global axes in degrees</span>
+<span class="sd">        about the actor&#39;s x, y, and z axes.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Show that the orientation changes with rotation.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh)</span>
+<span class="sd">        &gt;&gt;&gt; actor.rotate_x(90)</span>
+<span class="sd">        &gt;&gt;&gt; actor.orientation  # doctest:+SKIP</span>
+<span class="sd">        (90, 0, 0)</span>
+
+<span class="sd">        Set the orientation directly.</span>
+
+<span class="sd">        &gt;&gt;&gt; actor.orientation = (0, 45, 45)</span>
+<span class="sd">        &gt;&gt;&gt; actor.orientation  # doctest:+SKIP</span>
+<span class="sd">        (0, 45, 45)</span>
+
+<span class="sd">        Reorient just the actor and plot it. Note how the actor is rotated</span>
+<span class="sd">        about its own axes as defined by its position.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(mesh, color=&#39;b&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(</span>
+<span class="sd">        ...     mesh, color=&#39;r&#39;, style=&#39;wireframe&#39;, line_width=5, lighting=False,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; actor.position = (0, 0, 1)</span>
+<span class="sd">        &gt;&gt;&gt; actor.orientation = (45, 0, 0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show_axes()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetOrientation</span><span class="p">()</span>
+
+    <span class="nd">@orientation</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetOrientation</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Actor.copy"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.Actor.html#pyvista.Actor.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Actor&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a copy of this actor.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        deep : bool, default: True</span>
+<span class="sd">            Create a shallow or deep copy of the actor. A deep copy will have a</span>
+<span class="sd">            new property and mapper, while a shallow copy will use the mapper</span>
+<span class="sd">            and property of this actor.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.Actor</span>
+<span class="sd">            Deep or shallow copy of this actor.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create an actor of a cube by adding it to a :class:`pyvista.Plotter`</span>
+<span class="sd">        and then copy the actor, change the properties, and add it back to the</span>
+<span class="sd">        :class:`pyvista.Plotter`.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh, color=&#39;b&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; new_actor = actor.copy()</span>
+<span class="sd">        &gt;&gt;&gt; new_actor.prop.style = &#39;wireframe&#39;</span>
+<span class="sd">        &gt;&gt;&gt; new_actor.prop.line_width = 5</span>
+<span class="sd">        &gt;&gt;&gt; new_actor.prop.color = &#39;r&#39;</span>
+<span class="sd">        &gt;&gt;&gt; new_actor.prop.lighting = False</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_actor(new_actor)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_actor</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">deep</span><span class="p">:</span>
+            <span class="n">new_actor</span><span class="o">.</span><span class="n">mapper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapper</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">new_actor</span><span class="o">.</span><span class="n">prop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prop</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_actor</span><span class="o">.</span><span class="n">ShallowCopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_actor</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Representation of the actor.&quot;&quot;&quot;</span>
+        <span class="n">mat_info</span> <span class="o">=</span> <span class="s1">&#39;Unset&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_matrix</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;Set&#39;</span>
+        <span class="n">bnd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span>
+        <span class="n">attr</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Center:                     </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Pickable:                   </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pickable</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Position:                   </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Scale:                      </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Visible:                    </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">visibility</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  X Bounds                    </span><span class="si">{</span><span class="n">bnd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">bnd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Y Bounds                    </span><span class="si">{</span><span class="n">bnd</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">bnd</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Z Bounds                    </span><span class="si">{</span><span class="n">bnd</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">bnd</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  User matrix:                </span><span class="si">{</span><span class="n">mat_info</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;  Has mapper:                 </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mapper</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prop</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapper</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">user_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the orientation matrix.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Apply a 4x4 translation to a wireframe actor. This 4x4 transformation</span>
+<span class="sd">        is effectively translates the actor by one unit in the Z direction,</span>
+<span class="sd">        rotates the actor about the Z axis by approximately 45 degrees, and</span>
+<span class="sd">        shrinks the actor by a factor of 0.5.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(mesh, color=&quot;b&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(</span>
+<span class="sd">        ...     mesh,</span>
+<span class="sd">        ...     color=&quot;r&quot;,</span>
+<span class="sd">        ...     style=&quot;wireframe&quot;,</span>
+<span class="sd">        ...     line_width=5,</span>
+<span class="sd">        ...     lighting=False,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; arr = np.array(</span>
+<span class="sd">        ...     [</span>
+<span class="sd">        ...         [0.707, -0.707, 0, 0],</span>
+<span class="sd">        ...         [0.707, 0.707, 0, 0],</span>
+<span class="sd">        ...         [0, 0, 1, 1.500001],</span>
+<span class="sd">        ...         [0, 0, 0, 2]</span>
+<span class="sd">        ...     ]</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; actor.user_matrix = arr</span>
+<span class="sd">        &gt;&gt;&gt; pl.show_axes()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetUserMatrix</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">mat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">array_from_vtkmatrix</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mat</span>
+
+    <span class="nd">@user_matrix</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">user_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">pv</span><span class="o">.</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkMatrix4x4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">vtkmatrix_from_array</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetUserMatrix</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the bounds of the actor.</span>
+
+<span class="sd">        Bounds are ``(-X, +X, -Y, +Y, -Z, +Z)``</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Cube(x_length=0.1, y_length=0.2, z_length=0.3)</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh)</span>
+<span class="sd">        &gt;&gt;&gt; actor.bounds</span>
+<span class="sd">        (-0.05, 0.05, -0.1, 0.1, -0.15, 0.15)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetBounds</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the center of the actor.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(pv.Sphere(center=(0.5, 0.5, 1)))</span>
+<span class="sd">        &gt;&gt;&gt; actor.center  # doctest:+SKIP</span>
+<span class="sd">        (0.5, 0.5, 1)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetCenter</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">backface_prop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;pv.Property&#39;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the backface property.</span>
+
+<span class="sd">        By default this property matches the frontface property</span>
+<span class="sd">        :attr:`Actor.prop`. Once accessed or modified, this backface</span>
+<span class="sd">        property becomes independent of the frontface property. In</span>
+<span class="sd">        order to restore the fallback to frontface property, assign</span>
+<span class="sd">        ``None`` to the property.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.Property</span>
+<span class="sd">            The object describing backfaces.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Clip a sphere by a plane and color the inside of the clipped sphere</span>
+<span class="sd">        light blue using the ``backface_prop``.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plane = pv.Plane(i_size=1.5, j_size=1.5)</span>
+<span class="sd">        &gt;&gt;&gt; mesh = pv.Sphere().clip_surface(plane, invert=False)</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; actor = pl.add_mesh(mesh, smooth_shading=True)</span>
+<span class="sd">        &gt;&gt;&gt; actor.backface_prop.color = &#39;lightblue&#39;</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(</span>
+<span class="sd">        ...     plane, opacity=0.25, show_edges=True, color=&#39;grey&#39;, lighting=False,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetBackfaceProperty</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetBackfaceProperty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prop</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetBackfaceProperty</span><span class="p">()</span>
+
+    <span class="nd">@backface_prop</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">backface_prop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s1">&#39;pv.Property&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetBackfaceProperty</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+</pre></div>
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

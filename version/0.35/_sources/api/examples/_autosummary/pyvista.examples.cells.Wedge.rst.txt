@@ -1,0 +1,6 @@
+﻿Wedge
+=====
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Wedge

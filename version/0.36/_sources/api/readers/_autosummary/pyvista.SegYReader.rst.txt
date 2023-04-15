@@ -1,0 +1,43 @@
+﻿pyvista.SegYReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: SegYReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      SegYReader.hide_progress
+      
+      
+      SegYReader.read
+      
+      
+      SegYReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      SegYReader.path
+      
+      
+      SegYReader.reader
+      
+   
+   

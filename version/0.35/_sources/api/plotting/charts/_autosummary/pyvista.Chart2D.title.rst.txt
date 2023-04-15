@@ -1,0 +1,6 @@
+title
+=====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.title

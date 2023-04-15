@@ -1,0 +1,6 @@
+set\_active\_tensors
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.set_active_tensors

@@ -1,0 +1,32 @@
+
+.. list-table:: Marker styles
+   :widths: 20 40 40
+   :header-rows: 1
+
+   * - Style
+     - Description
+     - Example
+
+   * - ``""``
+     - Hidden
+     - .. image:: /images/charts/ms_0.png
+
+   * - ``"x"``
+     - Cross
+     - .. image:: /images/charts/ms_1.png
+
+   * - ``"+"``
+     - Plus
+     - .. image:: /images/charts/ms_2.png
+
+   * - ``"s"``
+     - Square
+     - .. image:: /images/charts/ms_3.png
+
+   * - ``"o"``
+     - Circle
+     - .. image:: /images/charts/ms_4.png
+
+   * - ``"d"``
+     - Diamond
+     - .. image:: /images/charts/ms_5.png

@@ -1,0 +1,49 @@
+﻿pyvista.MultiBlockPlot3DReader
+==============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: MultiBlockPlot3DReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      MultiBlockPlot3DReader.add_q_files
+      
+      
+      MultiBlockPlot3DReader.hide_progress
+      
+      
+      MultiBlockPlot3DReader.read
+      
+      
+      MultiBlockPlot3DReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      MultiBlockPlot3DReader.auto_detect_format
+      
+      
+      MultiBlockPlot3DReader.path
+      
+      
+      MultiBlockPlot3DReader.reader
+      
+   
+   

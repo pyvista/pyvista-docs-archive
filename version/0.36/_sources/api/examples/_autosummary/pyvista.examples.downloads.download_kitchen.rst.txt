@@ -1,0 +1,6 @@
+download\_kitchen
+=================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_kitchen

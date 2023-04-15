@@ -1,0 +1,6 @@
+active\_datasets
+================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PVDReader.active_datasets

@@ -1,0 +1,6 @@
+﻿Empty
+=====
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Empty

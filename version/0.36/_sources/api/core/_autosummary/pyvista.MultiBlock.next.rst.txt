@@ -1,0 +1,6 @@
+next
+====
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlock.next

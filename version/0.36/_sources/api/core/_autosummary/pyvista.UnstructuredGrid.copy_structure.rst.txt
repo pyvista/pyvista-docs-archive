@@ -1,0 +1,6 @@
+copy\_structure
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.copy_structure

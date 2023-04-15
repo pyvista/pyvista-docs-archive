@@ -1,0 +1,6 @@
+download\_blood\_vessels
+========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_blood_vessels

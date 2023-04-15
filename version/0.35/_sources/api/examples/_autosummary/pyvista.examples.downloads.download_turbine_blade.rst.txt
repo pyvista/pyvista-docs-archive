@@ -1,0 +1,6 @@
+download\_turbine\_blade
+========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_turbine_blade

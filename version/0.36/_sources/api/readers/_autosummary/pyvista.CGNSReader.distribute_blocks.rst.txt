@@ -1,0 +1,6 @@
+distribute\_blocks
+==================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: CGNSReader.distribute_blocks

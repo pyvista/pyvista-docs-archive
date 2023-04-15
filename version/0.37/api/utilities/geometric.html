@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Geometric Objects &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/utilities/geometric';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Arrow" href="_autosummary/pyvista.Arrow.html" />
+    <link rel="prev" title="Utilities" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/index.html">Plotting</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Utilities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Geometric Objects</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Arrow.html">Arrow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Box.html">Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Circle.html">Circle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.CircularArc.html">CircularArc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.CircularArcFromNormal.html">CircularArcFromNormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Cone.html">Cone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Cube.html">Cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Cylinder.html">Cylinder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.CylinderStructured.html">CylinderStructured</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Disc.html">Disc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Dodecahedron.html">Dodecahedron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Icosahedron.html">Icosahedron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Line.html">Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.MultipleLines.html">MultipleLines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Tube.html">Tube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Octahedron.html">Octahedron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Plane.html">Plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.PlatonicSolid.html">PlatonicSolid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Polygon.html">Polygon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Pyramid.html">Pyramid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Rectangle.html">Rectangle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Sphere.html">Sphere</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Spline.html">Spline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Superquadric.html">Superquadric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Tetrahedron.html">Tetrahedron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Text3D.html">Text3D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Triangle.html">Triangle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/pyvista.Wavelet.html">Wavelet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parametric.html">Parametric Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">General Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../readers/index.html">Readers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="geometric-objects">
+<h1>Geometric Objects<a class="headerlink" href="#geometric-objects" title="Permalink to this heading">#</a></h1>
+<p>PyVista includes several functions to generate simple geometric
+objects.  The API reference for these functions is on this page.  For
+additional details see <a class="reference internal" href="../../examples/00-load/create-geometric-objects.html#ref-geometric-example"><span class="std std-ref">Geometric Objects</span></a> example.</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Arrow.html#pyvista.Arrow" title="pyvista.Arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Arrow</span></code></a>([start, direction, tip_length, ...])</p></td>
+<td><p>Create an arrow.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Box.html#pyvista.Box" title="pyvista.Box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Box</span></code></a>([bounds, level, quads])</p></td>
+<td><p>Create a box with solid faces for the given bounds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Circle.html#pyvista.Circle" title="pyvista.Circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Circle</span></code></a>([radius, resolution])</p></td>
+<td><p>Create a single PolyData circle defined by radius in the XY plane.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.CircularArc.html#pyvista.CircularArc" title="pyvista.CircularArc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircularArc</span></code></a>(pointa, pointb, center[, ...])</p></td>
+<td><p>Create a circular arc defined by two endpoints and a center.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.CircularArcFromNormal.html#pyvista.CircularArcFromNormal" title="pyvista.CircularArcFromNormal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircularArcFromNormal</span></code></a>(center[, resolution, ...])</p></td>
+<td><p>Create a circular arc defined by normal to the plane of the arc, and an angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Cone.html#pyvista.Cone" title="pyvista.Cone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cone</span></code></a>([center, direction, height, radius, ...])</p></td>
+<td><p>Create a cone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Cube.html#pyvista.Cube" title="pyvista.Cube"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cube</span></code></a>([center, x_length, y_length, z_length, ...])</p></td>
+<td><p>Create a cube.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Cylinder.html#pyvista.Cylinder" title="pyvista.Cylinder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cylinder</span></code></a>([center, direction, radius, ...])</p></td>
+<td><p>Create the surface of a cylinder.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.CylinderStructured.html#pyvista.CylinderStructured" title="pyvista.CylinderStructured"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CylinderStructured</span></code></a>([radius, height, center, ...])</p></td>
+<td><p>Create a cylinder mesh as a <a class="reference internal" href="../core/_autosummary/pyvista.StructuredGrid.html#pyvista.StructuredGrid" title="pyvista.StructuredGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyvista.StructuredGrid</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Disc.html#pyvista.Disc" title="pyvista.Disc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Disc</span></code></a>([center, inner, outer, normal, r_res, ...])</p></td>
+<td><p>Create a polygonal disk with a hole in the center.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Dodecahedron.html#pyvista.Dodecahedron" title="pyvista.Dodecahedron"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dodecahedron</span></code></a>([radius, center])</p></td>
+<td><p>Create a dodecahedron of a given size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Icosahedron.html#pyvista.Icosahedron" title="pyvista.Icosahedron"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Icosahedron</span></code></a>([radius, center])</p></td>
+<td><p>Create an icosahedron of a given size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Line.html#pyvista.Line" title="pyvista.Line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Line</span></code></a>([pointa, pointb, resolution])</p></td>
+<td><p>Create a line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.MultipleLines.html#pyvista.MultipleLines" title="pyvista.MultipleLines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultipleLines</span></code></a>([points])</p></td>
+<td><p>Create multiple lines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Tube.html#pyvista.Tube" title="pyvista.Tube"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tube</span></code></a>([pointa, pointb, resolution, radius, ...])</p></td>
+<td><p>Create a tube.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Octahedron.html#pyvista.Octahedron" title="pyvista.Octahedron"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Octahedron</span></code></a>([radius, center])</p></td>
+<td><p>Create an octahedron of a given size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Plane.html#pyvista.Plane" title="pyvista.Plane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Plane</span></code></a>([center, direction, i_size, j_size, ...])</p></td>
+<td><p>Create a plane.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.PlatonicSolid.html#pyvista.PlatonicSolid" title="pyvista.PlatonicSolid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlatonicSolid</span></code></a>([kind, radius, center])</p></td>
+<td><p>Create a Platonic solid of a given size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Polygon.html#pyvista.Polygon" title="pyvista.Polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polygon</span></code></a>([center, radius, normal, n_sides, fill])</p></td>
+<td><p>Create a polygon.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Pyramid.html#pyvista.Pyramid" title="pyvista.Pyramid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pyramid</span></code></a>([points])</p></td>
+<td><p>Create a pyramid defined by 5 points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Rectangle.html#pyvista.Rectangle" title="pyvista.Rectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Rectangle</span></code></a>([points])</p></td>
+<td><p>Create a rectangle defined by 4 points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Sphere.html#pyvista.Sphere" title="pyvista.Sphere"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sphere</span></code></a>([radius, center, direction, ...])</p></td>
+<td><p>Create a vtk Sphere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Spline.html#pyvista.Spline" title="pyvista.Spline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spline</span></code></a>(points[, n_points])</p></td>
+<td><p>Create a spline from points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Superquadric.html#pyvista.Superquadric" title="pyvista.Superquadric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Superquadric</span></code></a>([center, scale, size, ...])</p></td>
+<td><p>Create a superquadric.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Tetrahedron.html#pyvista.Tetrahedron" title="pyvista.Tetrahedron"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tetrahedron</span></code></a>([radius, center])</p></td>
+<td><p>Create a tetrahedron of a given size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Text3D.html#pyvista.Text3D" title="pyvista.Text3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Text3D</span></code></a>(string[, depth])</p></td>
+<td><p>Create 3D text from a string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyvista.Triangle.html#pyvista.Triangle" title="pyvista.Triangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Triangle</span></code></a>([points])</p></td>
+<td><p>Create a triangle defined by 3 points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyvista.Wavelet.html#pyvista.Wavelet" title="pyvista.Wavelet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wavelet</span></code></a>([extent, center, maximum, x_freq, ...])</p></td>
+<td><p>Create a wavelet.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/pyvista/pyvista/edit/main/doc/api/utilities/geometric.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../_sources/api/utilities/geometric.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+.. _external_examples:
+
+External Examples
+=================
+
+Here are a list of longer, more technical examples of what PyVista can do!
+
+.. caution::
+
+    Please note that these examples link to external websites.  If any of these
+    links are broken, please raise an `issue
+    <https://github.com/pyvista/pyvista/issues>`_.
+
+
+Do you have a technical processing workflow or visualization routine you would
+like to share?  If so, please consider sharing your work here submitting a PR
+at `pyvista/pyvista <https://github.com/pyvista/pyvista/>`_ and we would be
+glad to add it!
+
+
+.. grid:: 3
+   :gutter: 1
+
+
+   .. grid-item-card:: Gradient Descent Visualizer
+      :link: https://github.com/JacobBumgarner/grad-descent-visualizer
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/grad_descent_visualizer.gif
+
+   .. grid-item-card:: GmshModel
+      :link: https://gmshmodel.readthedocs.io/en/latest/
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/gmsh_model.png
+
+   .. grid-item-card:: geemap
+      :link: https://geemap.org/
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/geemap.gif
+
+   .. grid-item-card:: PteraSoftware
+      :link: https://github.com/camurban/pterasoftware
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/ptera_software.gif
+
+   .. grid-item-card:: Stéphane Laurent's artwork
+      :link: https://laustep.github.io/stlahblog/posts/MyPyVistaArtworks.html
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/Duoprism_3-30.gif
+
+   .. grid-item-card:: VesselVio
+      :link: https://jacobbumgarner.github.io/VesselVio/
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/vessel_vio.png
+
+   .. grid-item-card:: Atmospheric Convection
+      :link: https://dennissergeev.github.io/exoconvection-apj-2020/
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/atmospheric_convection.jpeg
+
+   .. grid-item-card:: Damavand Volcano
+      :link: https://nbviewer.jupyter.org/github/banesullivan/damavand-volcano/blob/master/Damavand_Volcano.ipynb
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/damavand_volcano.gif
+
+   .. grid-item-card:: Anvil Cirrus Plumes
+      :link: https://www.youtube.com/watch?v=cCPjnF_vHxw&feature=youtu.be
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/anvil_cirrus_plumes.png
+
+   .. grid-item-card:: Optimization visualization with PyVista
+      :link: https://gist.github.com/hichamjanati/6668d91848283c31ac18d801552fb582
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/optimization.gif
+
+   .. grid-item-card:: FLEM: A diffusive landscape evolution model
+      :link: https://github.com/johnjarmitage/flem
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/flem.png
+
+   .. grid-item-card:: Orvisu Demo Application
+      :link: https://github.com/BartheG/Orvisu
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/orvisu.gif
+
+   .. grid-item-card:: PyMeshFix's example gallery
+      :link: http://pymeshfix.pyvista.org/examples/index.html
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/pymeshfix.png
+
+   .. grid-item-card:: TetGen's example gallery
+      :link: http://tetgen.pyvista.org/examples/index.html
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/tetgen.png
+
+   .. grid-item-card:: PVGeo's example gallery
+      :link: https://pvgeo.org/examples/index.html
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/pvgeo.png
+
+   .. grid-item-card:: FORGE Geothermal Project
+      :link: https://forge.pvgeo.org/project/index.html
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/forge.png
+
+   .. grid-item-card:: AeroSandbox
+      :link: https://peterdsharpe.github.io/AeroSandbox/
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/AeroSandbox.png
+
+   .. grid-item-card:: OpenFOAM Rendering
+      :link: https://pswpswpsw.github.io/posts/2018/09/blog-post-modify-vtk-openfoam/
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/open-foam.png
+
+   .. grid-item-card:: 3D Rendering with Discretize
+      :link: http://discretize.simpeg.xyz/en/main/examples/plot_pyvista_laguna.html
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/discretize.png
+
+   .. grid-item-card:: 3D visualization for the Open Mining Format (omf)
+      :link: https://opengeovis.github.io/omfvista/examples/index.html
+      :text-align: center
+      :class-title: pyvista-card-title
+
+      .. image:: ../images/external-examples/omfvista.png
+
+
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+

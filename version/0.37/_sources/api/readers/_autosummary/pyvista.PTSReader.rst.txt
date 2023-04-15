@@ -1,0 +1,7 @@
+﻿pyvista.PTSReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PTSReader
+   :members:

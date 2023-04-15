@@ -1,0 +1,6 @@
+download\_bird\_texture
+=======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_bird_texture

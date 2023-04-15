@@ -1,0 +1,6 @@
+dimensions
+==========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UniformGrid.dimensions

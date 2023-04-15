@@ -1,0 +1,6 @@
+hide\_progress
+==============
+
+.. currentmodule:: pyvista
+
+.. automethod:: JPEGReader.hide_progress

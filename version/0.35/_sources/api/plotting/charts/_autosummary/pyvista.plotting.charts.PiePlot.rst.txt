@@ -1,0 +1,214 @@
+﻿pyvista.plotting.charts.PiePlot
+===============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: PiePlot
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PiePlot.override
+      
+      
+      PiePlot.toggle
+      
+      
+      PiePlot.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      PiePlot.brush
+      
+      
+      PiePlot.color
+      
+      
+      PiePlot.color_scheme
+      
+      
+      PiePlot.colors
+      
+      
+      PiePlot.data
+      
+      
+      PiePlot.label
+      
+      
+      PiePlot.labels
+      
+      
+      PiePlot.line_style
+      
+      
+      PiePlot.line_width
+      
+      
+      PiePlot.pen
+      
+      
+      PiePlot.visible
+      
+   
+   

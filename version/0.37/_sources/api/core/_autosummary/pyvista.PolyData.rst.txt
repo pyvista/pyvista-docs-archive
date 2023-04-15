@@ -1,0 +1,7 @@
+﻿pyvista.PolyData
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PolyData
+   :members:

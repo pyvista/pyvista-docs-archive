@@ -1,0 +1,43 @@
+﻿pyvista.PNGReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PNGReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PNGReader.hide_progress
+      
+      
+      PNGReader.read
+      
+      
+      PNGReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      PNGReader.path
+      
+      
+      PNGReader.reader
+      
+   
+   

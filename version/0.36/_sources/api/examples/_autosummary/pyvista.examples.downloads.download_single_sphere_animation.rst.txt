@@ -1,0 +1,6 @@
+download\_single\_sphere\_animation
+===================================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_single_sphere_animation

@@ -1,0 +1,7 @@
+﻿pyvista.StructuredGrid
+======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: StructuredGrid
+   :members:

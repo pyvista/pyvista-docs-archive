@@ -1,0 +1,6 @@
+download\_pine\_roots
+=====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_pine_roots

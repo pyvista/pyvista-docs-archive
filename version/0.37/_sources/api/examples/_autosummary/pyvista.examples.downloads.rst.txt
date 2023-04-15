@@ -1,0 +1,5 @@
+﻿pyvista.examples.downloads
+==========================
+
+.. automodule:: pyvista.examples.downloads
+   :members:

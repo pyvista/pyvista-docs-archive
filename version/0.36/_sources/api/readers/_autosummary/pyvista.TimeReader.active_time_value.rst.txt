@@ -1,0 +1,6 @@
+active\_time\_value
+===================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: TimeReader.active_time_value

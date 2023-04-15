@@ -1,0 +1,6 @@
+remove\_chart
+=============
+
+.. currentmodule:: pyvista
+
+.. automethod:: Renderer.remove_chart

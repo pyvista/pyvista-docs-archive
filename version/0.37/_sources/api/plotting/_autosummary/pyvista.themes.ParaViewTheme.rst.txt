@@ -1,0 +1,7 @@
+﻿pyvista.themes.ParaViewTheme
+============================
+
+.. currentmodule:: pyvista.themes
+
+.. autoclass:: ParaViewTheme
+   :members:

@@ -1,0 +1,6 @@
+cell\_id
+========
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.cell_id

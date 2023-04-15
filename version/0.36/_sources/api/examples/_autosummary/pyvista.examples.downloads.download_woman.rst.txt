@@ -1,0 +1,6 @@
+download\_woman
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_woman

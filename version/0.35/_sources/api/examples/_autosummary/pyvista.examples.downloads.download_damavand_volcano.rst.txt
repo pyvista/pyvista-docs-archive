@@ -1,0 +1,6 @@
+download\_damavand\_volcano
+===========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_damavand_volcano

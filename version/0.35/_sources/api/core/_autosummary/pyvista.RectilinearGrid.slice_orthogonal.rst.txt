@@ -1,0 +1,6 @@
+slice\_orthogonal
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.slice_orthogonal

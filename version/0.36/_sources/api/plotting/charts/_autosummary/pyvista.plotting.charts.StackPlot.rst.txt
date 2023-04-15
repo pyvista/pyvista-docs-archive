@@ -1,0 +1,215 @@
+﻿pyvista.plotting.charts.StackPlot
+=================================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: StackPlot
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      StackPlot.override
+      
+      
+      StackPlot.toggle
+      
+      
+      StackPlot.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      StackPlot.brush
+      
+      
+      StackPlot.color
+      
+      
+      StackPlot.color_scheme
+      
+      
+      StackPlot.colors
+      
+      
+      StackPlot.label
+      
+      
+      StackPlot.labels
+      
+      
+      StackPlot.line_style
+      
+      
+      StackPlot.line_width
+      
+      
+      StackPlot.pen
+      
+      
+      StackPlot.visible
+      
+      
+      StackPlot.x
+      
+      
+      StackPlot.ys
+      
+   
+   

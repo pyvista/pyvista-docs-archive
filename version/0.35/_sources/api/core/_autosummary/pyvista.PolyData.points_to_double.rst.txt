@@ -1,0 +1,6 @@
+points\_to\_double
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.points_to_double

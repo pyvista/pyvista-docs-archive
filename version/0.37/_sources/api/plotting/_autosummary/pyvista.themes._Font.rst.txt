@@ -1,0 +1,7 @@
+﻿pyvista.themes.\_Font
+=====================
+
+.. currentmodule:: pyvista.themes
+
+.. autoclass:: _Font
+   :members:

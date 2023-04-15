@@ -1,0 +1,6 @@
+grid
+====
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.grid

@@ -1,0 +1,6 @@
+actual\_memory\_size
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.actual_memory_size

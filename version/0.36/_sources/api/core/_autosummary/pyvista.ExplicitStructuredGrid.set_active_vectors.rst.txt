@@ -1,0 +1,6 @@
+set\_active\_vectors
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.set_active_vectors

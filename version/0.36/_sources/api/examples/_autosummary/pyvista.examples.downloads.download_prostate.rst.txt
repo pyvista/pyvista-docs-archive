@@ -1,0 +1,6 @@
+download\_prostate
+==================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_prostate

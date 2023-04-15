@@ -1,0 +1,91 @@
+﻿pyvista.XMLRectilinearGridReader
+================================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLRectilinearGridReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      XMLRectilinearGridReader.cell_array_status
+      
+      
+      XMLRectilinearGridReader.disable_all_cell_arrays
+      
+      
+      XMLRectilinearGridReader.disable_all_point_arrays
+      
+      
+      XMLRectilinearGridReader.disable_cell_array
+      
+      
+      XMLRectilinearGridReader.disable_point_array
+      
+      
+      XMLRectilinearGridReader.enable_all_cell_arrays
+      
+      
+      XMLRectilinearGridReader.enable_all_point_arrays
+      
+      
+      XMLRectilinearGridReader.enable_cell_array
+      
+      
+      XMLRectilinearGridReader.enable_point_array
+      
+      
+      XMLRectilinearGridReader.hide_progress
+      
+      
+      XMLRectilinearGridReader.point_array_status
+      
+      
+      XMLRectilinearGridReader.read
+      
+      
+      XMLRectilinearGridReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      XMLRectilinearGridReader.all_cell_arrays_status
+      
+      
+      XMLRectilinearGridReader.all_point_arrays_status
+      
+      
+      XMLRectilinearGridReader.cell_array_names
+      
+      
+      XMLRectilinearGridReader.number_cell_arrays
+      
+      
+      XMLRectilinearGridReader.number_point_arrays
+      
+      
+      XMLRectilinearGridReader.path
+      
+      
+      XMLRectilinearGridReader.point_array_names
+      
+      
+      XMLRectilinearGridReader.reader
+      
+   
+   

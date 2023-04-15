@@ -1,0 +1,6 @@
+visible
+=======
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: BoxPlot.visible

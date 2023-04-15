@@ -1,0 +1,6 @@
+hex\_rgba
+=========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Color.hex_rgba

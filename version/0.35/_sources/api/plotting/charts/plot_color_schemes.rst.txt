@@ -1,0 +1,319 @@
+
+.. list-table:: Color schemes
+   :widths: 15 50 5 30
+   :header-rows: 1
+
+   * - Color scheme
+     - Description
+     - # colors
+     - Example
+
+   * - ``"spectrum"``
+     - black, red, blue, green, purple, orange, brown
+     - 7
+     - .. image:: /images/charts/cs_0.png
+
+   * - ``"warm"``
+     - dark red → yellow
+     - 6
+     - .. image:: /images/charts/cs_1.png
+
+   * - ``"cool"``
+     - green → blue → purple
+     - 7
+     - .. image:: /images/charts/cs_2.png
+
+   * - ``"blues"``
+     - Different shades of blue
+     - 7
+     - .. image:: /images/charts/cs_3.png
+
+   * - ``"wild_flower"``
+     - blue → purple → pink
+     - 7
+     - .. image:: /images/charts/cs_4.png
+
+   * - ``"citrus"``
+     - green → yellow → orange
+     - 6
+     - .. image:: /images/charts/cs_5.png
+
+   * - ``"div_purple_orange11"``
+     - dark brown → white → dark purple
+     - 11
+     - .. image:: /images/charts/cs_6.png
+
+   * - ``"div_purple_orange10"``
+     - dark brown → white → dark purple
+     - 10
+     - .. image:: /images/charts/cs_7.png
+
+   * - ``"div_purple_orange9"``
+     - brown → white → purple
+     - 9
+     - .. image:: /images/charts/cs_8.png
+
+   * - ``"div_purple_orange8"``
+     - brown → white → purple
+     - 8
+     - .. image:: /images/charts/cs_9.png
+
+   * - ``"div_purple_orange7"``
+     - brown → white → purple
+     - 7
+     - .. image:: /images/charts/cs_10.png
+
+   * - ``"div_purple_orange6"``
+     - brown → white → purple
+     - 6
+     - .. image:: /images/charts/cs_11.png
+
+   * - ``"div_purple_orange5"``
+     - orange → white → purple
+     - 5
+     - .. image:: /images/charts/cs_12.png
+
+   * - ``"div_purple_orange4"``
+     - orange → white → purple
+     - 4
+     - .. image:: /images/charts/cs_13.png
+
+   * - ``"div_purple_orange3"``
+     - orange → white → purple
+     - 3
+     - .. image:: /images/charts/cs_14.png
+
+   * - ``"div_spectral11"``
+     - dark red → light yellow → dark blue
+     - 11
+     - .. image:: /images/charts/cs_15.png
+
+   * - ``"div_spectral10"``
+     - dark red → light yellow → dark blue
+     - 10
+     - .. image:: /images/charts/cs_16.png
+
+   * - ``"div_spectral9"``
+     - red → light yellow → blue
+     - 9
+     - .. image:: /images/charts/cs_17.png
+
+   * - ``"div_spectral8"``
+     - red → light yellow → blue
+     - 8
+     - .. image:: /images/charts/cs_18.png
+
+   * - ``"div_spectral7"``
+     - red → light yellow → blue
+     - 7
+     - .. image:: /images/charts/cs_19.png
+
+   * - ``"div_spectral6"``
+     - red → light yellow → blue
+     - 6
+     - .. image:: /images/charts/cs_20.png
+
+   * - ``"div_spectral5"``
+     - red → light yellow → blue
+     - 5
+     - .. image:: /images/charts/cs_21.png
+
+   * - ``"div_spectral4"``
+     - red → light yellow → blue
+     - 4
+     - .. image:: /images/charts/cs_22.png
+
+   * - ``"div_spectral3"``
+     - orange → light yellow → green
+     - 3
+     - .. image:: /images/charts/cs_23.png
+
+   * - ``"div_brown_blue_green11"``
+     - dark brown → white → dark blue-green
+     - 11
+     - .. image:: /images/charts/cs_24.png
+
+   * - ``"div_brown_blue_green10"``
+     - dark brown → white → dark blue-green
+     - 10
+     - .. image:: /images/charts/cs_25.png
+
+   * - ``"div_brown_blue_green9"``
+     - brown → white → blue-green
+     - 9
+     - .. image:: /images/charts/cs_26.png
+
+   * - ``"div_brown_blue_green8"``
+     - brown → white → blue-green
+     - 8
+     - .. image:: /images/charts/cs_27.png
+
+   * - ``"div_brown_blue_green7"``
+     - brown → white → blue-green
+     - 7
+     - .. image:: /images/charts/cs_28.png
+
+   * - ``"div_brown_blue_green6"``
+     - brown → white → blue-green
+     - 6
+     - .. image:: /images/charts/cs_29.png
+
+   * - ``"div_brown_blue_green5"``
+     - brown → white → blue-green
+     - 5
+     - .. image:: /images/charts/cs_30.png
+
+   * - ``"div_brown_blue_green4"``
+     - brown → white → blue-green
+     - 4
+     - .. image:: /images/charts/cs_31.png
+
+   * - ``"div_brown_blue_green3"``
+     - brown → white → blue-green
+     - 3
+     - .. image:: /images/charts/cs_32.png
+
+   * - ``"seq_blue_green9"``
+     - light blue → dark green
+     - 9
+     - .. image:: /images/charts/cs_33.png
+
+   * - ``"seq_blue_green8"``
+     - light blue → dark green
+     - 8
+     - .. image:: /images/charts/cs_34.png
+
+   * - ``"seq_blue_green7"``
+     - light blue → dark green
+     - 7
+     - .. image:: /images/charts/cs_35.png
+
+   * - ``"seq_blue_green6"``
+     - light blue → green
+     - 6
+     - .. image:: /images/charts/cs_36.png
+
+   * - ``"seq_blue_green5"``
+     - light blue → green
+     - 5
+     - .. image:: /images/charts/cs_37.png
+
+   * - ``"seq_blue_green4"``
+     - light blue → green
+     - 4
+     - .. image:: /images/charts/cs_38.png
+
+   * - ``"seq_blue_green3"``
+     - light blue → green
+     - 3
+     - .. image:: /images/charts/cs_39.png
+
+   * - ``"seq_yellow_orange_brown9"``
+     - light yellow → orange → dark brown
+     - 9
+     - .. image:: /images/charts/cs_40.png
+
+   * - ``"seq_yellow_orange_brown8"``
+     - light yellow → orange → brown
+     - 8
+     - .. image:: /images/charts/cs_41.png
+
+   * - ``"seq_yellow_orange_brown7"``
+     - light yellow → orange → brown
+     - 7
+     - .. image:: /images/charts/cs_42.png
+
+   * - ``"seq_yellow_orange_brown6"``
+     - light yellow → orange → brown
+     - 6
+     - .. image:: /images/charts/cs_43.png
+
+   * - ``"seq_yellow_orange_brown5"``
+     - light yellow → orange → brown
+     - 5
+     - .. image:: /images/charts/cs_44.png
+
+   * - ``"seq_yellow_orange_brown4"``
+     - light yellow → orange
+     - 4
+     - .. image:: /images/charts/cs_45.png
+
+   * - ``"seq_yellow_orange_brown3"``
+     - light yellow → orange
+     - 3
+     - .. image:: /images/charts/cs_46.png
+
+   * - ``"seq_blue_purple9"``
+     - light blue → dark purple
+     - 9
+     - .. image:: /images/charts/cs_47.png
+
+   * - ``"seq_blue_purple8"``
+     - light blue → purple
+     - 8
+     - .. image:: /images/charts/cs_48.png
+
+   * - ``"seq_blue_purple7"``
+     - light blue → purple
+     - 7
+     - .. image:: /images/charts/cs_49.png
+
+   * - ``"seq_blue_purple6"``
+     - light blue → purple
+     - 6
+     - .. image:: /images/charts/cs_50.png
+
+   * - ``"seq_blue_purple5"``
+     - light blue → purple
+     - 5
+     - .. image:: /images/charts/cs_51.png
+
+   * - ``"seq_blue_purple4"``
+     - light blue → purple
+     - 4
+     - .. image:: /images/charts/cs_52.png
+
+   * - ``"seq_blue_purple3"``
+     - light blue → purple
+     - 3
+     - .. image:: /images/charts/cs_53.png
+
+   * - ``"qual_accent"``
+     - pastel green, pastel purple, pastel orange, pastel yellow, blue, pink, brown, gray
+     - 8
+     - .. image:: /images/charts/cs_54.png
+
+   * - ``"qual_dark2"``
+     - darker shade of qual_set2
+     - 8
+     - .. image:: /images/charts/cs_55.png
+
+   * - ``"qual_set3"``
+     - pastel colors: blue green, light yellow, dark purple, red, blue, orange, green, pink, gray, purple, light green, yellow
+     - 12
+     - .. image:: /images/charts/cs_56.png
+
+   * - ``"qual_set2"``
+     - blue green, orange, purple, pink, green, yellow, brown, gray
+     - 8
+     - .. image:: /images/charts/cs_57.png
+
+   * - ``"qual_set1"``
+     - red, blue, green, purple, orange, yellow, brown, pink, gray
+     - 9
+     - .. image:: /images/charts/cs_58.png
+
+   * - ``"qual_pastel2"``
+     - pastel shade of qual_set2
+     - 8
+     - .. image:: /images/charts/cs_59.png
+
+   * - ``"qual_pastel1"``
+     - pastel shade of qual_set1
+     - 9
+     - .. image:: /images/charts/cs_60.png
+
+   * - ``"qual_paired"``
+     - light blue, blue, light green, green, light red, red, light orange, orange, light purple, purple, light yellow
+     - 11
+     - .. image:: /images/charts/cs_61.png

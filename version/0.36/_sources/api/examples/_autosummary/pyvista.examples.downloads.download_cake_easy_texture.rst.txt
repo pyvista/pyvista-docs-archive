@@ -1,0 +1,6 @@
+download\_cake\_easy\_texture
+=============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_cake_easy_texture

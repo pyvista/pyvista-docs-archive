@@ -1,0 +1,43 @@
+﻿pyvista.SLCReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: SLCReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      SLCReader.hide_progress
+      
+      
+      SLCReader.read
+      
+      
+      SLCReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      SLCReader.path
+      
+      
+      SLCReader.reader
+      
+   
+   

@@ -1,0 +1,91 @@
+﻿pyvista.XMLPImageDataReader
+===========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLPImageDataReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      XMLPImageDataReader.cell_array_status
+      
+      
+      XMLPImageDataReader.disable_all_cell_arrays
+      
+      
+      XMLPImageDataReader.disable_all_point_arrays
+      
+      
+      XMLPImageDataReader.disable_cell_array
+      
+      
+      XMLPImageDataReader.disable_point_array
+      
+      
+      XMLPImageDataReader.enable_all_cell_arrays
+      
+      
+      XMLPImageDataReader.enable_all_point_arrays
+      
+      
+      XMLPImageDataReader.enable_cell_array
+      
+      
+      XMLPImageDataReader.enable_point_array
+      
+      
+      XMLPImageDataReader.hide_progress
+      
+      
+      XMLPImageDataReader.point_array_status
+      
+      
+      XMLPImageDataReader.read
+      
+      
+      XMLPImageDataReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      XMLPImageDataReader.all_cell_arrays_status
+      
+      
+      XMLPImageDataReader.all_point_arrays_status
+      
+      
+      XMLPImageDataReader.cell_array_names
+      
+      
+      XMLPImageDataReader.number_cell_arrays
+      
+      
+      XMLPImageDataReader.number_point_arrays
+      
+      
+      XMLPImageDataReader.path
+      
+      
+      XMLPImageDataReader.point_array_names
+      
+      
+      XMLPImageDataReader.reader
+      
+   
+   

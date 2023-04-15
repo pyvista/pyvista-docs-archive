@@ -1,0 +1,6 @@
+deep\_copy
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.deep_copy

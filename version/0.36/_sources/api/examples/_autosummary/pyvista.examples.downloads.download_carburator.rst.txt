@@ -1,0 +1,6 @@
+download\_carburator
+====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_carburator

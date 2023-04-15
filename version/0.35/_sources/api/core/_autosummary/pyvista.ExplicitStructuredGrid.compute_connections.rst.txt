@@ -1,0 +1,6 @@
+compute\_connections
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.compute_connections

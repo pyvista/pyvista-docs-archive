@@ -1,0 +1,43 @@
+﻿pyvista.MetaImageReader
+=======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: MetaImageReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      MetaImageReader.hide_progress
+      
+      
+      MetaImageReader.read
+      
+      
+      MetaImageReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      MetaImageReader.path
+      
+      
+      MetaImageReader.reader
+      
+   
+   

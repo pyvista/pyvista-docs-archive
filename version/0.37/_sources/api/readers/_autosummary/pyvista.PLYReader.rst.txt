@@ -1,0 +1,7 @@
+﻿pyvista.PLYReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PLYReader
+   :members:

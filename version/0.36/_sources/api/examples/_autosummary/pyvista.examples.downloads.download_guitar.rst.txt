@@ -1,0 +1,6 @@
+download\_guitar
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_guitar

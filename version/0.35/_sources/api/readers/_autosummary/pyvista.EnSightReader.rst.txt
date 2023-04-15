@@ -1,0 +1,109 @@
+﻿pyvista.EnSightReader
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: EnSightReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      EnSightReader.cell_array_status
+      
+      
+      EnSightReader.disable_all_cell_arrays
+      
+      
+      EnSightReader.disable_all_point_arrays
+      
+      
+      EnSightReader.disable_cell_array
+      
+      
+      EnSightReader.disable_point_array
+      
+      
+      EnSightReader.enable_all_cell_arrays
+      
+      
+      EnSightReader.enable_all_point_arrays
+      
+      
+      EnSightReader.enable_cell_array
+      
+      
+      EnSightReader.enable_point_array
+      
+      
+      EnSightReader.hide_progress
+      
+      
+      EnSightReader.point_array_status
+      
+      
+      EnSightReader.read
+      
+      
+      EnSightReader.set_active_time_point
+      
+      
+      EnSightReader.set_active_time_value
+      
+      
+      EnSightReader.show_progress
+      
+      
+      EnSightReader.time_point_value
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      EnSightReader.active_time_value
+      
+      
+      EnSightReader.all_cell_arrays_status
+      
+      
+      EnSightReader.all_point_arrays_status
+      
+      
+      EnSightReader.cell_array_names
+      
+      
+      EnSightReader.number_cell_arrays
+      
+      
+      EnSightReader.number_point_arrays
+      
+      
+      EnSightReader.number_time_points
+      
+      
+      EnSightReader.path
+      
+      
+      EnSightReader.point_array_names
+      
+      
+      EnSightReader.reader
+      
+      
+      EnSightReader.time_values
+      
+   
+   

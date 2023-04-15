@@ -1,0 +1,6 @@
+clear\_field\_arrays
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.clear_field_arrays

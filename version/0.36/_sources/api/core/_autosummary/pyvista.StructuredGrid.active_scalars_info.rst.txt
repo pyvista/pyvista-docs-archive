@@ -1,0 +1,6 @@
+active\_scalars\_info
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: StructuredGrid.active_scalars_info

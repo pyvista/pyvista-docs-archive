@@ -1,0 +1,6 @@
+deep\_copy
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.deep_copy

@@ -1,0 +1,6 @@
+background\_texture
+===================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.background_texture

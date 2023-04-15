@@ -1,0 +1,6 @@
+plot\_glyphs
+============
+
+.. currentmodule:: pyvista.demos.demos
+
+.. autofunction:: plot_glyphs

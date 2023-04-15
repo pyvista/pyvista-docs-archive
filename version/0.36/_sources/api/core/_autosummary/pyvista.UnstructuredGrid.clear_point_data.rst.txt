@@ -1,0 +1,6 @@
+clear\_point\_data
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.clear_point_data

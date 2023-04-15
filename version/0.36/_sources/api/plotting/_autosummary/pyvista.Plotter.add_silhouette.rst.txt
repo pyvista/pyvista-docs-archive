@@ -1,0 +1,6 @@
+add\_silhouette
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: Plotter.add_silhouette

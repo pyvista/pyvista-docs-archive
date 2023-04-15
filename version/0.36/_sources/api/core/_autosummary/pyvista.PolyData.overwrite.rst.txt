@@ -1,0 +1,6 @@
+overwrite
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.overwrite

@@ -1,0 +1,7 @@
+﻿pyvista.SLCReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: SLCReader
+   :members:

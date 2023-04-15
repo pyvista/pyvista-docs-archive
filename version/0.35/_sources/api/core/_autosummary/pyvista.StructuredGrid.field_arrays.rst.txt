@@ -1,0 +1,6 @@
+field\_arrays
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: StructuredGrid.field_arrays

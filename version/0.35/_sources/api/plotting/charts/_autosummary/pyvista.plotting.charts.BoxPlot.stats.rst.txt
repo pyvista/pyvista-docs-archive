@@ -1,0 +1,6 @@
+stats
+=====
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: BoxPlot.stats

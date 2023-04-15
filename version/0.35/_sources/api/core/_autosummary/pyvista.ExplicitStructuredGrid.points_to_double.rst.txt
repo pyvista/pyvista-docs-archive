@@ -1,0 +1,6 @@
+points\_to\_double
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.points_to_double

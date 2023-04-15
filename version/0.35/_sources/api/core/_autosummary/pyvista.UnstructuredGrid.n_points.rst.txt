@@ -1,0 +1,6 @@
+n\_points
+=========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.n_points

@@ -1,0 +1,44 @@
+﻿pyvista.examples.examples
+=========================
+
+.. automodule:: pyvista.examples.examples
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      load_airplane
+      load_ant
+      load_channels
+      load_explicit_structured
+      load_globe
+      load_globe_texture
+      load_hexbeam
+      load_nut
+      load_random_hills
+      load_rectilinear
+      load_sphere
+      load_sphere_vectors
+      load_spline
+      load_structured
+      load_uniform
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

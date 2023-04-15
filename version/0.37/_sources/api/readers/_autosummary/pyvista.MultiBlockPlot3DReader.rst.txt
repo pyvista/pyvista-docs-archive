@@ -1,0 +1,7 @@
+﻿pyvista.MultiBlockPlot3DReader
+==============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: MultiBlockPlot3DReader
+   :members:

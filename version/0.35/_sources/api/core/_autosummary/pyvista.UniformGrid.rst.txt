@@ -1,0 +1,746 @@
+﻿pyvista.UniformGrid
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: UniformGrid
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      UniformGrid.add_field_array
+      
+      
+      UniformGrid.add_field_data
+      
+      
+      UniformGrid.cast_to_pointset
+      
+      
+      UniformGrid.cast_to_rectilinear_grid
+      
+      
+      UniformGrid.cast_to_structured_grid
+      
+      
+      UniformGrid.cast_to_unstructured_grid
+      
+      
+      UniformGrid.cell_bounds
+      
+      
+      UniformGrid.cell_centers
+      
+      
+      UniformGrid.cell_data_to_point_data
+      
+      
+      UniformGrid.cell_n_points
+      
+      
+      UniformGrid.cell_point_ids
+      
+      
+      UniformGrid.cell_points
+      
+      
+      UniformGrid.cell_type
+      
+      
+      UniformGrid.clear_arrays
+      
+      
+      UniformGrid.clear_cell_arrays
+      
+      
+      UniformGrid.clear_cell_data
+      
+      
+      UniformGrid.clear_data
+      
+      
+      UniformGrid.clear_field_arrays
+      
+      
+      UniformGrid.clear_field_data
+      
+      
+      UniformGrid.clear_point_arrays
+      
+      
+      UniformGrid.clear_point_data
+      
+      
+      UniformGrid.clear_textures
+      
+      
+      UniformGrid.clip
+      
+      
+      UniformGrid.clip_box
+      
+      
+      UniformGrid.clip_scalar
+      
+      
+      UniformGrid.clip_surface
+      
+      
+      UniformGrid.compute_cell_quality
+      
+      
+      UniformGrid.compute_cell_sizes
+      
+      
+      UniformGrid.compute_derivative
+      
+      
+      UniformGrid.compute_implicit_distance
+      
+      
+      UniformGrid.connectivity
+      
+      
+      UniformGrid.contour
+      
+      
+      UniformGrid.copy
+      
+      
+      UniformGrid.copy_attributes
+      
+      
+      UniformGrid.copy_meta_from
+      
+      
+      UniformGrid.copy_structure
+      
+      
+      UniformGrid.ctp
+      
+      
+      UniformGrid.decimate_boundary
+      
+      
+      UniformGrid.deep_copy
+      
+      
+      UniformGrid.delaunay_3d
+      
+      
+      UniformGrid.elevation
+      
+      
+      UniformGrid.extract_all_edges
+      
+      
+      UniformGrid.extract_cells
+      
+      
+      UniformGrid.extract_feature_edges
+      
+      
+      UniformGrid.extract_geometry
+      
+      
+      UniformGrid.extract_largest
+      
+      
+      UniformGrid.extract_points
+      
+      
+      UniformGrid.extract_subset
+      
+      
+      UniformGrid.extract_surface
+      
+      
+      UniformGrid.fft
+      
+      
+      UniformGrid.find_cells_along_line
+      
+      
+      UniformGrid.find_cells_within_bounds
+      
+      
+      UniformGrid.find_closest_cell
+      
+      
+      UniformGrid.find_closest_point
+      
+      
+      UniformGrid.find_containing_cell
+      
+      
+      UniformGrid.flip_normal
+      
+      
+      UniformGrid.flip_x
+      
+      
+      UniformGrid.flip_y
+      
+      
+      UniformGrid.flip_z
+      
+      
+      UniformGrid.gaussian_smooth
+      
+      
+      UniformGrid.get_array
+      
+      
+      UniformGrid.get_array_association
+      
+      
+      UniformGrid.get_data_range
+      
+      
+      UniformGrid.glyph
+      
+      
+      UniformGrid.head
+      
+      
+      UniformGrid.high_pass
+      
+      
+      UniformGrid.image_dilate_erode
+      
+      
+      UniformGrid.image_threshold
+      
+      
+      UniformGrid.integrate_data
+      
+      
+      UniformGrid.interpolate
+      
+      
+      UniformGrid.low_pass
+      
+      
+      UniformGrid.median_smooth
+      
+      
+      UniformGrid.merge
+      
+      
+      UniformGrid.outline
+      
+      
+      UniformGrid.outline_corners
+      
+      
+      UniformGrid.override
+      
+      
+      UniformGrid.overwrite
+      
+      
+      UniformGrid.plot
+      
+      
+      UniformGrid.plot_over_circular_arc
+      
+      
+      UniformGrid.plot_over_circular_arc_normal
+      
+      
+      UniformGrid.plot_over_line
+      
+      
+      UniformGrid.point_data_to_cell_data
+      
+      
+      UniformGrid.point_is_inside_cell
+      
+      
+      UniformGrid.probe
+      
+      
+      UniformGrid.ptc
+      
+      
+      UniformGrid.reflect
+      
+      
+      UniformGrid.rename_array
+      
+      
+      UniformGrid.rfft
+      
+      
+      UniformGrid.rotate_vector
+      
+      
+      UniformGrid.rotate_x
+      
+      
+      UniformGrid.rotate_y
+      
+      
+      UniformGrid.rotate_z
+      
+      
+      UniformGrid.sample
+      
+      
+      UniformGrid.sample_over_circular_arc
+      
+      
+      UniformGrid.sample_over_circular_arc_normal
+      
+      
+      UniformGrid.sample_over_line
+      
+      
+      UniformGrid.sample_over_multiple_lines
+      
+      
+      UniformGrid.save
+      
+      
+      UniformGrid.scale
+      
+      
+      UniformGrid.select_enclosed_points
+      
+      
+      UniformGrid.set_active_scalars
+      
+      
+      UniformGrid.set_active_tensors
+      
+      
+      UniformGrid.set_active_vectors
+      
+      
+      UniformGrid.shallow_copy
+      
+      
+      UniformGrid.shrink
+      
+      
+      UniformGrid.slice
+      
+      
+      UniformGrid.slice_along_axis
+      
+      
+      UniformGrid.slice_along_line
+      
+      
+      UniformGrid.slice_orthogonal
+      
+      
+      UniformGrid.split_bodies
+      
+      
+      UniformGrid.streamlines
+      
+      
+      UniformGrid.streamlines_evenly_spaced_2D
+      
+      
+      UniformGrid.streamlines_from_source
+      
+      
+      UniformGrid.surface_indices
+      
+      
+      UniformGrid.tessellate
+      
+      
+      UniformGrid.texture_map_to_plane
+      
+      
+      UniformGrid.texture_map_to_sphere
+      
+      
+      UniformGrid.threshold
+      
+      
+      UniformGrid.threshold_percent
+      
+      
+      UniformGrid.transform
+      
+      
+      UniformGrid.translate
+      
+      
+      UniformGrid.triangulate
+      
+      
+      UniformGrid.warp_by_scalar
+      
+      
+      UniformGrid.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      UniformGrid.active_normals
+      
+      
+      UniformGrid.active_scalars
+      
+      
+      UniformGrid.active_scalars_info
+      
+      
+      UniformGrid.active_scalars_name
+      
+      
+      UniformGrid.active_t_coords
+      
+      
+      UniformGrid.active_tensors
+      
+      
+      UniformGrid.active_tensors_info
+      
+      
+      UniformGrid.active_tensors_name
+      
+      
+      UniformGrid.active_vectors
+      
+      
+      UniformGrid.active_vectors_info
+      
+      
+      UniformGrid.active_vectors_name
+      
+      
+      UniformGrid.actual_memory_size
+      
+      
+      UniformGrid.array_names
+      
+      
+      UniformGrid.arrows
+      
+      
+      UniformGrid.bounds
+      
+      
+      UniformGrid.cell_arrays
+      
+      
+      UniformGrid.cell_data
+      
+      
+      UniformGrid.center
+      
+      
+      UniformGrid.dimensions
+      
+      
+      UniformGrid.extent
+      
+      
+      UniformGrid.field_arrays
+      
+      
+      UniformGrid.field_data
+      
+      
+      UniformGrid.length
+      
+      
+      UniformGrid.memory_address
+      
+      
+      UniformGrid.n_arrays
+      
+      
+      UniformGrid.n_cells
+      
+      
+      UniformGrid.n_points
+      
+      
+      UniformGrid.number_of_cells
+      
+      
+      UniformGrid.number_of_points
+      
+      
+      UniformGrid.origin
+      
+      
+      UniformGrid.point_arrays
+      
+      
+      UniformGrid.point_data
+      
+      
+      UniformGrid.points
+      
+      
+      UniformGrid.spacing
+      
+      
+      UniformGrid.t_coords
+      
+      
+      UniformGrid.textures
+      
+      
+      UniformGrid.vectors
+      
+      
+      UniformGrid.volume
+      
+      
+      UniformGrid.x
+      
+      
+      UniformGrid.y
+      
+      
+      UniformGrid.z
+      
+   
+   

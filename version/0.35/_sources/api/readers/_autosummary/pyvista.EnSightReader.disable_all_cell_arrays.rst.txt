@@ -1,0 +1,6 @@
+disable\_all\_cell\_arrays
+==========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: EnSightReader.disable_all_cell_arrays

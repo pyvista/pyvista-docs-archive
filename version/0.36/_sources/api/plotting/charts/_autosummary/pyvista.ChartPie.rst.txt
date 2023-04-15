@@ -1,0 +1,221 @@
+﻿pyvista.ChartPie
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: ChartPie
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      ChartPie.override
+      
+      
+      ChartPie.show
+      
+      
+      ChartPie.toggle
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      ChartPie.background_color
+      
+      
+      ChartPie.background_texture
+      
+      
+      ChartPie.border_color
+      
+      
+      ChartPie.border_style
+      
+      
+      ChartPie.border_width
+      
+      
+      ChartPie.legend_visible
+      
+      
+      ChartPie.loc
+      
+      
+      ChartPie.plot
+      
+      
+      ChartPie.size
+      
+      
+      ChartPie.title
+      
+      
+      ChartPie.visible
+      
+   
+   

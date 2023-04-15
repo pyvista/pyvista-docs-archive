@@ -1,0 +1,6 @@
+title
+=====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ChartMPL.title

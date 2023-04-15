@@ -1,0 +1,6 @@
+plot\_curvature
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.plot_curvature

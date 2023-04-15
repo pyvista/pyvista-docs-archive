@@ -1,0 +1,6 @@
+srgb\_to\_linear
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Color.srgb_to_linear

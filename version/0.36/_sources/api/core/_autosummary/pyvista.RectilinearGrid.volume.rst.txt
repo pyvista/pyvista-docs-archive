@@ -1,0 +1,6 @@
+volume
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: RectilinearGrid.volume

@@ -1,0 +1,6 @@
+﻿sample\_function
+================
+
+.. currentmodule:: pyvista.core.imaging
+
+.. autofunction:: sample_function

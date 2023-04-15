@@ -1,0 +1,6 @@
+plot\_beam
+==========
+
+.. currentmodule:: pyvista.demos.demos
+
+.. autofunction:: plot_beam

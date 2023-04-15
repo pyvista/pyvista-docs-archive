@@ -1,0 +1,6 @@
+x
+=
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: StructuredGrid.x

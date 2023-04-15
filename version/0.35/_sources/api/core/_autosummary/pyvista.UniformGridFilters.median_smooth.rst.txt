@@ -1,0 +1,6 @@
+median\_smooth
+==============
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGridFilters.median_smooth

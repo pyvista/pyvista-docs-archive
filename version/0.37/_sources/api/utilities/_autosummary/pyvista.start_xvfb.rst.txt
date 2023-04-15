@@ -1,0 +1,6 @@
+﻿start\_xvfb
+===========
+
+.. currentmodule:: pyvista
+
+.. autofunction:: start_xvfb

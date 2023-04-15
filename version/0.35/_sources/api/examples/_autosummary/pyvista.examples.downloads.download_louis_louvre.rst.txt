@@ -1,0 +1,6 @@
+download\_louis\_louvre
+=======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_louis_louvre

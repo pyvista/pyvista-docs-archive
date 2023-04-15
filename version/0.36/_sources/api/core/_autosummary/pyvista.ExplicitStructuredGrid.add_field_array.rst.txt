@@ -1,0 +1,6 @@
+add\_field\_array
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.add_field_array

@@ -1,0 +1,7 @@
+﻿pyvista.themes.DocumentTheme
+============================
+
+.. currentmodule:: pyvista.themes
+
+.. autoclass:: DocumentTheme
+   :members:

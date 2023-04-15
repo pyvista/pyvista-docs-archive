@@ -1,0 +1,6 @@
+download\_blow
+==============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_blow

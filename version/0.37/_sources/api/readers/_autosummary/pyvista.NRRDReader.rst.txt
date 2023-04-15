@@ -1,0 +1,7 @@
+﻿pyvista.NRRDReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: NRRDReader
+   :members:

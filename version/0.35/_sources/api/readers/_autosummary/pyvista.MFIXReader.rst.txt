@@ -1,0 +1,43 @@
+﻿pyvista.MFIXReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: MFIXReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      MFIXReader.hide_progress
+      
+      
+      MFIXReader.read
+      
+      
+      MFIXReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      MFIXReader.path
+      
+      
+      MFIXReader.reader
+      
+   
+   

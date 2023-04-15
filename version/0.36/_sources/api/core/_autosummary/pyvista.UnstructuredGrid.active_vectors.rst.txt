@@ -1,0 +1,6 @@
+active\_vectors
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.active_vectors

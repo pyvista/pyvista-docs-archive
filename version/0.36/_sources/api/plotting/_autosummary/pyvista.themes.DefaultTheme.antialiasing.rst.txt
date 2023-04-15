@@ -1,0 +1,6 @@
+antialiasing
+============
+
+.. currentmodule:: pyvista.themes
+
+.. autoproperty:: DefaultTheme.antialiasing

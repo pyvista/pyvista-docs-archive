@@ -1,0 +1,6 @@
+download\_sky\_box\_nz\_texture
+===============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_sky_box_nz_texture

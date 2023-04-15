@@ -1,0 +1,43 @@
+﻿pyvista.VTKDataSetReader
+========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: VTKDataSetReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      VTKDataSetReader.hide_progress
+      
+      
+      VTKDataSetReader.read
+      
+      
+      VTKDataSetReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      VTKDataSetReader.path
+      
+      
+      VTKDataSetReader.reader
+      
+   
+   

@@ -1,0 +1,7 @@
+﻿pyvista.themes.\_DepthPeelingConfig
+===================================
+
+.. currentmodule:: pyvista.themes
+
+.. autoclass:: _DepthPeelingConfig
+   :members:

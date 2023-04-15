@@ -1,0 +1,6 @@
+active\_texture\_name
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSetAttributes.active_texture_name

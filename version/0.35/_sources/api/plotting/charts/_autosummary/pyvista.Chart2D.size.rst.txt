@@ -1,0 +1,6 @@
+size
+====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.size

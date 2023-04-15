@@ -1,0 +1,32 @@
+
+.. list-table:: Line styles
+   :widths: 20 40 40
+   :header-rows: 1
+
+   * - Style
+     - Description
+     - Example
+
+   * - ``""``
+     - Hidden
+     - .. image:: /images/charts/ls_0.png
+
+   * - ``"-"``
+     - Solid
+     - .. image:: /images/charts/ls_1.png
+
+   * - ``"--"``
+     - Dashed
+     - .. image:: /images/charts/ls_2.png
+
+   * - ``":"``
+     - Dotted
+     - .. image:: /images/charts/ls_3.png
+
+   * - ``"-."``
+     - Dash-dot
+     - .. image:: /images/charts/ls_4.png
+
+   * - ``"-.."``
+     - Dash-dot-dot
+     - .. image:: /images/charts/ls_5.png

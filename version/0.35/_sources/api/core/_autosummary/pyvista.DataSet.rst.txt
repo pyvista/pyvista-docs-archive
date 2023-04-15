@@ -1,0 +1,466 @@
+﻿pyvista.DataSet
+===============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DataSet
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      DataSet.add_field_array
+      
+      
+      DataSet.add_field_data
+      
+      
+      DataSet.cast_to_pointset
+      
+      
+      DataSet.cast_to_unstructured_grid
+      
+      
+      DataSet.cell_bounds
+      
+      
+      DataSet.cell_centers
+      
+      
+      DataSet.cell_data_to_point_data
+      
+      
+      DataSet.cell_n_points
+      
+      
+      DataSet.cell_point_ids
+      
+      
+      DataSet.cell_points
+      
+      
+      DataSet.cell_type
+      
+      
+      DataSet.clear_arrays
+      
+      
+      DataSet.clear_cell_arrays
+      
+      
+      DataSet.clear_cell_data
+      
+      
+      DataSet.clear_data
+      
+      
+      DataSet.clear_field_arrays
+      
+      
+      DataSet.clear_field_data
+      
+      
+      DataSet.clear_point_arrays
+      
+      
+      DataSet.clear_point_data
+      
+      
+      DataSet.clear_textures
+      
+      
+      DataSet.clip
+      
+      
+      DataSet.clip_box
+      
+      
+      DataSet.clip_scalar
+      
+      
+      DataSet.clip_surface
+      
+      
+      DataSet.compute_cell_quality
+      
+      
+      DataSet.compute_cell_sizes
+      
+      
+      DataSet.compute_derivative
+      
+      
+      DataSet.compute_implicit_distance
+      
+      
+      DataSet.connectivity
+      
+      
+      DataSet.contour
+      
+      
+      DataSet.copy
+      
+      
+      DataSet.copy_attributes
+      
+      
+      DataSet.copy_meta_from
+      
+      
+      DataSet.copy_structure
+      
+      
+      DataSet.ctp
+      
+      
+      DataSet.decimate_boundary
+      
+      
+      DataSet.deep_copy
+      
+      
+      DataSet.delaunay_3d
+      
+      
+      DataSet.elevation
+      
+      
+      DataSet.extract_all_edges
+      
+      
+      DataSet.extract_cells
+      
+      
+      DataSet.extract_feature_edges
+      
+      
+      DataSet.extract_geometry
+      
+      
+      DataSet.extract_largest
+      
+      
+      DataSet.extract_points
+      
+      
+      DataSet.extract_surface
+      
+      
+      DataSet.find_cells_along_line
+      
+      
+      DataSet.find_cells_within_bounds
+      
+      
+      DataSet.find_closest_cell
+      
+      
+      DataSet.find_closest_point
+      
+      
+      DataSet.find_containing_cell
+      
+      
+      DataSet.flip_normal
+      
+      
+      DataSet.flip_x
+      
+      
+      DataSet.flip_y
+      
+      
+      DataSet.flip_z
+      
+      
+      DataSet.get_array
+      
+      
+      DataSet.get_array_association
+      
+      
+      DataSet.get_data_range
+      
+      
+      DataSet.glyph
+      
+      
+      DataSet.head
+      
+      
+      DataSet.integrate_data
+      
+      
+      DataSet.interpolate
+      
+      
+      DataSet.merge
+      
+      
+      DataSet.outline
+      
+      
+      DataSet.outline_corners
+      
+      
+      DataSet.overwrite
+      
+      
+      DataSet.plot
+      
+      
+      DataSet.plot_over_circular_arc
+      
+      
+      DataSet.plot_over_circular_arc_normal
+      
+      
+      DataSet.plot_over_line
+      
+      
+      DataSet.point_data_to_cell_data
+      
+      
+      DataSet.point_is_inside_cell
+      
+      
+      DataSet.probe
+      
+      
+      DataSet.ptc
+      
+      
+      DataSet.reflect
+      
+      
+      DataSet.rename_array
+      
+      
+      DataSet.rotate_vector
+      
+      
+      DataSet.rotate_x
+      
+      
+      DataSet.rotate_y
+      
+      
+      DataSet.rotate_z
+      
+      
+      DataSet.sample
+      
+      
+      DataSet.sample_over_circular_arc
+      
+      
+      DataSet.sample_over_circular_arc_normal
+      
+      
+      DataSet.sample_over_line
+      
+      
+      DataSet.sample_over_multiple_lines
+      
+      
+      DataSet.save
+      
+      
+      DataSet.scale
+      
+      
+      DataSet.select_enclosed_points
+      
+      
+      DataSet.set_active_scalars
+      
+      
+      DataSet.set_active_tensors
+      
+      
+      DataSet.set_active_vectors
+      
+      
+      DataSet.shallow_copy
+      
+      
+      DataSet.shrink
+      
+      
+      DataSet.slice
+      
+      
+      DataSet.slice_along_axis
+      
+      
+      DataSet.slice_along_line
+      
+      
+      DataSet.slice_orthogonal
+      
+      
+      DataSet.split_bodies
+      
+      
+      DataSet.streamlines
+      
+      
+      DataSet.streamlines_evenly_spaced_2D
+      
+      
+      DataSet.streamlines_from_source
+      
+      
+      DataSet.surface_indices
+      
+      
+      DataSet.tessellate
+      
+      
+      DataSet.texture_map_to_plane
+      
+      
+      DataSet.texture_map_to_sphere
+      
+      
+      DataSet.threshold
+      
+      
+      DataSet.threshold_percent
+      
+      
+      DataSet.transform
+      
+      
+      DataSet.translate
+      
+      
+      DataSet.triangulate
+      
+      
+      DataSet.warp_by_scalar
+      
+      
+      DataSet.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      DataSet.active_normals
+      
+      
+      DataSet.active_scalars
+      
+      
+      DataSet.active_scalars_info
+      
+      
+      DataSet.active_scalars_name
+      
+      
+      DataSet.active_t_coords
+      
+      
+      DataSet.active_tensors
+      
+      
+      DataSet.active_tensors_info
+      
+      
+      DataSet.active_tensors_name
+      
+      
+      DataSet.active_vectors
+      
+      
+      DataSet.active_vectors_info
+      
+      
+      DataSet.active_vectors_name
+      
+      
+      DataSet.actual_memory_size
+      
+      
+      DataSet.array_names
+      
+      
+      DataSet.arrows
+      
+      
+      DataSet.bounds
+      
+      
+      DataSet.cell_arrays
+      
+      
+      DataSet.cell_data
+      
+      
+      DataSet.center
+      
+      
+      DataSet.field_arrays
+      
+      
+      DataSet.field_data
+      
+      
+      DataSet.length
+      
+      
+      DataSet.memory_address
+      
+      
+      DataSet.n_arrays
+      
+      
+      DataSet.n_cells
+      
+      
+      DataSet.n_points
+      
+      
+      DataSet.number_of_cells
+      
+      
+      DataSet.number_of_points
+      
+      
+      DataSet.point_arrays
+      
+      
+      DataSet.point_data
+      
+      
+      DataSet.points
+      
+      
+      DataSet.t_coords
+      
+      
+      DataSet.textures
+      
+      
+      DataSet.vectors
+      
+      
+      DataSet.volume
+      
+   
+   

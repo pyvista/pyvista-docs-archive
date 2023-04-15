@@ -1,0 +1,6 @@
+﻿PolyVertex
+==========
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: PolyVertex

@@ -1,0 +1,7 @@
+﻿pyvista.themes.DefaultTheme
+===========================
+
+.. currentmodule:: pyvista.themes
+
+.. autoclass:: DefaultTheme
+   :members:

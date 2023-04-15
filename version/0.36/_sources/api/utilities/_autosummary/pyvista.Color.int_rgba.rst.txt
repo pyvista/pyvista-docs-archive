@@ -1,0 +1,6 @@
+int\_rgba
+=========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Color.int_rgba

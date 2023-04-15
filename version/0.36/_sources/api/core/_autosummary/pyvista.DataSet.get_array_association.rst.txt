@@ -1,0 +1,6 @@
+get\_array\_association
+=======================
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.get_array_association

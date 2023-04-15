@@ -1,0 +1,6 @@
+download\_cgns\_structured
+==========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_cgns_structured

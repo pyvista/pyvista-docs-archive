@@ -1,0 +1,6 @@
+pen
+===
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: LinePlot2D.pen

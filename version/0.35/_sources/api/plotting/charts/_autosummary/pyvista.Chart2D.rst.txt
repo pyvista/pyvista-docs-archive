@@ -1,0 +1,324 @@
+﻿pyvista.Chart2D
+===============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Chart2D
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Chart2D.area
+      
+      
+      Chart2D.bar
+      
+      
+      Chart2D.clear
+      
+      
+      Chart2D.hide_axes
+      
+      
+      Chart2D.line
+      
+      
+      Chart2D.override
+      
+      
+      Chart2D.plot
+      
+      
+      Chart2D.plots
+      
+      
+      Chart2D.remove_plot
+      
+      
+      Chart2D.scatter
+      
+      
+      Chart2D.show
+      
+      
+      Chart2D.stack
+      
+      
+      Chart2D.toggle
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      Chart2D.background_color
+      
+      
+      Chart2D.background_texture
+      
+      
+      Chart2D.border_color
+      
+      
+      Chart2D.border_style
+      
+      
+      Chart2D.border_width
+      
+      
+      Chart2D.grid
+      
+      
+      Chart2D.legend_visible
+      
+      
+      Chart2D.loc
+      
+      
+      Chart2D.size
+      
+      
+      Chart2D.title
+      
+      
+      Chart2D.visible
+      
+      
+      Chart2D.x_axis
+      
+      
+      Chart2D.x_label
+      
+      
+      Chart2D.x_range
+      
+      
+      Chart2D.y_axis
+      
+      
+      Chart2D.y_label
+      
+      
+      Chart2D.y_range
+      
+   
+   

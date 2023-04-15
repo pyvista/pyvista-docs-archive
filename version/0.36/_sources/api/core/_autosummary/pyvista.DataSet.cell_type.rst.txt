@@ -1,0 +1,6 @@
+cell\_type
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.cell_type

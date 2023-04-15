@@ -1,0 +1,6 @@
+override
+========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. automethod:: AreaPlot.override

@@ -1,0 +1,6 @@
+log\_scale
+==========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.log_scale

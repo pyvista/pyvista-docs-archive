@@ -1,0 +1,6 @@
+tick\_size
+==========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.tick_size

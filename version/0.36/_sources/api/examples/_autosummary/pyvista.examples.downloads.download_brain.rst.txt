@@ -1,0 +1,6 @@
+download\_brain
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_brain

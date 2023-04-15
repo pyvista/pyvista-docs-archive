@@ -1,0 +1,6 @@
+number\_time\_points
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: OpenFOAMReader.number_time_points

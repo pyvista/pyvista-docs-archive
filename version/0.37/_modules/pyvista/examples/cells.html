@@ -1,0 +1,1354 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.examples.cells &#8212; PyVista 0.37.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cards.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/asciinema-player_2.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                    window.ga = window.ga || function () {
+                        (ga.q = ga.q || []).push(arguments) };
+                    ga.l = +new Date;
+                    ga('create', 'UA-140243896-1', 'auto');
+                    ga('set', 'anonymizeIp', true);
+                    ga('send', 'pageview');
+                </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyvista/examples/cells';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.pyvista.org/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.37';
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../getting-started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../user-guide/index.html">
+                        User Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../examples/index.html">
+                        Examples
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../api/index.html">
+                        API Reference
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../extras/index.html">
+                        Extras
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown">
+        0.37  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="http://slack.pyvista.org" title="Slack Community" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/discussions" title="Support" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" title="Contributing" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.21105/joss.01450" title="The Paper" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <h1>Source code for pyvista.examples.cells</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Contains a variety of cells to serve as examples.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">CellType</span><span class="p">,</span> <span class="n">UnstructuredGrid</span>
+
+
+<div class="viewcode-block" id="plot_cell"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.plot_cell.html#pyvista.examples.cells.plot_cell">[docs]</a><span class="k">def</span> <span class="nf">plot_cell</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">cpos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a :class:`pyvista.UnstructuredGrid` while displaying cell indices.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    grid : pyvista.UnstructuredGrid</span>
+<span class="sd">        Unstructured grid (ideally) containing a single cell.</span>
+
+<span class="sd">    cpos : str, optional</span>
+<span class="sd">        Camera position.</span>
+
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        Additional keyword arguments when showing. See :func:`pyvista.Plotter.show`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single hexahedron.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Hexahedron()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pl</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">extract_all_edges</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">edges</span><span class="o">.</span><span class="n">n_cells</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">extract_all_edges</span><span class="p">(),</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">render_lines_as_tubes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_points</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">render_points_as_spheres</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_point_labels</span><span class="p">(</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">points</span><span class="p">,</span>
+        <span class="nb">range</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">n_points</span><span class="p">),</span>
+        <span class="n">always_visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fill_shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">shape_opacity</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">font_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">enable_anti_aliasing</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">cpos</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="mi">20</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">elevation</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="n">cpos</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Empty"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Empty.html#pyvista.examples.cells.Empty">[docs]</a><span class="k">def</span> <span class="nf">Empty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single Tetrahedron.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.EMPTY_CELL` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single empty cell.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a single empty cell.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Empty()</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([0])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([], shape=(0, 3), dtype=float64)</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.EMPTY_CELL</span>
+<span class="sd">    array([0], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">EMPTY_CELL</span><span class="p">],</span> <span class="p">[])</span></div>
+
+
+<div class="viewcode-block" id="Vertex"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Vertex.html#pyvista.examples.cells.Vertex">[docs]</a><span class="k">def</span> <span class="nf">Vertex</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single Vertex.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.VERTEX` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single vertex.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single vertex.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Vertex()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([1, 0])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0., 0., 0.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.VERTEX</span>
+<span class="sd">    array([1], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">VERTEX</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PolyVertex"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.PolyVertex.html#pyvista.examples.cells.PolyVertex">[docs]</a><span class="k">def</span> <span class="nf">PolyVertex</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single poly vertex.</span>
+
+<span class="sd">    This represents a set of 3D vertices as a single cell.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.POLY_VERTEX` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single poly vertex.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single poly vertex.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.PolyVertex()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells. This could be any number of points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([6, 0, 1, 2, 3, 4, 5])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0. , 0. , 0. ],</span>
+<span class="sd">                     [1. , 0. , 0. ],</span>
+<span class="sd">                     [0. , 1. , 0. ],</span>
+<span class="sd">                     [0. , 0. , 1. ],</span>
+<span class="sd">                     [1. , 0. , 0.4],</span>
+<span class="sd">                     [0. , 1. , 0.6]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.POLY_VERTEX</span>
+<span class="sd">    array([2], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">POLY_VERTEX</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Line"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Line.html#pyvista.examples.cells.Line">[docs]</a><span class="k">def</span> <span class="nf">Line</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single Line.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.LINE` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single line.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single line.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Line()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([2, 0, 1])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0., 0., 0.],</span>
+<span class="sd">                     [1., 0., 0.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.LINE</span>
+<span class="sd">    array([3], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">LINE</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PolyLine"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.PolyLine.html#pyvista.examples.cells.PolyLine">[docs]</a><span class="k">def</span> <span class="nf">PolyLine</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single poly line.</span>
+
+<span class="sd">    This represents a set of line segments as a single cell.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.POLY_LINE` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single polyline.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single polyline.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.PolyLine()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells. This could be any number of points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([4, 0, 1, 2, 3])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0. , 0. , 0. ],</span>
+<span class="sd">                     [0.5, 0. , 0. ],</span>
+<span class="sd">                     [0.5, 1. , 0. ],</span>
+<span class="sd">                     [0. , 1. , 0. ]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.POLY_LINE</span>
+<span class="sd">    array([4], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">]</span>
+
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">POLY_LINE</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Triangle"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Triangle.html#pyvista.examples.cells.Triangle">[docs]</a><span class="k">def</span> <span class="nf">Triangle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single Triangle.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.TRIANGLE` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single triangle.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single triangle.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Triangle()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid, cpos=&#39;xy&#39;)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([3, 0, 1, 2])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[1., 0., 0.],</span>
+<span class="sd">                     [0., 0., 0.],</span>
+<span class="sd">                     [0., 1., 0.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.TRIANGLE</span>
+<span class="sd">    array([5], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">TRIANGLE</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TriangleStrip"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.TriangleStrip.html#pyvista.examples.cells.TriangleStrip">[docs]</a><span class="k">def</span> <span class="nf">TriangleStrip</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single triangle strip.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.TRIANGLE_STRIP` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single triangle strip.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single triangle strip.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.TriangleStrip()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid, cpos=&#39;xy&#39;)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([8, 0, 1, 2, 3, 4, 5, 6, 7])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[1., 0., 0.],</span>
+<span class="sd">                     [0., 0., 0.],</span>
+<span class="sd">                     [1., 1., 0.],</span>
+<span class="sd">                     [0., 1., 0.],</span>
+<span class="sd">                     [1., 2., 0.],</span>
+<span class="sd">                     [0., 2., 0.],</span>
+<span class="sd">                     [1., 3., 0.],</span>
+<span class="sd">                     [0., 3., 0.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.TRIANGLE_STRIP</span>
+<span class="sd">    array([6], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">TRIANGLE_STRIP</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Polygon"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Polygon.html#pyvista.examples.cells.Polygon">[docs]</a><span class="k">def</span> <span class="nf">Polygon</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single polygon.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.POLYGON` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single polygon.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single polygon.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Polygon()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([6, 0, 1, 2, 3, 4, 5])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[ 0. ,  0. ,  0. ],</span>
+<span class="sd">                     [ 1. , -0.1,  0. ],</span>
+<span class="sd">                     [ 0.8,  0.5,  0. ],</span>
+<span class="sd">                     [ 1. ,  1. ,  0. ],</span>
+<span class="sd">                     [ 0.6,  1.2,  0. ],</span>
+<span class="sd">                     [ 0. ,  0.8,  0. ]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.POLYGON</span>
+<span class="sd">    array([7], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">POLYGON</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">Pixel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single pixel.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.PIXEL` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single pixel.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single pixel.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Pixel()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid, cpos=&#39;xy&#39;)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([4, 0, 1, 2, 3])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0., 0., 0.],</span>
+<span class="sd">                     [1., 0., 0.],</span>
+<span class="sd">                     [0., 1., 0.],</span>
+<span class="sd">                     [1., 1., 0.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.PIXEL</span>
+<span class="sd">    array([8], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">PIXEL</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Quadrilateral"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Quadrilateral.html#pyvista.examples.cells.Quadrilateral">[docs]</a><span class="k">def</span> <span class="nf">Quadrilateral</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single quadrilateral.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.QUAD` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single quadrilateral.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single quad.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Quadrilateral()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid, cpos=&#39;xy&#39;)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([4, 0, 1, 2, 3])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0., 0., 0.],</span>
+<span class="sd">                     [1., 0., 0.],</span>
+<span class="sd">                     [1., 1., 0.],</span>
+<span class="sd">                     [0., 1., 0.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.QUAD</span>
+<span class="sd">    array([9], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">QUAD</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Tetrahedron"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Tetrahedron.html#pyvista.examples.cells.Tetrahedron">[docs]</a><span class="k">def</span> <span class="nf">Tetrahedron</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single Tetrahedron.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.TETRA` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single Tetrahedron.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single tetrahedron.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Tetrahedron()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([4, 0, 1, 2, 3])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[ 1.,  1.,  1.],</span>
+<span class="sd">                     [ 1., -1., -1.],</span>
+<span class="sd">                     [-1.,  1., -1.],</span>
+<span class="sd">                     [-1., -1.,  1.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.TETRA</span>
+<span class="sd">    array([10], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">TETRA</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Hexahedron"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Hexahedron.html#pyvista.examples.cells.Hexahedron">[docs]</a><span class="k">def</span> <span class="nf">Hexahedron</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single hexahedron.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.HEXAHEDRON` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single hexahedron.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single hexahedron.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Hexahedron()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([8, 0, 1, 2, 3, 4, 5, 6, 7])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0., 0., 0.],</span>
+<span class="sd">                     [1., 0., 0.],</span>
+<span class="sd">                     [1., 1., 0.],</span>
+<span class="sd">                     [0., 1., 0.],</span>
+<span class="sd">                     [0., 0., 1.],</span>
+<span class="sd">                     [1., 0., 1.],</span>
+<span class="sd">                     [1., 1., 1.],</span>
+<span class="sd">                     [0., 1., 1.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.HEXAHEDRON</span>
+<span class="sd">    array([12], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">HEXAHEDRON</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HexagonalPrism"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.HexagonalPrism.html#pyvista.examples.cells.HexagonalPrism">[docs]</a><span class="k">def</span> <span class="nf">HexagonalPrism</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single hexagonal prism.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.HEXAGONAL_PRISM` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single hexagonal prism.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single hexagonal prism.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.HexagonalPrism()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([12,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[ 0. ,  0. ,  1. ],</span>
+<span class="sd">                     [ 1. ,  0. ,  1. ],</span>
+<span class="sd">                     [ 1.5,  0.5,  1. ],</span>
+<span class="sd">                     [ 1. ,  1. ,  1. ],</span>
+<span class="sd">                     [ 0. ,  1. ,  1. ],</span>
+<span class="sd">                     [-0.5,  0.5,  1. ],</span>
+<span class="sd">                     [ 0. ,  0. ,  0. ],</span>
+<span class="sd">                     [ 1. ,  0. ,  0. ],</span>
+<span class="sd">                     [ 1.5,  0.5,  0. ],</span>
+<span class="sd">                     [ 1. ,  1. ,  0. ],</span>
+<span class="sd">                     [ 0. ,  1. ,  0. ],</span>
+<span class="sd">                     [-0.5,  0.5,  0. ]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.HEXAGONAL_PRISM</span>
+<span class="sd">    array([16], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">HEXAGONAL_PRISM</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Wedge"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Wedge.html#pyvista.examples.cells.Wedge">[docs]</a><span class="k">def</span> <span class="nf">Wedge</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single wedge.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.WEDGE` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single wedge.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single wedge.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Wedge()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([6, 0, 1, 2, 3, 4, 5])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0. , 1. , 0. ],</span>
+<span class="sd">                     [0. , 0. , 0. ],</span>
+<span class="sd">                     [0. , 0.5, 0.5],</span>
+<span class="sd">                     [1. , 1. , 0. ],</span>
+<span class="sd">                     [1. , 0. , 0. ],</span>
+<span class="sd">                     [1. , 0.5, 0.5]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.WEDGE</span>
+<span class="sd">    array([13], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">WEDGE</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PentagonalPrism"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.PentagonalPrism.html#pyvista.examples.cells.PentagonalPrism">[docs]</a><span class="k">def</span> <span class="nf">PentagonalPrism</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single pentagonal prism.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.PENTAGONAL_PRISM` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single pentagonal prism.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single pentagonal prism.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.PentagonalPrism()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([10,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[1., 0., 0.],</span>
+<span class="sd">                     [3., 0., 0.],</span>
+<span class="sd">                     [4., 2., 0.],</span>
+<span class="sd">                     [2., 4., 0.],</span>
+<span class="sd">                     [0., 2., 0.],</span>
+<span class="sd">                     [1., 0., 4.],</span>
+<span class="sd">                     [3., 0., 4.],</span>
+<span class="sd">                     [4., 2., 4.],</span>
+<span class="sd">                     [2., 4., 4.],</span>
+<span class="sd">                     [0., 2., 4.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.PENTAGONAL_PRISM</span>
+<span class="sd">    array([15], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">PENTAGONAL_PRISM</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pyramid"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Pyramid.html#pyvista.examples.cells.Pyramid">[docs]</a><span class="k">def</span> <span class="nf">Pyramid</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single pyramid.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.PYRAMID` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single pyramid.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single pyramid.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Pyramid()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([5, 0, 1, 2, 3, 4])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[ 1.        ,  1.        ,  0.        ],</span>
+<span class="sd">                     [-1.        ,  1.        ,  0.        ],</span>
+<span class="sd">                     [-1.        , -1.        ,  0.        ],</span>
+<span class="sd">                     [ 1.        , -1.        ,  0.        ],</span>
+<span class="sd">                     [ 0.        ,  0.        ,  1.60803807]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.PYRAMID</span>
+<span class="sd">    array([14], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.60803807</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">PYRAMID</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Voxel"><a class="viewcode-back" href="../../../api/examples/_autosummary/pyvista.examples.cells.Voxel.html#pyvista.examples.cells.Voxel">[docs]</a><span class="k">def</span> <span class="nf">Voxel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UnstructuredGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :class:`pyvista.UnstructuredGrid` containing a single voxel.</span>
+
+<span class="sd">    This cell corresponds to the :attr:`pyvista.CellType.VOXEL` cell type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyvista.UnstructuredGrid</span>
+<span class="sd">        UnstructuredGrid containing a single voxel.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot a single voxel.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">    &gt;&gt;&gt; grid = examples.cells.Voxel()</span>
+<span class="sd">    &gt;&gt;&gt; examples.plot_cell(grid)</span>
+
+<span class="sd">    List the grid&#39;s cells.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.cells</span>
+<span class="sd">    array([8, 0, 1, 2, 3, 4, 5, 6, 7])</span>
+
+<span class="sd">    List the grid&#39;s points.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.points</span>
+<span class="sd">    pyvista_ndarray([[0., 0., 0.],</span>
+<span class="sd">                     [1., 0., 0.],</span>
+<span class="sd">                     [1., 1., 0.],</span>
+<span class="sd">                     [0., 1., 0.],</span>
+<span class="sd">                     [0., 0., 1.],</span>
+<span class="sd">                     [1., 0., 1.],</span>
+<span class="sd">                     [1., 1., 1.],</span>
+<span class="sd">                     [0., 1., 1.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; grid.celltypes  # same as pyvista.CellType.VOXEL</span>
+<span class="sd">    array([11], dtype=uint8)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="p">[</span><span class="n">CellType</span><span class="o">.</span><span class="n">VOXEL</span><span class="p">],</span> <span class="n">points</span><span class="p">)</span></div>
+</pre></div>
+
+            </article>
+            
+            
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

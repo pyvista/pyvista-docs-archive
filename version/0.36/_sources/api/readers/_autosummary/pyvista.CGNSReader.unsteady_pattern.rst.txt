@@ -1,0 +1,6 @@
+unsteady\_pattern
+=================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: CGNSReader.unsteady_pattern

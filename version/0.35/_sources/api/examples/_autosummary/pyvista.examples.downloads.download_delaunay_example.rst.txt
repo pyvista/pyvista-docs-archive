@@ -1,0 +1,6 @@
+download\_delaunay\_example
+===========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_delaunay_example

@@ -1,0 +1,6 @@
+plot\_ants\_plane
+=================
+
+.. currentmodule:: pyvista.demos.demos
+
+.. autofunction:: plot_ants_plane

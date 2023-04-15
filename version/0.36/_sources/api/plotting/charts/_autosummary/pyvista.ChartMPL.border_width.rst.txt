@@ -1,0 +1,6 @@
+border\_width
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ChartMPL.border_width

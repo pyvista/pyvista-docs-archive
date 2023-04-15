@@ -1,0 +1,7 @@
+﻿pyvista.Renderer
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Renderer
+   :members:

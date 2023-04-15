@@ -1,0 +1,7 @@
+﻿pyvista.EnSightReader
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: EnSightReader
+   :members:

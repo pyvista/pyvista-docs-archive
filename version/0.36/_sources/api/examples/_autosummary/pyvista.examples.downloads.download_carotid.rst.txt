@@ -1,0 +1,6 @@
+download\_carotid
+=================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_carotid

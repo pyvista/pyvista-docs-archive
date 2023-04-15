@@ -1,0 +1,7 @@
+﻿pyvista.PointSet
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PointSet
+   :members:

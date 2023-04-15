@@ -1,0 +1,43 @@
+﻿pyvista.GLTFReader
+==================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: GLTFReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      GLTFReader.hide_progress
+      
+      
+      GLTFReader.read
+      
+      
+      GLTFReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      GLTFReader.path
+      
+      
+      GLTFReader.reader
+      
+   
+   

@@ -1,0 +1,7 @@
+﻿pyvista.FacetReader
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: FacetReader
+   :members:

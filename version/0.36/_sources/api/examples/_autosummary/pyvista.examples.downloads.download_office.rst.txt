@@ -1,0 +1,6 @@
+download\_office
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_office

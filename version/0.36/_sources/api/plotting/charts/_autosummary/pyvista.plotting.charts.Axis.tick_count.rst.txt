@@ -1,0 +1,6 @@
+tick\_count
+===========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.tick_count

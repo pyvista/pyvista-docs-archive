@@ -1,0 +1,6 @@
+clear\_cell\_data
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.clear_cell_data

@@ -1,0 +1,6 @@
+reconstruct\_surface
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyDataFilters.reconstruct_surface

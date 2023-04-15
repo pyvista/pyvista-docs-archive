@@ -1,0 +1,6 @@
+load\_spline
+============
+
+.. currentmodule:: pyvista.examples.examples
+
+.. autofunction:: load_spline

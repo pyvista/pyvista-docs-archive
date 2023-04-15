@@ -1,0 +1,234 @@
+﻿pyvista.ChartBox
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: ChartBox
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      ChartBox.override
+      
+      
+      ChartBox.show
+      
+      
+      ChartBox.toggle
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      ChartBox.background_color
+      
+      
+      ChartBox.background_texture
+      
+      
+      ChartBox.border_color
+      
+      
+      ChartBox.border_style
+      
+      
+      ChartBox.border_width
+      
+      
+      ChartBox.legend_visible
+      
+      
+      ChartBox.loc
+      
+      
+      ChartBox.plot
+      
+      
+      ChartBox.size
+      
+      
+      ChartBox.title
+      
+      
+      ChartBox.visible
+      
+   
+   

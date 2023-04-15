@@ -1,0 +1,6 @@
+scale
+=====
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.scale

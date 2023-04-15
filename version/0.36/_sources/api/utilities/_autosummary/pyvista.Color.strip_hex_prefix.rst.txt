@@ -1,0 +1,6 @@
+strip\_hex\_prefix
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Color.strip_hex_prefix

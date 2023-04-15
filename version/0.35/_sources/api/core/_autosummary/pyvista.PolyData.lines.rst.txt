@@ -1,0 +1,6 @@
+lines
+=====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PolyData.lines

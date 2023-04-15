@@ -1,0 +1,6 @@
+point\_arrays
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.point_arrays

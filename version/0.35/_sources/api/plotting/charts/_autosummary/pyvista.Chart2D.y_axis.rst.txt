@@ -1,0 +1,6 @@
+y\_axis
+=======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.y_axis

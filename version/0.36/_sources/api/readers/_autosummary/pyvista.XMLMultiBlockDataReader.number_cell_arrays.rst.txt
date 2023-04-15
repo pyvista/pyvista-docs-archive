@@ -1,0 +1,6 @@
+number\_cell\_arrays
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: XMLMultiBlockDataReader.number_cell_arrays

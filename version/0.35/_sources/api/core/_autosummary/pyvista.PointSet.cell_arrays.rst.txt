@@ -1,0 +1,6 @@
+cell\_arrays
+============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PointSet.cell_arrays

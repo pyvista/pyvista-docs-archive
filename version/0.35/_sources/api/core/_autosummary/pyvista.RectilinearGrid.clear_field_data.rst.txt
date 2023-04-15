@@ -1,0 +1,6 @@
+clear\_field\_data
+==================
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.clear_field_data

@@ -1,0 +1,6 @@
+rename\_array
+=============
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.rename_array

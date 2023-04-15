@@ -1,0 +1,6 @@
+border\_style
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ChartPie.border_style

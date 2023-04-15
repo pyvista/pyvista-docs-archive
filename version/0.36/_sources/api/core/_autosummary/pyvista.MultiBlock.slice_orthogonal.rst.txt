@@ -1,0 +1,6 @@
+slice\_orthogonal
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlock.slice_orthogonal

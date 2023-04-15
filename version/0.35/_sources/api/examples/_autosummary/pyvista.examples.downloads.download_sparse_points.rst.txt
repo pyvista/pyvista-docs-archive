@@ -1,0 +1,6 @@
+download\_sparse\_points
+========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_sparse_points

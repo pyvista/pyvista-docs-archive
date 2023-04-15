@@ -1,0 +1,6 @@
+clip\_box
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.clip_box

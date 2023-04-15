@@ -1,0 +1,6 @@
+download\_beach
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_beach

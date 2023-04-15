@@ -1,0 +1,6 @@
+border\_color
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Renderer.border_color

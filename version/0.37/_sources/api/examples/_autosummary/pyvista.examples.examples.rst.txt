@@ -1,0 +1,5 @@
+﻿pyvista.examples.examples
+=========================
+
+.. automodule:: pyvista.examples.examples
+   :members:

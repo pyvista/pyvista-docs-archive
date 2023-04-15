@@ -1,0 +1,100 @@
+﻿pyvista.plotting.charts.Brush
+=============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: Brush
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Brush.override
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      Brush.color
+      
+      
+      Brush.texture
+      
+      
+      Brush.texture_interpolate
+      
+      
+      Brush.texture_repeat
+      
+   
+   

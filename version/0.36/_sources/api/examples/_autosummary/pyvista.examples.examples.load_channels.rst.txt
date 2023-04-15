@@ -1,0 +1,6 @@
+load\_channels
+==============
+
+.. currentmodule:: pyvista.examples.examples
+
+.. autofunction:: load_channels

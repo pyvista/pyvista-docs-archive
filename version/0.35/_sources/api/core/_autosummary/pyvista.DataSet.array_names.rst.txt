@@ -1,0 +1,6 @@
+array\_names
+============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSet.array_names

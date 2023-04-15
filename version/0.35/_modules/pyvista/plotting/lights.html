@@ -1,0 +1,1543 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.plotting.lights &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/plotting/lights and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/plotting/lights.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/plotting/lights.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.plotting.lights</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module containing pyvista implementation of vtk.vtkLight.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># imports here rather than in _vtk to avoid circular imports</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">vtkmodules.vtkCommonMath</span> <span class="kn">import</span> <span class="n">vtkMatrix4x4</span>
+    <span class="kn">from</span> <span class="nn">vtkmodules.vtkRenderingCore</span> <span class="kn">import</span> <span class="n">vtkLight</span><span class="p">,</span> <span class="n">vtkLightActor</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+    <span class="kn">from</span> <span class="nn">vtk</span> <span class="kn">import</span> <span class="n">vtkLight</span><span class="p">,</span> <span class="n">vtkLightActor</span><span class="p">,</span> <span class="n">vtkMatrix4x4</span>
+
+<span class="kn">from</span> <span class="nn">..utilities.helpers</span> <span class="kn">import</span> <span class="n">vtkmatrix_from_array</span>
+<span class="kn">from</span> <span class="nn">.colors</span> <span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">color_like</span>
+
+
+<span class="k">class</span> <span class="nc">LightType</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An enumeration for the light types.&quot;&quot;&quot;</span>
+
+    <span class="n">HEADLIGHT</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">CAMERA_LIGHT</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">SCENE_LIGHT</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pretty name for a light type.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="Light"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.html#pyvista.Light">[docs]</a><span class="k">class</span> <span class="nc">Light</span><span class="p">(</span><span class="n">vtkLight</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Light class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    position : list or tuple, optional</span>
+<span class="sd">        The position of the light. The interpretation of the position</span>
+<span class="sd">        depends on the type of the light and whether the light has a</span>
+<span class="sd">        transformation matrix.  See also the :py:attr:`position`</span>
+<span class="sd">        property.</span>
+
+<span class="sd">    focal_point : list or tuple, optional</span>
+<span class="sd">        The focal point of the light. The interpretation of the focal</span>
+<span class="sd">        point depends on the type of the light and whether the light</span>
+<span class="sd">        has a transformation matrix.  See also the</span>
+<span class="sd">        :py:attr:`focal_point` property.</span>
+
+<span class="sd">    color : color_like, optional</span>
+<span class="sd">        The color of the light. The ambient, diffuse and specular</span>
+<span class="sd">        colors will all be set to this color on creation.</span>
+
+<span class="sd">    light_type : str or int, optional</span>
+<span class="sd">        The type of the light. If a string, one of ``&#39;headlight&#39;``,</span>
+<span class="sd">        ``&#39;camera light&#39;`` or ``&#39;scene light&#39;``. If an int, one of 1,</span>
+<span class="sd">        2 or 3, respectively. The class constants ``Light.HEADLIGHT``,</span>
+<span class="sd">        ``Light.CAMERA_LIGHT`` and ``Light.SCENE_LIGHT`` are also</span>
+<span class="sd">        available, respectively.</span>
+
+<span class="sd">            - A headlight is attached to the camera, looking at its</span>
+<span class="sd">              focal point along the axis of the camera.</span>
+
+<span class="sd">            - A camera light also moves with the camera, but it can</span>
+<span class="sd">              occupy a general position with respect to it.</span>
+
+<span class="sd">            - A scene light is stationary with respect to the scene,</span>
+<span class="sd">              as it does not follow the camera. This is the default.</span>
+
+<span class="sd">    intensity : float, optional</span>
+<span class="sd">        The brightness of the light (between 0 and 1).</span>
+
+<span class="sd">    positional : bool, optional</span>
+<span class="sd">        Set if the light is positional.</span>
+
+<span class="sd">        The default is a directional light, i.e. an infinitely distant</span>
+<span class="sd">        point source. A positional light with a cone angle of at least</span>
+<span class="sd">        90 degrees acts like a spherical point source. A positional</span>
+<span class="sd">        light with a cone angle that is less than 90 degrees is known</span>
+<span class="sd">        as a spotlight.</span>
+
+<span class="sd">    cone_angle : float, optional</span>
+<span class="sd">        Cone angle of a positional light in degrees.</span>
+
+<span class="sd">    show_actor : bool, optional</span>
+<span class="sd">        Show an actor for a spotlight that depicts the geometry of the</span>
+<span class="sd">        beam.</span>
+
+<span class="sd">    exponent : float, optional</span>
+<span class="sd">        The exponent of the cosine used for spotlights. See also the</span>
+<span class="sd">        :py:attr:`exponent` property.</span>
+
+<span class="sd">    shadow_attenuation : float, optional</span>
+<span class="sd">        The value of shadow attenuation.</span>
+
+<span class="sd">        By default a light will be completely blocked when in shadow.</span>
+<span class="sd">        By setting this value to less than 1.0 you can control how</span>
+<span class="sd">        much light is attenuated when in shadow. Note that changing</span>
+<span class="sd">        the :py:attr:`attenuation_values` of the light can make it pass</span>
+<span class="sd">        through objects even if its shadow attenuation is 1.</span>
+
+<span class="sd">    attenuation_values : sequence, optional</span>
+<span class="sd">        Quadratic attenuation constants.</span>
+
+<span class="sd">        The values are a 3-length sequence which specifies the constant,</span>
+<span class="sd">        linear and quadratic constants in this order. These parameters</span>
+<span class="sd">        only have an effect for positional lights.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a light at (10, 10, 10) and set its diffuse color to red.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; light = pv.Light(position=(10, 10, 10))</span>
+<span class="sd">    &gt;&gt;&gt; light.diffuse_color = 1.0, 0.0, 0.0</span>
+
+<span class="sd">    Create a positional light at (0, 0, 3) with a cone angle of</span>
+<span class="sd">    30, exponent of 20, and a visible actor.</span>
+
+<span class="sd">    &gt;&gt;&gt; light = pv.Light(position=(0, 0, 3), show_actor=True,</span>
+<span class="sd">    ...                  positional=True, cone_angle=30, exponent=20)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># pull in light type enum values as class constants</span>
+    <span class="n">HEADLIGHT</span> <span class="o">=</span> <span class="n">LightType</span><span class="o">.</span><span class="n">HEADLIGHT</span>
+    <span class="n">CAMERA_LIGHT</span> <span class="o">=</span> <span class="n">LightType</span><span class="o">.</span><span class="n">CAMERA_LIGHT</span>
+    <span class="n">SCENE_LIGHT</span> <span class="o">=</span> <span class="n">LightType</span><span class="o">.</span><span class="n">SCENE_LIGHT</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">focal_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">light_type</span><span class="o">=</span><span class="s1">&#39;scene light&#39;</span><span class="p">,</span>
+        <span class="n">intensity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">positional</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">cone_angle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">show_actor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">exponent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">shadow_attenuation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">attenuation_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the light.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
+        <span class="k">if</span> <span class="n">focal_point</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">focal_point</span> <span class="o">=</span> <span class="n">focal_point</span>
+
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ambient_color</span> <span class="o">=</span> <span class="n">color</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">diffuse_color</span> <span class="o">=</span> <span class="n">color</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">specular_color</span> <span class="o">=</span> <span class="n">color</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">light_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># be forgiving: ignore spaces and case</span>
+            <span class="n">light_type_orig</span> <span class="o">=</span> <span class="n">light_type</span>
+            <span class="n">type_normalized</span> <span class="o">=</span> <span class="n">light_type</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;headlight&#39;</span><span class="p">:</span> <span class="n">LightType</span><span class="o">.</span><span class="n">HEADLIGHT</span><span class="p">,</span>
+                <span class="s1">&#39;cameralight&#39;</span><span class="p">:</span> <span class="n">LightType</span><span class="o">.</span><span class="n">CAMERA_LIGHT</span><span class="p">,</span>
+                <span class="s1">&#39;scenelight&#39;</span><span class="p">:</span> <span class="n">LightType</span><span class="o">.</span><span class="n">SCENE_LIGHT</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">light_type</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">type_normalized</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">light_keys</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;Invalid light_type &quot;</span><span class="si">{</span><span class="n">light_type_orig</span><span class="si">}</span><span class="s1">&quot;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;Choose from one of the following: </span><span class="si">{</span><span class="n">light_keys</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">light_type</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Parameter light_type must be int or str, not </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">light_type</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">.&#39;</span>
+            <span class="p">)</span>
+        <span class="c1"># LightType is an int subclass</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">light_type</span> <span class="o">=</span> <span class="n">light_type</span>
+
+        <span class="k">if</span> <span class="n">intensity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">intensity</span>
+
+        <span class="k">if</span> <span class="n">cone_angle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cone_angle</span> <span class="o">=</span> <span class="n">cone_angle</span>
+
+        <span class="k">if</span> <span class="n">exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">=</span> <span class="n">exponent</span>
+
+        <span class="k">if</span> <span class="n">positional</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">positional</span> <span class="o">=</span> <span class="n">positional</span>
+
+        <span class="k">if</span> <span class="n">shadow_attenuation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shadow_attenuation</span> <span class="o">=</span> <span class="n">shadow_attenuation</span>
+
+        <span class="k">if</span> <span class="n">attenuation_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attenuation_values</span> <span class="o">=</span> <span class="n">attenuation_values</span>
+
+        <span class="c1"># Add the light actor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="o">=</span> <span class="n">vtkLightActor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">SetLight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">SetVisibility</span><span class="p">(</span><span class="n">show_actor</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print a repr specifying the id of the light and its light type.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">light_type</span><span class="si">}</span><span class="s1">) at </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="si">}</span><span class="s1">&gt;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compare whether the relevant attributes of two lights are equal.&quot;&quot;&quot;</span>
+        <span class="c1"># attributes which are native python types and thus implement __eq__</span>
+        <span class="n">native_attrs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;light_type&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;position&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;focal_point&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ambient_color&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;diffuse_color&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;specular_color&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;intensity&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;on&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;positional&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;exponent&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;cone_angle&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;attenuation_values&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;shadow_attenuation&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">native_attrs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># check transformation matrix element by element (if it exists)</span>
+        <span class="n">this_trans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_matrix</span>
+        <span class="n">that_trans</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">transform_matrix</span>
+        <span class="n">trans_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">trans</span> <span class="ow">in</span> <span class="p">[</span><span class="n">this_trans</span><span class="p">,</span> <span class="n">that_trans</span><span class="p">]</span> <span class="k">if</span> <span class="n">trans</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">trans_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># either but not both are None</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">trans_count</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">this_trans</span><span class="o">.</span><span class="n">GetElement</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">!=</span> <span class="n">that_trans</span><span class="o">.</span><span class="n">GetElement</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean up when the light is being destroyed.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">shadow_attenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the value of shadow attenuation.</span>
+
+<span class="sd">        By default a light will be completely blocked when in shadow.</span>
+<span class="sd">        By setting this value to less than 1.0 you can control how</span>
+<span class="sd">        much light is attenuated when in shadow. Note that changing</span>
+<span class="sd">        the :py:attr:`attenuation_values` of the light can make it pass</span>
+<span class="sd">        through objects even if its shadow attenuation is 1.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Set the shadow attenuation to 0.5</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.shadow_attenuation = 0.5</span>
+<span class="sd">        &gt;&gt;&gt; light.shadow_attenuation</span>
+<span class="sd">        0.5</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetShadowAttenuation</span><span class="p">()</span>
+
+    <span class="nd">@shadow_attenuation</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">shadow_attenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the shadow intensity.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetShadowAttenuation</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ambient_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the ambient color of the light.</span>
+
+<span class="sd">        When setting, the color must be a 3-length sequence or a string.</span>
+<span class="sd">        For example:</span>
+
+<span class="sd">            * ``color=&#39;white&#39;``</span>
+<span class="sd">            * ``color=&#39;w&#39;``</span>
+<span class="sd">            * ``color=[1.0, 1.0, 1.0]``</span>
+<span class="sd">            * ``color=&#39;#FFFFFF&#39;``</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light and set its ambient color to red.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; light = pyvista.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.ambient_color = &#39;red&#39;</span>
+<span class="sd">        &gt;&gt;&gt; light.ambient_color</span>
+<span class="sd">        Color(name=&#39;red&#39;, hex=&#39;#ff0000ff&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetAmbientColor</span><span class="p">())</span>
+
+    <span class="nd">@ambient_color</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">ambient_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">color_like</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the ambient color of the light.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetAmbientColor</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">diffuse_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the diffuse color of the light.</span>
+
+<span class="sd">        When setting, the color must be a 3-length sequence or a string.</span>
+<span class="sd">        For example:</span>
+
+<span class="sd">            * ``color=&#39;white&#39;``</span>
+<span class="sd">            * ``color=&#39;w&#39;``</span>
+<span class="sd">            * ``color=[1.0, 1.0, 1.0]``</span>
+<span class="sd">            * ``color=&#39;#FFFFFF&#39;``</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light and set its diffuse color to blue.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.diffuse_color = (0.0, 0.0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; light.diffuse_color</span>
+<span class="sd">        Color(name=&#39;blue&#39;, hex=&#39;#0000ffff&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetDiffuseColor</span><span class="p">())</span>
+
+    <span class="nd">@diffuse_color</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">diffuse_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">color_like</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the diffuse color of the light.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetDiffuseColor</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">specular_color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the specular color of the light.</span>
+
+<span class="sd">        When setting, the color must be a 3-length sequence or a string.</span>
+<span class="sd">        For example:</span>
+
+<span class="sd">            * ``color=&#39;white&#39;``</span>
+<span class="sd">            * ``color=&#39;w&#39;``</span>
+<span class="sd">            * ``color=[1.0, 1.0, 1.0]``</span>
+<span class="sd">            * ``color=&#39;#FFFFFF&#39;``</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light and set its specular color to bright green.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.specular_color = &#39;#00FF00&#39;</span>
+<span class="sd">        &gt;&gt;&gt; light.specular_color</span>
+<span class="sd">        Color(name=&#39;lime&#39;, hex=&#39;#00ff00ff&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetSpecularColor</span><span class="p">())</span>
+
+    <span class="nd">@specular_color</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">specular_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">color_like</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the specular color of the light.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSpecularColor</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the position of the light.</span>
+
+<span class="sd">        Note: the position is defined in the coordinate space</span>
+<span class="sd">        indicated by the light&#39;s transformation matrix (if it</span>
+<span class="sd">        exists). To get the light&#39;s world space position, use the</span>
+<span class="sd">        (read-only) :py:attr:`world_position` property.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light positioned at ``(10, 10, 10)`` after</span>
+<span class="sd">        initialization, and note how the position is unaffected by a</span>
+<span class="sd">        non-trivial transform matrix.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.position = (10, 10, 10)</span>
+<span class="sd">        &gt;&gt;&gt; # set a &quot;random&quot; transformation matrix</span>
+<span class="sd">        &gt;&gt;&gt; light.transform_matrix = np.arange(4 * 4).reshape(4, 4)</span>
+<span class="sd">        &gt;&gt;&gt; light.position</span>
+<span class="sd">        (10.0, 10.0, 10.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetPosition</span><span class="p">()</span>
+
+    <span class="nd">@position</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the position of the light.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetPosition</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">world_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the world space position of the light.</span>
+
+<span class="sd">        The world space position is the :py:attr:`position` property</span>
+<span class="sd">        transformed by the light&#39;s transform matrix if it exists. The</span>
+<span class="sd">        value of this read-only property corresponds to the</span>
+<span class="sd">        ``vtk.vtkLight.GetTransformedPosition()`` method.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light with a transformation matrix that corresponds to a</span>
+<span class="sd">        90-degree rotation around the z axis and a shift by (0, 0, -1), and</span>
+<span class="sd">        check that the light&#39;s position transforms as expected.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light(position=(1, 0, 3))</span>
+<span class="sd">        &gt;&gt;&gt; trans = np.zeros((4, 4))</span>
+<span class="sd">        &gt;&gt;&gt; trans[:-1, :-1] = [[0, -1, 0], [1, 0, 0], [0, 0, 1]]</span>
+<span class="sd">        &gt;&gt;&gt; trans[:-1, -1] = [0, 0, -1]</span>
+<span class="sd">        &gt;&gt;&gt; light.transform_matrix = trans</span>
+<span class="sd">        &gt;&gt;&gt; light.position</span>
+<span class="sd">        (1.0, 0.0, 3.0)</span>
+<span class="sd">        &gt;&gt;&gt; light.world_position</span>
+<span class="sd">        (0.0, 1.0, 2.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetTransformedPosition</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">focal_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the focal point of the light.</span>
+
+<span class="sd">        Note: the focal point is defined in the coordinate space</span>
+<span class="sd">        indicated by the light&#39;s transformation matrix (if it</span>
+<span class="sd">        exists). To get the light&#39;s world space focal point, use the</span>
+<span class="sd">        (read-only) :py:attr:`world_focal_point` property.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light at (10, 10, 10) shining at (0, 0, 1).</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light(position=(10, 10, 10))</span>
+<span class="sd">        &gt;&gt;&gt; light.focal_point = (0, 0, 1)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetFocalPoint</span><span class="p">()</span>
+
+    <span class="nd">@focal_point</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">focal_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the focal point of the light.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetFocalPoint</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">world_focal_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the world space focal point of the light.</span>
+
+<span class="sd">        The world space focal point is the :py:attr:`focal_point`</span>
+<span class="sd">        property transformed by the light&#39;s transform matrix if it</span>
+<span class="sd">        exists. The value of this read-only property corresponds to</span>
+<span class="sd">        the ``vtk.vtkLight.GetTransformedFocalPoint()`` method.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light with a transformation matrix that corresponds</span>
+<span class="sd">        to a 90-degree rotation around the z axis and a shift by (0,</span>
+<span class="sd">        0, -1), and check that the light&#39;s focal point transforms as</span>
+<span class="sd">        expected.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light(focal_point=(1, 0, 3))</span>
+<span class="sd">        &gt;&gt;&gt; trans = np.zeros((4, 4))</span>
+<span class="sd">        &gt;&gt;&gt; trans[:-1, :-1] = [[0, -1, 0], [1, 0, 0], [0, 0, 1]]</span>
+<span class="sd">        &gt;&gt;&gt; trans[:-1, -1] = [0, 0, -1]</span>
+<span class="sd">        &gt;&gt;&gt; light.transform_matrix = trans</span>
+<span class="sd">        &gt;&gt;&gt; light.focal_point</span>
+<span class="sd">        (1.0, 0.0, 3.0)</span>
+<span class="sd">        &gt;&gt;&gt; light.world_focal_point</span>
+<span class="sd">        (0.0, 1.0, 2.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetTransformedFocalPoint</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">intensity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the brightness of the light (between 0 and 1).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Light the two sides of a cube with lights of different</span>
+<span class="sd">        brightness.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter(lighting=&#39;none&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; _ = plotter.add_mesh(pv.Cube(), color=&#39;cyan&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; light_bright = pv.Light(position=(3, 0, 0), light_type=&#39;scene light&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; light_dim = pv.Light(position=(0, 3, 0), light_type=&#39;scene light&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; light_dim.intensity = 0.5</span>
+<span class="sd">        &gt;&gt;&gt; for light in light_bright, light_dim:</span>
+<span class="sd">        ...     light.positional = True</span>
+<span class="sd">        ...     plotter.add_light(light)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; plotter.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetIntensity</span><span class="p">()</span>
+
+    <span class="nd">@intensity</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">intensity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intensity</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the brightness of the light (between 0 and 1).&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetIntensity</span><span class="p">(</span><span class="n">intensity</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the light is on.</span>
+
+<span class="sd">        This corresponds to the Switch state of the ``vtk.vtkLight`` class.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light, check if it&#39;s on by default, and turn it off.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.on</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; light.on = False</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetSwitch</span><span class="p">())</span>
+
+    <span class="nd">@on</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set whether the light should be on.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSwitch</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">positional</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the light is positional.</span>
+
+<span class="sd">        The default is a directional light, i.e. an infinitely distant</span>
+<span class="sd">        point source. A positional light with a cone angle of at least</span>
+<span class="sd">        90 degrees acts like a spherical point source. A positional</span>
+<span class="sd">        light with a cone angle that is less than 90 degrees is known</span>
+<span class="sd">        as a spotlight.</span>
+
+<span class="sd">        Attenuation and cone angles are only used for positional</span>
+<span class="sd">        lights.  The :py:attr:`exponent` property is only used for</span>
+<span class="sd">        spotlights.  Positional lights with a cone angle of at least</span>
+<span class="sd">        90 degrees don&#39;t show angular dependence of their beams, but</span>
+<span class="sd">        they display attenuation.</span>
+
+<span class="sd">        If the light is changed to directional, its actor (if previously</span>
+<span class="sd">        shown) is automatically hidden.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a spotlight shining on the origin.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light(position=(1, 1, 1))</span>
+<span class="sd">        &gt;&gt;&gt; light.positional = True</span>
+<span class="sd">        &gt;&gt;&gt; light.cone_angle = 30</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetPositional</span><span class="p">())</span>
+
+    <span class="nd">@positional</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">positional</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set whether the light should be positional.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">state</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hide_actor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetPositional</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_actor</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_check_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the light actor should be added or removed from attached renderers.</span>
+
+<span class="sd">        This should be called whenever positional state or cone angle</span>
+<span class="sd">        are changed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># only should occur on __init__</span>
+            <span class="k">return</span>
+
+        <span class="n">actor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cone_angle</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">positional</span>
+        <span class="n">actor_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">GetAddressAsString</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="c1"># add or remove the actor from the renderer</span>
+        <span class="k">for</span> <span class="n">renderer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">actor_state</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">actor_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">renderer</span><span class="o">.</span><span class="n">actors</span><span class="p">:</span>
+                    <span class="n">renderer</span><span class="o">.</span><span class="n">add_actor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">actor_name</span> <span class="ow">in</span> <span class="n">renderer</span><span class="o">.</span><span class="n">actors</span><span class="p">:</span>
+                    <span class="n">renderer</span><span class="o">.</span><span class="n">remove_actor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">exponent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the exponent of the cosine used for spotlights.</span>
+
+<span class="sd">        With a spotlight (a positional light with cone angle less than</span>
+<span class="sd">        90 degrees) the shape of the light beam within the light cone</span>
+<span class="sd">        varies with the angle from the light&#39;s axis, and the variation</span>
+<span class="sd">        of the intensity depends as the cosine of this angle raised to</span>
+<span class="sd">        an exponent, which is 1 by default. Increasing the exponent</span>
+<span class="sd">        makes the beam sharper (more focused around the axis),</span>
+<span class="sd">        decreasing it spreads the beam out.</span>
+
+<span class="sd">        Note that since the angular dependence defined by this</span>
+<span class="sd">        property and the truncation performed by the</span>
+<span class="sd">        :py:attr:`cone_angle` are independent, for spotlights with</span>
+<span class="sd">        narrow beams (small :py:attr:`cone_angle`) it is harder to see</span>
+<span class="sd">        the angular variation of the intensity, and a lot higher</span>
+<span class="sd">        exponent might be necessary to visibly impact the angular</span>
+<span class="sd">        distribution of the beam.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Plot three planes lit by three spotlights with exponents of 1,</span>
+<span class="sd">        2 and 5.  The one with the lowest exponent has the broadest</span>
+<span class="sd">        beam.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter(lighting=&#39;none&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; for offset, exponent in zip([0, 1.5, 3], [1, 2, 5]):</span>
+<span class="sd">        ...     _ = plotter.add_mesh(pv.Plane((offset, 0, 0)), color=&#39;white&#39;)</span>
+<span class="sd">        ...     light = pv.Light(position=(offset, 0, 0.1), focal_point=(offset, 0, 0))</span>
+<span class="sd">        ...     light.exponent = exponent</span>
+<span class="sd">        ...     light.positional = True</span>
+<span class="sd">        ...     light.cone_angle = 80</span>
+<span class="sd">        ...     plotter.add_light(light)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; plotter.view_xy()</span>
+<span class="sd">        &gt;&gt;&gt; plotter.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetExponent</span><span class="p">()</span>
+
+    <span class="nd">@exponent</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">exponent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the exponent of the cosine used in positional lighting.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetExponent</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cone_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the cone angle of a positional light.</span>
+
+<span class="sd">        The angle is in degrees and is measured between the axis of</span>
+<span class="sd">        the cone and an extremal ray of the cone. A value smaller than</span>
+<span class="sd">        90 has spot lighting effects, anything equal to and above 90</span>
+<span class="sd">        is just a positional light, i.e. a spherical point source.</span>
+
+<span class="sd">        Regarding the angular distribution of the light, the cone</span>
+<span class="sd">        angle merely truncates the beam, the shape of which is defined</span>
+<span class="sd">        by the :py:attr:`exponent`.  If the cone angle is at least 90</span>
+<span class="sd">        degrees then there is no angular dependence.</span>
+
+<span class="sd">        If the light&#39;s cone angle is increased to 90 degrees or above,</span>
+<span class="sd">        its actor (if previously shown) is automatically hidden.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Plot three planes lit by three spotlights with varying cone</span>
+<span class="sd">        angles.  Use a large exponent to cause a visible angular</span>
+<span class="sd">        variation of the intensity of the beams.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter(lighting=&#39;none&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; for offset, angle in zip([0, 1.5, 3], [70, 30, 20]):</span>
+<span class="sd">        ...     _ = plotter.add_mesh(pv.Plane((offset, 0, 0)), color=&#39;white&#39;)</span>
+<span class="sd">        ...     light = pv.Light(position=(offset, 0, 1), focal_point=(offset, 0, 0))</span>
+<span class="sd">        ...     light.exponent = 15</span>
+<span class="sd">        ...     light.positional = True</span>
+<span class="sd">        ...     light.cone_angle = angle</span>
+<span class="sd">        ...     plotter.add_light(light)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; plotter.view_xy()</span>
+<span class="sd">        &gt;&gt;&gt; plotter.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetConeAngle</span><span class="p">()</span>
+
+    <span class="nd">@cone_angle</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cone_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the cone angle of a positional light.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">angle</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hide_actor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetConeAngle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_actor</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">attenuation_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the quadratic attenuation constants.</span>
+
+<span class="sd">        The values are 3-length sequences which specify the constant,</span>
+<span class="sd">        linear and quadratic constants in this order. These parameters</span>
+<span class="sd">        only have an effect for positional lights.</span>
+
+<span class="sd">        Attenuation refers to the dampening of a beam of light as it</span>
+<span class="sd">        gets further away from the point source. The three constants</span>
+<span class="sd">        describe three different profiles for dampening with</span>
+<span class="sd">        distance. A larger attenuation constant corresponds to more</span>
+<span class="sd">        rapid decay with distance.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Plot three cubes lit by two lights with different attenuation</span>
+<span class="sd">        profiles.  The blue light has slower linear attenuation, the</span>
+<span class="sd">        green one has quadratic attenuation that makes it decay</span>
+<span class="sd">        faster. Note that there are no shadow effects included so each</span>
+<span class="sd">        box gets lit by both lights.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter(lighting=&#39;none&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; for offset in 1, 2.5, 4:</span>
+<span class="sd">        ...     _ = plotter.add_mesh(pv.Cube(center=(offset, offset, 0)), color=&#39;white&#39;)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; colors = [&#39;b&#39;, &#39;g&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; all_attenuations = [(0, 0.1, 0), (0, 0, 0.1)]</span>
+<span class="sd">        &gt;&gt;&gt; centers = [(0, 1, 0), (1, 0, 0)]</span>
+<span class="sd">        &gt;&gt;&gt; for color, attenuation_constants, center in zip(colors, all_attenuations, centers):</span>
+<span class="sd">        ...     light = pv.Light(position=center, color=color)</span>
+<span class="sd">        ...     light.focal_point = (1 + center[0], 1 + center[1], 0)</span>
+<span class="sd">        ...     light.cone_angle = 90</span>
+<span class="sd">        ...     light.positional = True</span>
+<span class="sd">        ...     light.attenuation_values = attenuation_constants</span>
+<span class="sd">        ...     plotter.add_light(light)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; plotter.view_vector((-1, -1, 1))</span>
+<span class="sd">        &gt;&gt;&gt; plotter.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetAttenuationValues</span><span class="p">()</span>
+
+    <span class="nd">@attenuation_values</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">attenuation_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the quadratic attenuation constants.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetAttenuationValues</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transform_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the transformation matrix of the light (if any).</span>
+
+<span class="sd">        The transformation matrix is ``None`` by default, and it is</span>
+<span class="sd">        stored as a ``vtk.vtkMatrix4x4`` object when set. If set, the</span>
+<span class="sd">        light&#39;s parameters (position and focal point) are transformed</span>
+<span class="sd">        by the matrix before being rendered. See also the</span>
+<span class="sd">        :py:attr:`world_position` and :py:attr:`world_focal_point`</span>
+<span class="sd">        read-only properties that can differ from :py:attr:`position`</span>
+<span class="sd">        and :py:attr:`focal_point`, respectively.</span>
+
+<span class="sd">        The 4-by-4 transformation matrix is a tool to encode a general</span>
+<span class="sd">        linear transformation and a translation (an affine</span>
+<span class="sd">        transform). The 3-by-3 principal submatrix (the top left</span>
+<span class="sd">        corner of the matrix) encodes a three-dimensional linear</span>
+<span class="sd">        transformation (e.g. some rotation around the origin). The top</span>
+<span class="sd">        three elements in the last column of the matrix encode a</span>
+<span class="sd">        three-dimensional translation. The last row of the matrix is</span>
+<span class="sd">        redundant.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light with a transformation matrix that corresponds</span>
+<span class="sd">        to a 90-degree rotation around the z axis and a shift by (0,</span>
+<span class="sd">        0, -1), and check that the light&#39;s position transforms as</span>
+<span class="sd">        expected.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light(position=(1, 0, 3))</span>
+<span class="sd">        &gt;&gt;&gt; trans = np.zeros((4, 4))</span>
+<span class="sd">        &gt;&gt;&gt; trans[:-1, :-1] = [[0, -1, 0], [1, 0, 0], [0, 0, 1]]</span>
+<span class="sd">        &gt;&gt;&gt; trans[:-1, -1] = [0, 0, -1]</span>
+<span class="sd">        &gt;&gt;&gt; light.transform_matrix = trans</span>
+<span class="sd">        &gt;&gt;&gt; light.position</span>
+<span class="sd">        (1.0, 0.0, 3.0)</span>
+<span class="sd">        &gt;&gt;&gt; light.world_position</span>
+<span class="sd">        (0.0, 1.0, 2.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetTransformMatrix</span><span class="p">()</span>
+
+    <span class="nd">@transform_matrix</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">transform_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the 4x4 transformation matrix of the light.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">matrix</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">vtkMatrix4x4</span><span class="p">):</span>
+            <span class="n">trans</span> <span class="o">=</span> <span class="n">matrix</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">trans</span> <span class="o">=</span> <span class="n">vtkmatrix_from_array</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s1">&#39;Transformation matrix must be a 4-by-4 matrix or array-like.&#39;</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetTransformMatrix</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">light_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the light type.</span>
+
+<span class="sd">        The default light type is a scene light which lives in world</span>
+<span class="sd">        coordinate space.</span>
+
+<span class="sd">        A headlight is attached to the camera and always points at the</span>
+<span class="sd">        camera&#39;s focal point.</span>
+
+<span class="sd">        A camera light also moves with the camera, but it can have an</span>
+<span class="sd">        arbitrary relative position to the camera. Camera lights are</span>
+<span class="sd">        defined in a coordinate space where the camera is located at</span>
+<span class="sd">        (0, 0, 1), looking towards (0, 0, 0) at a distance of 1, with</span>
+<span class="sd">        up being (0, 1, 0). Camera lights use the transform matrix to</span>
+<span class="sd">        establish this space, i.e. they have a fixed :py:attr:`position`</span>
+<span class="sd">        with respect to the camera, and moving the camera only</span>
+<span class="sd">        affects the :py:attr:`world_position` via changes in the</span>
+<span class="sd">        :py:attr:`transform_matrix` (and the same goes for the focal</span>
+<span class="sd">        point).</span>
+
+<span class="sd">        The property returns class constant values from an enum:</span>
+
+<span class="sd">            - ``Light.HEADLIGHT == 1``</span>
+<span class="sd">            - ``Light.CAMERA_LIGHT == 2``</span>
+<span class="sd">            - ``Light.SCENE_LIGHT == 3``</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Check the type of lights for the first two lights of the default</span>
+<span class="sd">        light kit of plotters.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; lights = plotter.renderer.lights[:2]</span>
+<span class="sd">        &gt;&gt;&gt; [light.light_type for light in lights]</span>
+<span class="sd">        [&lt;LightType.HEADLIGHT: 1&gt;, &lt;LightType.CAMERA_LIGHT: 2&gt;]</span>
+
+<span class="sd">        Change the light type of the default light kit&#39;s headlight to a scene light.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; lights = plotter.renderer.lights[:2]</span>
+<span class="sd">        &gt;&gt;&gt; lights[0].light_type = pv.Light.SCENE_LIGHT</span>
+<span class="sd">        &gt;&gt;&gt; [light.light_type for light in lights]</span>
+<span class="sd">        [&lt;LightType.SCENE_LIGHT: 3&gt;, &lt;LightType.CAMERA_LIGHT: 2&gt;]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">LightType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetLightType</span><span class="p">())</span>
+
+    <span class="nd">@light_type</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">light_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ltype</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the light type.</span>
+
+<span class="sd">        Either an integer code or a class constant enum value must be used.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ltype</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="c1"># note that LightType is an int subclass</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Light type must be an integer subclass instance, got </span><span class="si">{</span><span class="n">ltype</span><span class="si">}</span><span class="s1"> instead.&#39;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetLightType</span><span class="p">(</span><span class="n">ltype</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_headlight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the light is a headlight.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Verify that the first light of the default light kit is a headlight.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; lights = plotter.renderer.lights</span>
+<span class="sd">        &gt;&gt;&gt; [light.is_headlight for light in lights]</span>
+<span class="sd">        [True, False, False, False, False]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">LightTypeIsHeadlight</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_camera_light</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the light is a camera light.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Verify that four out of five lights of the default light kit</span>
+<span class="sd">        are camera lights.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; lights = plotter.renderer.lights</span>
+<span class="sd">        &gt;&gt;&gt; [light.is_camera_light for light in lights]</span>
+<span class="sd">        [False, True, True, True, True]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">LightTypeIsCameraLight</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_scene_light</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the light is a scene light.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Verify that none of the lights of the default light kit are</span>
+<span class="sd">        scene lights.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; lights = plotter.renderer.lights</span>
+<span class="sd">        &gt;&gt;&gt; [light.is_scene_light for light in lights]</span>
+<span class="sd">        [False, False, False, False, False]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">LightTypeIsSceneLight</span><span class="p">())</span>
+
+<div class="viewcode-block" id="Light.switch_on"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.switch_on.html#pyvista.Light.switch_on">[docs]</a>    <span class="k">def</span> <span class="nf">switch_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switch on the light.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light, switch it off and switch it back on again.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.on = False</span>
+<span class="sd">        &gt;&gt;&gt; light.switch_on()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SwitchOn</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Light.switch_off"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.switch_off.html#pyvista.Light.switch_off">[docs]</a>    <span class="k">def</span> <span class="nf">switch_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switch off the light.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light and switch it off.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.switch_off()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SwitchOff</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Light.set_direction_angle"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.set_direction_angle.html#pyvista.Light.set_direction_angle">[docs]</a>    <span class="k">def</span> <span class="nf">set_direction_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elev</span><span class="p">,</span> <span class="n">azim</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the position and focal point of a directional light.</span>
+
+<span class="sd">        The light is switched to directional (non-positional). The</span>
+<span class="sd">        focal point is set to the origin. The position is defined in</span>
+<span class="sd">        terms of an elevation and an azimuthal angle, both in degrees.</span>
+
+<span class="sd">        Note that the equivalent ``vtk.vtkLight.SetDirectionAngle()`` method</span>
+<span class="sd">        uses a surprising coordinate system where the (x&#39;, y&#39;, z&#39;) axes of</span>
+<span class="sd">        the method correspond to the (z, x, y) axes of the renderer.</span>
+<span class="sd">        This method reimplements the functionality in a way that ``elev``</span>
+<span class="sd">        is the conventional elevation and ``azim`` is the conventional azimuth.</span>
+<span class="sd">        In particular:</span>
+
+<span class="sd">          * ``elev = 0``, ``azim = 0`` is the +x direction</span>
+<span class="sd">          * ``elev = 0``, ``azim = 90`` is the +y direction</span>
+<span class="sd">          * ``elev = 90``, ``azim = 0`` is the +z direction</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        elev : float</span>
+<span class="sd">            The elevation of the directional light.</span>
+
+<span class="sd">        azim : float</span>
+<span class="sd">            The azimuthal angle of the directional light.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light that shines on the origin from a 30-degree</span>
+<span class="sd">        elevation in the xz plane.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.set_direction_angle(30, 0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">positional</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focal_point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span> <span class="o">-</span> <span class="n">elev</span><span class="p">)</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">azim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Light.copy"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.copy.html#pyvista.Light.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a shallow or a deep copy of the light.</span>
+
+<span class="sd">        The only mutable attribute of :class:`pyvista.Light` is the</span>
+<span class="sd">        transformation matrix (if it exists). Thus asking for a</span>
+<span class="sd">        shallow copy merely implies that the returned light and the</span>
+<span class="sd">        original share the transformation matrix instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        deep : bool, optional</span>
+<span class="sd">            Whether to return a deep copy rather than a shallow</span>
+<span class="sd">            one. Default ``True``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.Light</span>
+<span class="sd">            Copied light.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a light and check that it shares a transformation</span>
+<span class="sd">        matrix with its shallow copy.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; light = pv.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.transform_matrix = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0],</span>
+<span class="sd">        ...                           [0, 0, 0, 1]]</span>
+<span class="sd">        &gt;&gt;&gt; shallow_copied = light.copy(deep=False)</span>
+<span class="sd">        &gt;&gt;&gt; shallow_copied == light</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; shallow_copied.transform_matrix is light.transform_matrix</span>
+<span class="sd">        True</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">immutable_attrs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;light_type&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;position&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;focal_point&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ambient_color&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;diffuse_color&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;specular_color&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;intensity&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;on&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;positional&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;exponent&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;cone_angle&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;attenuation_values&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;shadow_attenuation&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="n">new_light</span> <span class="o">=</span> <span class="n">Light</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">immutable_attrs</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">new_light</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">deep</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_light</span><span class="o">.</span><span class="n">transform_matrix</span> <span class="o">=</span> <span class="n">vtkMatrix4x4</span><span class="p">()</span>
+            <span class="n">new_light</span><span class="o">.</span><span class="n">transform_matrix</span><span class="o">.</span><span class="n">DeepCopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transform_matrix</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_light</span><span class="o">.</span><span class="n">transform_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_matrix</span>
+
+        <span class="c1"># light actors are private, always copy, but copy visibility state as well</span>
+        <span class="n">new_light</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">SetVisibility</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">GetVisibility</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">new_light</span></div>
+
+<div class="viewcode-block" id="Light.set_headlight"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.set_headlight.html#pyvista.Light.set_headlight">[docs]</a>    <span class="k">def</span> <span class="nf">set_headlight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the light to be a headlight.</span>
+
+<span class="sd">        Headlights are fixed to the camera and always point to the</span>
+<span class="sd">        focal point of the camera. Calling this method will reset the</span>
+<span class="sd">        light&#39;s transformation matrix.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; light = pyvista.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.set_headlight()</span>
+<span class="sd">        &gt;&gt;&gt; light.light_type</span>
+<span class="sd">        &lt;LightType.HEADLIGHT: 1&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetLightTypeToHeadlight</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Light.set_camera_light"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.set_camera_light.html#pyvista.Light.set_camera_light">[docs]</a>    <span class="k">def</span> <span class="nf">set_camera_light</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the light to be a camera light.</span>
+
+<span class="sd">        A camera light moves with the camera, but it can have an</span>
+<span class="sd">        arbitrary relative position to the camera. Camera lights are</span>
+<span class="sd">        defined in a coordinate space where the camera is located at</span>
+<span class="sd">        (0, 0, 1), looking towards (0, 0, 0) at a distance of 1, with</span>
+<span class="sd">        up being (0, 1, 0).  Camera lights use the transformation</span>
+<span class="sd">        matrix to establish this space.  Calling this method will</span>
+<span class="sd">        reset the light&#39;s transformation matrix.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; light = pyvista.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.set_camera_light()</span>
+<span class="sd">        &gt;&gt;&gt; light.light_type</span>
+<span class="sd">        &lt;LightType.CAMERA_LIGHT: 2&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetLightTypeToCameraLight</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Light.set_scene_light"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.set_scene_light.html#pyvista.Light.set_scene_light">[docs]</a>    <span class="k">def</span> <span class="nf">set_scene_light</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the light to be a scene light.</span>
+
+<span class="sd">        Scene lights are stationary with respect to the scene.</span>
+<span class="sd">        Calling this method will reset the light&#39;s transformation</span>
+<span class="sd">        matrix.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; light = pyvista.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.set_scene_light()</span>
+<span class="sd">        &gt;&gt;&gt; light.light_type</span>
+<span class="sd">        &lt;LightType.SCENE_LIGHT: 3&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetLightTypeToSceneLight</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Light.from_vtk"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.from_vtk.html#pyvista.Light.from_vtk">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_vtk</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vtk_light</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a light from a ``vtk.vtkLight``, resulting in a copy.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        vtk_light : vtk.vtkLight</span>
+<span class="sd">            The ``vtk.vtkLight`` to be copied.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vtk_light</span><span class="p">,</span> <span class="n">vtkLight</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Expected vtk.vtkLight object, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">vtk_light</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> instead.&#39;</span>
+            <span class="p">)</span>
+
+        <span class="n">light</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">light_type</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetLightType</span><span class="p">()</span>  <span class="c1"># resets transformation matrix!</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetPosition</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">focal_point</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetFocalPoint</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">ambient_color</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetAmbientColor</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">diffuse_color</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetDiffuseColor</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">specular_color</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetSpecularColor</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetIntensity</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">on</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetSwitch</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">positional</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetPositional</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">exponent</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetExponent</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">cone_angle</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetConeAngle</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">attenuation_values</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetAttenuationValues</span><span class="p">()</span>
+        <span class="n">trans</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetTransformMatrix</span><span class="p">()</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">transform_matrix</span> <span class="o">=</span> <span class="n">trans</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">shadow_attenuation</span> <span class="o">=</span> <span class="n">vtk_light</span><span class="o">.</span><span class="n">GetShadowAttenuation</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">light</span></div>
+
+<div class="viewcode-block" id="Light.show_actor"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.show_actor.html#pyvista.Light.show_actor">[docs]</a>    <span class="k">def</span> <span class="nf">show_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show an actor for a spotlight that depicts the geometry of the beam.</span>
+
+<span class="sd">        For a directional light or a positional light with</span>
+<span class="sd">        :py:attr:`cone_angle` of at least 90 degrees the method</span>
+<span class="sd">        doesn&#39;t do anything. If the light is changed so that it</span>
+<span class="sd">        becomes a spotlight, this method has to be called again for</span>
+<span class="sd">        the actor to show. To hide the actor see :func:`hide_actor`.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a scene containing a cube lit with a cyan spotlight and</span>
+<span class="sd">        visualize the light using an actor.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = plotter.add_mesh(pv.Cube(), color=&#39;white&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; for light in plotter.renderer.lights:</span>
+<span class="sd">        ...     light.intensity /= 5</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; spotlight = pv.Light(position=(-1, 1, 1), color=&#39;cyan&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; spotlight.positional = True</span>
+<span class="sd">        &gt;&gt;&gt; spotlight.cone_angle = 20</span>
+<span class="sd">        &gt;&gt;&gt; spotlight.intensity = 10</span>
+<span class="sd">        &gt;&gt;&gt; spotlight.exponent = 40</span>
+<span class="sd">        &gt;&gt;&gt; spotlight.show_actor()</span>
+<span class="sd">        &gt;&gt;&gt; plotter.add_light(spotlight)</span>
+<span class="sd">        &gt;&gt;&gt; plotter.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">positional</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">cone_angle</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">VisibilityOn</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Light.hide_actor"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.hide_actor.html#pyvista.Light.hide_actor">[docs]</a>    <span class="k">def</span> <span class="nf">hide_actor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hide the actor for a positional light that depicts the geometry of the beam.</span>
+
+<span class="sd">        For a directional light the function doesn&#39;t do anything.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; light = pyvista.Light()</span>
+<span class="sd">        &gt;&gt;&gt; light.hide_actor()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">positional</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">VisibilityOff</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">renderers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the renderers associated with this light.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderers</span>
+
+<div class="viewcode-block" id="Light.add_renderer"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Light.add_renderer.html#pyvista.Light.add_renderer">[docs]</a>    <span class="k">def</span> <span class="nf">add_renderer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Attach a renderer to this light.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        renderer : vtk.vtkRenderer</span>
+<span class="sd">            Renderer.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># quick check to avoid adding twice</span>
+        <span class="k">if</span> <span class="n">renderer</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">renderers</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+
+        <span class="c1"># verify that the renderer has the light actor if applicable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_actor</span><span class="p">()</span></div></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+download\_tetra\_dc\_mesh
+=========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_tetra_dc_mesh

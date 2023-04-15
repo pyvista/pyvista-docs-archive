@@ -1,0 +1,6 @@
+family\_array\_names
+====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: CGNSReader.family_array_names

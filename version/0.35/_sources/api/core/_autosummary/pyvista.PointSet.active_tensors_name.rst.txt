@@ -1,0 +1,6 @@
+active\_tensors\_name
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PointSet.active_tensors_name

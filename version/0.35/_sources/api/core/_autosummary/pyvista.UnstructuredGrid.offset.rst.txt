@@ -1,0 +1,6 @@
+offset
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.offset

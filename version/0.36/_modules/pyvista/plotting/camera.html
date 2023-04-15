@@ -1,0 +1,1046 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.plotting.camera &#8212; PyVista 0.36.1 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.36  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/plotting/camera and {'json_url': 'https://<DEFAULT_CNAME>/versions.json', 'version_match': '0.36'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/plotting/camera.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://<DEFAULT_CNAME>/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/plotting/camera.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.36.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.36") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.plotting.camera</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module containing pyvista implementation of vtkCamera.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">weakref</span> <span class="kn">import</span> <span class="n">proxy</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.misc</span> <span class="kn">import</span> <span class="n">PyvistaDeprecationWarning</span>
+
+
+<div class="viewcode-block" id="Camera"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.html#pyvista.Camera">[docs]</a><span class="k">class</span> <span class="nc">Camera</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkCamera</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;PyVista wrapper for the VTK Camera class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    renderer : pyvista.Renderer, optional</span>
+<span class="sd">        Renderer to attach the camera to.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a camera at the pyvista module level.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; camera = pyvista.Camera()</span>
+
+<span class="sd">    Access the active camera of a plotter and get the position of the</span>
+<span class="sd">    camera.</span>
+
+<span class="sd">    &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">    &gt;&gt;&gt; pl.camera.position</span>
+<span class="sd">    (1.0, 1.0, 1.0)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize a new camera descriptor.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parallel_projection</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">if</span> <span class="n">renderer</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">renderer</span><span class="p">,</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Renderer</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s1">&#39;Camera only accepts a pyvista.Renderer or None as the ``renderer`` argument&#39;</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span> <span class="o">=</span> <span class="n">proxy</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print a repr specifying the id of the camera and its camera type.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> at </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="si">}</span><span class="s1">&gt;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compare whether the relevant attributes of two cameras are equal.&quot;&quot;&quot;</span>
+        <span class="c1"># attributes which are native python types and thus implement __eq__</span>
+
+        <span class="n">native_attrs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;position&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;focal_point&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;parallel_projection&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;thickness&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;parallel_scale&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;clipping_range&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;view_angle&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;roll&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">native_attrs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">this_trans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_transform_matrix</span>
+        <span class="n">that_trans</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">model_transform_matrix</span>
+        <span class="n">trans_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">trans</span> <span class="ow">in</span> <span class="p">[</span><span class="n">this_trans</span><span class="p">,</span> <span class="n">that_trans</span><span class="p">]</span> <span class="k">if</span> <span class="n">trans</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">trans_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># either but not both are None</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">trans_count</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">this_trans</span><span class="p">,</span> <span class="n">that_trans</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the camera.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RemoveAllObservers</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the position of the camera in world coordinates.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.position</span>
+<span class="sd">        (1.0, 1.0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.position = (2.0, 1.0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.position</span>
+<span class="sd">        (2.0, 1.0, 1.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetPosition</span><span class="p">()</span>
+
+    <span class="nd">@position</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the position of the camera.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetPosition</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reset_clipping_range</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Camera.reset_clipping_range"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.reset_clipping_range.html#pyvista.Camera.reset_clipping_range">[docs]</a>    <span class="k">def</span> <span class="nf">reset_clipping_range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the camera clipping range based on the bounds of the visible actors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(pyvista.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.clipping_range = (1, 2)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.reset_clipping_range()  # doctest:+SKIP</span>
+<span class="sd">        (0.0039213485598532955, 3.9213485598532953)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="s1">&#39;Camera is must be associated with a renderer to reset its clipping range.&#39;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">reset_camera_clipping_range</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">focal_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Location of the camera&#39;s focus in world coordinates.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.focal_point</span>
+<span class="sd">        (0.0, 0.0, 0.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.focal_point = (2.0, 0.0, 0.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.focal_point</span>
+<span class="sd">        (2.0, 0.0, 0.0)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetFocalPoint</span><span class="p">()</span>
+
+    <span class="nd">@focal_point</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">focal_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the location of the camera&#39;s focus in world coordinates.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetFocalPoint</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">model_transform_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the camera&#39;s model transformation matrix.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.model_transform_matrix</span>
+<span class="sd">        array([[1., 0., 0., 0.],</span>
+<span class="sd">               [0., 1., 0., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 0., 1.]])</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.model_transform_matrix = np.array([[1., 0., 0., 0.],</span>
+<span class="sd">        ...                                              [0., 1., 0., 0.],</span>
+<span class="sd">        ...                                              [0., 0., 1., 0.],</span>
+<span class="sd">        ...                                              [0., 0., 0., 0.5]])</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        array([[1., 0., 0., 0.],</span>
+<span class="sd">               [0., 1., 0., 0.],</span>
+<span class="sd">               [0., 0., 1., 0.],</span>
+<span class="sd">               [0., 0., 0., 0.5]])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">vtk_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetModelTransformMatrix</span><span class="p">()</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">vtk_matrix</span><span class="o">.</span><span class="n">DeepCopy</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">vtk_matrix</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">matrix</span>
+
+    <span class="nd">@model_transform_matrix</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">model_transform_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the camera&#39;s model transformation matrix.&quot;&quot;&quot;</span>
+        <span class="n">vtk_matrix</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkMatrix4x4</span><span class="p">()</span>
+        <span class="n">vtk_matrix</span><span class="o">.</span><span class="n">DeepCopy</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetModelTransformMatrix</span><span class="p">(</span><span class="n">vtk_matrix</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_parallel_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if parallel projection is set.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Use of `Camera.is_parallel_projection` is deprecated. &quot;</span>
+            <span class="s2">&quot;Use `Camera.parallel_projection` instead.&quot;</span><span class="p">,</span>
+            <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallel_projection</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the distance of the focal point from the camera.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Setting the distance keeps the camera fixed and moves the focal point.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.distance</span>
+<span class="sd">        1.73205</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.distance = 2.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.distance</span>
+<span class="sd">        2.0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetDistance</span><span class="p">()</span>
+
+    <span class="nd">@distance</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the distance from the camera position to the focal point.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetDistance</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the distance between clipping planes.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.thickness</span>
+<span class="sd">        1000.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.thickness = 100</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.thickness</span>
+<span class="sd">        100.0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetThickness</span><span class="p">()</span>
+
+    <span class="nd">@thickness</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the distance between clipping planes.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetThickness</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parallel_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the scaling used for a parallel projection.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.parallel_scale</span>
+<span class="sd">        1.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.parallel_scale = 2.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.parallel_scale</span>
+<span class="sd">        2.0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetParallelScale</span><span class="p">()</span>
+
+    <span class="nd">@parallel_scale</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">parallel_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the scaling used for parallel projection.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetParallelScale</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Camera.zoom"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.zoom.html#pyvista.Camera.zoom">[docs]</a>    <span class="k">def</span> <span class="nf">zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the zoom of the camera.</span>
+
+<span class="sd">        In perspective mode, decrease the view angle by the specified</span>
+<span class="sd">        factor.</span>
+
+<span class="sd">        In parallel mode, decrease the parallel scale by the specified</span>
+<span class="sd">        factor. A value greater than 1 is a zoom-in, a value less than</span>
+<span class="sd">        1 is a zoom-out.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : float or str</span>
+<span class="sd">            Zoom of the camera. If a float, must be greater than 0. Otherwise,</span>
+<span class="sd">            if a string, must be ``&quot;tight&quot;``. If tight, the plot will be zoomed</span>
+<span class="sd">            such that the actors fill the entire viewport.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Show the Default zoom.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(pv.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.zoom(1.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        Show 2x zoom.</span>
+
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(pv.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.zoom(2.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        Zoom so the actor fills the entire render window.</span>
+
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(pv.Sphere())</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.zoom(&#39;tight&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;tight&#39;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;If a string, ``zoom`` can only be &quot;tight&quot;&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tight</span><span class="p">()</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Zoom</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the &quot;up&quot; of the camera.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.up</span>
+<span class="sd">        (0.0, 0.0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.up = (0.410018, 0.217989, 0.885644)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.up</span>
+<span class="sd">        (0.410018, 0.217989, 0.885644)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetViewUp</span><span class="p">()</span>
+
+    <span class="nd">@up</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the &quot;up&quot; of the camera.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetViewUp</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Camera.enable_parallel_projection"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.enable_parallel_projection.html#pyvista.Camera.enable_parallel_projection">[docs]</a>    <span class="k">def</span> <span class="nf">enable_parallel_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable parallel projection.</span>
+
+<span class="sd">        The camera will have a parallel projection. Parallel</span>
+<span class="sd">        projection is often useful when viewing images or 2D datasets,</span>
+<span class="sd">        but will look odd when viewing 3D datasets.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.demos.orientation_plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.enable_parallel_projection()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parallel_projection</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetParallelProjection</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Camera.disable_parallel_projection"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.disable_parallel_projection.html#pyvista.Camera.disable_parallel_projection">[docs]</a>    <span class="k">def</span> <span class="nf">disable_parallel_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disable the use of parallel projection.</span>
+
+<span class="sd">        This is default behavior.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.demos.orientation_plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.disable_parallel_projection()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parallel_projection</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetParallelProjection</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parallel_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the state of the parallel projection.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.disable_parallel_projection()</span>
+<span class="sd">        &gt;&gt;&gt; pl.parallel_projection</span>
+<span class="sd">        False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallel_projection</span>
+
+    <span class="nd">@parallel_projection</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">parallel_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the state of the parallel projection.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; from pyvista import demos</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.disable_parallel_projection()</span>
+<span class="sd">        &gt;&gt;&gt; pl.parallel_projection</span>
+<span class="sd">        False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_parallel_projection</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">disable_parallel_projection</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clipping_range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the location of the clipping planes.</span>
+
+<span class="sd">        Clipping planes are the the near and far clipping planes along</span>
+<span class="sd">        the direction of projection.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.clipping_range</span>
+<span class="sd">        (0.01, 1000.01)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.clipping_range = (1, 10)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.clipping_range</span>
+<span class="sd">        (1.0, 10.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetClippingRange</span><span class="p">()</span>
+
+    <span class="nd">@clipping_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">clipping_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the clipping planes.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Near point must be lower than the far point.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetClippingRange</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">view_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the camera view angle.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; plotter.camera.view_angle</span>
+<span class="sd">        30.0</span>
+<span class="sd">        &gt;&gt;&gt; plotter.camera.view_angle = 60.0</span>
+<span class="sd">        &gt;&gt;&gt; plotter.camera.view_angle</span>
+<span class="sd">        60.0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetViewAngle</span><span class="p">()</span>
+
+    <span class="nd">@view_angle</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">view_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the camera view angle.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetViewAngle</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">direction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Vector from the camera position to the focal point.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; plotter.camera.direction  # doctest:+SKIP</span>
+<span class="sd">        (0.0, 0.0, -1.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetDirectionOfProjection</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Camera.view_frustum"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.view_frustum.html#pyvista.Camera.view_frustum">[docs]</a>    <span class="k">def</span> <span class="nf">view_frustum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the view frustum.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        aspect : float, optional</span>
+<span class="sd">            The aspect of the viewport to compute the planes. Defaults</span>
+<span class="sd">            to 1.0.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.PolyData</span>
+<span class="sd">            View frustum.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; plotter = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; frustum = plotter.camera.view_frustum(1.0)</span>
+<span class="sd">        &gt;&gt;&gt; frustum.n_points</span>
+<span class="sd">        8</span>
+<span class="sd">        &gt;&gt;&gt; frustum.n_cells</span>
+<span class="sd">        6</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">frustum_planes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">24</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">GetFrustumPlanes</span><span class="p">(</span><span class="n">aspect</span><span class="p">,</span> <span class="n">frustum_planes</span><span class="p">)</span>
+        <span class="n">planes</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkPlanes</span><span class="p">()</span>
+        <span class="n">planes</span><span class="o">.</span><span class="n">SetFrustumPlanes</span><span class="p">(</span><span class="n">frustum_planes</span><span class="p">)</span>
+
+        <span class="n">frustum_source</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkFrustumSource</span><span class="p">()</span>
+        <span class="n">frustum_source</span><span class="o">.</span><span class="n">ShowLinesOff</span><span class="p">()</span>
+        <span class="n">frustum_source</span><span class="o">.</span><span class="n">SetPlanes</span><span class="p">(</span><span class="n">planes</span><span class="p">)</span>
+        <span class="n">frustum_source</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+
+        <span class="n">frustum</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">frustum_source</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">frustum</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate the camera about the direction of projection.</span>
+
+<span class="sd">        This will spin the camera about its axis.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.roll</span>
+<span class="sd">        -120.00000000000001</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.roll = 45.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.roll</span>
+<span class="sd">        45.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetRoll</span><span class="p">()</span>
+
+    <span class="nd">@roll</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the rotate of the camera about the direction of projection.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetRoll</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Vertical rotation of the scene.</span>
+
+<span class="sd">        Rotate the camera about the cross product of the negative of</span>
+<span class="sd">        the direction of projection and the view up vector, using the</span>
+<span class="sd">        focal point as the center of rotation.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.elevation</span>
+<span class="sd">        0.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.elevation = 45.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.elevation</span>
+<span class="sd">        45.0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span>
+
+    <span class="nd">@elevation</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the vertical rotation of the scene.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Elevation</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span> <span class="o">=</span> <span class="n">angle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Elevation</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">azimuth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Azimuth of the camera.</span>
+
+<span class="sd">        Rotate the camera about the view up vector centered at the</span>
+<span class="sd">        focal point. Note that the view up vector is whatever was set</span>
+<span class="sd">        via SetViewUp, and is not necessarily perpendicular to the</span>
+<span class="sd">        direction of projection.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.azimuth</span>
+<span class="sd">        0.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.azimuth = 45.0</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.azimuth</span>
+<span class="sd">        45.0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span>
+
+    <span class="nd">@azimuth</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">azimuth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the azimuth rotation of the camera.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Azimuth</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span> <span class="o">=</span> <span class="n">angle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Azimuth</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Camera.copy"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.copy.html#pyvista.Camera.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a deep copy of the camera.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.Camera</span>
+<span class="sd">            Deep copy of the camera.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a camera and check that it shares a transformation</span>
+<span class="sd">        matrix with its shallow copy.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; camera = pv.Camera()</span>
+<span class="sd">        &gt;&gt;&gt; camera.model_transform_matrix = np.array([[1., 0., 0., 0.],</span>
+<span class="sd">        ...                                           [0., 1., 0., 0.],</span>
+<span class="sd">        ...                                           [0., 0., 1., 0.],</span>
+<span class="sd">        ...                                           [0., 0., 0., 1.]])</span>
+<span class="sd">        &gt;&gt;&gt; copied_camera = camera.copy()</span>
+<span class="sd">        &gt;&gt;&gt; copied_camera == camera</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; camera.model_transform_matrix = np.array([[1., 0., 0., 0.],</span>
+<span class="sd">        ...                                           [0., 1., 0., 0.],</span>
+<span class="sd">        ...                                           [0., 0., 1., 0.],</span>
+<span class="sd">        ...                                           [0., 0., 0., 0.5]])</span>
+<span class="sd">        &gt;&gt;&gt; copied_camera == camera</span>
+<span class="sd">        False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">immutable_attrs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;position&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;focal_point&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;model_transform_matrix&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;thickness&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;parallel_scale&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;up&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;clipping_range&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;view_angle&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;roll&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;parallel_projection&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="n">new_camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">immutable_attrs</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">new_camera</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_camera</span></div>
+
+<div class="viewcode-block" id="Camera.tight"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.Camera.tight.html#pyvista.Camera.tight">[docs]</a>    <span class="k">def</span> <span class="nf">tight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">adjust_render_window</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the camera position so that the actors fill the entire renderer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        padding : float, optional</span>
+<span class="sd">            Additional padding around the actor(s). This is effectively a zoom,</span>
+<span class="sd">            where a value of 0.01 results in a zoom out of 1%.</span>
+
+<span class="sd">        adjust_render_window : bool, optional</span>
+<span class="sd">            Adjust the size of the render window as to match the dimensions of</span>
+<span class="sd">            the visible actors.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This resets the view direction to look at the XY plane.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Display the puppy image with a tight view.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">        &gt;&gt;&gt; from pyvista import examples</span>
+<span class="sd">        &gt;&gt;&gt; puppy = examples.download_puppy()</span>
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter(border=True, border_width=5)</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(puppy, rgb=True)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.tight()</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        Set the background to blue use a 5% padding around the image.</span>
+
+<span class="sd">        &gt;&gt;&gt; pl = pv.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(puppy, rgb=True)</span>
+<span class="sd">        &gt;&gt;&gt; pl.background_color = &#39;b&#39;</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera.tight(padding=0.05)</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># inspired by vedo resetCamera. Thanks @marcomusy!</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">z1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">ComputeVisiblePropBounds</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_parallel_projection</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">ComputeAspect</span><span class="p">()</span>
+        <span class="n">aspect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">GetAspect</span><span class="p">()</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_angle</span> <span class="o">/</span> <span class="mf">180.0</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">),</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dx</span> <span class="o">/</span> <span class="n">aspect</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dy</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetViewUp</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetPosition</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y0</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dist</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">padding</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetFocalPoint</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y0</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">ps</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dx</span> <span class="o">/</span> <span class="n">aspect</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dy</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parallel_scale</span> <span class="o">=</span> <span class="n">ps</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">padding</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">ResetCameraClippingRange</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">z1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">adjust_render_window</span><span class="p">:</span>
+            <span class="n">ren_win</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">GetRenderWindow</span><span class="p">()</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ren_win</span><span class="o">.</span><span class="n">GetSize</span><span class="p">())</span>
+            <span class="n">size_ratio</span> <span class="o">=</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">tight_ratio</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">/</span> <span class="n">dy</span>
+            <span class="n">resize_ratio</span> <span class="o">=</span> <span class="n">tight_ratio</span> <span class="o">/</span> <span class="n">size_ratio</span>
+            <span class="k">if</span> <span class="n">resize_ratio</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">resize_ratio</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">resize_ratio</span><span class="p">)</span>
+
+            <span class="n">ren_win</span><span class="o">.</span><span class="n">SetSize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+
+            <span class="c1"># simply call tight again to reset the parallel scale due to the</span>
+            <span class="c1"># resized window</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tight</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="n">padding</span><span class="p">,</span> <span class="n">adjust_render_window</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

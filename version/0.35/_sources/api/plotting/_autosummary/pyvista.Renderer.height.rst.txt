@@ -1,0 +1,6 @@
+height
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Renderer.height

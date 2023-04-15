@@ -1,0 +1,6 @@
+copy\_attributes
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.copy_attributes

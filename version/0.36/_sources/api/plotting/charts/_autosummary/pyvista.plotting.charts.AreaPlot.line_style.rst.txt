@@ -1,0 +1,6 @@
+line\_style
+===========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: AreaPlot.line_style

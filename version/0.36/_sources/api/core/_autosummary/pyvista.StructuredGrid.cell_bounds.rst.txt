@@ -1,0 +1,6 @@
+cell\_bounds
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.cell_bounds

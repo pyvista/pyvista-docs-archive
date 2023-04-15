@@ -1,0 +1,6 @@
+download\_pepper
+================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_pepper

@@ -1,0 +1,6 @@
+﻿PentagonalPrism
+===============
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: PentagonalPrism

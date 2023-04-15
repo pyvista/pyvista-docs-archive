@@ -1,0 +1,7 @@
+﻿pyvista.CompositePolyDataMapper
+===============================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: CompositePolyDataMapper
+   :members:

@@ -1,0 +1,1129 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.core.grid &#8212; PyVista 0.36.1 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.36  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/core/grid and {'json_url': 'https://<DEFAULT_CNAME>/versions.json', 'version_match': '0.36'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/core/grid.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://<DEFAULT_CNAME>/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/core/grid.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.36.1 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.36") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.core.grid</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Sub-classes for vtk.vtkRectilinearGrid and vtk.vtkImageData.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista.core.dataset</span> <span class="kn">import</span> <span class="n">DataSet</span>
+<span class="kn">from</span> <span class="nn">pyvista.core.filters</span> <span class="kn">import</span> <span class="n">UniformGridFilters</span><span class="p">,</span> <span class="n">_get_output</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities</span> <span class="kn">import</span> <span class="n">abstract_class</span>
+<span class="kn">import</span> <span class="nn">pyvista.utilities.helpers</span> <span class="k">as</span> <span class="nn">helpers</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities.misc</span> <span class="kn">import</span> <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span> <span class="n">raise_has_duplicates</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">log</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s1">&#39;CRITICAL&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@abstract_class</span>
+<span class="k">class</span> <span class="nc">Grid</span><span class="p">(</span><span class="n">DataSet</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class full of common methods for non-pointset grids.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the grid.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the grid&#39;s dimensions.</span>
+
+<span class="sd">        These are effectively the number of points along each of the</span>
+<span class="sd">        three dataset axes.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a uniform grid with dimensions ``(1, 2, 3)``.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(2, 3, 4))</span>
+<span class="sd">        &gt;&gt;&gt; grid.dimensions</span>
+<span class="sd">        (2, 3, 4)</span>
+<span class="sd">        &gt;&gt;&gt; grid.plot(show_edges=True)</span>
+
+<span class="sd">        Set the dimensions to ``(3, 4, 5)``</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.dimensions = (3, 4, 5)</span>
+<span class="sd">        &gt;&gt;&gt; grid.plot(show_edges=True)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetDimensions</span><span class="p">()</span>
+
+    <span class="nd">@dimensions</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the dataset dimensions.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetDimensions</span><span class="p">(</span><span class="o">*</span><span class="n">dims</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_get_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the representation methods (internal helper).&quot;&quot;&quot;</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">DataSet</span><span class="o">.</span><span class="n">_get_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;Dimensions&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimensions</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">, </span><span class="si">{:d}</span><span class="s2">, </span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">attrs</span>
+
+
+<div class="viewcode-block" id="RectilinearGrid"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.RectilinearGrid.html#pyvista.RectilinearGrid">[docs]</a><span class="k">class</span> <span class="nc">RectilinearGrid</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkRectilinearGrid</span><span class="p">,</span> <span class="n">Grid</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dataset with variable spacing in the three coordinate directions.</span>
+
+<span class="sd">    Can be initialized in several ways:</span>
+
+<span class="sd">    * Create empty grid</span>
+<span class="sd">    * Initialize from a ``vtk.vtkRectilinearGrid`` object</span>
+<span class="sd">    * Initialize directly from the point arrays</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uinput : str, pathlib.Path, vtk.vtkRectilinearGrid, numpy.ndarray, optional</span>
+<span class="sd">        Filename, dataset, or array to initialize the rectilinear grid from. If a</span>
+<span class="sd">        filename is passed, pyvista will attempt to load it as a</span>
+<span class="sd">        :class:`RectilinearGrid`. If passed a ``vtk.vtkRectilinearGrid``, it</span>
+<span class="sd">        will be wrapped. If a :class:`numpy.ndarray` is passed, this will be</span>
+<span class="sd">        loaded as the x range.</span>
+
+<span class="sd">    y : numpy.ndarray, optional</span>
+<span class="sd">        Coordinates of the points in y direction. If this is passed, ``uinput``</span>
+<span class="sd">        must be a :class:`numpy.ndarray`.</span>
+
+<span class="sd">    z : numpy.ndarray, optional</span>
+<span class="sd">        Coordinates of the points in z direction. If this is passed, ``uinput``</span>
+<span class="sd">        and ``y`` must be a :class:`numpy.ndarray`.</span>
+
+<span class="sd">    check_duplicates : bool, optional</span>
+<span class="sd">        Check for duplications in any arrays that are passed. Defaults to</span>
+<span class="sd">        ``False``. If ``True``, an error is raised if there are any duplicate</span>
+<span class="sd">        values in any of the array-valued input arguments.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; import vtk</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+
+<span class="sd">    Create an empty grid.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.RectilinearGrid()</span>
+
+<span class="sd">    Initialize from a vtk.vtkRectilinearGrid object</span>
+
+<span class="sd">    &gt;&gt;&gt; vtkgrid = vtk.vtkRectilinearGrid()</span>
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.RectilinearGrid(vtkgrid)</span>
+
+<span class="sd">    Create from NumPy arrays.</span>
+
+<span class="sd">    &gt;&gt;&gt; xrng = np.arange(-10, 10, 2)</span>
+<span class="sd">    &gt;&gt;&gt; yrng = np.arange(-10, 10, 5)</span>
+<span class="sd">    &gt;&gt;&gt; zrng = np.arange(-10, 10, 1)</span>
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.RectilinearGrid(xrng, yrng, zrng)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_WRITERS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;.vtk&#39;</span><span class="p">:</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkRectilinearGridWriter</span><span class="p">,</span> <span class="s1">&#39;.vtr&#39;</span><span class="p">:</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkXMLRectilinearGridWriter</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">check_duplicates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the rectilinear grid.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkRectilinearGrid</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">deep_copy</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_file</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_arrays</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check_duplicates</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Type (</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s1">) not understood by `RectilinearGrid`&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">arg0_is_arr</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+            <span class="n">arg1_is_arr</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">arg2_is_arr</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">arg2_is_arr</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">arg0_is_arr</span><span class="p">,</span> <span class="n">arg1_is_arr</span><span class="p">,</span> <span class="n">arg2_is_arr</span><span class="p">]):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_arrays</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">check_duplicates</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">all</span><span class="p">([</span><span class="n">arg0_is_arr</span><span class="p">,</span> <span class="n">arg1_is_arr</span><span class="p">]):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_arrays</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check_duplicates</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Arguments not understood by `RectilinearGrid`.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the default representation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DataSet</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the str representation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DataSet</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the dimensions if coordinates have changed.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SetDimensions</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_from_arrays</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">check_duplicates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create VTK rectilinear grid directly from numpy arrays.</span>
+
+<span class="sd">        Each array gives the uniques coordinates of the mesh along each axial</span>
+<span class="sd">        direction. To help ensure you are using this correctly, we take the unique</span>
+<span class="sd">        values of each argument.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : numpy.ndarray</span>
+<span class="sd">            Coordinates of the points in x direction.</span>
+
+<span class="sd">        y : numpy.ndarray</span>
+<span class="sd">            Coordinates of the points in y direction.</span>
+
+<span class="sd">        z : numpy.ndarray</span>
+<span class="sd">            Coordinates of the points in z direction.</span>
+
+<span class="sd">        check_duplicates : bool, optional</span>
+<span class="sd">            Check for duplications in any arrays that are passed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Set the coordinates along each axial direction</span>
+        <span class="c1"># Must at least be an x array</span>
+        <span class="k">if</span> <span class="n">check_duplicates</span><span class="p">:</span>
+            <span class="n">raise_has_duplicates</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetXCoordinates</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_duplicates</span><span class="p">:</span>
+                <span class="n">raise_has_duplicates</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetYCoordinates</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="k">if</span> <span class="n">z</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_duplicates</span><span class="p">:</span>
+                <span class="n">raise_has_duplicates</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetZCoordinates</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+        <span class="c1"># Ensure dimensions are properly set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_dimensions</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">meshgrid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a meshgrid of numpy arrays for this mesh.</span>
+
+<span class="sd">        This simply returns a :func:`numpy.meshgrid` of the</span>
+<span class="sd">        coordinates for this mesh in ``ij`` indexing. These are a copy</span>
+<span class="sd">        of the points of this mesh.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a copy of the points as an n by 3 numpy array.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Points of a :class:`pyvista.RectilinearGrid` cannot be</span>
+<span class="sd">        set. Set point coordinates with :attr:`RectilinearGrid.x`,</span>
+<span class="sd">        :attr:`RectilinearGrid.y`, or :attr:`RectilinearGrid.z`.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; xrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; yrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; zrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.RectilinearGrid(xrng, yrng, zrng)</span>
+<span class="sd">        &gt;&gt;&gt; grid.points</span>
+<span class="sd">        array([[-10., -10., -10.],</span>
+<span class="sd">               [  0., -10., -10.],</span>
+<span class="sd">               [-10.,   0., -10.],</span>
+<span class="sd">               [  0.,   0., -10.],</span>
+<span class="sd">               [-10., -10.,   0.],</span>
+<span class="sd">               [  0., -10.,   0.],</span>
+<span class="sd">               [-10.,   0.,   0.],</span>
+<span class="sd">               [  0.,   0.,   0.]])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">meshgrid</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">),</span> <span class="n">zz</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)]</span>
+
+    <span class="nd">@points</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Raise an AttributeError.</span>
+
+<span class="sd">        This setter overrides the base class&#39;s setter to ensure a user</span>
+<span class="sd">        does not attempt to set them.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+            <span class="s2">&quot;The points cannot be set. The points of &quot;</span>
+            <span class="s2">&quot;`RectilinearGrid` are defined in each axial direction. Please &quot;</span>
+            <span class="s2">&quot;use the `x`, `y`, and `z` setters individually.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the coordinates along the X-direction.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Return the x coordinates of a RectilinearGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; xrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; yrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; zrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.RectilinearGrid(xrng, yrng, zrng)</span>
+<span class="sd">        &gt;&gt;&gt; grid.x</span>
+<span class="sd">        array([-10.,   0.])</span>
+
+<span class="sd">        Set the x coordinates of a RectilinearGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.x = [-10.0, 0.0, 10.0]</span>
+<span class="sd">        &gt;&gt;&gt; grid.x</span>
+<span class="sd">        array([-10.,   0.,  10.])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetXCoordinates</span><span class="p">())</span>
+
+    <span class="nd">@x</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the coordinates along the X-direction.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetXCoordinates</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="n">coords</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_dimensions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the coordinates along the Y-direction.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Return the y coordinates of a RectilinearGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; xrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; yrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; zrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.RectilinearGrid(xrng, yrng, zrng)</span>
+<span class="sd">        &gt;&gt;&gt; grid.y</span>
+<span class="sd">        array([-10.,   0.])</span>
+
+<span class="sd">        Set the y coordinates of a RectilinearGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.y = [-10.0, 0.0, 10.0]</span>
+<span class="sd">        &gt;&gt;&gt; grid.y</span>
+<span class="sd">        array([-10.,   0.,  10.])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetYCoordinates</span><span class="p">())</span>
+
+    <span class="nd">@y</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the coordinates along the Y-direction.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetYCoordinates</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="n">coords</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_dimensions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the coordinates along the Z-direction.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Return the z coordinates of a RectilinearGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; xrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; yrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; zrng = np.arange(-10, 10, 10, dtype=float)</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.RectilinearGrid(xrng, yrng, zrng)</span>
+<span class="sd">        &gt;&gt;&gt; grid.z</span>
+<span class="sd">        array([-10.,   0.])</span>
+
+<span class="sd">        Set the z coordinates of a RectilinearGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.z = [-10.0, 0.0, 10.0]</span>
+<span class="sd">        &gt;&gt;&gt; grid.z</span>
+<span class="sd">        array([-10.,   0.,  10.])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetZCoordinates</span><span class="p">())</span>
+
+    <span class="nd">@z</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the coordinates along the Z-direction.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetZCoordinates</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">convert_array</span><span class="p">(</span><span class="n">coords</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_dimensions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+
+    <span class="nd">@Grid</span><span class="o">.</span><span class="n">dimensions</span><span class="o">.</span><span class="n">setter</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Do not let the dimensions of the RectilinearGrid be set.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+            <span class="s2">&quot;The dimensions of a `RectilinearGrid` are implicitly &quot;</span>
+            <span class="s2">&quot;defined and thus cannot be set.&quot;</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="RectilinearGrid.cast_to_structured_grid"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.RectilinearGrid.cast_to_structured_grid.html#pyvista.RectilinearGrid.cast_to_structured_grid">[docs]</a>    <span class="k">def</span> <span class="nf">cast_to_structured_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;pyvista.StructuredGrid&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cast this rectilinear grid to a structured grid.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.StructuredGrid</span>
+<span class="sd">            This grid as a structured grid.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkRectilinearGridToPointSet</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="UniformGrid"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.UniformGrid.html#pyvista.UniformGrid">[docs]</a><span class="k">class</span> <span class="nc">UniformGrid</span><span class="p">(</span><span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageData</span><span class="p">,</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">UniformGridFilters</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Models datasets with uniform spacing in the three coordinate directions.</span>
+
+<span class="sd">    Can be initialized in one of several ways:</span>
+
+<span class="sd">    - Create empty grid</span>
+<span class="sd">    - Initialize from a vtk.vtkImageData object</span>
+<span class="sd">    - Initialize based on dimensions, cell spacing, and origin.</span>
+
+<span class="sd">    .. versionchanged:: 0.33.0</span>
+<span class="sd">        First argument must now be either a path or</span>
+<span class="sd">        ``vtk.vtkImageData``. Use keyword arguments to specify the</span>
+<span class="sd">        dimensions, spacing, and origin of the uniform grid.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uinput : str, vtk.vtkImageData, pyvista.UniformGrid, optional</span>
+<span class="sd">        Filename or dataset to initialize the uniform grid from.  If</span>
+<span class="sd">        set, remainder of arguments are ignored.</span>
+
+<span class="sd">    dims : iterable, optional</span>
+<span class="sd">        Dimensions of the uniform grid.</span>
+
+<span class="sd">    spacing : iterable, optional</span>
+<span class="sd">        Spacing of the uniform in each dimension.  Defaults to</span>
+<span class="sd">        ``(1.0, 1.0, 1.0)``. Must be positive.</span>
+
+<span class="sd">    origin : iterable, optional</span>
+<span class="sd">        Origin of the uniform grid.  Defaults to ``(0.0, 0.0, 0.0)``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create an empty UniformGrid.</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.UniformGrid()</span>
+
+<span class="sd">    Initialize from a ``vtk.vtkImageData`` object.</span>
+
+<span class="sd">    &gt;&gt;&gt; import vtk</span>
+<span class="sd">    &gt;&gt;&gt; vtkgrid = vtk.vtkImageData()</span>
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.UniformGrid(vtkgrid)</span>
+
+<span class="sd">    Initialize using using just the grid dimensions and default</span>
+<span class="sd">    spacing and origin. These must be keyword arguments.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(10, 10, 10))</span>
+
+<span class="sd">    Initialize using dimensions and spacing.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.UniformGrid(</span>
+<span class="sd">    ...     dims=(10, 10, 10),</span>
+<span class="sd">    ...     spacing=(2, 1, 5),</span>
+<span class="sd">    ... )</span>
+
+<span class="sd">    Initialize using dimensions, spacing, and an origin.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.UniformGrid(</span>
+<span class="sd">    ...     dims=(10, 10, 10),</span>
+<span class="sd">    ...     spacing=(2, 1, 5),</span>
+<span class="sd">    ...     origin=(10, 35, 50),</span>
+<span class="sd">    ... )</span>
+
+<span class="sd">    Initialize from another UniformGrid.</span>
+
+<span class="sd">    &gt;&gt;&gt; grid = pyvista.UniformGrid(</span>
+<span class="sd">    ...     dims=(10, 10, 10),</span>
+<span class="sd">    ...     spacing=(2, 1, 5),</span>
+<span class="sd">    ...     origin=(10, 35, 50),</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; grid_from_grid = pyvista.UniformGrid(grid)</span>
+<span class="sd">    &gt;&gt;&gt; grid_from_grid == grid</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_WRITERS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;.vtk&#39;</span><span class="p">:</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkDataSetWriter</span><span class="p">,</span> <span class="s1">&#39;.vti&#39;</span><span class="p">:</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkXMLImageDataWriter</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">uinput</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the uniform grid.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># permit old behavior</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uinput</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uinput</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;Behavior of pyvista.UniformGrid has changed. First argument must be &quot;</span>
+                <span class="s2">&quot;either a ``vtk.vtkImageData`` or path.&quot;</span><span class="p">,</span>
+                <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">dims</span> <span class="o">=</span> <span class="n">uinput</span>
+            <span class="n">uinput</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;Behavior of pyvista.UniformGrid has changed. Use keyword arguments &quot;</span>
+                <span class="s2">&quot;to specify dimensions, spacing, and origin. For example:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;    &gt;&gt;&gt; grid = pyvista.UniformGrid(</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;    ...     dims=(10, 10, 10),</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;    ...     spacing=(2, 1, 5),</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;    ...     origin=(10, 35, 50),</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;    ... )</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">origin</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">spacing</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Too many additional arguments specified for UniformGrid. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Accepts at most 2, and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> have been input.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="c1"># first argument must be either vtkImageData or a path</span>
+        <span class="k">if</span> <span class="n">uinput</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uinput</span><span class="p">,</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageData</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">deep_copy</span><span class="p">(</span><span class="n">uinput</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uinput</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_from_file</span><span class="p">(</span><span class="n">uinput</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;First argument, ``uinput`` must be either ``vtk.vtkImageData`` &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;or a path, not </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">uinput</span><span class="p">)</span><span class="si">}</span><span class="s2">.  Use keyword arguments to &quot;</span>
+                    <span class="s2">&quot;specify dimensions, spacing, and origin. For example:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;    &gt;&gt;&gt; grid = pyvista.UniformGrid(</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;    ...     dims=(10, 10, 10),</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;    ...     spacing=(2, 1, 5),</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;    ...     origin=(10, 35, 50),</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;    ... )</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_from_specs</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">spacing</span><span class="p">,</span> <span class="n">origin</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the default representation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DataSet</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the default str representation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DataSet</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_from_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">spacing</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">origin</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create VTK image data directly from numpy arrays.</span>
+
+<span class="sd">        A uniform grid is defined by the point spacings for each axis</span>
+<span class="sd">        (uniform along each individual axis) and the number of points on each axis.</span>
+<span class="sd">        These are relative to a specified origin (default is ``(0.0, 0.0, 0.0)``).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dims : tuple(int)</span>
+<span class="sd">            Length 3 tuple of ints specifying how many points along each axis.</span>
+
+<span class="sd">        spacing : tuple(float)</span>
+<span class="sd">            Length 3 tuple of floats/ints specifying the point spacings</span>
+<span class="sd">            for each axis. Must be positive.</span>
+
+<span class="sd">        origin : tuple(float)</span>
+<span class="sd">            Length 3 tuple of floats/ints specifying minimum value for each axis.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">,</span> <span class="n">zn</span> <span class="o">=</span> <span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">xo</span><span class="p">,</span> <span class="n">yo</span><span class="p">,</span> <span class="n">zo</span> <span class="o">=</span> <span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetDimensions</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">,</span> <span class="n">zn</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetOrigin</span><span class="p">(</span><span class="n">xo</span><span class="p">,</span> <span class="n">yo</span><span class="p">,</span> <span class="n">zo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="p">(</span><span class="n">spacing</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spacing</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">spacing</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="nd">@property</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build a copy of the implicitly defined points as a numpy array.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The ``points`` for a :class:`pyvista.UniformGrid` cannot be set.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(2, 2, 2))</span>
+<span class="sd">        &gt;&gt;&gt; grid.points</span>
+<span class="sd">        array([[0., 0., 0.],</span>
+<span class="sd">               [1., 0., 0.],</span>
+<span class="sd">               [0., 1., 0.],</span>
+<span class="sd">               [1., 1., 0.],</span>
+<span class="sd">               [0., 0., 1.],</span>
+<span class="sd">               [1., 0., 1.],</span>
+<span class="sd">               [0., 1., 1.],</span>
+<span class="sd">               [1., 1., 1.]])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get grid dimensions</span>
+        <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimensions</span>
+        <span class="n">nx</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">ny</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">nz</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="c1"># get the points and convert to spacings</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span>
+        <span class="c1"># Now make the cell arrays</span>
+        <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span><span class="p">,</span> <span class="n">oz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extent</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># type: ignore</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">ox</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">ny</span><span class="p">,</span> <span class="n">dy</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">oy</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nz</span><span class="p">,</span> <span class="n">dz</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">oz</span>
+        <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">),</span> <span class="n">zz</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)]</span>
+
+    <span class="nd">@points</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Points cannot be set.</span>
+
+<span class="sd">        This setter overrides the base class&#39;s setter to ensure a user does not</span>
+<span class="sd">        attempt to set them. See https://github.com/pyvista/pyvista/issues/713.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+            <span class="s2">&quot;The points cannot be set. The points of &quot;</span>
+            <span class="s2">&quot;`UniformGrid`/`vtkImageData` are implicitly defined by the &quot;</span>
+            <span class="s2">&quot;`origin`, `spacing`, and `dimensions` of the grid.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all the X points.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(2, 2, 2))</span>
+<span class="sd">        &gt;&gt;&gt; grid.x</span>
+<span class="sd">        array([0., 1., 0., 1., 0., 1., 0., 1.])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all the Y points.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(2, 2, 2))</span>
+<span class="sd">        &gt;&gt;&gt; grid.y</span>
+<span class="sd">        array([0., 0., 1., 1., 0., 0., 1., 1.])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all the Z points.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(2, 2, 2))</span>
+<span class="sd">        &gt;&gt;&gt; grid.z</span>
+<span class="sd">        array([0., 0., 0., 0., 1., 1., 1., 1.])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the origin of the grid (bottom southwest corner).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(5, 5, 5))</span>
+<span class="sd">        &gt;&gt;&gt; grid.origin</span>
+<span class="sd">        (0.0, 0.0, 0.0)</span>
+
+<span class="sd">        Show how the origin is in the bottom &quot;southwest&quot; corner of the</span>
+<span class="sd">        UniformGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(grid, show_edges=True)</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_axes_at_origin(ylabel=None)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera_position = &#39;xz&#39;</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        Set the origin to ``(1, 1, 1)`` and show how this shifts the</span>
+<span class="sd">        UniformGrid.</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.origin = (1, 1, 1)</span>
+<span class="sd">        &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_mesh(grid, show_edges=True)</span>
+<span class="sd">        &gt;&gt;&gt; _ = pl.add_axes_at_origin(ylabel=None)</span>
+<span class="sd">        &gt;&gt;&gt; pl.camera_position = &#39;xz&#39;</span>
+<span class="sd">        &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetOrigin</span><span class="p">()</span>
+
+    <span class="nd">@origin</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the origin.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetOrigin</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">spacing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the spacing for each axial direction.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Spacing must be non-negative. While VTK accepts negative</span>
+<span class="sd">        spacing, this results in unexpected behavior. See:</span>
+<span class="sd">        https://github.com/pyvista/pyvista/issues/1967</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a 5 x 5 x 5 uniform grid.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(5, 5, 5))</span>
+<span class="sd">        &gt;&gt;&gt; grid.spacing</span>
+<span class="sd">        (1.0, 1.0, 1.0)</span>
+<span class="sd">        &gt;&gt;&gt; grid.plot(show_edges=True)</span>
+
+<span class="sd">        Modify the spacing to ``(1, 2, 3)``</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.spacing = (1, 2, 3)</span>
+<span class="sd">        &gt;&gt;&gt; grid.plot(show_edges=True)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()</span>
+
+    <span class="nd">@spacing</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">spacing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spacing</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set spacing.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">spacing</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spacing must be non-negative, got </span><span class="si">{</span><span class="n">spacing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSpacing</span><span class="p">(</span><span class="o">*</span><span class="n">spacing</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_get_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the representation methods (internal helper).&quot;&quot;&quot;</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">_get_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">pyvista</span><span class="o">.</span><span class="n">FLOAT_FORMAT</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;Spacing&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span><span class="p">,</span> <span class="n">fmt</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">attrs</span>
+
+<div class="viewcode-block" id="UniformGrid.cast_to_structured_grid"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.UniformGrid.cast_to_structured_grid.html#pyvista.UniformGrid.cast_to_structured_grid">[docs]</a>    <span class="k">def</span> <span class="nf">cast_to_structured_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;pyvista.StructuredGrid&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cast this uniform grid to a structured grid.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.StructuredGrid</span>
+<span class="sd">            This grid as a structured grid.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkImageToStructuredGrid</span><span class="p">()</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">alg</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">_get_output</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UniformGrid.cast_to_rectilinear_grid"><a class="viewcode-back" href="../../../api/core/_autosummary/pyvista.UniformGrid.cast_to_rectilinear_grid.html#pyvista.UniformGrid.cast_to_rectilinear_grid">[docs]</a>    <span class="k">def</span> <span class="nf">cast_to_rectilinear_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;RectilinearGrid&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cast this uniform grid to a rectilinear grid.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pyvista.RectilinearGrid</span>
+<span class="sd">            This uniform grid as a rectilinear grid.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">gen_coords</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">coords</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">coords</span>
+
+        <span class="n">xcoords</span> <span class="o">=</span> <span class="n">gen_coords</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">ycoords</span> <span class="o">=</span> <span class="n">gen_coords</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">zcoords</span> <span class="o">=</span> <span class="n">gen_coords</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">RectilinearGrid</span><span class="p">(</span><span class="n">xcoords</span><span class="p">,</span> <span class="n">ycoords</span><span class="p">,</span> <span class="n">zcoords</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point_data</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">cell_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell_data</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">field_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field_data</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">copy_meta_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">grid</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">extent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return or set the extent of the UniformGrid.</span>
+
+<span class="sd">        The extent is simply the first and last indices for each of the three axes.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Create a ``UniformGrid`` and show its extent.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pyvista</span>
+<span class="sd">        &gt;&gt;&gt; grid = pyvista.UniformGrid(dims=(10, 10, 10))</span>
+<span class="sd">        &gt;&gt;&gt; grid.extent</span>
+<span class="sd">        (0, 9, 0, 9, 0, 9)</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.extent = (2, 5, 2, 5, 2, 5)</span>
+<span class="sd">        &gt;&gt;&gt; grid.extent</span>
+<span class="sd">        (2, 5, 2, 5, 2, 5)</span>
+
+<span class="sd">        Note how this also modifies the grid bounds and dimensions. Since we</span>
+<span class="sd">        use default spacing of 1 here, the bounds match the extent exactly.</span>
+
+<span class="sd">        &gt;&gt;&gt; grid.bounds</span>
+<span class="sd">        (2.0, 5.0, 2.0, 5.0, 2.0, 5.0)</span>
+<span class="sd">        &gt;&gt;&gt; grid.dimensions</span>
+<span class="sd">        (4, 4, 4)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetExtent</span><span class="p">()</span>
+
+    <span class="nd">@extent</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">extent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_extent</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the extent of the UniformGrid.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_extent</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Extent must be a vector of 6 values.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetExtent</span><span class="p">(</span><span class="n">new_extent</span><span class="p">)</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+﻿pyvista.OBJReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: OBJReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      OBJReader.hide_progress
+      
+      
+      OBJReader.read
+      
+      
+      OBJReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      OBJReader.path
+      
+      
+      OBJReader.reader
+      
+   
+   

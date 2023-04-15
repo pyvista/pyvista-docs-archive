@@ -1,0 +1,6 @@
+download\_st\_helens
+====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_st_helens

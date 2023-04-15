@@ -1,0 +1,6 @@
+cell\_coords
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.cell_coords

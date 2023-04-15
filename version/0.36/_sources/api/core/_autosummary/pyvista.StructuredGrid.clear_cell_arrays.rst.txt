@@ -1,0 +1,6 @@
+clear\_cell\_arrays
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.clear_cell_arrays

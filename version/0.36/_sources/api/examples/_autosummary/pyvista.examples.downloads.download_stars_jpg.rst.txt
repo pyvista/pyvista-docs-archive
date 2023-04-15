@@ -1,0 +1,6 @@
+download\_stars\_jpg
+====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_stars_jpg

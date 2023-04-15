@@ -1,0 +1,6 @@
+download\_knee\_full
+====================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_knee_full

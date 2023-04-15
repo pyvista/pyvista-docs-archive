@@ -1,0 +1,6 @@
+cell\_bounds
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.cell_bounds

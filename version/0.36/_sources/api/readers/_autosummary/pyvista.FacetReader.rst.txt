@@ -1,0 +1,43 @@
+﻿pyvista.FacetReader
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: FacetReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      FacetReader.hide_progress
+      
+      
+      FacetReader.read
+      
+      
+      FacetReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      FacetReader.path
+      
+      
+      FacetReader.reader
+      
+   
+   

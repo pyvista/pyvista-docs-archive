@@ -1,0 +1,6 @@
+download\_face2
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_face2

@@ -1,0 +1,7 @@
+﻿pyvista.CompositeFilters
+========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: CompositeFilters
+   :members:

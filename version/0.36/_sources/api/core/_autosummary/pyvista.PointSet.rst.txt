@@ -1,0 +1,661 @@
+﻿pyvista.PointSet
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PointSet
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      PointSet.add_field_array
+      
+      
+      PointSet.add_field_data
+      
+      
+      PointSet.cast_to_pointset
+      
+      
+      PointSet.cast_to_polydata
+      
+      
+      PointSet.cast_to_unstructured_grid
+      
+      
+      PointSet.cell_bounds
+      
+      
+      PointSet.cell_centers
+      
+      
+      PointSet.cell_data_to_point_data
+      
+      
+      PointSet.cell_n_points
+      
+      
+      PointSet.cell_point_ids
+      
+      
+      PointSet.cell_points
+      
+      
+      PointSet.cell_type
+      
+      
+      PointSet.center_of_mass
+      
+      
+      PointSet.clear_arrays
+      
+      
+      PointSet.clear_cell_arrays
+      
+      
+      PointSet.clear_cell_data
+      
+      
+      PointSet.clear_data
+      
+      
+      PointSet.clear_field_arrays
+      
+      
+      PointSet.clear_field_data
+      
+      
+      PointSet.clear_point_arrays
+      
+      
+      PointSet.clear_point_data
+      
+      
+      PointSet.clear_textures
+      
+      
+      PointSet.clip
+      
+      
+      PointSet.clip_box
+      
+      
+      PointSet.clip_scalar
+      
+      
+      PointSet.clip_surface
+      
+      
+      PointSet.compute_cell_quality
+      
+      
+      PointSet.compute_cell_sizes
+      
+      
+      PointSet.compute_derivative
+      
+      
+      PointSet.compute_implicit_distance
+      
+      
+      PointSet.connectivity
+      
+      
+      PointSet.contour
+      
+      
+      PointSet.copy
+      
+      
+      PointSet.copy_attributes
+      
+      
+      PointSet.copy_meta_from
+      
+      
+      PointSet.copy_structure
+      
+      
+      PointSet.ctp
+      
+      
+      PointSet.decimate_boundary
+      
+      
+      PointSet.deep_copy
+      
+      
+      PointSet.delaunay_3d
+      
+      
+      PointSet.elevation
+      
+      
+      PointSet.extract_all_edges
+      
+      
+      PointSet.extract_cells
+      
+      
+      PointSet.extract_feature_edges
+      
+      
+      PointSet.extract_geometry
+      
+      
+      PointSet.extract_largest
+      
+      
+      PointSet.extract_points
+      
+      
+      PointSet.extract_surface
+      
+      
+      PointSet.find_cells_along_line
+      
+      
+      PointSet.find_cells_within_bounds
+      
+      
+      PointSet.find_closest_cell
+      
+      
+      PointSet.find_closest_point
+      
+      
+      PointSet.find_containing_cell
+      
+      
+      PointSet.flip_normal
+      
+      
+      PointSet.flip_x
+      
+      
+      PointSet.flip_y
+      
+      
+      PointSet.flip_z
+      
+      
+      PointSet.get_array
+      
+      
+      PointSet.get_array_association
+      
+      
+      PointSet.get_data_range
+      
+      
+      PointSet.glyph
+      
+      
+      PointSet.head
+      
+      
+      PointSet.integrate_data
+      
+      
+      PointSet.interpolate
+      
+      
+      PointSet.merge
+      
+      
+      PointSet.outline
+      
+      
+      PointSet.outline_corners
+      
+      
+      PointSet.override
+      
+      
+      PointSet.overwrite
+      
+      
+      PointSet.plot
+      
+      
+      PointSet.plot_over_circular_arc
+      
+      
+      PointSet.plot_over_circular_arc_normal
+      
+      
+      PointSet.plot_over_line
+      
+      
+      PointSet.point_data_to_cell_data
+      
+      
+      PointSet.point_is_inside_cell
+      
+      
+      PointSet.points_to_double
+      
+      
+      PointSet.probe
+      
+      
+      PointSet.ptc
+      
+      
+      PointSet.reflect
+      
+      
+      PointSet.remove_cells
+      
+      
+      PointSet.rename_array
+      
+      
+      PointSet.rotate_vector
+      
+      
+      PointSet.rotate_x
+      
+      
+      PointSet.rotate_y
+      
+      
+      PointSet.rotate_z
+      
+      
+      PointSet.sample
+      
+      
+      PointSet.sample_over_circular_arc
+      
+      
+      PointSet.sample_over_circular_arc_normal
+      
+      
+      PointSet.sample_over_line
+      
+      
+      PointSet.sample_over_multiple_lines
+      
+      
+      PointSet.save
+      
+      
+      PointSet.scale
+      
+      
+      PointSet.select_enclosed_points
+      
+      
+      PointSet.set_active_scalars
+      
+      
+      PointSet.set_active_tensors
+      
+      
+      PointSet.set_active_vectors
+      
+      
+      PointSet.shallow_copy
+      
+      
+      PointSet.shrink
+      
+      
+      PointSet.slice
+      
+      
+      PointSet.slice_along_axis
+      
+      
+      PointSet.slice_along_line
+      
+      
+      PointSet.slice_orthogonal
+      
+      
+      PointSet.split_bodies
+      
+      
+      PointSet.streamlines
+      
+      
+      PointSet.streamlines_evenly_spaced_2D
+      
+      
+      PointSet.streamlines_from_source
+      
+      
+      PointSet.surface_indices
+      
+      
+      PointSet.tessellate
+      
+      
+      PointSet.texture_map_to_plane
+      
+      
+      PointSet.texture_map_to_sphere
+      
+      
+      PointSet.threshold
+      
+      
+      PointSet.threshold_percent
+      
+      
+      PointSet.transform
+      
+      
+      PointSet.translate
+      
+      
+      PointSet.triangulate
+      
+      
+      PointSet.warp_by_scalar
+      
+      
+      PointSet.warp_by_vector
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      PointSet.active_normals
+      
+      
+      PointSet.active_scalars
+      
+      
+      PointSet.active_scalars_info
+      
+      
+      PointSet.active_scalars_name
+      
+      
+      PointSet.active_t_coords
+      
+      
+      PointSet.active_tensors
+      
+      
+      PointSet.active_tensors_info
+      
+      
+      PointSet.active_tensors_name
+      
+      
+      PointSet.active_vectors
+      
+      
+      PointSet.active_vectors_info
+      
+      
+      PointSet.active_vectors_name
+      
+      
+      PointSet.actual_memory_size
+      
+      
+      PointSet.array_names
+      
+      
+      PointSet.arrows
+      
+      
+      PointSet.bounds
+      
+      
+      PointSet.cell_arrays
+      
+      
+      PointSet.cell_data
+      
+      
+      PointSet.center
+      
+      
+      PointSet.field_arrays
+      
+      
+      PointSet.field_data
+      
+      
+      PointSet.length
+      
+      
+      PointSet.memory_address
+      
+      
+      PointSet.n_arrays
+      
+      
+      PointSet.n_cells
+      
+      
+      PointSet.n_points
+      
+      
+      PointSet.number_of_cells
+      
+      
+      PointSet.number_of_points
+      
+      
+      PointSet.point_arrays
+      
+      
+      PointSet.point_data
+      
+      
+      PointSet.points
+      
+      
+      PointSet.t_coords
+      
+      
+      PointSet.textures
+      
+      
+      PointSet.vectors
+      
+      
+      PointSet.volume
+      
+   
+   

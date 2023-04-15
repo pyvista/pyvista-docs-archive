@@ -1,0 +1,6 @@
+orientation\_cube
+=================
+
+.. currentmodule:: pyvista.demos.demos
+
+.. autofunction:: orientation_cube

@@ -1,0 +1,6 @@
+download\_doorman
+=================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_doorman

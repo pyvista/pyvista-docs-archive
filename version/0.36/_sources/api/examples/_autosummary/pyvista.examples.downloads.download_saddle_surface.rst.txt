@@ -1,0 +1,6 @@
+download\_saddle\_surface
+=========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_saddle_surface

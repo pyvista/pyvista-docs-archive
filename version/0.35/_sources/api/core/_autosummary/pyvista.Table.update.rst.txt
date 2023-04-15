@@ -1,0 +1,6 @@
+update
+======
+
+.. currentmodule:: pyvista
+
+.. automethod:: Table.update

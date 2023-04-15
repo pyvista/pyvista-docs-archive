@@ -1,0 +1,6 @@
+linear\_copy
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.linear_copy

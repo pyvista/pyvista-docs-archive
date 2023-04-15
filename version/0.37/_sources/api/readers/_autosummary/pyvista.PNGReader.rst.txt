@@ -1,0 +1,7 @@
+﻿pyvista.PNGReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: PNGReader
+   :members:

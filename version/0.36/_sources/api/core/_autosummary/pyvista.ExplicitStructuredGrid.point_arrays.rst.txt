@@ -1,0 +1,6 @@
+point\_arrays
+=============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ExplicitStructuredGrid.point_arrays

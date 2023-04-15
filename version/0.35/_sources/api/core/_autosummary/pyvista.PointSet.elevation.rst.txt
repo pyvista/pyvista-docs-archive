@@ -1,0 +1,6 @@
+elevation
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.elevation

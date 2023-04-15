@@ -1,0 +1,6 @@
+extent
+======
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UniformGrid.extent

@@ -1,0 +1,6 @@
+﻿Triangle
+========
+
+.. currentmodule:: pyvista.examples.cells
+
+.. autofunction:: Triangle

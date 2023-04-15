@@ -1,0 +1,7 @@
+﻿pyvista.Plot3DMetaReader
+========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Plot3DMetaReader
+   :members:

@@ -1,0 +1,6 @@
+enable\_all\_families
+=====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: CGNSReader.enable_all_families

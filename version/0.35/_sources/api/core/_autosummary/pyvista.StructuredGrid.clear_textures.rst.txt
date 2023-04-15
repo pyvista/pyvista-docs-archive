@@ -1,0 +1,6 @@
+clear\_textures
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.clear_textures

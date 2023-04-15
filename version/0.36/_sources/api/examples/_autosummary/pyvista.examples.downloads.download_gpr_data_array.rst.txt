@@ -1,0 +1,6 @@
+download\_gpr\_data\_array
+==========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_gpr_data_array

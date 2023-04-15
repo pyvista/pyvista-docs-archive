@@ -1,0 +1,6 @@
+get\_block\_name
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: MultiBlock.get_block_name

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: / # Disallow everything under the current directory
+Allow: /version/stable/
+
+Sitemap: https://docs.pyvista.org/sitemap.xml

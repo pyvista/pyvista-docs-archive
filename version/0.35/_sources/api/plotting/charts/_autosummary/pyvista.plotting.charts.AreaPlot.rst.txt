@@ -1,0 +1,207 @@
+﻿pyvista.plotting.charts.AreaPlot
+================================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: AreaPlot
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      AreaPlot.override
+      
+      
+      AreaPlot.toggle
+      
+      
+      AreaPlot.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      AreaPlot.brush
+      
+      
+      AreaPlot.color
+      
+      
+      AreaPlot.label
+      
+      
+      AreaPlot.line_style
+      
+      
+      AreaPlot.line_width
+      
+      
+      AreaPlot.pen
+      
+      
+      AreaPlot.visible
+      
+      
+      AreaPlot.x
+      
+      
+      AreaPlot.y1
+      
+      
+      AreaPlot.y2
+      
+   
+   

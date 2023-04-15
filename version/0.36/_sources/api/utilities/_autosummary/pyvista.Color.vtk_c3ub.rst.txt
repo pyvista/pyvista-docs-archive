@@ -1,0 +1,6 @@
+vtk\_c3ub
+=========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Color.vtk_c3ub

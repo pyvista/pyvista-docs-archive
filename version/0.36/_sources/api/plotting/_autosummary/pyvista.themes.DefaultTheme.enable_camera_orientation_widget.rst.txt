@@ -1,0 +1,6 @@
+enable\_camera\_orientation\_widget
+===================================
+
+.. currentmodule:: pyvista.themes
+
+.. autoproperty:: DefaultTheme.enable_camera_orientation_widget

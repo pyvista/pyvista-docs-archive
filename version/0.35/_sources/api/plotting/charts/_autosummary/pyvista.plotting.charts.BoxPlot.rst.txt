@@ -1,0 +1,220 @@
+﻿pyvista.plotting.charts.BoxPlot
+===============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: BoxPlot
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      BoxPlot.override
+      
+      
+      BoxPlot.toggle
+      
+      
+      BoxPlot.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      BoxPlot.brush
+      
+      
+      BoxPlot.color
+      
+      
+      BoxPlot.color_scheme
+      
+      
+      BoxPlot.colors
+      
+      
+      BoxPlot.data
+      
+      
+      BoxPlot.label
+      
+      
+      BoxPlot.labels
+      
+      
+      BoxPlot.line_style
+      
+      
+      BoxPlot.line_width
+      
+      
+      BoxPlot.pen
+      
+      
+      BoxPlot.stats
+      
+      
+      BoxPlot.visible
+      
+   
+   

@@ -1,0 +1,6 @@
+download\_gourds\_texture
+=========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_gourds_texture

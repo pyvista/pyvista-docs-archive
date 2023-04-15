@@ -1,0 +1,7 @@
+﻿pyvista.DICOMReader
+===================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DICOMReader
+   :members:

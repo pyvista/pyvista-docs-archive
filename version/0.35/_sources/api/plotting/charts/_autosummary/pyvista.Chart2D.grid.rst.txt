@@ -1,0 +1,6 @@
+grid
+====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.grid

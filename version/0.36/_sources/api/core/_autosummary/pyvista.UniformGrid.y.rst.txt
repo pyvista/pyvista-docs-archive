@@ -1,0 +1,6 @@
+y
+=
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UniformGrid.y

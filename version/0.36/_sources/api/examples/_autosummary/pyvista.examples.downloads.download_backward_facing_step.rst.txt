@@ -1,0 +1,6 @@
+download\_backward\_facing\_step
+================================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_backward_facing_step

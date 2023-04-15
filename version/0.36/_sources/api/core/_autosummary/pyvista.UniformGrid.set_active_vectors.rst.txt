@@ -1,0 +1,6 @@
+set\_active\_vectors
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.set_active_vectors

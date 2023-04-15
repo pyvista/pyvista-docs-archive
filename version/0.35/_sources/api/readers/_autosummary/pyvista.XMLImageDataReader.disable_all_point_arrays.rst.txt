@@ -1,0 +1,6 @@
+disable\_all\_point\_arrays
+===========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: XMLImageDataReader.disable_all_point_arrays

@@ -1,0 +1,6 @@
+t\_coords
+=========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ExplicitStructuredGrid.t_coords

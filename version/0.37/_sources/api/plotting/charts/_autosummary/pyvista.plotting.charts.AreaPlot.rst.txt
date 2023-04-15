@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.AreaPlot
+================================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: AreaPlot
+   :members:

@@ -1,0 +1,6 @@
+streamlines\_from\_source
+=========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UnstructuredGrid.streamlines_from_source

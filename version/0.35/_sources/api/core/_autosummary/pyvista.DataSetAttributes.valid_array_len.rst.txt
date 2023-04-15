@@ -1,0 +1,6 @@
+valid\_array\_len
+=================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSetAttributes.valid_array_len

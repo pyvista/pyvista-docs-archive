@@ -1,0 +1,6 @@
+rotate\_z
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.rotate_z

@@ -1,0 +1,6 @@
+path
+====
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: MultiBlockPlot3DReader.path

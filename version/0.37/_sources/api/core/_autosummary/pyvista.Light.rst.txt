@@ -1,0 +1,7 @@
+﻿pyvista.Light
+=============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Light
+   :members:

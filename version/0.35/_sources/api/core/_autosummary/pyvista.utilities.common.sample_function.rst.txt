@@ -1,0 +1,6 @@
+﻿sample\_function
+================
+
+.. currentmodule:: pyvista.utilities.common
+
+.. autofunction:: sample_function

@@ -1,0 +1,6 @@
+find\_cells\_along\_line
+========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.find_cells_along_line

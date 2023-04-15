@@ -1,0 +1,6 @@
+download\_cow\_head
+===================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_cow_head

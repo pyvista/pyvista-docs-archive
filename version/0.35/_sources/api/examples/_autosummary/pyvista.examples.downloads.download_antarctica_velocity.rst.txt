@@ -1,0 +1,6 @@
+download\_antarctica\_velocity
+==============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_antarctica_velocity

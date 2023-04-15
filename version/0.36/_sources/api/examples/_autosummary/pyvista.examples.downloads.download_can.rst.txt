@@ -1,0 +1,6 @@
+download\_can
+=============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_can

@@ -1,0 +1,6 @@
+active\_tensors
+===============
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.active_tensors

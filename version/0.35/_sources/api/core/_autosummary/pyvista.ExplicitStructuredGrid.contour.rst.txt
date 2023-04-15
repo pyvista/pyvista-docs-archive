@@ -1,0 +1,6 @@
+contour
+=======
+
+.. currentmodule:: pyvista
+
+.. automethod:: ExplicitStructuredGrid.contour

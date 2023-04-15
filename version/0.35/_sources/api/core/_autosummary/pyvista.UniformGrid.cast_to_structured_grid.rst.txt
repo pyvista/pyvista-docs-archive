@@ -1,0 +1,6 @@
+cast\_to\_structured\_grid
+==========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.cast_to_structured_grid

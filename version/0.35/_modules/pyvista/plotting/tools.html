@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyvista.plotting.tools &#8212; PyVista 0.35.2 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/no_search_highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/summary.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyvista_logo_sm.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting-started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user-guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../extras/index.html">
+  Extras
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        0.35  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables _modules/pyvista/plotting/tools and {'json_url': 'https://docs.pyvista.org/versions.json', 'version_match': '0.35'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "_modules/pyvista/plotting/tools.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://docs.pyvista.org/versions.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "_modules/pyvista/plotting/tools.html";
+        let btn = document.getElementById("version_switcher_button");
+        // Set empty strings by default so that these attributes exist and can be used in CSS selectors
+        btn.dataset["activeVersionName"] = "";
+        btn.dataset["activeVersion"] = "";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's 0.35.2 variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "0.35") {
+                node.classList.add("active");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://slack.pyvista.org" rel="noopener" target="_blank" title="Slack Community"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack Community</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/discussions" rel="noopener" target="_blank" title="Support"><span><i class="fa fa-comment fa-fw"></i></span>
+            <label class="sr-only">Support</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyvista/pyvista/blob/main/CONTRIBUTING.rst" rel="noopener" target="_blank" title="Contributing"><span><i class="fa fa-gavel fa-fw"></i></span>
+            <label class="sr-only">Contributing</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://doi.org/10.21105/joss.01450" rel="noopener" target="_blank" title="The Paper"><span><i class="fa fa-file-text fa-fw"></i></span>
+            <label class="sr-only">The Paper</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyvista.plotting.tools</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module containing useful plotting tools.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">Popen</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">_vtk</span>
+<span class="kn">from</span> <span class="nn">pyvista.utilities</span> <span class="kn">import</span> <span class="n">PyvistaDeprecationWarning</span>
+
+<span class="kn">from</span> <span class="nn">.colors</span> <span class="kn">import</span> <span class="n">Color</span>
+
+
+<span class="k">class</span> <span class="nc">FONTS</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Font families available to PyVista.&quot;&quot;&quot;</span>
+
+    <span class="n">arial</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">VTK_ARIAL</span>
+    <span class="n">courier</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">VTK_COURIER</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">VTK_TIMES</span>
+
+
+<span class="c1"># Track render window support and plotting</span>
+<span class="n">SUPPORTS_OPENGL</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">SUPPORTS_PLOTTING</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">supports_open_gl</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return if the system supports OpenGL.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">SUPPORTS_OPENGL</span>
+    <span class="k">if</span> <span class="n">SUPPORTS_OPENGL</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ren_win</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkRenderWindow</span><span class="p">()</span>
+        <span class="n">SUPPORTS_OPENGL</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ren_win</span><span class="o">.</span><span class="n">SupportsOpenGL</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">SUPPORTS_OPENGL</span>
+
+
+<span class="k">def</span> <span class="nf">_system_supports_plotting</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the environment supports plotting on Windows, Linux, or Mac OS.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    system_supports_plotting : bool</span>
+<span class="sd">        ``True`` when system supports plotting.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ALLOW_PLOTTING&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Windows case</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;nt&#39;</span><span class="p">:</span>
+        <span class="c1"># actually have to check here.  Somewhat expensive.</span>
+        <span class="k">return</span> <span class="n">supports_open_gl</span><span class="p">()</span>
+
+    <span class="c1"># mac case</span>
+    <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Darwin&#39;</span><span class="p">:</span>
+        <span class="c1"># check if finder available</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;pgrep&quot;</span><span class="p">,</span> <span class="s2">&quot;-qx&quot;</span><span class="p">,</span> <span class="s2">&quot;Finder&quot;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># display variable set, likely available</span>
+        <span class="k">return</span> <span class="s1">&#39;DISPLAY&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
+
+    <span class="c1"># Linux case</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;xset&quot;</span><span class="p">,</span> <span class="s2">&quot;-q&quot;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">system_supports_plotting</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the environment supports plotting.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        ``True`` when system supports plotting.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">SUPPORTS_PLOTTING</span>
+    <span class="k">if</span> <span class="n">SUPPORTS_PLOTTING</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">SUPPORTS_PLOTTING</span> <span class="o">=</span> <span class="n">_system_supports_plotting</span><span class="p">()</span>
+
+    <span class="c1"># always use the cached response</span>
+    <span class="k">return</span> <span class="n">SUPPORTS_PLOTTING</span>
+
+
+<span class="k">def</span> <span class="nf">_update_axes_label_color</span><span class="p">(</span><span class="n">axes_actor</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the axes label color (internal helper).&quot;&quot;&quot;</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axes_actor</span><span class="p">,</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkAxesActor</span><span class="p">):</span>
+        <span class="n">prop_x</span> <span class="o">=</span> <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXAxisCaptionActor2D</span><span class="p">()</span><span class="o">.</span><span class="n">GetCaptionTextProperty</span><span class="p">()</span>
+        <span class="n">prop_y</span> <span class="o">=</span> <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYAxisCaptionActor2D</span><span class="p">()</span><span class="o">.</span><span class="n">GetCaptionTextProperty</span><span class="p">()</span>
+        <span class="n">prop_z</span> <span class="o">=</span> <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZAxisCaptionActor2D</span><span class="p">()</span><span class="o">.</span><span class="n">GetCaptionTextProperty</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="p">[</span><span class="n">prop_x</span><span class="p">,</span> <span class="n">prop_y</span><span class="p">,</span> <span class="n">prop_z</span><span class="p">]:</span>
+            <span class="n">prop</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+            <span class="n">prop</span><span class="o">.</span><span class="n">SetShadow</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axes_actor</span><span class="p">,</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkAnnotatedCubeActor</span><span class="p">):</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetTextEdgesProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_axes_marker"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.create_axes_marker.html#pyvista.create_axes_marker">[docs]</a><span class="k">def</span> <span class="nf">create_axes_marker</span><span class="p">(</span>
+    <span class="n">label_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">x_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">y_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">z_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span>
+    <span class="n">zlabel</span><span class="o">=</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span>
+    <span class="n">labels_off</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">cone_radius</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">shaft_length</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">tip_length</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">ambient</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">label_size</span><span class="o">=</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create an axis actor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label_color : color_like, optional</span>
+<span class="sd">        Unknown</span>
+
+<span class="sd">    x_color : color_like, optional</span>
+<span class="sd">        Color of the x axis text.</span>
+
+<span class="sd">    y_color : color_like, optional</span>
+<span class="sd">        Color of the y axis text.</span>
+
+<span class="sd">    z_color : color_like, optional</span>
+<span class="sd">        Color of the z axis text.</span>
+
+<span class="sd">    xlabel : str, optional</span>
+<span class="sd">        Text used for the x axis.</span>
+
+<span class="sd">    ylabel : str, optional</span>
+<span class="sd">        Text used for the y axis.</span>
+
+<span class="sd">    zlabel : str, optional</span>
+<span class="sd">        Text used for the z axis.</span>
+
+<span class="sd">    labels_off : bool, optional</span>
+<span class="sd">        Enable or disable the text labels for the axes.</span>
+
+<span class="sd">    line_width : float, optional</span>
+<span class="sd">        The width of the marker lines.</span>
+
+<span class="sd">    cone_radius: float, optional</span>
+<span class="sd">        The radius of the axes arrow tips.</span>
+
+<span class="sd">    shaft_length: float, optional</span>
+<span class="sd">        The length of the axes arrow shafts.</span>
+
+<span class="sd">    ambient: float, optional</span>
+<span class="sd">        The ambient of the axes arrows.</span>
+
+<span class="sd">    label_size: sequence, optoinal</span>
+<span class="sd">        The width and height of the axes label actors.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    vtk.vtkAxesActor</span>
+<span class="sd">        Axes actor.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">x_color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">x_color</span><span class="p">)</span>
+    <span class="n">y_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">y_color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">y_color</span><span class="p">)</span>
+    <span class="n">z_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">z_color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">z_color</span><span class="p">)</span>
+    <span class="n">axes_actor</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkAxesActor</span><span class="p">()</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">x_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXAxisTipProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">x_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">y_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYAxisTipProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">y_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">z_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZAxisTipProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">z_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="c1"># Set labels</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetXAxisLabelText</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetYAxisLabelText</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetZAxisLabelText</span><span class="p">(</span><span class="n">zlabel</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">labels_off</span><span class="p">:</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">AxisLabelsOff</span><span class="p">()</span>
+    <span class="c1"># Set Line width</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetLineWidth</span><span class="p">(</span><span class="n">line_width</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetLineWidth</span><span class="p">(</span><span class="n">line_width</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetLineWidth</span><span class="p">(</span><span class="n">line_width</span><span class="p">)</span>
+
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetConeRadius</span><span class="p">(</span><span class="n">cone_radius</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetNormalizedShaftLength</span><span class="p">([</span><span class="n">shaft_length</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetNormalizedTipLength</span><span class="p">([</span><span class="n">tip_length</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetAmbient</span><span class="p">(</span><span class="n">ambient</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetAmbient</span><span class="p">(</span><span class="n">ambient</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZAxisShaftProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetAmbient</span><span class="p">(</span><span class="n">ambient</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXAxisTipProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetAmbient</span><span class="p">(</span><span class="n">ambient</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYAxisTipProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetAmbient</span><span class="p">(</span><span class="n">ambient</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZAxisTipProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetAmbient</span><span class="p">(</span><span class="n">ambient</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">label_actor</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXAxisCaptionActor2D</span><span class="p">(),</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYAxisCaptionActor2D</span><span class="p">(),</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZAxisCaptionActor2D</span><span class="p">(),</span>
+    <span class="p">]:</span>
+        <span class="n">label_actor</span><span class="o">.</span><span class="n">SetWidth</span><span class="p">(</span><span class="n">label_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">label_actor</span><span class="o">.</span><span class="n">SetHeight</span><span class="p">(</span><span class="n">label_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">_update_axes_label_color</span><span class="p">(</span><span class="n">axes_actor</span><span class="p">,</span> <span class="n">label_color</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">axes_actor</span></div>
+
+
+<div class="viewcode-block" id="create_axes_orientation_box"><a class="viewcode-back" href="../../../api/plotting/_autosummary/pyvista.create_axes_orientation_box.html#pyvista.create_axes_orientation_box">[docs]</a><span class="k">def</span> <span class="nf">create_axes_orientation_box</span><span class="p">(</span>
+    <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">text_scale</span><span class="o">=</span><span class="mf">0.366667</span><span class="p">,</span>
+    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+    <span class="n">x_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">y_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">z_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span>
+    <span class="n">zlabel</span><span class="o">=</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span>
+    <span class="n">x_face_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="n">y_face_color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span>
+    <span class="n">z_face_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+    <span class="n">color_box</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">label_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">labels_off</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a Box axes orientation widget with labels.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    line_width : float, optional</span>
+<span class="sd">        The width of the marker lines.</span>
+
+<span class="sd">    text_scale : float, optional</span>
+<span class="sd">        Size of the text relative to the faces.</span>
+
+<span class="sd">    edge_color : color_like, optional</span>
+<span class="sd">        Color of the edges.</span>
+
+<span class="sd">    x_color : color_like, optional</span>
+<span class="sd">        Color of the x axis text.</span>
+
+<span class="sd">    y_color : color_like, optional</span>
+<span class="sd">        Color of the y axis text.</span>
+
+<span class="sd">    z_color : color_like, optional</span>
+<span class="sd">        Color of the z axis text.</span>
+
+<span class="sd">    xlabel : str, optional</span>
+<span class="sd">        Text used for the x axis.</span>
+
+<span class="sd">    ylabel : str, optional</span>
+<span class="sd">        Text used for the y axis.</span>
+
+<span class="sd">    zlabel : str, optional</span>
+<span class="sd">        Text used for the z axis.</span>
+
+<span class="sd">    x_face_color : color_like, optional</span>
+<span class="sd">        Color used for the x axis arrow.  Defaults to theme axes</span>
+<span class="sd">        parameters.</span>
+
+<span class="sd">    y_face_color : color_like, optional</span>
+<span class="sd">        Color used for the y axis arrow.  Defaults to theme axes</span>
+<span class="sd">        parameters.</span>
+
+<span class="sd">    z_face_color : color_like, optional</span>
+<span class="sd">        Color used for the z axis arrow.  Defaults to theme axes</span>
+<span class="sd">        parameters.</span>
+
+<span class="sd">    color_box : bool, optional</span>
+<span class="sd">        Enable or disable the face colors.  Otherwise, box is white.</span>
+
+<span class="sd">    label_color : color_like, optional</span>
+<span class="sd">        Color of the labels.</span>
+
+<span class="sd">    labels_off : bool, optional</span>
+<span class="sd">        Enable or disable the text labels for the axes.</span>
+
+<span class="sd">    opacity : float, optional</span>
+<span class="sd">        Opacity in the range of ``[0, 1]`` of the orientation box.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    vtk.vtkAnnotatedCubeActor</span>
+<span class="sd">        Annotated cube actor.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create and plot an orientation box</span>
+
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; actor = pyvista.create_axes_orientation_box(</span>
+<span class="sd">    ...    line_width=1, text_scale=0.53,</span>
+<span class="sd">    ...    edge_color=&#39;black&#39;, x_color=&#39;k&#39;,</span>
+<span class="sd">    ...    y_color=None, z_color=None,</span>
+<span class="sd">    ...    xlabel=&#39;X&#39;, ylabel=&#39;Y&#39;, zlabel=&#39;Z&#39;,</span>
+<span class="sd">    ...    color_box=False,</span>
+<span class="sd">    ...    labels_off=False, opacity=1.0)</span>
+<span class="sd">    &gt;&gt;&gt; pl = pyvista.Plotter()</span>
+<span class="sd">    &gt;&gt;&gt; _ = pl.add_actor(actor)</span>
+<span class="sd">    &gt;&gt;&gt; pl.show()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">x_color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">x_color</span><span class="p">)</span>
+    <span class="n">y_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">y_color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">y_color</span><span class="p">)</span>
+    <span class="n">z_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">z_color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">z_color</span><span class="p">)</span>
+    <span class="n">edge_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">edge_color</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">edge_color</span><span class="p">)</span>
+    <span class="n">x_face_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">x_face_color</span><span class="p">)</span>
+    <span class="n">y_face_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">y_face_color</span><span class="p">)</span>
+    <span class="n">z_face_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">z_face_color</span><span class="p">)</span>
+    <span class="n">axes_actor</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkAnnotatedCubeActor</span><span class="p">()</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetFaceTextScale</span><span class="p">(</span><span class="n">text_scale</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">xlabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetXPlusFaceText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">xlabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetXMinusFaceText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">xlabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ylabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetYPlusFaceText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">ylabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetYMinusFaceText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">ylabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">zlabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetZPlusFaceText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">zlabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetZMinusFaceText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">zlabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetFaceTextVisibility</span><span class="p">(</span><span class="ow">not</span> <span class="n">labels_off</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">SetTextEdgesVisibility</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># axes_actor.GetTextEdgesProperty().SetColor(edge_color.float_rgb)</span>
+    <span class="c1"># axes_actor.GetTextEdgesProperty().SetLineWidth(line_width)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXPlusFaceProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">x_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetXMinusFaceProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">x_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYPlusFaceProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">y_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetYMinusFaceProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">y_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZPlusFaceProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">z_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetZMinusFaceProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">z_color</span><span class="o">.</span><span class="n">float_rgb</span><span class="p">)</span>
+
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetCubeProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetOpacity</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
+    <span class="c1"># axes_actor.GetCubeProperty().SetEdgeColor(edge_color.float_rgb)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetCubeProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetEdgeVisibility</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetCubeProperty</span><span class="p">()</span><span class="o">.</span><span class="n">BackfaceCullingOn</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">opacity</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="c1"># Hide the text edges</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetTextEdgesProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetOpacity</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">color_box</span><span class="p">:</span>
+        <span class="c1"># Hide the cube so we can color each face</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetCubeProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetOpacity</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">axes_actor</span><span class="o">.</span><span class="n">GetCubeProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetEdgeVisibility</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">cube</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Cube</span><span class="p">()</span>
+        <span class="n">cube</span><span class="o">.</span><span class="n">clear_data</span><span class="p">()</span>  <span class="c1"># remove normals</span>
+        <span class="n">face_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">x_face_color</span><span class="o">.</span><span class="n">int_rgb</span><span class="p">,</span>
+                <span class="n">x_face_color</span><span class="o">.</span><span class="n">int_rgb</span><span class="p">,</span>
+                <span class="n">y_face_color</span><span class="o">.</span><span class="n">int_rgb</span><span class="p">,</span>
+                <span class="n">y_face_color</span><span class="o">.</span><span class="n">int_rgb</span><span class="p">,</span>
+                <span class="n">z_face_color</span><span class="o">.</span><span class="n">int_rgb</span><span class="p">,</span>
+                <span class="n">z_face_color</span><span class="o">.</span><span class="n">int_rgb</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">cube</span><span class="o">.</span><span class="n">cell_data</span><span class="p">[</span><span class="s1">&#39;face_colors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">face_colors</span>
+
+        <span class="n">cube_mapper</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkPolyDataMapper</span><span class="p">()</span>
+        <span class="n">cube_mapper</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+        <span class="n">cube_mapper</span><span class="o">.</span><span class="n">SetColorModeToDirectScalars</span><span class="p">()</span>
+        <span class="n">cube_mapper</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+
+        <span class="n">cube_actor</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">()</span>
+        <span class="n">cube_actor</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">cube_mapper</span><span class="p">)</span>
+        <span class="n">cube_actor</span><span class="o">.</span><span class="n">GetProperty</span><span class="p">()</span><span class="o">.</span><span class="n">BackfaceCullingOn</span><span class="p">()</span>
+        <span class="n">cube_actor</span><span class="o">.</span><span class="n">GetProperty</span><span class="p">()</span><span class="o">.</span><span class="n">SetOpacity</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
+
+        <span class="n">prop_assembly</span> <span class="o">=</span> <span class="n">_vtk</span><span class="o">.</span><span class="n">vtkPropAssembly</span><span class="p">()</span>
+        <span class="n">prop_assembly</span><span class="o">.</span><span class="n">AddPart</span><span class="p">(</span><span class="n">axes_actor</span><span class="p">)</span>
+        <span class="n">prop_assembly</span><span class="o">.</span><span class="n">AddPart</span><span class="p">(</span><span class="n">cube_actor</span><span class="p">)</span>
+        <span class="n">actor</span> <span class="o">=</span> <span class="n">prop_assembly</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">actor</span> <span class="o">=</span> <span class="n">axes_actor</span>
+
+    <span class="n">_update_axes_label_color</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span> <span class="n">label_color</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">actor</span></div>
+
+
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize the given value between [minimum, maximum].&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">minimum</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">minimum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">maximum</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">maximum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">minimum</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">maximum</span> <span class="o">-</span> <span class="n">minimum</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">opacity_transfer_function</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;quadratic&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the opacity transfer function for a mapping.</span>
+
+<span class="sd">    These values will map on to a scalar bar range and thus the number of</span>
+<span class="sd">    colors (``n_colors``) must correspond to the number of colors in the color</span>
+<span class="sd">    mapping that these opacities are associated to.</span>
+
+<span class="sd">    If interpolating, ``scipy.interpolate.interp1d`` is used if available,</span>
+<span class="sd">    otherwise ``np.interp`` is used. The ``kind`` argument controls the kind of</span>
+<span class="sd">    interpolation for ``interp1d``.</span>
+
+<span class="sd">    This returns the opacity range from 0 to 255, where 0 is totally</span>
+<span class="sd">    transparent and 255 is totally opaque.</span>
+
+<span class="sd">    The equation to create the sigmoid mapping is: ``1 / (1 + exp(-x))`` where</span>
+<span class="sd">    ``x`` is the range from ``-a`` to ``+a`` and ``a`` is the value given in</span>
+<span class="sd">    the ``mapping`` string. Default is ``a=10`` for &#39;sigmoid&#39; mapping.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mapping : list(float) or str</span>
+<span class="sd">        The opacity mapping to use. Can be a ``str`` name of a predefined</span>
+<span class="sd">        mapping including &#39;linear&#39;, &#39;geom&#39;, &#39;sigmoid&#39;, &#39;sigmoid_3-10&#39;.</span>
+<span class="sd">        Append an &#39;_r&#39; to any of those names to reverse that mapping.</span>
+<span class="sd">        This can also be a custom array/list of values that will be</span>
+<span class="sd">        interpolated across the ``n_color`` range for user defined mappings.</span>
+
+<span class="sd">    n_colors : int</span>
+<span class="sd">        The amount of colors that the opacities must be mapped to.</span>
+
+<span class="sd">    interpolate : bool</span>
+<span class="sd">        Flag on whether or not to interpolate the opacity mapping for all colors</span>
+
+<span class="sd">    kind : str</span>
+<span class="sd">        The interepolation kind if ``interpolate`` is true and ``scipy`` is</span>
+<span class="sd">        available. Options are (&#39;linear&#39;, &#39;nearest&#39;, &#39;zero&#39;, &#39;slinear&#39;,</span>
+<span class="sd">        &#39;quadratic&#39;, &#39;cubic&#39;, &#39;previous&#39;, &#39;next&#39;.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista as pv</span>
+<span class="sd">    &gt;&gt;&gt; # Fetch the `sigmoid` mapping between 0 and 255</span>
+<span class="sd">    &gt;&gt;&gt; tf = pv.opacity_transfer_function(&quot;sigmoid&quot;, 256)</span>
+<span class="sd">    &gt;&gt;&gt; # Fetch the `geom_r` mapping between 0 and 1</span>
+<span class="sd">    &gt;&gt;&gt; tf = pv.opacity_transfer_function(&quot;geom_r&quot;, 256).astype(float) / 255.</span>
+<span class="sd">    &gt;&gt;&gt; # Interpolate a user defined opacity mapping</span>
+<span class="sd">    &gt;&gt;&gt; opacity = [0, 0.2, 0.9, 0.6, 0.3]</span>
+<span class="sd">    &gt;&gt;&gt; tf = pv.opacity_transfer_function(opacity, 256)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">transfer_func</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;linear&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span>
+        <span class="s1">&#39;geom&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span>
+        <span class="s1">&#39;geom_r&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span>
+        <span class="s1">&#39;sigmoid&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_3&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_4&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_5&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_6&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_7&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_8&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_9&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">9.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+        <span class="s1">&#39;sigmoid_10&#39;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">)),</span>
+    <span class="p">}</span>
+    <span class="n">transfer_func</span><span class="p">[</span><span class="s1">&#39;linear_r&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transfer_func</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">transfer_func</span><span class="p">[</span><span class="s1">&#39;sigmoid_r&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transfer_func</span><span class="p">[</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;sigmoid_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">rk</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">_r&#39;</span>
+        <span class="n">transfer_func</span><span class="p">[</span><span class="n">rk</span><span class="p">]</span> <span class="o">=</span> <span class="n">transfer_func</span><span class="p">[</span><span class="n">k</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">transfer_func</span><span class="p">[</span><span class="n">mapping</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;opactiy transfer function (</span><span class="si">{</span><span class="n">mapping</span><span class="si">}</span><span class="s1">) unknown.&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mapping</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">n_colors</span><span class="p">:</span>
+            <span class="c1"># User could pass transfer function ready for lookup table</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="n">mapping</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="n">n_colors</span><span class="p">:</span>
+            <span class="c1"># User pass custom transfer function to be linearly interpolated</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.0</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">mapping</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+            <span class="c1"># Interpolate transfer function to match lookup table</span>
+            <span class="n">xo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mapping</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">)</span>
+            <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">interpolate</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No interpolation.&#39;</span><span class="p">)</span>
+                <span class="c1"># Use a quadratic interp if scipy is available</span>
+                <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+                <span class="c1"># quadratic has best/smoothest results</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">xo</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">)</span>
+                <span class="n">vals</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span>
+                <span class="n">vals</span><span class="p">[</span><span class="n">vals</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+                <span class="n">vals</span><span class="p">[</span><span class="n">vals</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="n">mapping</span> <span class="o">=</span> <span class="p">(</span><span class="n">vals</span> <span class="o">*</span> <span class="mf">255.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                <span class="c1"># Otherwise use simple linear interp</span>
+                <span class="n">mapping</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">xo</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Transfer function cannot have more values than `n_colors`. This has </span><span class="si">{</span><span class="n">mapping</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1"> elements&#39;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">mapping</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Transfer function type (</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span><span class="si">}</span><span class="s1">) not understood&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">parse_color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse color into a VTK friendly RGB(A) tuple.</span>
+
+<span class="sd">    .. deprecated:: 0.34.0</span>
+<span class="sd">        Use :class:`Color` to parse and convert colors instead.</span>
+
+<span class="sd">    If ``color`` is a sequence of RGBA floats, the ``opacity`` parameter</span>
+<span class="sd">    is ignored.</span>
+
+<span class="sd">    Values returned will be between 0 and 1.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color : color_like</span>
+<span class="sd">        Either a string, RGB sequence, RGBA sequence, or hex color string.</span>
+<span class="sd">        RGB(A) sequences should only contain values between 0 and 1.</span>
+<span class="sd">        For example:</span>
+
+<span class="sd">        * ``&#39;white&#39;``</span>
+<span class="sd">        * ``&#39;w&#39;``</span>
+<span class="sd">        * ``[1.0, 1.0, 1.0]``</span>
+<span class="sd">        * ``[0.5, 1.0, 0.7, 1.0]``</span>
+<span class="sd">        * ``&#39;#FFFFFF&#39;``</span>
+
+<span class="sd">    opacity : float, optional</span>
+<span class="sd">        Default opacity of the returned color. Used when ``color`` is</span>
+<span class="sd">        not a length 4 RGBA sequence. Only opacities between 0 and 1</span>
+<span class="sd">        are allowed.</span>
+
+<span class="sd">    default_color : color_like, optional</span>
+<span class="sd">        Default color to use when ``color`` is None.  If this value is</span>
+<span class="sd">        ``None``, then defaults to the global theme color.  Format is</span>
+<span class="sd">        identical to ``color``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        Either a length 3 RGB sequence if opacity is unset, or an RGBA</span>
+<span class="sd">        sequence when ``opacity`` is set or the input ``color`` is an</span>
+<span class="sd">        RGBA sequence.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import pyvista</span>
+<span class="sd">    &gt;&gt;&gt; pyvista.parse_color(&#39;blue&#39;)</span>
+<span class="sd">    (0.0, 0.0, 1.0)</span>
+
+<span class="sd">    &gt;&gt;&gt; pyvista.parse_color(&#39;k&#39;)</span>
+<span class="sd">    (0.0, 0.0, 0.0)</span>
+
+<span class="sd">    &gt;&gt;&gt; pyvista.parse_color(&#39;#FFFFFF&#39;)</span>
+<span class="sd">    (1.0, 1.0, 1.0)</span>
+
+<span class="sd">    &gt;&gt;&gt; pyvista.parse_color((0.4, 0.3, 0.4, 1))</span>
+<span class="sd">    (0.4, 0.3, 0.4, 1.0)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Deprecated on v0.34.0, estimated removal on v0.37.0</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;The usage of `parse_color` is deprecated in favor of the new `Color` class.&quot;</span><span class="p">,</span>
+        <span class="n">PyvistaDeprecationWarning</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">color_valid</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">default_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">global_theme</span><span class="o">.</span><span class="n">color</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">default_color</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">float_rgb</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="p">(</span><span class="n">Sequence</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">color</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span>
+                <span class="ow">or</span> <span class="n">color</span><span class="o">.</span><span class="n">size</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">((</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">color</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">color</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="p">):</span>
+                <span class="n">color_valid</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">opacity</span> <span class="o">=</span> <span class="n">color</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">color_valid</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">color_valid</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">color_valid</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Invalid color input: (</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Must be string, rgb list, or hex color string.  For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=&#39;white&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=&#39;w&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=[1, 1, 1]</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">color=&#39;#FFFFFF&#39;&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">opacity</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">opacity</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">opacity</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Invalid opacity input: </span><span class="si">{</span><span class="n">opacity</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Must be a scalar value between 0 and 1.&quot;</span>
+            <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">parse_font_family</span><span class="p">(</span><span class="n">font_family</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check font name.&quot;&quot;&quot;</span>
+    <span class="n">font_family</span> <span class="o">=</span> <span class="n">font_family</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">fonts</span> <span class="o">=</span> <span class="p">[</span><span class="n">font</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">FONTS</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">font_family</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fonts</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Font must one of the following:</span><span class="se">\n</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fonts</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FONTS</span><span class="p">[</span><span class="n">font_family</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2017-2023, The PyVista Developers.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

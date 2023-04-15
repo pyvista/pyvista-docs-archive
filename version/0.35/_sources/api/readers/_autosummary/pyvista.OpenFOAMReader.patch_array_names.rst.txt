@@ -1,0 +1,6 @@
+patch\_array\_names
+===================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: OpenFOAMReader.patch_array_names

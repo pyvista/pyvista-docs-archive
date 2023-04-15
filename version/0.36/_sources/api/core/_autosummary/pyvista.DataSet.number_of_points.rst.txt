@@ -1,0 +1,6 @@
+number\_of\_points
+==================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSet.number_of_points

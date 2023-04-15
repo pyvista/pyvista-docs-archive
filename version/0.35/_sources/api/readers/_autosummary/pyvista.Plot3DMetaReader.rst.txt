@@ -1,0 +1,43 @@
+﻿pyvista.Plot3DMetaReader
+========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Plot3DMetaReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Plot3DMetaReader.hide_progress
+      
+      
+      Plot3DMetaReader.read
+      
+      
+      Plot3DMetaReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Plot3DMetaReader.path
+      
+      
+      Plot3DMetaReader.reader
+      
+   
+   

@@ -1,0 +1,6 @@
+download\_room\_surface\_mesh
+=============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_room_surface_mesh

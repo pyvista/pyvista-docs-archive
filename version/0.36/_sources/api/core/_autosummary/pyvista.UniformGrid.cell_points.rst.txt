@@ -1,0 +1,6 @@
+cell\_points
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.cell_points

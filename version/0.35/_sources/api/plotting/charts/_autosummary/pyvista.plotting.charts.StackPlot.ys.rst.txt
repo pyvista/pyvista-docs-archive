@@ -1,0 +1,6 @@
+ys
+==
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: StackPlot.ys

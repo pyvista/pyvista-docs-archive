@@ -1,0 +1,6 @@
+download\_tensors
+=================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_tensors

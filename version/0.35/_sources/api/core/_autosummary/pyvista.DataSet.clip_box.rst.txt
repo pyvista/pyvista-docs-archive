@@ -1,0 +1,6 @@
+clip\_box
+=========
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.clip_box

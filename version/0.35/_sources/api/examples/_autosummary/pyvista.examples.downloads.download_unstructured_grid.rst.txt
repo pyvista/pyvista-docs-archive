@@ -1,0 +1,6 @@
+download\_unstructured\_grid
+============================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_unstructured_grid

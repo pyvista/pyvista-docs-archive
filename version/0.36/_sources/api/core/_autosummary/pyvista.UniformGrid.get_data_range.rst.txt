@@ -1,0 +1,6 @@
+get\_data\_range
+================
+
+.. currentmodule:: pyvista
+
+.. automethod:: UniformGrid.get_data_range

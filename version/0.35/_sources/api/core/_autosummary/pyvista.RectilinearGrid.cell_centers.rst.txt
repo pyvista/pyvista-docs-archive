@@ -1,0 +1,6 @@
+cell\_centers
+=============
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.cell_centers

@@ -1,0 +1,6 @@
+labels
+======
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: StackPlot.labels

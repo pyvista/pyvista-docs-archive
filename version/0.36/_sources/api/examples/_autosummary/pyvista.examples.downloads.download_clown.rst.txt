@@ -1,0 +1,6 @@
+download\_clown
+===============
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_clown

@@ -1,0 +1,6 @@
+tick\_locations
+===============
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.tick_locations

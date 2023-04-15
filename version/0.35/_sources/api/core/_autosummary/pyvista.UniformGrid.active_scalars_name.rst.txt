@@ -1,0 +1,6 @@
+active\_scalars\_name
+=====================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UniformGrid.active_scalars_name

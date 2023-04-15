@@ -1,0 +1,6 @@
+all\_cell\_arrays\_status
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: XMLPImageDataReader.all_cell_arrays_status

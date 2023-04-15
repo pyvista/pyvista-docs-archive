@@ -1,0 +1,6 @@
+add\_chart
+==========
+
+.. currentmodule:: pyvista
+
+.. automethod:: Renderer.add_chart

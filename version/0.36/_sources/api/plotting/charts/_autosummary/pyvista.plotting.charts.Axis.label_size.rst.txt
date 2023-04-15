@@ -1,0 +1,6 @@
+label\_size
+===========
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoproperty:: Axis.label_size

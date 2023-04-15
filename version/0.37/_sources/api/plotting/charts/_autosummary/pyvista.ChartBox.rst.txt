@@ -1,0 +1,7 @@
+﻿pyvista.ChartBox
+================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: ChartBox
+   :members:

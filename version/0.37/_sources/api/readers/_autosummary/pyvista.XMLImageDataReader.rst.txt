@@ -1,0 +1,7 @@
+﻿pyvista.XMLImageDataReader
+==========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLImageDataReader
+   :members:

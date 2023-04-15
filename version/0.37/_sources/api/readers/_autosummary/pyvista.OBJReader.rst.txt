@@ -1,0 +1,7 @@
+﻿pyvista.OBJReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: OBJReader
+   :members:

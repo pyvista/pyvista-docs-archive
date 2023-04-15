@@ -1,0 +1,6 @@
+point\_data
+===========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: PointSet.point_data

@@ -1,0 +1,7 @@
+﻿pyvista.RectilinearGrid
+=======================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: RectilinearGrid
+   :members:

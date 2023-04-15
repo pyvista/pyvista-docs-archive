@@ -1,0 +1,6 @@
+find\_closest\_point
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: DataSet.find_closest_point

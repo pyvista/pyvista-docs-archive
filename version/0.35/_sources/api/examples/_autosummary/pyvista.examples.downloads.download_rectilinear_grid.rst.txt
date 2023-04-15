@@ -1,0 +1,6 @@
+download\_rectilinear\_grid
+===========================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_rectilinear_grid

@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.BarPlot
+===============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: BarPlot
+   :members:

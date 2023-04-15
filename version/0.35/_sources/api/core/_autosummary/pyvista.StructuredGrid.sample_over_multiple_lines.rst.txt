@@ -1,0 +1,6 @@
+sample\_over\_multiple\_lines
+=============================
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.sample_over_multiple_lines

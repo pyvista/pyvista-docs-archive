@@ -1,0 +1,7 @@
+﻿pyvista.plotting.charts.PiePlot
+===============================
+
+.. currentmodule:: pyvista.plotting.charts
+
+.. autoclass:: PiePlot
+   :members:

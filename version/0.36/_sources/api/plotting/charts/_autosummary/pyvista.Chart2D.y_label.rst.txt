@@ -1,0 +1,6 @@
+y\_label
+========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: Chart2D.y_label

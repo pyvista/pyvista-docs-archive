@@ -1,0 +1,6 @@
+disable\_all\_point\_arrays
+===========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: EnSightReader.disable_all_point_arrays

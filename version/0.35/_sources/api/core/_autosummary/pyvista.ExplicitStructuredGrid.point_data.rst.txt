@@ -1,0 +1,6 @@
+point\_data
+===========
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: ExplicitStructuredGrid.point_data

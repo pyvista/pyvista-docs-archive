@@ -1,0 +1,7 @@
+﻿pyvista.STLReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: STLReader
+   :members:

@@ -1,0 +1,43 @@
+﻿pyvista.DEMReader
+=================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: DEMReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      DEMReader.hide_progress
+      
+      
+      DEMReader.read
+      
+      
+      DEMReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      DEMReader.path
+      
+      
+      DEMReader.reader
+      
+   
+   

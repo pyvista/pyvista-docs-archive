@@ -1,0 +1,6 @@
+disable\_all\_bases
+===================
+
+.. currentmodule:: pyvista
+
+.. automethod:: CGNSReader.disable_all_bases

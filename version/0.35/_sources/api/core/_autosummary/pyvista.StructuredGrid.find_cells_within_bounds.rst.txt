@@ -1,0 +1,6 @@
+find\_cells\_within\_bounds
+===========================
+
+.. currentmodule:: pyvista
+
+.. automethod:: StructuredGrid.find_cells_within_bounds

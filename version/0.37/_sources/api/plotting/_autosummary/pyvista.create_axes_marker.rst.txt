@@ -1,0 +1,6 @@
+﻿create\_axes\_marker
+====================
+
+.. currentmodule:: pyvista
+
+.. autofunction:: create_axes_marker

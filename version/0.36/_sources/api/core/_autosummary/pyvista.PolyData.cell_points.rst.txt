@@ -1,0 +1,6 @@
+cell\_points
+============
+
+.. currentmodule:: pyvista
+
+.. automethod:: PolyData.cell_points

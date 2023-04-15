@@ -1,0 +1,7 @@
+﻿pyvista.Chart2D
+===============
+
+.. currentmodule:: pyvista
+
+.. autoclass:: Chart2D
+   :members:

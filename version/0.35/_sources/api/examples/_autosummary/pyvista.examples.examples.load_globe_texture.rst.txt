@@ -1,0 +1,6 @@
+load\_globe\_texture
+====================
+
+.. currentmodule:: pyvista.examples.examples
+
+.. autofunction:: load_globe_texture

@@ -1,0 +1,6 @@
+download\_oblique\_cone
+=======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_oblique_cone

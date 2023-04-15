@@ -1,0 +1,6 @@
+clear\_textures
+===============
+
+.. currentmodule:: pyvista
+
+.. automethod:: PointSet.clear_textures

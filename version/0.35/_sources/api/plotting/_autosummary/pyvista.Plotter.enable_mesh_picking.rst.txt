@@ -1,0 +1,6 @@
+enable\_mesh\_picking
+=====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: Plotter.enable_mesh_picking

@@ -1,0 +1,6 @@
+add\_field\_array
+=================
+
+.. currentmodule:: pyvista
+
+.. automethod:: RectilinearGrid.add_field_array

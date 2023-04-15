@@ -1,0 +1,6 @@
+disable\_cell\_array
+====================
+
+.. currentmodule:: pyvista
+
+.. automethod:: XMLUnstructuredGridReader.disable_cell_array

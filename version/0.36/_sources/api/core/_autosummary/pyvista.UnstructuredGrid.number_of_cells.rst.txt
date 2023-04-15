@@ -1,0 +1,6 @@
+number\_of\_cells
+=================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: UnstructuredGrid.number_of_cells

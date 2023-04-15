@@ -1,0 +1,6 @@
+active\_t\_coords\_name
+=======================
+
+.. currentmodule:: pyvista
+
+.. autoproperty:: DataSetAttributes.active_t_coords_name

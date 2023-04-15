@@ -1,0 +1,6 @@
+download\_usa\_texture
+======================
+
+.. currentmodule:: pyvista.examples.downloads
+
+.. autofunction:: download_usa_texture

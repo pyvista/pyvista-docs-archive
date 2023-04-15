@@ -1,0 +1,91 @@
+﻿pyvista.XMLPolyDataReader
+=========================
+
+.. currentmodule:: pyvista
+
+.. autoclass:: XMLPolyDataReader
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      XMLPolyDataReader.cell_array_status
+      
+      
+      XMLPolyDataReader.disable_all_cell_arrays
+      
+      
+      XMLPolyDataReader.disable_all_point_arrays
+      
+      
+      XMLPolyDataReader.disable_cell_array
+      
+      
+      XMLPolyDataReader.disable_point_array
+      
+      
+      XMLPolyDataReader.enable_all_cell_arrays
+      
+      
+      XMLPolyDataReader.enable_all_point_arrays
+      
+      
+      XMLPolyDataReader.enable_cell_array
+      
+      
+      XMLPolyDataReader.enable_point_array
+      
+      
+      XMLPolyDataReader.hide_progress
+      
+      
+      XMLPolyDataReader.point_array_status
+      
+      
+      XMLPolyDataReader.read
+      
+      
+      XMLPolyDataReader.show_progress
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      XMLPolyDataReader.all_cell_arrays_status
+      
+      
+      XMLPolyDataReader.all_point_arrays_status
+      
+      
+      XMLPolyDataReader.cell_array_names
+      
+      
+      XMLPolyDataReader.number_cell_arrays
+      
+      
+      XMLPolyDataReader.number_point_arrays
+      
+      
+      XMLPolyDataReader.path
+      
+      
+      XMLPolyDataReader.point_array_names
+      
+      
+      XMLPolyDataReader.reader
+      
+   
+   
