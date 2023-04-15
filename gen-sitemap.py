@@ -6,7 +6,10 @@ import os
 import xml.etree.ElementTree as ET
 from xml.dom.minidom import parseString
 
-base_url = "https://docs.pyvista.org"
+with open('CNAME') as fid:
+    cname = fid.read().strip()
+    base_url = f"https://{cname}"
+
 base_path = "version/stable"
 
 def create_sitemap_element(url):
