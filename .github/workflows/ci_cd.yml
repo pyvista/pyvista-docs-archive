@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: 3.11
 
+      - name: Copy objects.inv
+        run: cp version/stable/objects.inv .
+
       - name: Generate the sitemap
         run: python gen-sitemap.py
 
@@ -35,5 +38,6 @@ jobs:
       - name: Commit and push the updated sitemap
         run: |
           git add sitemap.xml
+          git add objects.inv
           git commit -m "Update sitemap [skip ci]" || true
           git push
