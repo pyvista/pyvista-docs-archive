@@ -5,11 +5,6 @@
     "url": "https://docs.pyvista.org/version/dev/"
   },
   {
-    "name": "日本語(dev)",
-    "version": "dev-ja",
-    "url": "https://pyvista.github.io/pyvista-docs-dev-ja/"
-  },
-  {
     "name": "0.38.5 (stable)",
     "version": "0.38.5",
     "url": "https://docs.pyvista.org/version/stable/"
@@ -29,4 +24,9 @@
     "version": "0.35.2",
     "url": "https://docs.pyvista.org/version/0.35/"
   }
+  {
+    "name": "Japanese",
+    "version": "dev-ja",
+    "url": "https://pyvista.github.io/pyvista-docs-dev-ja/"
+  },
 ]
