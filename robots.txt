@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: / # Disallow everything under the current directory
+Allow: /version/stable/
+Allow: /sitemap.xml # Allow the sitemap to be fetched
+
+Sitemap: https://docs.pyvista.org/sitemap.xml
